@@ -1,4 +1,12 @@
 
+## 0.0.8 [04-20-2022]
+
+* Bug fixes and performance improvements
+
+See commit a6b8fe6
+
+---
+
 ## 0.0.7 [07-13-2021]
 
 * updated the template to replace the word Artifact
