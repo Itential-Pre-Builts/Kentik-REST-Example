@@ -130,7 +130,9 @@
               "service-catalog",
               "ac-agenda-job",
               "adapter",
-              "app"
+              "app",
+              "transformation",
+              "automation"
             ],
             "title": "The Artifact Type ",
             "description": "The type of artifact(s) this entry encompasses. Must be one of the supported types listed in the enum",
