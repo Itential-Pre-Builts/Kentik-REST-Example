@@ -41,5 +41,10 @@
     "mocha": "^10.0.0",
     "mocha-junit-reporter": "^2.0.2",
     "r2": "^2.0.1"
+  },
+  "IAPDependencies": {
+    "@itential/app-operations_manager": "",
+    "@itential/app-json_forms": "",
+    "@itential/app-workflow_engine": ""
   }
 }
