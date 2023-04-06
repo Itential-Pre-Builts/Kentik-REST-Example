@@ -36,10 +36,27 @@ async function runLinkValidation() {
     const current = data.artifacts[i].location;
     if (current){
       if (fs.existsSync(`./${current}`)){
-        console.log(`\t✅  Validating ${current}`);
+        const bundle = await fs.readFile(`./${current}`, 'utf8');
+        const bundleData = JSON.parse(bundle);
+        if (data.artifacts[i].type == 'transformation') {
+          if (data.artifacts[i].id == bundleData._id) {
+            console.log(`\t✅  Validating ${current}`);
+          } else {
+            console.log(`\t❌  Validating ${current}`);
+            console.log(`\t\t- Bundle ID (${bundleData._id}) is not equal to manifest artifact ID (${data.artifacts[i].id}).`);
+            valid = false;
+          }
+        } else if (data.artifacts[i].id == bundleData.name) {
+          console.log(`\t✅  Validating ${current}`);
+        } else {
+          console.log(`\t❌  Validating ${current}`);
+          console.log(`\t\t- Bundle Name (${bundleData.name}) is not equal to manifest artifact ID (${data.artifacts[i].id}).`);
+          valid = false;
+        }
       }
       else{
         console.log(`\t❌  Validating ${current}`);
+        console.log(`\t\t- File at path '${current}' does not exist.`);
         valid = false;
       }
     }
