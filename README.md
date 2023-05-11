@@ -4,95 +4,135 @@
 # Pre-Built Name
 
 <!-- Leave TOC intact unless you've added or removed headers -->
+
 ## Table of Contents
 
-* [Overview](#overview)
-* [Installation Prerequisites](#installation-prerequisites)
-* [Requirements](#requirements)
-* [Features](#features)
-* [Future Enhancements](#future-enhancements)
-* [How to Install](#how-to-install)
-* [How to Run](#how-to-run)
-* [Additional Information](#additional-information)
+- [Pre-Built Name](#pre-built-name)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Supported IAP Versions](#supported-iap-versions)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Capabilities](#capabilities)
+    - [How to Install](#how-to-install)
+    - [Testing](#testing)
+  - [Using this Pre-Built](#using-this-pre-built)
+    - [Input Schema](#input-schema)
+    - [Output Schema](#output-schema)
+  - [Additional Information](#additional-information)
+
+<!-- Write a few sentences about the Pre-Built and explain the use case(s) -->
 
 ## Overview
 
-<!-- Write a few sentences about the Pre-Built and explain the use case(s) -->
-<!-- Avoid using the word Artifact. Please use Pre-Built, Pre-Built Transformation or Pre-Built Automation -->
-<!-- Ex.: The Migration Wizard enables IAP users to conveniently move their automation use cases between different IAP environments -->
-<!-- (e.g. from Dev to Pre-Production or from Lab to Production). -->
+The **Pre-Built Name** pre-built is used for a repeatable task to automate your network operations.
 
-<!-- Workflow(s) Image Placeholder - TO BE ADDED DIRECTLY TO GitLab -->
-<!-- REPLACE COMMENT BELOW WITH IMAGE OF YOUR MAIN WORKFLOW -->
-<!--
-<table><tr><td>
-  <img src="./images/workflow.png" alt="workflow" width="800px">
-</td></tr></table>
--->
-<!-- REPLACE COMMENT ABOVE WITH IMAGE OF YOUR MAIN WORKFLOW -->
+- Estimated Run Time: < 1 minute
 
-<!-- ADD ESTIMATED RUN TIME HERE -->
-<!-- e.g. Estimated Run Time: 34 min. -->
-_Estimated Run Time_:
+<!-- Update version for relevant major IAP release -->
 
-## Installation Prerequisites
+## Supported IAP Versions
 
-Users must satisfy the following pre-requisites:
+Itential pre-builts are built and tested on particular versions of IAP. In addition, pre-builts that work with devices are often dependent on certain orchestration systems (e.g. NSO and IAG). As such, these pre-builts will have dependencies on these other systems. This version of the IAG Update Device Details pre-built has been tested with:
 
-<!-- Include any other required apps or adapters in this list -->
-<!-- Ex.: EC2 Adapter -->
-* Itential Automation Platform
-  * `^2021.1`
+- IAP 2022.1.x
 
-## Requirements
+## Getting Started
 
-This Pre-Built requires the following:
+These instructions will help you get a copy of the pre-built in your IAP instance for testing in your environment. Reading this section is also helpful for deployments as it provides you with pertinent information on prerequisites and capabilities.
 
-<!-- Unordered list highlighting the requirements of the Pre-Built -->
-<!-- EXAMPLE -->
-<!-- * cisco ios device -->
-<!-- * Ansible or NSO (with F5 NED) * -->
+<!-- List any IAP version, adapters, or other dependencies needed to run this pre-built -->
 
-## Features
+### Prerequisites
 
-The main benefits and features of the Pre-Built are outlined below.
+Users must satisfy the following prerequisites to install and run this pre-built:
 
-<!-- Unordered list highlighting the most exciting features of the Pre-Built -->
-<!-- EXAMPLE -->
-<!-- * Automatically checks for device type -->
-<!-- * Displays dry-run to user (asking for confirmation) prior to pushing config to the device -->
-<!-- * Verifies downloaded file integrity (using md5), will try to download again if failed -->
+- Itential Automation Platform
+  - `^2022.1.x`
+- An instantiated GitLab adapter
 
+<!-- List capabilities of the pre-built -->
 
-## Future Enhancements
+### Capabilities
 
-<!-- OPTIONAL - Mention if the Pre-Built will be enhanced with additional features on the road map -->
-<!-- Ex.: This Pre-Built would support Cisco XR and F5 devices -->
+- Does operation in external system
+- Provides option to run with no manual tasks shown in job with auto approve
 
-## How to Install
+<!-- Link to documentation for pre-built installation related major verison of IAP -->
 
-To install the Pre-Built:
+### How to Install
 
-* Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Requirements](#requirements) section in order to install the Pre-Built. 
-* The Pre-Built can be installed from within App-Admin_Essential. Simply search for the name of your desired Pre-Built and click the install button (as shown below).
+To install this pre-built:
 
-<!-- REPLACE BELOW WITH IMAGE OF YOUR PUBLISHED PRE-BUILT -->
-<!--
-<table><tr><td>
-  <img src="./images/install.png" alt="install" width="600px">
-</td></tr></table>
--->
-<!-- REPLACE ABOVE WITH IMAGE OF YOUR PUBLISHED PRE-BUILT -->
+- Verify that you are running the documented [prerequisites](#prerequisites) in order to install the pre-built.
 
-<!-- OPTIONAL - Explain if external components are required outside of IAP -->
-<!-- Ex.: The Ansible roles required for this Pre-Built can be found in the repository located at https://gitlab.com/itentialopensource/pre-built-automations/hello-world -->
+- Follow the instructions on the Itential Documentation site for [importing a pre-built](https://docs.itential.com/docs/importing-a-prebuilt-3).
 
-## How to Run
+### Testing
 
-Use the following to run the Pre-Built:
+While Itential tests this pre-built and its capabilities, it is often the case the customer environments offer their own unique circumstances. Therefore, it is our recommendation that you deploy this pre-built into a development/testing environment in which you can test the pre-built.
 
 <!-- Explain the main entrypoint(s) for this Pre-Built: Automation Catalog item, Workflow, Postman, etc. -->
 
+## Using this Pre-Built
+
+This pre-built can be run in a [childJob task](https://docs.itential.com/docs/childjob-3).
+
+**Note**: The entry point workflow to this pre-built is called `Pre-Built Workflow`. Use this workflow name if running this pre-built in a childJob task.
+
+The input to and possible outputs from this pre-built are described here.
+
+<!-- Provide example input to pre-built as well as show table of what each property is regarding data type, if required, and a description -->
+
+### Input Schema
+
+Example input:
+
+```json
+{
+  "deviceName": "device",
+  "autoApprove": true
+}
+```
+
+The following table details the property keys of the  input object.
+| key                     | type    | required | description                                             |
+|-------------------------|---------|----------|---------------------------------------------------------|
+| deviceName              | string  | yes      | the device name                                         |
+| autoApprove             | boolean | yes      | if set to true, will not display any manual tasks       |
+
+<!-- Provide example output of pre-built indicating job variable with meaningful result data. -->
+
+### Output Schema
+
+The `preBuiltResponse` job variable returned from the run pre-built workflow `Pre-Built Workflow` provides the reponse of the pre-built.
+
+See an example output below.
+
+```json
+{
+  "deviceName": "device",
+  "autoApprove": true,
+  "_id": "",
+  "initiator": "",
+  "preBuiltResponse": "Response"
+}
+```
+
+The `preBuiltError` job variable returned from the pre-built workflow `Pre-Built Workflow` provides the error response.
+
+See an example output for this job variable when an error occurs.
+
+```json
+{
+  "deviceName": "device",
+  "autoApprove": true,
+  "_id": "",
+  "initiator": "",
+  "preBuiltError": "Error encountered"
+}
+```
+
 ## Additional Information
 
-Please use your Itential Customer Success account if you need support when using this Pre-Built.
+Please use your Itential Customer Success account if you need support when using this pre-built.
