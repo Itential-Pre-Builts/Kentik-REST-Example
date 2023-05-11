@@ -33,7 +33,7 @@ The **Pre-Built Name** pre-built is used for a repeatable task to automate your 
 
 ## Supported IAP Versions
 
-Itential pre-builts are built and tested on particular versions of IAP. In addition, pre-builts that work with devices are often dependent on certain orchestration systems (e.g. NSO and IAG). As such, these pre-builts will have dependencies on these other systems. This version of the IAG Update Device Details pre-built has been tested with:
+Itential pre-builts are built and tested on particular versions of IAP. In addition, pre-builts that work with devices are often dependent on certain orchestration systems (e.g. NSO and IAG). As such, these pre-builts will have dependencies on these other systems. This version of the pre-built has been tested with:
 
 - IAP 2022.1.x
 
