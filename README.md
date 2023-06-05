@@ -35,7 +35,7 @@ The **Pre-Built Name** pre-built is used for a repeatable task to automate your 
 
 Itential pre-builts are built and tested on particular versions of IAP. In addition, pre-builts that work with devices are often dependent on certain orchestration systems (e.g. NSO and IAG). As such, these pre-builts will have dependencies on these other systems. This version of the pre-built has been tested with:
 
-- IAP 2022.1.x
+- IAP 2023.1.x
 
 ## Getting Started
 
@@ -48,7 +48,7 @@ These instructions will help you get a copy of the pre-built in your IAP instanc
 Users must satisfy the following prerequisites to install and run this pre-built:
 
 - Itential Automation Platform
-  - `^2022.1.x`
+  - `^2023.1.x`
 - An instantiated GitLab adapter
 
 <!-- List capabilities of the pre-built -->
