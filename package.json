@@ -20,13 +20,12 @@
   },
   "keywords": [
     "Itential",
-    "IAP",
-    "artifacts"
+    "IAP"
   ],
   "contributors": [
-    "Itential Artifacts"
+    "Itential"
   ],
-  "author": "Itential Artifacts",
+  "author": "Itential",
   "license": "Apache-2.0",
   "devDependencies": {
     "@itential-tools/iap-cypress-testing-library": "^4.0.2",
@@ -43,8 +42,5 @@
     "r2": "^2.0.1"
   },
   "IAPDependencies": {
-    "@itential/app-operations_manager": "",
-    "@itential/app-json_forms": "",
-    "@itential/app-workflow_engine": ""
   }
 }
