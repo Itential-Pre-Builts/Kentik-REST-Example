@@ -1,0 +1,9 @@
+{
+  "readme": "/documentation/readme.json",
+  "assets": [
+    {
+      "name": "AWS Blocked Traffic - Kentik - Example",
+      "path": "/documentation/AWS Blocked Traffic - Kentik - Example.json"
+    }
+  ]
+}

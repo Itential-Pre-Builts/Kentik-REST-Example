@@ -1,0 +1,844 @@
+{
+  "_id": "649e1ee2d8cf7a00af456028",
+  "name": "AWS Blocked Traffic Event - Allowed List Error",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "links",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "examples": [
+              "DashboardAlarmURL"
+            ]
+          },
+          "Label": {
+            "type": "string",
+            "examples": [
+              "Open in Dashboard"
+            ]
+          },
+          "Value": {
+            "type": "string",
+            "examples": [
+              "https://portal.kentik.com/v4/library/dashboards/18392"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "$id": "dimensions",
+      "type": "object",
+      "properties": {
+        "AS_src": {
+          "type": "string",
+          "examples": [
+            "198465"
+          ]
+        },
+        "Geography_src": {
+          "type": "string",
+          "examples": [
+            "GB"
+          ]
+        },
+        "IP_dst": {
+          "type": "string",
+          "examples": [
+            "10.0.18.252"
+          ],
+          "format": "ipv4"
+        },
+        "IP_src": {
+          "type": "string",
+          "examples": [
+            "45.129.14.30"
+          ],
+          "format": "ipv4"
+        },
+        "kt_aws_action": {
+          "type": "string",
+          "examples": [
+            "REJECT"
+          ]
+        },
+        "kt_aws_dst_sg": {
+          "type": "string",
+          "examples": [
+            "webserver-kentik"
+          ]
+        },
+        "kt_aws_dst_vpc_id": {
+          "type": "string",
+          "examples": [
+            "vpc-0bf366171dd4f9121"
+          ]
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "jobId",
+      "type": "string",
+      "examples": [
+        "7517dfb1b5fd4af2bac87a02"
+      ]
+    },
+    {
+      "$id": "allowedIPList",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "examples": [
+          "10.10.10.10"
+        ],
+        "format": "ipv4"
+      }
+    },
+    {
+      "$id": "iapUrl",
+      "type": "string",
+      "examples": [
+        "https://iap_01:3443"
+      ]
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "teamsDeniedMessage",
+      "type": "string"
+    }
+  ],
+  "steps": [
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "dimensions",
+        "ptr": "/kt_aws_dst_sg"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 17,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "jobId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/6/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 19,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "dimensions",
+        "ptr": "/IP_dst"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/8/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 20,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "dimensions",
+        "ptr": "/AS_src"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/9/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 23,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "links",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 22,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 27,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "links",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 26,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 38,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "dimensions",
+        "ptr": "/IP_src"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/7/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 45,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "allowedIPList",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 44,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 49,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "iapUrl",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/5/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 22,
+      "type": "method",
+      "library": "Array",
+      "method": "getIndex",
+      "args": [
+        null,
+        0
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 26,
+      "type": "method",
+      "library": "Array",
+      "method": "getIndex",
+      "args": [
+        null,
+        1
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 44,
+      "type": "method",
+      "library": "Array",
+      "method": "map",
+      "args": [
+        null,
+        "formatAllowedIPs"
+      ],
+      "view": {
+        "row": 4,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 25,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 22,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 24,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 29,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 26,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 28,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 31,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 22,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 30,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 33,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 26,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 32,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 47,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 44,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 46,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 24,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "Value"
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 28,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "Value"
+      ],
+      "view": {
+        "row": 2,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 30,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "Name"
+      ],
+      "view": {
+        "row": 1,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 32,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "Name"
+      ],
+      "view": {
+        "row": 2,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 46,
+      "type": "method",
+      "library": "Array",
+      "method": "join",
+      "args": [
+        null,
+        " "
+      ],
+      "view": {
+        "row": 4,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 34,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 24,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/1/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 35,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 30,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 36,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 32,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/4/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 37,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 28,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/3/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 48,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 46,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/10/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 9,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "An alert has been captured in Kentik about a blocked Security Group (${securityGroupName}) for the Web Server.\n<br />\n<ul>\n  <li><a href=\"${kentikURL0Value}\">${kentikURLName0}</a></li>\n  <li><a href=\"${kentikURL1Value}\">${kentikURL1Name}</a></li>\n  <li><a href=\"${iapUrl}/operations-manager/#/jobs/${itentialJob}\">Itential Job</a></li>\n  <li>IP Source: ${ipSource}</li>\n  <li>IP Destination: ${ipDestination}</li>\n  <li>AS Source: ${asSource}</li>\n</ul>  \n\nHowever, the auto remediation request was ignored since the source IP is not part of the allowed IP List:\n<br/>\n<ul>\n${allowedIPList}\n</ul>",
+      "args": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "view": {
+        "row": 3,
+        "col": 4
+      },
+      "context": "#"
+    },
+    {
+      "id": 40,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "teamsDeniedMessage",
+        "ptr": ""
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [
+    {
+      "incoming": [
+        {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string",
+              "examples": [
+                "DashboardAlarmURL"
+              ]
+            },
+            "Label": {
+              "type": "string",
+              "examples": [
+                "Open in Dashboard"
+              ]
+            },
+            "Value": {
+              "type": "string",
+              "examples": [
+                "https://portal%2Ekentik%2Ecom/v4/library/dashboards/18392"
+              ]
+            }
+          },
+          "required": [],
+          "$id": "element"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "$id": "array",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string",
+                "examples": [
+                  "DashboardAlarmURL"
+                ]
+              },
+              "Label": {
+                "type": "string",
+                "examples": [
+                  "Open in Dashboard"
+                ]
+              },
+              "Value": {
+                "type": "string",
+                "examples": [
+                  "https://portal%2Ekentik%2Ecom/v4/library/dashboards/18392"
+                ]
+              }
+            },
+            "required": []
+          },
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {},
+          "isContext": true,
+          "isThis": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "return",
+          "type": "boolean",
+          "$id": "return"
+        }
+      ],
+      "steps": [
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "element",
+            "ptr": "/Name"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/0/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 3,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "thisArg",
+            "ptr": ""
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/1/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 1,
+          "type": "method",
+          "library": "Equality",
+          "method": "equality",
+          "args": [
+            null,
+            null
+          ],
+          "view": {
+            "row": 2,
+            "col": 1
+          },
+          "context": "#"
+        },
+        {
+          "id": 4,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "return",
+            "ptr": ""
+          },
+          "context": "#"
+        }
+      ],
+      "functions": [],
+      "name": "ƒ_query_1",
+      "view": {
+        "col": 2,
+        "row": 4
+      },
+      "id": "ƒ_query_1",
+      "comments": []
+    },
+    {
+      "incoming": [
+        {
+          "type": "string",
+          "examples": [
+            "10%2E10%2E10%2E10"
+          ],
+          "format": "ipv4",
+          "$id": "currentValue"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "$id": "array",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "examples": [
+              "10%2E10%2E10%2E10"
+            ],
+            "format": "ipv4"
+          },
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {},
+          "isContext": true,
+          "isThis": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "newValue",
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "integer",
+            "string",
+            "object",
+            "null"
+          ],
+          "editable": true,
+          "$id": "newValue"
+        }
+      ],
+      "steps": [
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "currentValue",
+            "ptr": ""
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/1/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 1,
+          "type": "method",
+          "library": "String",
+          "method": "concat",
+          "args": [
+            "<li>",
+            null,
+            "</li>"
+          ],
+          "view": {
+            "row": 2,
+            "col": 1
+          },
+          "context": "#"
+        },
+        {
+          "id": 3,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "newValue",
+            "ptr": ""
+          },
+          "context": "#"
+        }
+      ],
+      "functions": [],
+      "name": "formatAllowedIPs",
+      "view": {
+        "col": 2,
+        "row": 3
+      },
+      "id": "formatAllowedIPs",
+      "comments": []
+    }
+  ],
+  "comments": [],
+  "view": {
+    "col": 4,
+    "row": 9
+  },
+  "created": "2023-10-31T21:09:01.988Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.988Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

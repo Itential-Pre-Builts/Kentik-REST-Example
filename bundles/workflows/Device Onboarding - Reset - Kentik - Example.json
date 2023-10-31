@@ -1,0 +1,343 @@
+{
+  "name": "Device Onboarding - Reset - Kentik - Example",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "nodeLocation": {
+        "x": -1440,
+        "y": 12
+      },
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "nodeLocation": {
+        "x": 600,
+        "y": 12
+      },
+      "x": 1,
+      "y": 0.5
+    },
+    "e202": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Remove Provisioning",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Push Configuration to Device - IAG",
+          "variables": {
+            "device": {
+              "task": "8bc3",
+              "value": "deviceName"
+            },
+            "templateName": {
+              "task": "static",
+              "value": "IOS-XE Flow Config - Reset - Kentik - Example"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "test": "test"
+              }
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": "true"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": -888,
+        "y": 12
+      }
+    },
+    "10bc": {
+      "name": "deleteDevice",
+      "canvasName": "deleteDevice",
+      "summary": "Archive Device",
+      "description": "Archive device in Kentik",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "deviceId": "$var.cd87.return_data",
+          "adapter_id": "$var.8bc3.kentikAdapter"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 48,
+        "y": 12
+      }
+    },
+    "cd87": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Device ID",
+      "description": "Query Device ID",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.device.id",
+          "obj": "$var.f0d2.result"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -264,
+        "y": 12
+      }
+    },
+    "f0d2": {
+      "name": "findDevice",
+      "canvasName": "findDevice",
+      "summary": "findDevice",
+      "description": "Returns a device object containing information about an individual device (see  About Devices ). * Required fields.",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "deviceId": "$var.8bc3.deviceName",
+          "adapter_id": "$var.8bc3.kentikAdapter"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -576,
+        "y": 12
+      }
+    },
+    "959a": {
+      "name": "deleteDevice",
+      "canvasName": "deleteDevice",
+      "summary": "Delete Device",
+      "description": "Delete device in Kentik",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "deviceId": "$var.cd87.return_data",
+          "adapter_id": "$var.8bc3.kentikAdapter"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 360,
+        "y": 12
+      }
+    },
+    "8bc3": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Process Kentik Device Onboarding Reset Form Inputs",
+      "description": "Process inputs for Kentik device onboarding reset",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "653fe9a52c883d00f315fdd0",
+          "variableMap": {
+            "formData": "$var.job.formData"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "deviceName": null,
+          "kentikAdapter": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -1200,
+        "y": 12
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "8bc3": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_end": {},
+    "e202": {
+      "f0d2": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "10bc": {
+      "959a": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "cd87": {
+      "10bc": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "f0d2": {
+      "cd87": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "959a": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "8bc3": {
+      "e202": {
+        "state": "success",
+        "type": "standard"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "formData": {
+        "$id": "formData",
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "type": "string",
+            "examples": [
+              "IOS_Device_Name"
+            ]
+          },
+          "kentikAdapter": {
+            "type": "string",
+            "examples": [
+              "Kentik v5"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    "required": [
+      "formData"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "formData": {
+        "$id": "formData",
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "type": "string",
+            "examples": [
+              "IOS_Device_Name"
+            ]
+          },
+          "kentikAdapter": {
+            "type": "string",
+            "examples": [
+              "Kentik v5"
+            ]
+          }
+        },
+        "required": []
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "errorHandler": null,
+  "preAutomationTime": 0,
+  "sla": 0,
+  "outputData": {},
+  "last_updated": "2023-10-31T21:09:02.035Z",
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "created": "2023-09-21T18:15:42.435Z",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.46.0-2023.1.21",
+  "canvasVersion": 3,
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

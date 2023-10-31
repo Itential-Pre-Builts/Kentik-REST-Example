@@ -1,0 +1,387 @@
+{
+  "_id": "653fc12f2c883d00f315fdcf",
+  "name": "Process Kentik Device Onboarding Form Inputs",
+  "description": "Process Kentik form inputs for device onboarding",
+  "incoming": [
+    {
+      "$id": "formData",
+      "type": "object",
+      "properties": {
+        "deviceName": {
+          "type": "string",
+          "examples": [
+            "IOS_Device_Name"
+          ]
+        },
+        "iapUrl": {
+          "type": "string",
+          "examples": [
+            "https://iap_01:3443"
+          ]
+        },
+        "serviceNowUrl": {
+          "type": "string",
+          "examples": [
+            "https://servicenow_dev.com"
+          ]
+        },
+        "deviceOnboardingWebhookUrl": {
+          "type": "string",
+          "examples": [
+            "webhookURL"
+          ]
+        },
+        "serviceNowAdapter": {
+          "type": "string",
+          "examples": [
+            "ServiceNow"
+          ]
+        },
+        "netBoxAdapter": {
+          "type": "string",
+          "examples": [
+            "NetboxV3"
+          ]
+        },
+        "msTeamsAdapter": {
+          "type": "string",
+          "examples": [
+            "MS Teams"
+          ]
+        },
+        "kentikAdapter": {
+          "type": "string",
+          "examples": [
+            "Kentik v5"
+          ]
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "itentialJobId",
+      "type": "string"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "serviceNowComments",
+      "type": "string"
+    },
+    {
+      "$id": "serviceNowSummary",
+      "type": "string"
+    },
+    {
+      "$id": "deviceName",
+      "type": "string",
+      "examples": [
+        "IOS_Device_Name"
+      ]
+    },
+    {
+      "$id": "iapURL",
+      "type": "string",
+      "examples": [
+        "https://iap_01:3443"
+      ]
+    },
+    {
+      "$id": "serviceNowURL",
+      "type": "string",
+      "examples": [
+        "https://servicenow_dev.com"
+      ]
+    },
+    {
+      "$id": "deviceOnboardingWebhookURL",
+      "type": "string"
+    },
+    {
+      "$id": "serviceNowAdapter",
+      "type": "string",
+      "examples": [
+        "ServiceNow"
+      ]
+    },
+    {
+      "$id": "netBoxAdapter",
+      "type": "string",
+      "examples": [
+        "NetBox"
+      ]
+    },
+    {
+      "$id": "msTeamsAdapter",
+      "type": "string"
+    },
+    {
+      "$id": "kentikAdapter",
+      "type": "string"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "[code] Device Onboarding has begun for device ${deviceName}. <br /> <ul> <li><a href=\"${iapUrl}/operations-manager/#/jobs/${jobId}\">Itential Job</a></li> </ul> [/code]",
+      "args": [
+        null,
+        null,
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "serviceNowComments",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 3,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "Kentik Device Onboarding: ${deviceName}",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 2,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "serviceNowSummary",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/deviceName"
+      },
+      "to": {
+        "location": "template",
+        "name": 1,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/deviceName"
+      },
+      "to": {
+        "location": "template",
+        "name": 3,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/iapUrl"
+      },
+      "to": {
+        "location": "template",
+        "name": 1,
+        "ptr": "/args/1/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 8,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "itentialJobId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 1,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 9,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/serviceNowAdapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "serviceNowAdapter",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 10,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/netBoxAdapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "netBoxAdapter",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/msTeamsAdapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "msTeamsAdapter",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 12,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/kentikAdapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "kentikAdapter",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 13,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/deviceOnboardingWebhookUrl"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "deviceOnboardingWebhookURL",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 14,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/serviceNowUrl"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "serviceNowURL",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 15,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/iapUrl"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "iapURL",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 16,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/deviceName"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "deviceName",
+        "ptr": ""
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 2,
+    "row": 5
+  },
+  "created": "2023-10-31T21:09:01.982Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.982Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

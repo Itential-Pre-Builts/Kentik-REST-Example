@@ -1,0 +1,24 @@
+{
+  "tags": [],
+  "name": "Ping - IOS - Kentik - Example",
+  "os": "",
+  "passRule": true,
+  "ignoreWarnings": false,
+  "commands": [
+    {
+      "command": "ping <!address!> repeat <!repeat!>",
+      "passRule": true,
+      "rules": [
+        {
+          "rule": "Success",
+          "eval": "contains",
+          "severity": "error"
+        }
+      ]
+    }
+  ],
+  "created": 1698342426439,
+  "createdBy": "mike.elrom@itential.com",
+  "lastUpdated": 1698786542162,
+  "lastUpdatedBy": "chris.calloway@itential.com"
+}

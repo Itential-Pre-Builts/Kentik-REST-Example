@@ -1,0 +1,88 @@
+{
+  "_id": "653fe9a52c883d00f315fdd0",
+  "name": "Process Kentik Device Onboarding Reset Form Inputs",
+  "description": "Process Kentik form inputs for device onboarding",
+  "incoming": [
+    {
+      "$id": "formData",
+      "type": "object",
+      "properties": {
+        "deviceName": {
+          "type": "string",
+          "examples": [
+            "IOS_Device_Name"
+          ]
+        },
+        "kentikAdapter": {
+          "type": "string",
+          "examples": [
+            "Kentik v5"
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "deviceName",
+      "type": "string"
+    },
+    {
+      "$id": "kentikAdapter",
+      "type": "string"
+    }
+  ],
+  "steps": [
+    {
+      "id": 12,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/kentikAdapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "kentikAdapter",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 13,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/deviceName"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "deviceName",
+        "ptr": ""
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 1,
+    "row": 5
+  },
+  "created": "2023-10-31T21:09:01.982Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.982Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

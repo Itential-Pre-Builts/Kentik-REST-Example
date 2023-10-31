@@ -1,0 +1,325 @@
+{
+  "name": "Create Incident - ServiceNow",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0.062072892938496584,
+      "y": 0.4934952298352125,
+      "nodeLocation": {
+        "x": 360,
+        "y": 996
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.36503416856492027,
+      "y": 0.48829141370338247
+    },
+    "12f6": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Verify Incident Creation Successful",
+      "description": "Verify if incident creation is successful",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "response.number",
+                  "operand_1": {
+                    "variable": "result",
+                    "task": "bb2d"
+                  },
+                  "operator": "contains",
+                  "operand_2": {
+                    "variable": "INC",
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.30353075170842825,
+      "y": 0.48829141370338247,
+      "nodeLocation": {
+        "x": 1224,
+        "y": 996
+      }
+    },
+    "c345": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "ServiceNow Error",
+      "description": "Show ServiceNow incident creation error",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Create Incident Error",
+          "message": "Unable to create incident",
+          "body": "$var.job.serviceNowError",
+          "variables": {},
+          "btn_success": "OK",
+          "btn_failure": ""
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "groups": [],
+      "x": 0.30182232346241455,
+      "y": 0.37033824804856896,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1224,
+        "y": 804
+      }
+    },
+    "aab9": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Build Incident Creation Payload",
+      "description": "Build incident creation payload",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "summary",
+              "value": {
+                "task": "job",
+                "variable": "summary",
+                "editable": true
+              }
+            },
+            {
+              "key": "comments",
+              "value": {
+                "task": "job",
+                "variable": "comments",
+                "editable": true
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "groups": [],
+      "x": 0.12984054669703873,
+      "y": 0.4934952298352125
+    },
+    "bb2d": {
+      "name": "createIncident",
+      "canvasName": "createIncident",
+      "summary": "Create Incident",
+      "description": "Create incident in ServiceNow",
+      "location": "Adapter",
+      "locationType": "Servicenow",
+      "app": "Servicenow",
+      "type": "automatic",
+      "displayName": "Servicenow",
+      "variables": {
+        "incoming": {
+          "body": "$var.aab9.merged_object",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": "$var.job.createdIncident"
+        },
+        "error": "$var.job.serviceNowError",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.21583143507972666,
+      "y": 0.4900260190806591,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "aab9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "12f6": {
+      "c345": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c345": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "aab9": {
+      "bb2d": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "bb2d": {
+      "12f6": {
+        "type": "standard",
+        "state": "success"
+      },
+      "c345": {
+        "type": "standard",
+        "state": "error"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "summary": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "comments": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "summary",
+      "comments",
+      "adapterId"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "summary": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "comments": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "serviceNowError": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "createdIncident": {
+        "title": "result",
+        "type": "object"
+      }
+    }
+  },
+  "created": "2022-03-08T15:20:19.874Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "jerry.dollens@itential.com",
+    "firstname": "Jerry",
+    "inactive": false
+  },
+  "font_size": 12,
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "last_updated": "2023-10-31T21:09:02.035Z",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "preAutomationTime": 0,
+  "sla": 0,
+  "type": "automation",
+  "canvasVersion": 1.5,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

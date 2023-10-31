@@ -1,0 +1,366 @@
+{
+  "_id": "621a5d367393d9019373d137",
+  "name": "Build CR Update Payload - ServiceNow",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "changeRequestResponse",
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "a68d46e49712011015c5b4b3f153af9e"
+                ]
+              },
+              "current_state": {
+                "type": "string",
+                "examples": [
+                  "-5"
+                ]
+              }
+            },
+            "required": []
+          }
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "comments",
+      "type": "string"
+    },
+    {
+      "$id": "state",
+      "type": "string"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "crSysId",
+      "type": "string"
+    },
+    {
+      "$id": "crUpdatePayload",
+      "type": "object",
+      "properties": {
+        "comments": {
+          "type": "string"
+        },
+        "state": {
+          "type": "integer",
+          "examples": [
+            0
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "comments",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "crUpdatePayload",
+        "ptr": "/comments"
+      }
+    },
+    {
+      "id": 5,
+      "type": "method",
+      "library": "String",
+      "method": "toLowerCase",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 3,
+        "col": 1
+      }
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "state",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 5,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 7,
+      "type": "method",
+      "library": "JSON",
+      "method": "parse",
+      "args": [
+        "{    \"new\": -5,   \"assess\": -4,   \"authorize\": -3,   \"scheduled\": -2,   \"implement\": -1,   \"review\": 0,   \"closed\": -6,   \"canceled\": -7 }",
+        null
+      ],
+      "view": {
+        "row": 4,
+        "col": 1
+      }
+    },
+    {
+      "id": 8,
+      "type": "method",
+      "library": "Object",
+      "method": "optional chaining",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 3,
+        "col": 2
+      }
+    },
+    {
+      "id": 9,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 7,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 10,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 5,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/1/value"
+      }
+    },
+    {
+      "id": 17,
+      "type": "method",
+      "library": "Logical",
+      "method": "nullish",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 3,
+        "col": 3
+      }
+    },
+    {
+      "id": 18,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 17,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 20,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 17,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "crUpdatePayload",
+        "ptr": "/state"
+      }
+    },
+    {
+      "id": 21,
+      "type": "method",
+      "library": "Number",
+      "method": "parseInt",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 2,
+        "col": 2
+      }
+    },
+    {
+      "id": 23,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 17,
+        "ptr": "/args/1/value"
+      }
+    },
+    {
+      "id": 24,
+      "type": "method",
+      "library": "Array",
+      "method": "getIndex",
+      "args": [
+        null,
+        0
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      }
+    },
+    {
+      "id": 25,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "changeRequestResponse",
+        "ptr": "/response"
+      },
+      "to": {
+        "location": "method",
+        "name": 24,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 26,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "current_state"
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      }
+    },
+    {
+      "id": 27,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 24,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 26,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 28,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 26,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 29,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "id"
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      }
+    },
+    {
+      "id": 30,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 24,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 29,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 31,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 29,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "crSysId",
+        "ptr": ""
+      }
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 3,
+    "row": 5
+  },
+  "created": "2023-10-31T21:09:01.983Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.983Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

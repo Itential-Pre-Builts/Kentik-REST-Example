@@ -1,0 +1,424 @@
+{
+  "name": "Device Onboarding Flow Test - Kentik - Example",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1896,
+        "y": 12
+      },
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "nodeLocation": {
+        "x": 3276,
+        "y": 12
+      },
+      "x": 1,
+      "y": 0.5
+    },
+    "7c4b": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Generate Traffic",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Command Template Runner",
+          "variables": {
+            "deviceName": {
+              "task": "job",
+              "value": "deviceName"
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": true
+            },
+            "templateName": {
+              "task": "static",
+              "value": "Ping - IOS - Kentik - Example"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "address": "google.com",
+                "repeat": "1000"
+              }
+            },
+            "reattempt": {
+              "task": "static",
+              "value": false
+            },
+            "_id": {
+              "task": "job",
+              "value": "_id"
+            },
+            "reattemptWaitTime": {
+              "task": "static",
+              "value": 0
+            },
+            "reattemptQuantity": {
+              "task": "static",
+              "value": 0
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2436,
+        "y": 12
+      }
+    },
+    "c4ab": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Eval Test Pass",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "operand_1": {
+                    "task": "0bcf",
+                    "variable": "job_details"
+                  },
+                  "operand_2": {
+                    "task": "static",
+                    "variable": "pass"
+                  },
+                  "operator": "==",
+                  "query": "testResult",
+                  "rightQuery": ""
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 3048,
+        "y": 12
+      }
+    },
+    "8dd3": {
+      "name": "delay",
+      "canvasName": "delay",
+      "summary": "Delay 10 seconds",
+      "description": "Delay a Job for a duration by Job ID and number of seconds.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "time": 10
+        },
+        "outgoing": {
+          "time_in_milliseconds": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 3048,
+        "y": 108
+      }
+    },
+    "0bcf": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Device Flow Test - Kentik",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Device Flow Test - Kentik",
+          "variables": {
+            "deviceName": {
+              "task": "job",
+              "value": "deviceName"
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": true
+            },
+            "templateName": {
+              "task": "static",
+              "value": "Ping - IOS"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "address": "google.com",
+                "repeat": "1000"
+              }
+            },
+            "reattempt": {
+              "task": "static",
+              "value": false
+            },
+            "_id": {
+              "task": "job",
+              "value": "_id"
+            },
+            "reattemptWaitTime": {
+              "task": "static",
+              "value": 0
+            },
+            "reattemptQuantity": {
+              "task": "static",
+              "value": 0
+            },
+            "startTime": {
+              "task": "07ef",
+              "value": "time"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "adapterId"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2736,
+        "y": 12
+      }
+    },
+    "07ef": {
+      "name": "getTime",
+      "canvasName": "getTime",
+      "summary": "Get time",
+      "description": "Gets the current time with an optional offset, timezone shift, and format string",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Time",
+      "variables": {
+        "incoming": {
+          "timezone": "-11:00",
+          "offsetDuration": "",
+          "format": ""
+        },
+        "outgoing": {
+          "time": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2124,
+        "y": 12
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "07ef": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_end": {},
+    "7c4b": {
+      "0bcf": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "c4ab": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      },
+      "8dd3": {
+        "state": "failure",
+        "type": "standard"
+      }
+    },
+    "8dd3": {
+      "7c4b": {
+        "type": "revert",
+        "state": "success"
+      }
+    },
+    "0bcf": {
+      "c4ab": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "07ef": {
+      "7c4b": {
+        "state": "success",
+        "type": "standard"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "deviceName": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "string",
+              "boolean",
+              "integer",
+              "number",
+              "object"
+            ],
+            "title": "elementN",
+            "examples": [
+              "Device3"
+            ]
+          },
+          {
+            "title": "deviceId",
+            "type": "number"
+          }
+        ]
+      },
+      "_id": {
+        "title": "job_id",
+        "type": "string",
+        "examples": [
+          "test"
+        ]
+      },
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "deviceName",
+      "_id",
+      "adapterId"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "deviceName": {
+        "anyOf": [
+          {
+            "type": [
+              "array",
+              "string",
+              "boolean",
+              "integer",
+              "number",
+              "object"
+            ],
+            "title": "elementN",
+            "examples": [
+              "Device3"
+            ]
+          },
+          {
+            "title": "deviceId",
+            "type": "number"
+          }
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "errorHandler": null,
+  "preAutomationTime": 0,
+  "sla": 0,
+  "outputData": {},
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.46.0-2023.1.21",
+  "last_updated": "2023-10-31T21:09:02.042Z",
+  "created": "2023-09-22T18:31:58.653Z",
+  "canvasVersion": 3,
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

@@ -1,0 +1,28 @@
+{
+  "_id": "650c882163272b00a0986426",
+  "command": "",
+  "template": "conf t\n\ninterface GigabitEthernet1\n    no ip flow monitor itential-monitor input\ninterface GigabitEthernet1.33\n    no ip flow monitor itential-monitor input\nno snmp-server community kentikSNMP RO \nno sampler itential-sampler\nno flow monitor itential-monitor\nno flow exporter itential-exporter\nno flow record itential-flow\n",
+  "type": "jinja2",
+  "name": "IOS-XE Flow Config - Reset - Kentik - Example",
+  "version": 1,
+  "tags": [],
+  "data": "{\n}",
+  "group": "Kentik",
+  "description": "https://github.com/kentik/config-snippets/blob/0a48bdcb627a68c6bc2a7d7736012eeb341557bc/Cisco/IOS-XE/netflow-9.conf",
+  "created": "2023-10-26T17:40:37.396Z",
+  "lastUpdated": "2023-10-31T21:09:02.113Z",
+  "createdBy": {
+    "_id": "64c196af3ad306006949326f",
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "lastUpdatedBy": {
+    "_id": "64c196af3ad306006949326f",
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  }
+}

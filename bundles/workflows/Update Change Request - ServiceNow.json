@@ -1,0 +1,358 @@
+{
+  "name": "Update Change Request - ServiceNow",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.2938496583143508,
+      "y": 0.5091066782307025,
+      "nodeLocation": {
+        "x": -864,
+        "y": 996
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.20501138952164008,
+      "y": 0.5047701647875108,
+      "nodeLocation": {
+        "x": 576,
+        "y": 996
+      }
+    },
+    "c345": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Show ServiceNow Error",
+      "description": "Show update change request error and decision options",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "ServiceNow Error",
+          "message": "",
+          "body": "$var.job.serviceNowError",
+          "variables": {},
+          "btn_success": "OK",
+          "btn_failure": ""
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "groups": [],
+      "x": 0.11446469248291571,
+      "y": 0.36513443191673894,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 336,
+        "y": 1140
+      }
+    },
+    "2ad1": {
+      "name": "updateChangeRequest",
+      "canvasName": "updateChangeRequest",
+      "summary": "Update Change Request",
+      "description": "Update change request state",
+      "location": "Adapter",
+      "locationType": "Servicenow",
+      "app": "Servicenow",
+      "type": "automatic",
+      "displayName": "Servicenow",
+      "variables": {
+        "incoming": {
+          "changeId": "$var.e4c7.crSysId",
+          "body": "$var.e4c7.crUpdatePayload",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": "$var.job.updatedCR"
+        },
+        "error": "$var.job.serviceNowError",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.11674259681093394,
+      "y": 0.5047701647875108,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 336,
+        "y": 996
+      }
+    },
+    "fd22": {
+      "name": "getChangeRequests",
+      "canvasName": "getChangeRequests",
+      "summary": "Get Change Request",
+      "description": "Get change request with query parameters provided",
+      "location": "Adapter",
+      "locationType": "Servicenow",
+      "app": "Servicenow",
+      "type": "automatic",
+      "displayName": "Servicenow",
+      "variables": {
+        "incoming": {
+          "sysparmQuery": "$var.ade8.merged_object",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "$var.job.serviceNowError",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.13725490196078433,
+      "y": 0.5114942528735632,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -312,
+        "y": 996
+      }
+    },
+    "ade8": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Build sysparmQuery",
+      "description": "Build sysparmQuery",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "number",
+              "value": {
+                "task": "job",
+                "variable": "crNumber",
+                "editable": true
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "groups": [],
+      "x": -0.22835990888382687,
+      "y": 0.5117085862966175,
+      "nodeLocation": {
+        "x": -624,
+        "y": 996
+      }
+    },
+    "e4c7": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Build CR Update Payload - ServiceNow",
+      "description": "Build change request update payload",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "621a5d367393d9019373d137",
+          "variableMap": {
+            "changeRequestResponse": "$var.fd22.result",
+            "comments": "$var.job.comments",
+            "state": "$var.job.state"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "crSysId": null,
+          "crUpdatePayload": null
+        }
+      },
+      "groups": [],
+      "x": -0.008542141230068337,
+      "y": 0.5091066782307025,
+      "task_name": "Build CR Update Payload - ServiceNow",
+      "retrySettings": null,
+      "nodeLocation": {
+        "x": 0,
+        "y": 996
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "ade8": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "c345": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2ad1": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      },
+      "c345": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "fd22": {
+      "c345": {
+        "type": "standard",
+        "state": "error"
+      },
+      "e4c7": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "ade8": {
+      "fd22": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "e4c7": {
+      "2ad1": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "crNumber": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "comments": {
+        "$id": "comments",
+        "type": "string"
+      },
+      "state": {
+        "$id": "state",
+        "type": "string"
+      }
+    },
+    "required": [
+      "adapterId",
+      "crNumber",
+      "comments",
+      "state"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "crNumber": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "comments": {
+        "$id": "comments",
+        "type": "string"
+      },
+      "state": {
+        "$id": "state",
+        "type": "string"
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "serviceNowError": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "updatedCR": {
+        "title": "result",
+        "type": "object"
+      }
+    }
+  },
+  "created": "2022-02-26T16:54:56.153Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "jerry.dollens@itential.com",
+    "firstname": "Jerry",
+    "inactive": false
+  },
+  "font_size": 12,
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "last_updated": "2023-10-31T21:09:02.037Z",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "type": "automation",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "canvasVersion": 1.5,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

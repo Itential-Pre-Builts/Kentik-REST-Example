@@ -1,0 +1,467 @@
+{
+  "name": "Push Configuration to Device - IAG",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.28344958782498414,
+      "y": 0.5017152658662093,
+      "nodeLocation": {
+        "x": -540,
+        "y": 1056
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.42358909321496513,
+      "y": 0.49656946826758147,
+      "nodeLocation": {
+        "x": 1188,
+        "y": 1056
+      }
+    },
+    "ca47": {
+      "name": "itential_cli",
+      "canvasName": "itential_cli",
+      "summary": "Push Configuration to Device",
+      "description": "Push configuration to device",
+      "location": "Application",
+      "locationType": null,
+      "app": "AGManager",
+      "type": "automatic",
+      "displayName": "AG Manager",
+      "variables": {
+        "incoming": {
+          "_hosts": "$var.4a43.deviceArray",
+          "_groups": "",
+          "command": "$var.4a43.configurationArray"
+        },
+        "outgoing": {
+          "stdout": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.264426125554851,
+      "y": 0.49485420240137223,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 636,
+        "y": 1056
+      }
+    },
+    "b9ed": {
+      "name": "renderJinjaTemplate",
+      "canvasName": "renderJinjaTemplate",
+      "summary": "Render Jinja Template",
+      "description": "Renders jinja template output.",
+      "location": "Application",
+      "locationType": null,
+      "app": "TemplateBuilder",
+      "type": "automatic",
+      "displayName": "TemplateBuilder",
+      "variables": {
+        "incoming": {
+          "name": "$var.job.templateName",
+          "context": "$var.job.templateVariables"
+        },
+        "outgoing": {
+          "renderedTemplate": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.1876981610653139,
+      "y": 0.49828473413379076,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -300,
+        "y": 1056
+      }
+    },
+    "7a4c": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Error",
+      "description": "Show configuration error and decision options",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Configuration Error",
+          "message": "Pushing configuration to the intended device resulted in an error. See details below. Select \"Retry\" to retry pushing configuration to the device or select \"End Job\" to end the job.\n\n\n\n\n\n",
+          "body": "$var.ca47.stdout",
+          "variables": {},
+          "btn_success": "Retry",
+          "btn_failure": "End Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "groups": [],
+      "x": 0.3582752060875079,
+      "y": 0.32847341337907376,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 948,
+        "y": 1164
+      }
+    },
+    "f14d": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Eval Success",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "completed[0].response[*].status",
+                  "operand_1": {
+                    "variable": "stdout",
+                    "task": "ca47"
+                  },
+                  "operator": "!contains",
+                  "operand_2": {
+                    "variable": "FAILURE",
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.3608116677235257,
+      "y": 0.4939965694682676,
+      "nodeLocation": {
+        "x": 948,
+        "y": 1056
+      }
+    },
+    "cba5": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Configuration",
+      "description": "Show the proposed configuration and decision options",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "View Configuration",
+          "message": "See configuration to push to device below. Select \"Continue\" to push the configuration or \"End Job\" to skip pushing configuration to the device and ending the job.\n\n\n\n ",
+          "body": "",
+          "variables": {},
+          "btn_success": "Continue",
+          "btn_failure": "End Job"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "groups": [],
+      "x": 0.1636017755231452,
+      "y": 0.3850771869639794,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 324,
+        "y": 948
+      }
+    },
+    "c4c9": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Check if autoApprove",
+      "description": "Run an evaluation for autoApprove",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "autoApprove",
+                    "task": "job",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.16251074806534824,
+      "y": 0.4946949602122016,
+      "nodeLocation": {
+        "x": 324,
+        "y": 1056
+      }
+    },
+    "4a43": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Build IAG Device Configuration Push Data",
+      "description": "Builds inputs for pushing configuration to device over IAG",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "654104d02c883d00f315fdd1",
+          "variableMap": {
+            "renderedJinja2Template": "$var.b9ed.renderedTemplate",
+            "deviceName": "$var.job.device"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "configurationArray": null,
+          "deviceArray": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 12,
+        "y": 1056
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "b9ed": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "ca47": {
+      "f14d": {
+        "type": "standard",
+        "state": "success"
+      },
+      "7a4c": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "b9ed": {
+      "4a43": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "7a4c": {
+      "b9ed": {
+        "type": "revert",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "f14d": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      },
+      "7a4c": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "cba5": {
+      "ca47": {
+        "type": "standard",
+        "state": "success"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "c4c9": {
+      "ca47": {
+        "type": "standard",
+        "state": "success"
+      },
+      "cba5": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "4a43": {
+      "c4c9": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "ed0d": {},
+    "7a2f": {}
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "templateName": {
+        "type": "string",
+        "examples": [
+          "Template name 1",
+          "Template name 2",
+          "Template name 3"
+        ]
+      },
+      "templateVariables": {
+        "type": "object",
+        "examples": [
+          {
+            "name": "John",
+            "DOB": "2000/1/1"
+          }
+        ]
+      },
+      "autoApprove": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "device": {
+        "$id": "deviceName",
+        "type": "string",
+        "examples": [
+          "deviceName"
+        ]
+      }
+    },
+    "required": [
+      "templateName",
+      "templateVariables",
+      "autoApprove",
+      "device"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "templateName": {
+        "type": "string",
+        "examples": [
+          "Template name 1",
+          "Template name 2",
+          "Template name 3"
+        ]
+      },
+      "templateVariables": {
+        "type": "object",
+        "examples": [
+          {
+            "name": "John",
+            "DOB": "2000/1/1"
+          }
+        ]
+      },
+      "autoApprove": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "device": {
+        "$id": "deviceName",
+        "type": "string",
+        "examples": [
+          "deviceName"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "created": "2021-11-20T00:37:47.829Z",
+  "createdVersion": "5.40.5-2021.1.28.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "font_size": 12,
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "last_updated": "2023-10-31T21:09:02.038Z",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "type": "automation",
+  "canvasVersion": 1.5,
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

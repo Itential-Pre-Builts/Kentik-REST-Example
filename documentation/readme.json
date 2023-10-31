@@ -1,0 +1,40 @@
+{
+  "name": "Kentik - REST - Example",
+  "overview": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
+  "domains": [
+    "Cloud"
+  ],
+  "tags": [
+    "Configuration Management"
+  ],
+  "productLink": "https://www.kentik.com/product/kentik-platform/",
+  "apiLinks": [
+    "https://kb.kentik.com/v0/Ab09.htm"
+  ],
+  "storeLink": "",
+  "docLink": "",
+  "issueLink": "",
+  "deprecated": {
+    "isDeprecated": false,
+    "deprecatedOn": "",
+    "endOfLife": "",
+    "replacedBy": {
+      "name": "",
+      "overview": "",
+      "repoLink": "",
+      "docLink": "",
+      "webLink": "",
+      "isProductFeature": false
+    }
+  },
+  "type": "Example Project",
+  "vendorLink": "https://www.kentik.com/",
+  "faqLink": "",
+  "contributeLink": "",
+  "webName": "Kentik Example Workflows",
+  "useCases": [
+    "Device Onboarding"
+  ],
+  "webLink": "",
+  "demoLinks": []
+}

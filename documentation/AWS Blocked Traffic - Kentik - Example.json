@@ -1,0 +1,80 @@
+{
+  "iapVersions": [
+    "2023.1"
+  ],
+  "adapters": [
+    {
+      "isDependency": true,
+      "name": "adapter-aws_ec2",
+      "overview": "Adapter that connects to AWS.",
+      "webName": "Amazon EC2",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/security/adapter-panorama",
+      "version": "1.0.0",
+      "docLink": "test",
+      "webLink": "test"
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-service_now",
+      "overview": "Adapter that connects to ServiceNow",
+      "webName": "ServiceNow",
+      "version": "1.0.0"
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-ms_teams",
+      "overview": "Adapter that connects to MS Teams",
+      "webName": "MS Teams",
+      "version": "1.0.0"
+    }
+  ],
+  "externalDependencyList": [
+    {
+      "name": "Kentik"
+    },
+    {
+      "name": "AWS"
+    },
+    {
+      "name": "MS Teams"
+    },
+    {
+      "name": "ServiceNow"
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "Checks if source IP is in allowed IP list"
+    },
+    {
+      "capability": "Sends MS Teams message indicating alarm triggered"
+    },
+    {
+      "capability": "Adds source IP to AWS security group if source IP is in allowed IP list"
+    },
+    {
+      "capability": "Sends MS Teams notification if unable to add source IP to AWS security group"
+    },
+    {
+      "capability": "Creates ServiceNow Change Request if alarm triggered"
+    }
+  ],
+  "entryPoint": {
+    "name": "AWS Blocked Traffic - Kentik - Example",
+    "type": "Operations Manager Automation"
+  },
+  "inputs": [
+    {
+      "name": "iapUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "IAP URL to use in MS Teams and ServiceNow messages",
+      "exampleValue": "https://iap_dev:443"
+    }
+  ],
+  "queryOutput": {},
+  "name": "AWS Blocked Traffic - Kentik - Example",
+  "overview": "Workflow that is started from Kentik that determines if IP address is whitelisted and if so adds it to security group in AWS. If the IP address is not whitelisted, a message is sent to MS Teams notifying of the alarm.",
+  "webName": "Kentik AWS Blocked Traffic Alarm Example",
+  "assetType": "Workflow"
+}

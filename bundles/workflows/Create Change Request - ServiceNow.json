@@ -1,0 +1,424 @@
+{
+  "name": "Create Change Request - ServiceNow",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0.021070615034168565,
+      "y": 0.49956634865568084,
+      "nodeLocation": {
+        "x": 348,
+        "y": 996
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.37585421412300685,
+      "y": 0.4943625325238508,
+      "nodeLocation": {
+        "x": 1512,
+        "y": 996
+      }
+    },
+    "cc49": {
+      "name": "createChangeRequest",
+      "canvasName": "createChangeRequest",
+      "summary": "Create Change Request",
+      "description": "Create the change with the information provided and return the change number for future reference.",
+      "location": "Adapter",
+      "locationType": "Servicenow",
+      "app": "Servicenow",
+      "type": "automatic",
+      "displayName": "Servicenow",
+      "variables": {
+        "incoming": {
+          "body": "$var.aab9.merged_object",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": "$var.job.createdCR"
+        },
+        "error": "$var.job.serviceNowError",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.20862745098039215,
+      "y": 0.5,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 912,
+        "y": 996
+      }
+    },
+    "12f6": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Verify CR Creation Successful",
+      "description": "CR Creation Successful?",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "response.number",
+                  "operand_1": {
+                    "variable": "result",
+                    "task": "cc49"
+                  },
+                  "operator": "contains",
+                  "operand_2": {
+                    "variable": "CHG",
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.30466970387243736,
+      "y": 0.49696444058976585,
+      "nodeLocation": {
+        "x": 1248,
+        "y": 996
+      }
+    },
+    "c345": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Show ServiceNow Error",
+      "description": "Show create change request error and decision options",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Create Change Request Error",
+          "message": "Unable to create change request",
+          "body": "$var.job.serviceNowError",
+          "variables": {},
+          "btn_success": "OK",
+          "btn_failure": ""
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "groups": [],
+      "x": 0.30125284738041,
+      "y": 0.3720728534258456,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1248,
+        "y": 1128
+      }
+    },
+    "aab9": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Build CR Creation Payload",
+      "description": "Build CR Creation Payload",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "title",
+              "value": {
+                "task": "job",
+                "variable": "title",
+                "editable": true
+              }
+            },
+            {
+              "key": "summary",
+              "value": {
+                "task": "job",
+                "variable": "summary",
+                "editable": true
+              }
+            },
+            {
+              "key": "description",
+              "value": {
+                "task": "job",
+                "variable": "description",
+                "editable": true
+              }
+            },
+            {
+              "key": "comments",
+              "value": {
+                "task": "job",
+                "variable": "comments",
+                "editable": true
+              }
+            },
+            {
+              "key": "assignment_group",
+              "value": {
+                "task": "job",
+                "variable": "assignmentGroup",
+                "editable": true
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": null
+        }
+      },
+      "groups": [],
+      "x": 0.10022779043280182,
+      "y": 0.49956634865568084,
+      "nodeLocation": {
+        "x": 600,
+        "y": 1000
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "aab9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "cc49": {
+      "12f6": {
+        "type": "standard",
+        "state": "success"
+      },
+      "c345": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "12f6": {
+      "c345": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c345": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "aab9": {
+      "cc49": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "title": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "summary": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "description": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "comments": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "assignmentGroup": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "adapterId",
+      "title",
+      "summary",
+      "description",
+      "comments",
+      "assignmentGroup"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "title": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "summary": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "description": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "comments": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "assignmentGroup": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "createdCR": {
+        "title": "result",
+        "type": "object"
+      },
+      "serviceNowError": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "created": "2022-02-26T16:32:36.505Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "jerry.dollens@itential.com",
+    "firstname": "Jerry",
+    "inactive": false
+  },
+  "font_size": 12,
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "last_updated": "2023-10-31T21:09:02.037Z",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "type": "automation",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "canvasVersion": 1.5,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

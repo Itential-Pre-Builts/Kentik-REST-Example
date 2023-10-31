@@ -1,0 +1,301 @@
+{
+  "_id": "654144da2c883d00f315fdd2",
+  "name": "Process AWS Blocked Traffic Event - Reset Inputs",
+  "description": "Processes AWS blocked traffic event - reset inputs",
+  "incoming": [
+    {
+      "$id": "formData",
+      "type": "object",
+      "properties": {
+        "sourceIP": {
+          "type": "string",
+          "examples": [
+            "10.10.10.10"
+          ]
+        },
+        "awsEC2Adapter": {
+          "type": "string",
+          "examples": [
+            "AWS"
+          ]
+        },
+        "awsSecurityGroup": {
+          "type": "string",
+          "examples": [
+            "webserver-kentik"
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "cidrSourceIP",
+      "type": "string",
+      "examples": [
+        "10.10.10.10"
+      ]
+    },
+    {
+      "$id": "awsEC2Adapter",
+      "type": "string",
+      "examples": [
+        "AWS"
+      ]
+    },
+    {
+      "$id": "securityGroupSearchData",
+      "type": "array"
+    }
+  ],
+  "steps": [
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/awsEC2Adapter"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "awsEC2Adapter",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/sourceIP"
+      },
+      "to": {
+        "location": "template",
+        "name": 3,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "formData",
+        "ptr": "/awsSecurityGroup"
+      },
+      "to": {
+        "location": "function",
+        "name": 6,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 3,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "${sourceIP}/32",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "function",
+      "function": "createSecurityGroupSearch",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "cidrSourceIP",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 8,
+      "type": "assign",
+      "from": {
+        "location": "function",
+        "name": 6,
+        "ptr": "/return/securityGroupSearchData"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "securityGroupSearchData",
+        "ptr": ""
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [
+    {
+      "incoming": [
+        {
+          "$id": "securityGroupName",
+          "type": "string",
+          "examples": [
+            "securityGroupName"
+          ]
+        }
+      ],
+      "outgoing": [
+        {
+          "$id": "securityGroupSearchData",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Name": {
+                "type": "string",
+                "examples": [
+                  "group-name"
+                ]
+              },
+              "Value": {
+                "type": "string",
+                "examples": [
+                  "webserver-kentik"
+                ]
+              }
+            },
+            "required": []
+          }
+        }
+      ],
+      "steps": [
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "securityGroupName",
+            "ptr": ""
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/2/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 1,
+          "type": "method",
+          "library": "Object",
+          "method": "setProperty",
+          "args": [
+            {
+              "Name": "group-name"
+            },
+            "Value",
+            null
+          ],
+          "view": {
+            "row": 1,
+            "col": 1
+          },
+          "context": "#"
+        },
+        {
+          "id": 4,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "declaration",
+            "name": 3,
+            "ptr": "/args/0/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 3,
+          "type": "declaration",
+          "library": "Array",
+          "method": "new Array",
+          "args": [
+            null
+          ],
+          "view": {
+            "row": 1,
+            "col": 2
+          },
+          "context": "#",
+          "polymorphIndex": 0
+        },
+        {
+          "id": 5,
+          "type": "assign",
+          "from": {
+            "location": "declaration",
+            "name": 3,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "securityGroupSearchData",
+            "ptr": ""
+          },
+          "context": "#"
+        }
+      ],
+      "functions": [],
+      "name": "createSecurityGroupSearch",
+      "view": {
+        "col": 2,
+        "row": 4
+      },
+      "id": "createSecurityGroupSearch",
+      "comments": []
+    }
+  ],
+  "comments": [],
+  "view": {
+    "col": 1,
+    "row": 5
+  },
+  "created": "2023-10-31T21:09:01.987Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.987Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

@@ -1,0 +1,1299 @@
+{
+  "_id": "650b4bab64654800d3248062",
+  "name": "Device Onboarding - Kentik - Example",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "netbox",
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "type": "integer",
+              "examples": [
+                1
+              ]
+            },
+            "next": {
+              "type": "null"
+            },
+            "previous": {
+              "type": "null"
+            },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "planId",
+      "type": "integer",
+      "examples": [
+        44662
+      ]
+    },
+    {
+      "$id": "jobId",
+      "type": "string",
+      "examples": [
+        "123safaf"
+      ]
+    },
+    {
+      "$id": "serviceNowSysId",
+      "type": "string",
+      "examples": [
+        "adbafd23e34"
+      ]
+    },
+    {
+      "$id": "iapURL",
+      "type": "string",
+      "examples": [
+        "https://iap_01:3443"
+      ]
+    },
+    {
+      "$id": "serviceNowURL",
+      "type": "string",
+      "examples": [
+        "https://servicenow_instance.com"
+      ]
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "type",
+      "type": "string",
+      "examples": [
+        "router"
+      ]
+    },
+    {
+      "$id": "name",
+      "type": "string",
+      "examples": [
+        "test-device"
+      ]
+    },
+    {
+      "$id": "description",
+      "type": "string",
+      "examples": [
+        "my device"
+      ]
+    },
+    {
+      "$id": "planId",
+      "type": "integer",
+      "examples": [
+        44662
+      ]
+    },
+    {
+      "$id": "sampleRate",
+      "type": "integer",
+      "examples": [
+        1
+      ]
+    },
+    {
+      "$id": "sendingIPs",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "examples": [
+          "192.168.178.1"
+        ],
+        "format": "ipv4"
+      }
+    },
+    {
+      "$id": "snmpIP",
+      "type": "string",
+      "examples": [
+        "192.168.178.1"
+      ],
+      "format": "ipv4"
+    },
+    {
+      "$id": "snmpCommunity",
+      "type": "string",
+      "examples": [
+        "kentikSNMP"
+      ]
+    },
+    {
+      "$id": "snmpConfUsername",
+      "type": "string",
+      "examples": [
+        "kentik"
+      ]
+    },
+    {
+      "$id": "snmpConfAuthenticationProtocol",
+      "type": "string",
+      "examples": [
+        "SHA"
+      ]
+    },
+    {
+      "$id": "snmpConfAuthenticationPassphrase",
+      "type": "string",
+      "examples": [
+        "Pass"
+      ]
+    },
+    {
+      "$id": "snmpPrivacyProtocol",
+      "type": "string",
+      "examples": [
+        "AES"
+      ]
+    },
+    {
+      "$id": "snmpPrivacyPassphrase",
+      "type": "string",
+      "examples": [
+        "AESPassword"
+      ]
+    },
+    {
+      "$id": "bgpType",
+      "type": "string",
+      "examples": [
+        "device"
+      ]
+    },
+    {
+      "$id": "bgpNeighborIP",
+      "type": "string",
+      "examples": [
+        "209.1.1.1"
+      ],
+      "format": "ipv4"
+    },
+    {
+      "$id": "bgpNeighborIP6",
+      "type": "string",
+      "examples": [
+        "ff44::ffff"
+      ],
+      "format": "ipv6"
+    },
+    {
+      "$id": "bgpNeighborASN",
+      "type": "string",
+      "examples": [
+        "1"
+      ]
+    },
+    {
+      "$id": "bgpNeighborPassword",
+      "type": "string",
+      "examples": [
+        "pass"
+      ]
+    },
+    {
+      "$id": "siteName",
+      "type": "string",
+      "examples": [
+        "mySite"
+      ]
+    },
+    {
+      "$id": "teamsMessageStart",
+      "type": "string"
+    },
+    {
+      "$id": "teamsMessageEnd",
+      "type": "string"
+    }
+  ],
+  "steps": [
+    {
+      "id": 13,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "planId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "planId",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "netbox",
+        "ptr": "/response/results"
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "router"
+      ],
+      "view": {
+        "row": 1,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 45,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 7,
+        "col": 6
+      },
+      "context": "#"
+    },
+    {
+      "id": 52,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "none"
+      ],
+      "view": {
+        "row": 6,
+        "col": 6
+      },
+      "context": "#"
+    },
+    {
+      "id": 66,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "jobId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 63,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 67,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "serviceNowSysId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 63,
+        "ptr": "/args/4/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 74,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "jobId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 71,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 75,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "serviceNowSysId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 71,
+        "ptr": "/args/4/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 1,
+      "type": "method",
+      "library": "Array",
+      "method": "getIndex",
+      "args": [
+        null,
+        0
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 3,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 9,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 39,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 38,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 3,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "name"
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 8,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "config_context"
+      ],
+      "view": {
+        "row": 2,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 38,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "site"
+      ],
+      "view": {
+        "row": 1,
+        "col": 4
+      },
+      "context": "#"
+    },
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 10,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 16,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 15,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 19,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 18,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 22,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 41,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 38,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 40,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 55,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 8,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 54,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 65,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 63,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 76,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 72,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 10,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "description"
+      ],
+      "view": {
+        "row": 2,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 15,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "sampleRate"
+      ],
+      "view": {
+        "row": 3,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 18,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "snmpCommunity"
+      ],
+      "view": {
+        "row": 4,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 21,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "snmpV3Conf"
+      ],
+      "view": {
+        "row": 4,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 40,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "name"
+      ],
+      "view": {
+        "row": 2,
+        "col": 4
+      },
+      "context": "#"
+    },
+    {
+      "id": 54,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "ipAddress"
+      ],
+      "view": {
+        "row": 1,
+        "col": 5
+      },
+      "context": "#"
+    },
+    {
+      "id": 72,
+      "type": "method",
+      "library": "String",
+      "method": "toLowerCase",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 7,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 24,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 23,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 27,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 26,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 29,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 28,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 33,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 32,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 36,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 21,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 35,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 56,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 54,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "declaration",
+        "name": 43,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 73,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 72,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 71,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 23,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "userName"
+      ],
+      "view": {
+        "row": 3,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 26,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "authenticationProtocol"
+      ],
+      "view": {
+        "row": 4,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 28,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "authenticationPassphrase"
+      ],
+      "view": {
+        "row": 5,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 32,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "privacyProtocol"
+      ],
+      "view": {
+        "row": 5,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 35,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "privacyPassphrase"
+      ],
+      "view": {
+        "row": 5,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 43,
+      "type": "declaration",
+      "library": "Array",
+      "method": "new Array",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 6
+      },
+      "context": "#",
+      "polymorphIndex": 0
+    },
+    {
+      "id": 63,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "Device Onboarding has begun for device ${deviceName}.\n<br />\n<ul>\n  <li><a href=\"${iapURL}/operations-manager/#/jobs/${itentialJob}\">Itential Job</a></li>\n  <li><a href=\"${serviceNowURL}/nav_to.do?uri=change_request.do?sys_id=${serviceNowSysId}\">ServiceNow Change Request</a></li>\n</ul>",
+      "args": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "view": {
+        "row": 6,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 71,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "Device Onboarding has completed for device ${deviceName}. Traffic flow is being captured and can be seen in Kentik.\n<br />\n<ul>\n  <li><a href=\"${iapURL}/operations-manager/#/jobs/${itentialJob}\">Itential Job</a></li>\n  <li><a href=\"${serviceNowURL}/nav_to.do?uri=change_request.do?sys_id=${serviceNowSysId}\">ServiceNow Change Request</a></li>\n  <li><a href=\"https://portal.kentik.com/v4/core/quick-views/devices/${deviceName}/traffic\">Kentik</a></li>\n</ul>",
+      "args": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "view": {
+        "row": 7,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 6,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "type",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 48,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "bgpNeighborIP",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 49,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "bgpNeighborIP6",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 50,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "bgpNeighborASN",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 51,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "bgpNeighborPassword",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 53,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 52,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "bgpType",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 57,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpConfUsername",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 58,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpConfAuthenticationProtocol",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 59,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpConfAuthenticationPassphrase",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 60,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpPrivacyPassphrase",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 61,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 45,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpPrivacyProtocol",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "name",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 12,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 10,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "description",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 17,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 15,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "sampleRate",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 20,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 18,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpCommunity",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 42,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 40,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "siteName",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 62,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 54,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "snmpIP",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 44,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 43,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "sendingIPs",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 77,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 63,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "teamsMessageStart",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 78,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 71,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "teamsMessageEnd",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 79,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "iapURL",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 71,
+        "ptr": "/args/1/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 80,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "serviceNowURL",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 71,
+        "ptr": "/args/3/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 81,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "iapURL",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 63,
+        "ptr": "/args/1/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 82,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "serviceNowURL",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 63,
+        "ptr": "/args/3/value"
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 6,
+    "row": 8
+  },
+  "created": "2023-10-31T21:09:01.984Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.984Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

@@ -1,0 +1,1166 @@
+{
+  "name": "Device Onboarding - Kentik - Example",
+  "tasks": {
+    "8555": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Provision IOS-XE",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Push Configuration to Device - IAG",
+          "variables": {
+            "autoApprove": {
+              "task": "static",
+              "value": true
+            },
+            "device": {
+              "task": "cca9",
+              "value": "deviceName"
+            },
+            "templateName": {
+              "task": "static",
+              "value": "IOS-XE Flow Config - Kentik - Example"
+            },
+            "templateVariables": {
+              "task": "596f",
+              "value": "templateVars"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": 828,
+        "y": -192
+      }
+    },
+    "8885": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Kentik Device ID to Netbox Asset Tag",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "650b63ef64654800d3248063",
+          "variableMap": {
+            "netboxDevice": "$var.df1c.return_data",
+            "kentikDevice": "$var.4d8e.return_data"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "netboxId": null,
+          "netboxDevice": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -396,
+        "y": -192
+      }
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "nodeLocation": {
+        "x": -2904,
+        "y": -192
+      },
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1656,
+        "y": -192
+      },
+      "x": 1,
+      "y": 0.5
+    },
+    "d9bb": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create Device - Kentik",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Create Device - Kentik",
+          "variables": {
+            "siteName": {
+              "task": "babf",
+              "value": "siteName"
+            },
+            "bgpNeighborPassword": {
+              "task": "babf",
+              "value": "bgpNeighborPassword"
+            },
+            "bgpNeighborASN": {
+              "task": "babf",
+              "value": "bgpNeighborASN"
+            },
+            "name": {
+              "task": "babf",
+              "value": "name"
+            },
+            "description": {
+              "task": "babf",
+              "value": "description"
+            },
+            "planId": {
+              "task": "babf",
+              "value": "planId"
+            },
+            "sampleRate": {
+              "task": "babf",
+              "value": "sampleRate"
+            },
+            "sendingIPs": {
+              "task": "babf",
+              "value": "sendingIPs"
+            },
+            "snmpIP": {
+              "task": "babf",
+              "value": "snmpIP"
+            },
+            "snmpCommunity": {
+              "task": "babf",
+              "value": "snmpCommunity"
+            },
+            "snmpConfUsername": {
+              "task": "babf",
+              "value": "snmpConfUsername"
+            },
+            "snmpConfAuthenticationProtocol": {
+              "task": "babf",
+              "value": "snmpConfAuthenticationProtocol"
+            },
+            "snmpConfAuthenticationPassphrase": {
+              "task": "babf",
+              "value": "snmpConfAuthenticationPassphrase"
+            },
+            "snmpPrivacyProtocol": {
+              "task": "babf",
+              "value": "snmpPrivacyProtocol"
+            },
+            "snmpPrivacyPassphrase": {
+              "task": "babf",
+              "value": "snmpPrivacyPassphrase"
+            },
+            "bgpType": {
+              "task": "babf",
+              "value": "bgpType"
+            },
+            "bgpNeighborIP": {
+              "task": "babf",
+              "value": "bgpNeighborIP"
+            },
+            "bgpNeighborIP6": {
+              "task": "babf",
+              "value": "bgpNeighborIP6"
+            },
+            "type": {
+              "task": "babf",
+              "value": "type"
+            },
+            "adapterId": {
+              "task": "cca9",
+              "value": "kentikAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": -840,
+        "y": -192
+      }
+    },
+    "4d8e": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Kentik Device Object",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "device",
+          "obj": "$var.d9bb.job_details"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -624,
+        "y": -300
+      }
+    },
+    "df1c": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Netbox Device Object",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.results[0]",
+          "obj": "$var.c00a.result"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -624,
+        "y": -84
+      }
+    },
+    "596f": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Kentik IOS-XE Config JST",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "650b873164654800d3248064",
+          "variableMap": {
+            "netboxDevice": "$var.df1c.return_data",
+            "jobId": "$var.job._id",
+            "vrfGatewayIP": "",
+            "kentikCompanySettings": "$var.d15b.result"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "templateVars": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 528,
+        "y": -192
+      }
+    },
+    "d15b": {
+      "name": "genericAdapterRequestNoBasePath",
+      "canvasName": "genericAdapterRequestNoBasePath",
+      "summary": "Get Kentik Company Settings (Flow IP/Port)",
+      "description": "Makes the requested generic call",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "uriPath": "/api/ui/companySettings",
+          "restMethod": "GET",
+          "queryData": "",
+          "requestBody": "",
+          "addlHeaders": "",
+          "adapter_id": "$var.cca9.kentikAdapter"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 228,
+        "y": -192
+      }
+    },
+    "babf": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Device Onboarding - Demo",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "650b4bab64654800d3248062",
+          "variableMap": {
+            "netbox": "$var.c00a.result",
+            "planId": 44662,
+            "jobId": "$var.job._id",
+            "serviceNowSysId": "$var.0e61.return_data",
+            "iapURL": "$var.cca9.iapURL",
+            "serviceNowURL": "$var.cca9.serviceNowURL"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "type": null,
+          "name": null,
+          "description": null,
+          "planId": null,
+          "sampleRate": null,
+          "sendingIPs": null,
+          "snmpIP": null,
+          "snmpCommunity": null,
+          "snmpConfUsername": null,
+          "snmpConfAuthenticationProtocol": null,
+          "snmpConfAuthenticationPassphrase": null,
+          "snmpPrivacyProtocol": null,
+          "snmpPrivacyPassphrase": null,
+          "bgpType": null,
+          "bgpNeighborIP": null,
+          "bgpNeighborIP6": null,
+          "bgpNeighborASN": null,
+          "bgpNeighborPassword": null,
+          "siteName": null,
+          "teamsMessageStart": null,
+          "teamsMessageEnd": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -1440,
+        "y": -192
+      }
+    },
+    "c00a": {
+      "name": "getDcimDevices",
+      "canvasName": "getDcimDevices",
+      "summary": "Get Device - Netbox",
+      "description": "Overrides ListModelMixin to allow processing ExportTemplates.",
+      "location": "Adapter",
+      "locationType": "NetboxV33",
+      "app": "NetboxV33",
+      "type": "automatic",
+      "displayName": "NetboxV3",
+      "variables": {
+        "incoming": {
+          "id": "",
+          "name": "",
+          "assetTag": "",
+          "face": "",
+          "position": "",
+          "airflow": "",
+          "vcPosition": "",
+          "vcPriority": "",
+          "created": "",
+          "lastUpdated": "",
+          "q": "",
+          "tag": "",
+          "tenantGroupId": "",
+          "tenantGroup": "",
+          "tenantId": "",
+          "tenant": "",
+          "contact": "",
+          "contactRole": "",
+          "contactGroup": "",
+          "localContextData": "",
+          "manufacturerId": "",
+          "manufacturer": "",
+          "deviceTypeId": "",
+          "roleId": "",
+          "role": "",
+          "parentDeviceId": "",
+          "platformId": "",
+          "platform": "",
+          "regionId": "",
+          "region": "",
+          "siteGroupId": "",
+          "siteGroup": "",
+          "siteId": "",
+          "site": "",
+          "locationId": "",
+          "rackId": "",
+          "clusterId": "",
+          "model": "",
+          "status": "",
+          "isFullDepth": "",
+          "macAddress": "",
+          "serial": "",
+          "hasPrimaryIp": "",
+          "virtualChassisId": "",
+          "virtualChassisMember": "",
+          "consolePorts": "",
+          "consoleServerPorts": "",
+          "powerPorts": "",
+          "powerOutlets": "",
+          "interfaces": "",
+          "passThroughPorts": "",
+          "moduleBays": "",
+          "deviceBays": "",
+          "idN": "",
+          "idLte": "",
+          "idLt": "",
+          "idGte": "",
+          "idGt": "",
+          "nameN": "",
+          "nameIc": "",
+          "nameNic": "",
+          "nameIew": "",
+          "nameNiew": "",
+          "nameIsw": "",
+          "nameNisw": "",
+          "nameIe": "",
+          "nameNie": "",
+          "assetTagN": "",
+          "assetTagIc": "",
+          "assetTagNic": "",
+          "assetTagIew": "",
+          "assetTagNiew": "",
+          "assetTagIsw": "",
+          "assetTagNisw": "",
+          "assetTagIe": "",
+          "assetTagNie": "",
+          "faceN": "",
+          "positionN": "",
+          "positionLte": "",
+          "positionLt": "",
+          "positionGte": "",
+          "positionGt": "",
+          "airflowN": "",
+          "vcPositionN": "",
+          "vcPositionLte": "",
+          "vcPositionLt": "",
+          "vcPositionGte": "",
+          "vcPositionGt": "",
+          "vcPriorityN": "",
+          "vcPriorityLte": "",
+          "vcPriorityLt": "",
+          "vcPriorityGte": "",
+          "vcPriorityGt": "",
+          "createdN": "",
+          "createdLte": "",
+          "createdLt": "",
+          "createdGte": "",
+          "createdGt": "",
+          "lastUpdatedN": "",
+          "lastUpdatedLte": "",
+          "lastUpdatedLt": "",
+          "lastUpdatedGte": "",
+          "lastUpdatedGt": "",
+          "tagN": "",
+          "tenantGroupIdN": "",
+          "tenantGroupN": "",
+          "tenantIdN": "",
+          "tenantN": "",
+          "contactN": "",
+          "contactRoleN": "",
+          "contactGroupN": "",
+          "manufacturerIdN": "",
+          "manufacturerN": "",
+          "deviceTypeIdN": "",
+          "roleIdN": "",
+          "roleN": "",
+          "parentDeviceIdN": "",
+          "platformIdN": "",
+          "platformN": "",
+          "regionIdN": "",
+          "regionN": "",
+          "siteGroupIdN": "",
+          "siteGroupN": "",
+          "siteIdN": "",
+          "siteN": "",
+          "locationIdN": "",
+          "rackIdN": "",
+          "clusterIdN": "",
+          "modelN": "",
+          "statusN": "",
+          "macAddressN": "",
+          "macAddressIc": "",
+          "macAddressNic": "",
+          "macAddressIew": "",
+          "macAddressNiew": "",
+          "macAddressIsw": "",
+          "macAddressNisw": "",
+          "macAddressIe": "",
+          "macAddressNie": "",
+          "serialN": "",
+          "serialIc": "",
+          "serialNic": "",
+          "serialIew": "",
+          "serialNiew": "",
+          "serialIsw": "",
+          "serialNisw": "",
+          "serialIe": "",
+          "serialNie": "",
+          "virtualChassisIdN": "",
+          "ordering": "",
+          "limit": "",
+          "offset": "",
+          "adapter_id": "$var.cca9.netBoxAdapter"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -1740,
+        "y": -192
+      }
+    },
+    "ebfd": {
+      "name": "patchDcimDevicesId",
+      "canvasName": "patchDcimDevicesId",
+      "summary": "Update Netbox with Kentik ID",
+      "description": "dcim_devices_partial_update",
+      "location": "Adapter",
+      "locationType": "NetboxV33",
+      "app": "NetboxV33",
+      "type": "automatic",
+      "displayName": "NetboxV3",
+      "variables": {
+        "incoming": {
+          "id": "$var.8885.netboxId",
+          "data": "$var.8885.netboxDevice",
+          "adapter_id": "$var.cca9.netBoxAdapter"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -84,
+        "y": -192
+      }
+    },
+    "7c4b": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Device Flow Test",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Device Onboarding Flow Test - Kentik - Example",
+          "variables": {
+            "deviceName": {
+              "task": "cca9",
+              "value": "deviceName"
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": true
+            },
+            "templateName": {
+              "task": "static",
+              "value": "Ping - IOS"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "address": "google.com",
+                "repeat": "1000"
+              }
+            },
+            "reattempt": {
+              "task": "static",
+              "value": false
+            },
+            "_id": {
+              "task": "job",
+              "value": "_id"
+            },
+            "reattemptWaitTime": {
+              "task": "static",
+              "value": 0
+            },
+            "reattemptQuantity": {
+              "task": "static",
+              "value": 0
+            },
+            "adapterId": {
+              "task": "cca9",
+              "value": "kentikAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1128,
+        "y": -192
+      }
+    },
+    "af00": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create Change Request",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Create Change Request - ServiceNow",
+          "variables": {
+            "title": {
+              "task": "cca9",
+              "value": "serviceNowSummary"
+            },
+            "assignmentGroup": {
+              "task": "static",
+              "value": null
+            },
+            "comments": {
+              "task": "cca9",
+              "value": "serviceNowComments"
+            },
+            "description": {
+              "task": "cca9",
+              "value": "serviceNowSummary"
+            },
+            "summary": {
+              "task": "cca9",
+              "value": "serviceNowSummary"
+            },
+            "adapterId": {
+              "task": "cca9",
+              "value": "serviceNowAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": -2352,
+        "y": -192
+      }
+    },
+    "0e61": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Get ServiceNow Sys ID",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "createdCR.response.id",
+          "obj": "$var.af00.job_details"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -2052,
+        "y": -192
+      }
+    },
+    "b9a5": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "MS Teams Start Message",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "webhookKey": {
+              "task": "cca9",
+              "value": "deviceOnboardingWebhookURL"
+            },
+            "text": {
+              "task": "babf",
+              "value": "teamsMessageStart"
+            },
+            "title": {
+              "task": "cca9",
+              "value": "serviceNowSummary"
+            },
+            "adapterId": {
+              "task": "cca9",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": -1140,
+        "y": -192
+      }
+    },
+    "c7fc": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "MS Teams End Message",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "webhookKey": {
+              "task": "cca9",
+              "value": "deviceOnboardingWebhookURL"
+            },
+            "text": {
+              "task": "babf",
+              "value": "teamsMessageEnd"
+            },
+            "title": {
+              "task": "cca9",
+              "value": "serviceNowSummary"
+            },
+            "adapterId": {
+              "task": "cca9",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": ""
+        }
+      },
+      "actor": "job",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1428,
+        "y": -192
+      }
+    },
+    "cca9": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Process Kentik Device Onboarding Form Inputs",
+      "description": "Process Kentik device onboarding form inputs",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "653fc12f2c883d00f315fdcf",
+          "variableMap": {
+            "formData": "$var.job.formData",
+            "itentialJobId": "$var.job._id"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "serviceNowComments": null,
+          "serviceNowSummary": null,
+          "deviceName": null,
+          "iapURL": null,
+          "serviceNowURL": null,
+          "deviceOnboardingWebhookURL": null,
+          "serviceNowAdapter": null,
+          "netBoxAdapter": null,
+          "msTeamsAdapter": null,
+          "kentikAdapter": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -2664,
+        "y": -192
+      }
+    }
+  },
+  "transitions": {
+    "8555": {
+      "7c4b": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "8885": {
+      "ebfd": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_start": {
+      "cca9": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_end": {},
+    "d9bb": {
+      "4d8e": {
+        "state": "success",
+        "type": "standard"
+      },
+      "df1c": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "4d8e": {
+      "8885": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "df1c": {
+      "8885": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "596f": {
+      "8555": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "d15b": {
+      "596f": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "babf": {
+      "b9a5": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "c00a": {
+      "babf": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "ebfd": {
+      "d15b": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "7c4b": {
+      "c7fc": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "af00": {
+      "0e61": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "0e61": {
+      "c00a": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "b9a5": {
+      "d9bb": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "c7fc": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "cca9": {
+      "af00": {
+        "state": "success",
+        "type": "standard"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "$id": "jobId",
+        "type": "string",
+        "examples": [
+          "afdaf323r4"
+        ]
+      },
+      "formData": {
+        "$id": "formData",
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "type": "string",
+            "examples": [
+              "IOS_Device_Name"
+            ]
+          },
+          "iapUrl": {
+            "type": "string",
+            "examples": [
+              "https://iap_01:3443"
+            ]
+          },
+          "serviceNowUrl": {
+            "type": "string",
+            "examples": [
+              "https://servicenow_dev.com"
+            ]
+          },
+          "deviceOnboardingWebhookUrl": {
+            "type": "string",
+            "examples": [
+              "webhookURL"
+            ]
+          },
+          "serviceNowAdapter": {
+            "type": "string",
+            "examples": [
+              "ServiceNow"
+            ]
+          },
+          "netBoxAdapter": {
+            "type": "string",
+            "examples": [
+              "NetboxV3"
+            ]
+          },
+          "msTeamsAdapter": {
+            "type": "string",
+            "examples": [
+              "MS Teams"
+            ]
+          },
+          "kentikAdapter": {
+            "type": "string",
+            "examples": [
+              "Kentik v5"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    "required": [
+      "_id",
+      "formData"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "formData": {
+        "$id": "formData",
+        "type": "object",
+        "properties": {
+          "deviceName": {
+            "type": "string",
+            "examples": [
+              "IOS_Device_Name"
+            ]
+          },
+          "iapUrl": {
+            "type": "string",
+            "examples": [
+              "https://iap_01:3443"
+            ]
+          },
+          "serviceNowUrl": {
+            "type": "string",
+            "examples": [
+              "https://servicenow_dev.com"
+            ]
+          },
+          "deviceOnboardingWebhookUrl": {
+            "type": "string",
+            "examples": [
+              "webhookURL"
+            ]
+          },
+          "serviceNowAdapter": {
+            "type": "string",
+            "examples": [
+              "ServiceNow"
+            ]
+          },
+          "netBoxAdapter": {
+            "type": "string",
+            "examples": [
+              "NetboxV3"
+            ]
+          },
+          "msTeamsAdapter": {
+            "type": "string",
+            "examples": [
+              "MS Teams"
+            ]
+          },
+          "kentikAdapter": {
+            "type": "string",
+            "examples": [
+              "Kentik v5"
+            ]
+          }
+        },
+        "required": []
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "errorHandler": null,
+  "preAutomationTime": 0,
+  "sla": 0,
+  "outputData": {},
+  "last_updated": "2023-10-31T21:09:02.034Z",
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "created": "2023-09-02T20:18:46.321Z",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.46.0-2023.1.14.0",
+  "canvasVersion": 3,
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

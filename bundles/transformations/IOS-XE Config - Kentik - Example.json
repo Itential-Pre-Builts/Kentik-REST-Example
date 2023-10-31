@@ -1,0 +1,990 @@
+{
+  "_id": "650b873164654800d3248064",
+  "name": "IOS-XE Config - Kentik - Example",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "netboxDevice",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "examples": [
+            3
+          ]
+        },
+        "url": {
+          "type": "string",
+          "examples": [
+            "https://35.169.244.112/api/dcim/devices/3/"
+          ]
+        },
+        "display": {
+          "type": "string",
+          "examples": [
+            "ATLSWITCH01"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "examples": [
+            "ATLSWITCH01"
+          ]
+        },
+        "device_type": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "examples": [
+                1
+              ]
+            },
+            "url": {
+              "type": "string",
+              "examples": [
+                "https://35.169.244.112/api/dcim/device-types/1/"
+              ]
+            },
+            "display": {
+              "type": "string",
+              "examples": [
+                "IOS"
+              ]
+            },
+            "manufacturer": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "examples": [
+                    1
+                  ]
+                },
+                "url": {
+                  "type": "string",
+                  "examples": [
+                    "https://35.169.244.112/api/dcim/manufacturers/1/"
+                  ]
+                },
+                "display": {
+                  "type": "string",
+                  "examples": [
+                    "Cisco"
+                  ]
+                },
+                "name": {
+                  "type": "string",
+                  "examples": [
+                    "Cisco"
+                  ]
+                },
+                "slug": {
+                  "type": "string",
+                  "examples": [
+                    "cisco"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "model": {
+              "type": "string",
+              "examples": [
+                "IOS"
+              ]
+            },
+            "slug": {
+              "type": "string",
+              "examples": [
+                "ios"
+              ]
+            }
+          },
+          "required": []
+        },
+        "device_role": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "examples": [
+                2
+              ]
+            },
+            "url": {
+              "type": "string",
+              "examples": [
+                "https://35.169.244.112/api/dcim/device-roles/2/"
+              ]
+            },
+            "display": {
+              "type": "string",
+              "examples": [
+                "Data Center"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "examples": [
+                "Data Center"
+              ]
+            },
+            "slug": {
+              "type": "string",
+              "examples": [
+                "data-center"
+              ]
+            }
+          },
+          "required": []
+        },
+        "tenant": {
+          "type": "null"
+        },
+        "platform": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "examples": [
+                1
+              ]
+            },
+            "url": {
+              "type": "string",
+              "examples": [
+                "https://35.169.244.112/api/dcim/platforms/1/"
+              ]
+            },
+            "display": {
+              "type": "string",
+              "examples": [
+                "CIsco IOS"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "examples": [
+                "CIsco IOS"
+              ]
+            },
+            "slug": {
+              "type": "string",
+              "examples": [
+                "cisco-ios"
+              ]
+            }
+          },
+          "required": []
+        },
+        "serial": {
+          "type": "string",
+          "examples": [
+            "12345"
+          ]
+        },
+        "asset_tag": {
+          "type": "null"
+        },
+        "site": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "examples": [
+                2
+              ]
+            },
+            "url": {
+              "type": "string",
+              "examples": [
+                "https://35.169.244.112/api/dcim/sites/2/"
+              ]
+            },
+            "display": {
+              "type": "string",
+              "examples": [
+                "ATL HQ"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "examples": [
+                "ATL HQ"
+              ]
+            },
+            "slug": {
+              "type": "string",
+              "examples": [
+                "atl-hq"
+              ]
+            }
+          },
+          "required": []
+        },
+        "location": {
+          "type": "null"
+        },
+        "rack": {
+          "type": "null"
+        },
+        "position": {
+          "type": "null"
+        },
+        "face": {
+          "type": "null"
+        },
+        "parent_device": {
+          "type": "null"
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string",
+              "examples": [
+                "active"
+              ]
+            },
+            "label": {
+              "type": "string",
+              "examples": [
+                "Active"
+              ]
+            }
+          },
+          "required": []
+        },
+        "airflow": {
+          "type": "null"
+        },
+        "primary_ip": {
+          "type": "null"
+        },
+        "primary_ip4": {
+          "type": "null"
+        },
+        "primary_ip6": {
+          "type": "null"
+        },
+        "cluster": {
+          "type": "null"
+        },
+        "virtual_chassis": {
+          "type": "null"
+        },
+        "vc_position": {
+          "type": "null"
+        },
+        "vc_priority": {
+          "type": "null"
+        },
+        "comments": {
+          "type": "string",
+          "examples": [
+            "Used for Partner testing, Kentik"
+          ]
+        },
+        "local_context_data": {
+          "type": "object",
+          "properties": {
+            "ipAddress": {
+              "type": "string",
+              "examples": [
+                "3.230.106.58"
+              ],
+              "format": "ipv4"
+            },
+            "sampleRate": {
+              "type": "integer",
+              "examples": [
+                1
+              ]
+            },
+            "snmpV3Conf": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string",
+                  "examples": [
+                    "kentik"
+                  ]
+                },
+                "privacyProtocol": {
+                  "type": "string",
+                  "examples": [
+                    "AES"
+                  ]
+                },
+                "privacyPassphrase": {
+                  "type": "string",
+                  "examples": [
+                    "AESPassword"
+                  ]
+                },
+                "authenticationProtocol": {
+                  "type": "string",
+                  "examples": [
+                    "SHA"
+                  ]
+                },
+                "authenticationPassphrase": {
+                  "type": "string",
+                  "examples": [
+                    "Password"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "description": {
+              "type": "string",
+              "examples": [
+                "New Test Device"
+              ]
+            },
+            "snmpCommunity": {
+              "type": "string",
+              "examples": [
+                "kentikSNMP"
+              ]
+            }
+          },
+          "required": []
+        },
+        "tags": {
+          "type": "array"
+        },
+        "custom_fields": {
+          "type": "object",
+          "properties": {},
+          "required": []
+        },
+        "config_context": {
+          "type": "object",
+          "properties": {
+            "ipAddress": {
+              "type": "string",
+              "examples": [
+                "3.230.106.58"
+              ],
+              "format": "ipv4"
+            },
+            "sampleRate": {
+              "type": "integer",
+              "examples": [
+                1
+              ]
+            },
+            "snmpV3Conf": {
+              "type": "object",
+              "properties": {
+                "userName": {
+                  "type": "string",
+                  "examples": [
+                    "kentik"
+                  ]
+                },
+                "privacyProtocol": {
+                  "type": "string",
+                  "examples": [
+                    "AES"
+                  ]
+                },
+                "privacyPassphrase": {
+                  "type": "string",
+                  "examples": [
+                    "AESPassword"
+                  ]
+                },
+                "authenticationProtocol": {
+                  "type": "string",
+                  "examples": [
+                    "SHA"
+                  ]
+                },
+                "authenticationPassphrase": {
+                  "type": "string",
+                  "examples": [
+                    "Password"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "description": {
+              "type": "string",
+              "examples": [
+                "New Test Device"
+              ]
+            },
+            "snmpCommunity": {
+              "type": "string",
+              "examples": [
+                "kentikSNMP"
+              ]
+            }
+          },
+          "required": []
+        },
+        "created": {
+          "type": "string",
+          "examples": [
+            "2023-09-02T20:38:21.063282Z"
+          ],
+          "format": "date-time"
+        },
+        "last_updated": {
+          "type": "string",
+          "examples": [
+            "2023-09-20T16:53:12.254929Z"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "jobId",
+      "type": "string",
+      "examples": [
+        "afdaf323r4"
+      ]
+    },
+    {
+      "$id": "vrfGatewayIP",
+      "type": "string",
+      "examples": [
+        "10.10.10.123"
+      ],
+      "format": "ipv4"
+    },
+    {
+      "$id": "kentikCompanySettings",
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "company_max_fps": {
+              "type": "integer",
+              "examples": [
+                4000
+              ]
+            },
+            "flow_ips": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "examples": [
+                  "208.76.14.230"
+                ],
+                "format": "ipv4"
+              }
+            },
+            "port": {
+              "type": "string",
+              "examples": [
+                "20013"
+              ]
+            },
+            "access_control": {
+              "type": "object",
+              "properties": {
+                "remote_portal_access_allowed": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "examples": [
+                      "0.0.0.0/0"
+                    ]
+                  }
+                },
+                "remote_agent_access_allowed": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "examples": [
+                      "0.0.0.0/0"
+                    ]
+                  }
+                },
+                "remote_api_access_allowed": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "examples": [
+                      "97.97.52.81"
+                    ],
+                    "format": "ipv4"
+                  }
+                },
+                "remote_login_allowed": {
+                  "type": "array"
+                }
+              },
+              "required": []
+            },
+            "edition": {
+              "type": "string",
+              "examples": [
+                "premier"
+              ]
+            },
+            "tags": {
+              "type": "array"
+            },
+            "currency": {
+              "type": "string",
+              "examples": [
+                "USD"
+              ]
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "templateVars",
+      "type": "object",
+      "properties": {
+        "snmpCommunity": {
+          "type": "string",
+          "examples": [
+            "kentikSNMP"
+          ]
+        },
+        "customFlowRecord": {
+          "type": "string",
+          "examples": [
+            "itential-flow"
+          ]
+        },
+        "netflowSampler": {
+          "type": "string",
+          "examples": [
+            "itential-sampler"
+          ]
+        },
+        "deviceSampleRate": {
+          "type": "integer",
+          "examples": [
+            1
+          ]
+        },
+        "exporter": {
+          "type": "string",
+          "examples": [
+            "itential-exporter"
+          ]
+        },
+        "publicFlowIngestDescription": {
+          "type": "string",
+          "examples": [
+            "iap-job-id"
+          ]
+        },
+        "kentikIngestIP": {
+          "type": "string",
+          "examples": [
+            "208.76.14.230"
+          ],
+          "format": "ipv4"
+        },
+        "kentikIngestUDPPort": {
+          "type": "string",
+          "examples": [
+            "20013"
+          ]
+        },
+        "vrfName": {
+          "type": "string",
+          "examples": [
+            "itential-vrf"
+          ]
+        },
+        "vrfGatewayIP": {
+          "type": "string",
+          "examples": [
+            "10.10.10.123"
+          ],
+          "format": "ipv4"
+        },
+        "flowMonitor": {
+          "type": "string",
+          "examples": [
+            "itential-monitor"
+          ]
+        },
+        "sourceInterface": {
+          "type": "string",
+          "examples": [
+            "GigabitEthernet1"
+          ]
+        },
+        "sourceInterfaces": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "examples": [
+              "GigabitEthernet1"
+            ]
+          }
+        }
+      },
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "netboxDevice",
+        "ptr": "/local_context_data/snmpCommunity"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/snmpCommunity"
+      },
+      "context": "#"
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "netboxDevice",
+        "ptr": "/config_context/sampleRate"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/deviceSampleRate"
+      },
+      "context": "#"
+    },
+    {
+      "id": 9,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "jobId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/publicFlowIngestDescription"
+      },
+      "context": "#"
+    },
+    {
+      "id": 14,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "vrfGatewayIP",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/vrfGatewayIP"
+      },
+      "context": "#"
+    },
+    {
+      "id": 2,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "itential-flow"
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 4,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "itential-sampler"
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "itential-exporter"
+      ],
+      "view": {
+        "row": 3,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 12,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 4,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 15,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "itential-monitor"
+      ],
+      "view": {
+        "row": 5,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 17,
+      "type": "declaration",
+      "library": "Array",
+      "method": "new Array",
+      "args": [
+        "GigabitEthernet1",
+        "GigabitEthernet1.33"
+      ],
+      "view": {
+        "row": 4,
+        "col": 2
+      },
+      "context": "#",
+      "polymorphIndex": 0
+    },
+    {
+      "id": 3,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 2,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/customFlowRecord"
+      },
+      "context": "#"
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 4,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/netflowSampler"
+      },
+      "context": "#"
+    },
+    {
+      "id": 8,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 6,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/exporter"
+      },
+      "context": "#"
+    },
+    {
+      "id": 13,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 12,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/vrfName"
+      },
+      "context": "#"
+    },
+    {
+      "id": 16,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 15,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/flowMonitor"
+      },
+      "context": "#"
+    },
+    {
+      "id": 18,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 17,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/sourceInterfaces"
+      },
+      "context": "#"
+    },
+    {
+      "id": 19,
+      "type": "method",
+      "library": "Array",
+      "method": "getIndex",
+      "args": [
+        null,
+        0
+      ],
+      "view": {
+        "row": 3,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 20,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "kentikCompanySettings",
+        "ptr": "/response/flow_ips"
+      },
+      "to": {
+        "location": "method",
+        "name": 19,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 21,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 19,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/kentikIngestIP"
+      },
+      "context": "#"
+    },
+    {
+      "id": 22,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "kentikCompanySettings",
+        "ptr": "/response/port"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/kentikIngestUDPPort"
+      },
+      "context": "#"
+    },
+    {
+      "id": 23,
+      "type": "declaration",
+      "library": "String",
+      "method": "new String",
+      "args": [
+        "GigabitEthernet1"
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 24,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 23,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "templateVars",
+        "ptr": "/sourceInterface"
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 2,
+    "row": 6
+  },
+  "created": "2023-10-31T21:09:01.986Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.986Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

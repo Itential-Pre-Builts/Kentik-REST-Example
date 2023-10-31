@@ -1,0 +1,34 @@
+{
+  "_id": "650df35e431c58012fc340a0",
+  "name": "Device Onboarding - Reset - Kentik - Example",
+  "description": "",
+  "componentName": "Device Onboarding - Reset - Kentik - Example",
+  "componentType": "workflows",
+  "gbac": {
+    "write": [],
+    "read": []
+  },
+  "created": "2023-09-22T20:04:46.817Z",
+  "createdBy": "mike.elrom@itential.com",
+  "lastUpdated": "2023-10-31T21:09:02.238Z",
+  "lastUpdatedBy": "chris.calloway@itential.com",
+  "triggers": [
+    {
+      "_id": "6526d02310fa0e0141ace8f7",
+      "created": "2023-09-22T20:04:46.875Z",
+      "createdBy": "mike.elrom@itential.com",
+      "lastUpdated": "2023-10-31T21:09:02.326Z",
+      "lastUpdatedBy": "chris.calloway@itential.com",
+      "name": "Start Device Onboarding Reset with Form",
+      "type": "manual",
+      "enabled": true,
+      "actionType": "automations",
+      "actionId": "650df35e431c58012fc340a0",
+      "description": "",
+      "formId": "Device Onboarding Reset - Kentik - Example",
+      "formData": {},
+      "formSchemaHash": "d0249ce0de5f821af341be857ade8c4eecf850d8fc995d5f1e364a63e8d090ce",
+      "migrationVersion": 2
+    }
+  ]
+}

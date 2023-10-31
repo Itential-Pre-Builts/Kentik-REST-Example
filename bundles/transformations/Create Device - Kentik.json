@@ -1,0 +1,1146 @@
+{
+  "_id": "64f3937db3e59e00cc64337a",
+  "name": "Create Device - Kentik",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "name",
+      "type": "string",
+      "examples": [
+        "test-device"
+      ]
+    },
+    {
+      "$id": "type",
+      "type": "string",
+      "examples": [
+        "router"
+      ]
+    },
+    {
+      "$id": "description",
+      "type": "string",
+      "examples": [
+        "my device"
+      ]
+    },
+    {
+      "$id": "planId",
+      "type": "integer",
+      "examples": [
+        44662
+      ]
+    },
+    {
+      "$id": "sampleRate",
+      "type": "integer",
+      "examples": [
+        1
+      ]
+    },
+    {
+      "$id": "sendingIPs",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "examples": [
+          "192.168.178.1"
+        ],
+        "format": "ipv4"
+      }
+    },
+    {
+      "$id": "snmpIP",
+      "type": "string",
+      "examples": [
+        "192.168.178.1"
+      ],
+      "format": "ipv4"
+    },
+    {
+      "$id": "snmpCommunity",
+      "type": "string",
+      "examples": [
+        "kentikSNMP"
+      ]
+    },
+    {
+      "$id": "snmpConfUsername",
+      "type": "string",
+      "examples": [
+        "kentik"
+      ]
+    },
+    {
+      "$id": "snmpConfAuthenticationProtocol",
+      "type": "string",
+      "examples": [
+        "SHA"
+      ]
+    },
+    {
+      "$id": "snmpConfAuthenticationPassphrase",
+      "type": "string",
+      "examples": [
+        "Pass"
+      ]
+    },
+    {
+      "$id": "snmpPrivacyProtocol",
+      "type": "string",
+      "examples": [
+        "AES"
+      ]
+    },
+    {
+      "$id": "snmpPrivacyPassphrase",
+      "type": "string",
+      "examples": [
+        "AESPassword"
+      ]
+    },
+    {
+      "$id": "bgpType",
+      "type": "string",
+      "examples": [
+        "device"
+      ]
+    },
+    {
+      "$id": "bgpNeighborIP",
+      "type": "string",
+      "examples": [
+        "209.1.1.1"
+      ],
+      "format": "ipv4"
+    },
+    {
+      "$id": "bgpNeighborIP6",
+      "type": "string",
+      "examples": [
+        "ff44::ffff"
+      ],
+      "format": "ipv6"
+    },
+    {
+      "$id": "bgpNeighborASN",
+      "type": "string",
+      "examples": [
+        "1"
+      ]
+    },
+    {
+      "$id": "bgpNeighborPassword",
+      "type": "string",
+      "examples": [
+        "pass"
+      ]
+    },
+    {
+      "$id": "siteInfo",
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "sites": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": [
+                      "integer",
+                      "number"
+                    ],
+                    "examples": [
+                      18245
+                    ]
+                  },
+                  "site_name": {
+                    "type": "string",
+                    "examples": [
+                      "ATL HQ"
+                    ]
+                  },
+                  "lat": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "examples": [
+                      33.7914918
+                    ]
+                  },
+                  "lon": {
+                    "type": [
+                      "number",
+                      "null"
+                    ],
+                    "examples": [
+                      -84.3898086
+                    ]
+                  },
+                  "company_id": {
+                    "type": [
+                      "integer",
+                      "number"
+                    ],
+                    "examples": [
+                      180173
+                    ]
+                  }
+                },
+                "required": []
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "siteName",
+      "type": "string",
+      "examples": [
+        "mySite"
+      ]
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "devicePayload",
+      "type": "object",
+      "properties": {
+        "device": {
+          "type": "object",
+          "properties": {
+            "device_name": {
+              "type": "string",
+              "examples": [
+                "test1d"
+              ]
+            },
+            "device_type": {
+              "type": "string",
+              "examples": [
+                "router"
+              ]
+            },
+            "device_description": {
+              "type": "string",
+              "examples": [
+                "New Test Device"
+              ]
+            },
+            "plan_id": {
+              "type": "integer",
+              "examples": [
+                44662
+              ]
+            },
+            "site_id": {
+              "type": "integer",
+              "examples": [
+                10170
+              ]
+            },
+            "device_sample_rate": {
+              "type": "integer",
+              "examples": [
+                1024
+              ]
+            },
+            "sending_ips": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "examples": [
+                  "192.168.178.1"
+                ],
+                "format": "ipv4"
+              }
+            },
+            "device_snmp_ip": {
+              "type": "string",
+              "examples": [
+                "192.168.178.1"
+              ],
+              "format": "ipv4"
+            },
+            "device_snmp_community": {
+              "type": "string",
+              "examples": [
+                "kentikSNMP"
+              ]
+            },
+            "minimize_snmp": {
+              "type": "boolean",
+              "examples": [
+                true,
+                false
+              ]
+            },
+            "device_snmp_v3_conf": {
+              "type": "object",
+              "properties": {
+                "UserName": {
+                  "type": "string",
+                  "examples": [
+                    "kentik"
+                  ]
+                },
+                "AuthenticationProtocol": {
+                  "type": "string",
+                  "examples": [
+                    "SHA"
+                  ]
+                },
+                "AuthenticationPassphrase": {
+                  "type": "string",
+                  "examples": [
+                    "Password"
+                  ]
+                },
+                "PrivacyProtocol": {
+                  "type": "string",
+                  "examples": [
+                    "AES"
+                  ]
+                },
+                "PrivacyPassphrase": {
+                  "type": "string",
+                  "examples": [
+                    "AESPassword"
+                  ]
+                }
+              },
+              "required": []
+            },
+            "device_bgp_type": {
+              "type": "string",
+              "examples": [
+                "device"
+              ]
+            },
+            "device_bgp_neighbor_ip": {
+              "type": "string",
+              "examples": [
+                "209.1.1.1"
+              ],
+              "format": "ipv4"
+            },
+            "device_bgp_neighbor_ip6": {
+              "type": "string",
+              "examples": [
+                "ff44::ffff"
+              ],
+              "format": "ipv6"
+            },
+            "device_bgp_neighbor_asn": {
+              "type": "string",
+              "examples": [
+                "1"
+              ]
+            },
+            "device_bgp_password": {
+              "type": "string",
+              "examples": [
+                "KentikMD5"
+              ]
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "name",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_name"
+      },
+      "context": "#"
+    },
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "type",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_type"
+      },
+      "context": "#"
+    },
+    {
+      "id": 3,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "description",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_description"
+      },
+      "context": "#"
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "planId",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/plan_id"
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "sampleRate",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_sample_rate"
+      },
+      "context": "#"
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "sendingIPs",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/sending_ips"
+      },
+      "context": "#"
+    },
+    {
+      "id": 8,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpIP",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_snmp_ip"
+      },
+      "context": "#"
+    },
+    {
+      "id": 9,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpCommunity",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_snmp_community"
+      },
+      "context": "#"
+    },
+    {
+      "id": 17,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "bgpType",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_bgp_type"
+      },
+      "context": "#"
+    },
+    {
+      "id": 18,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "bgpNeighborIP",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_bgp_neighbor_ip"
+      },
+      "context": "#"
+    },
+    {
+      "id": 19,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "bgpNeighborIP6",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_bgp_neighbor_ip6"
+      },
+      "context": "#"
+    },
+    {
+      "id": 20,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "bgpNeighborASN",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_bgp_neighbor_asn"
+      },
+      "context": "#"
+    },
+    {
+      "id": 21,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "bgpNeighborPassword",
+        "ptr": ""
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_bgp_password"
+      },
+      "context": "#"
+    },
+    {
+      "id": 10,
+      "type": "declaration",
+      "library": "Boolean",
+      "method": "new Boolean",
+      "args": [
+        false
+      ],
+      "view": {
+        "row": 3,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 23,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "siteInfo",
+        "ptr": "/response/sites"
+      },
+      "to": {
+        "location": "method",
+        "name": 22,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 24,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "siteName",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 22,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 30,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpConfUsername",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 29,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 41,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpConfUsername",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 38,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 42,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpConfAuthenticationProtocol",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 38,
+        "ptr": "/args/1/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 43,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpConfAuthenticationPassphrase",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 38,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 44,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpPrivacyProtocol",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 38,
+        "ptr": "/args/3/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 45,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "snmpPrivacyPassphrase",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 38,
+        "ptr": "/args/4/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 29,
+      "type": "method",
+      "library": "String",
+      "method": "length",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 4,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 22,
+      "type": "method",
+      "library": "Array",
+      "method": "find",
+      "args": [
+        null,
+        "ƒ_query_1",
+        null
+      ],
+      "view": {
+        "row": 9,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 32,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 29,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 31,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 26,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 22,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 25,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 31,
+      "type": "method",
+      "library": "Relational",
+      "method": "greaterThan",
+      "args": [
+        null,
+        0
+      ],
+      "view": {
+        "row": 4,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 25,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "id"
+      ],
+      "view": {
+        "row": 9,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 36,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 31,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 35,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 38,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "{\n  \"UserName\": \"${userName}\",\n  \"AuthenticationProtocol\": \"${authenticationProtocol}\",\n  \"AuthenticationPassphrase\": \"${authenticationPassphrase}\",\n  \"PrivacyProtocol\": \"${privacyProtocol}\",\n  \"PrivacyPassphrase\": \"${privacyPassphrase}\"\n}",
+      "args": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "view": {
+        "row": 5,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 40,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 38,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 39,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 39,
+      "type": "method",
+      "library": "JSON",
+      "method": "parse",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 5,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 46,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 39,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 35,
+        "ptr": "/args/1/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 35,
+      "type": "method",
+      "library": "Conditional",
+      "method": "ternary",
+      "args": [
+        null,
+        null,
+        {}
+      ],
+      "view": {
+        "row": 4,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 10,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/minimize_snmp"
+      },
+      "context": "#"
+    },
+    {
+      "id": 27,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 25,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/site_id"
+      },
+      "context": "#"
+    },
+    {
+      "id": 47,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 35,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "devicePayload",
+        "ptr": "/device/device_snmp_v3_conf"
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [
+    {
+      "incoming": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": [
+                "integer",
+                "number"
+              ],
+              "examples": [
+                18245
+              ]
+            },
+            "site_name": {
+              "type": "string",
+              "examples": [
+                "ATL HQ"
+              ]
+            },
+            "lat": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "examples": [
+                33.7914918
+              ]
+            },
+            "lon": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "examples": [
+                -84.3898086
+              ]
+            },
+            "company_id": {
+              "type": [
+                "integer",
+                "number"
+              ],
+              "examples": [
+                180173
+              ]
+            }
+          },
+          "required": [],
+          "$id": "element"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": [
+                  "integer",
+                  "number"
+                ],
+                "examples": [
+                  18245
+                ]
+              },
+              "site_name": {
+                "type": "string",
+                "examples": [
+                  "ATL HQ"
+                ]
+              },
+              "lat": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "examples": [
+                  33.7914918
+                ]
+              },
+              "lon": {
+                "type": [
+                  "number",
+                  "null"
+                ],
+                "examples": [
+                  -84.3898086
+                ]
+              },
+              "company_id": {
+                "type": [
+                  "integer",
+                  "number"
+                ],
+                "examples": [
+                  180173
+                ]
+              }
+            },
+            "required": []
+          },
+          "$id": "array",
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {
+            "0_siteName": {
+              "$id": "siteName",
+              "type": "string",
+              "examples": [
+                "mySite"
+              ]
+            }
+          },
+          "isContext": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "return",
+          "type": "boolean",
+          "$id": "return"
+        }
+      ],
+      "steps": [
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "element",
+            "ptr": "/site_name"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/0/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 3,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "thisArg",
+            "ptr": "/0_siteName"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/1/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 1,
+          "type": "method",
+          "library": "Equality",
+          "method": "equality",
+          "args": [
+            null,
+            null
+          ],
+          "view": {
+            "row": 1,
+            "col": 1
+          },
+          "context": "#"
+        },
+        {
+          "id": 4,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "return",
+            "ptr": ""
+          },
+          "context": "#"
+        }
+      ],
+      "functions": [],
+      "name": "ƒ_query_1",
+      "view": {
+        "col": 2,
+        "row": 4
+      },
+      "id": "ƒ_query_1",
+      "comments": []
+    }
+  ],
+  "comments": [],
+  "view": {
+    "col": 5,
+    "row": 10
+  },
+  "created": "2023-10-31T21:09:01.987Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.987Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

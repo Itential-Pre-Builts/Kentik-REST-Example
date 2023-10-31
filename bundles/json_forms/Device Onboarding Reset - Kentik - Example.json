@@ -1,0 +1,192 @@
+{
+  "id": "653feae116329e00e57b12eb",
+  "created": "2023-10-30T17:41:53.008Z",
+  "createdBy": "chris.calloway@itential.com",
+  "lastUpdated": "2023-10-31T21:09:02.228Z",
+  "lastUpdatedBy": "chris.calloway@itential.com",
+  "name": "Device Onboarding Reset - Kentik - Example",
+  "description": "",
+  "struct": {
+    "type": "array",
+    "items": [
+      {
+        "nodeId": "c10b70ba-7714-41ce-8dc1-8918c67de15d",
+        "type": "string",
+        "title": "Device",
+        "description": "Select a Cisco IOS device to onboard to Kentik",
+        "placeholder": "Select a Cisco IOS device to onboard to Kentik",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "customKey": "deviceName",
+        "readOnly": false,
+        "method": "POST",
+        "uniqueItems": false,
+        "base": "/configuration_manager",
+        "originalHref": "/devices/ ",
+        "href": "/devices/ ",
+        "body": {
+          "options": {
+            "filter": {
+              "name": "",
+              "ostype": "cisco-ios"
+            },
+            "start": 0,
+            "limit": 10000,
+            "sort": [
+              {
+                "name": 1
+              }
+            ],
+            "order": "ascending"
+          }
+        },
+        "sourcePointer": "/list",
+        "sourceKeyPointer": "/name",
+        "labelKeyPointer": "",
+        "helper": "Select a Cisco IOS device to onboard to Kentik"
+      },
+      {
+        "nodeId": "d4953942-223b-4025-92f0-4b004b78ecd5",
+        "type": "string",
+        "title": "Kentik Adapter",
+        "description": "Select Kentik adapter to use for job",
+        "placeholder": "Select Kentik adapter to use for job",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "helper": "Select Kentik adapter to use for job",
+        "method": "GET",
+        "uniqueItems": false,
+        "base": "/adapters",
+        "originalHref": "/:name",
+        "href": "/ ",
+        "sourcePointer": "/results",
+        "sourceKeyPointer": "/data/name"
+      }
+    ]
+  },
+  "schema": {
+    "title": "Device Onboarding Reset - Kentik - Example",
+    "description": "",
+    "type": "object",
+    "required": [
+      "deviceName",
+      "kentikAdapter"
+    ],
+    "properties": {
+      "deviceName": {
+        "type": "string",
+        "title": "Device",
+        "_id": "/properties/deviceName",
+        "description": "Select a Cisco IOS device to onboard to Kentik",
+        "enum": [],
+        "enumNames": []
+      },
+      "kentikAdapter": {
+        "type": "string",
+        "title": "Kentik Adapter",
+        "_id": "/properties/kentikAdapter",
+        "description": "Select Kentik adapter to use for job",
+        "enum": [],
+        "enumNames": []
+      }
+    }
+  },
+  "uiSchema": {
+    "deviceName": {
+      "ui:placeholder": "Select a Cisco IOS device to onboard to Kentik",
+      "ui:help": "Select a Cisco IOS device to onboard to Kentik"
+    },
+    "kentikAdapter": {
+      "ui:placeholder": "Select Kentik adapter to use for job",
+      "ui:help": "Select Kentik adapter to use for job"
+    }
+  },
+  "bindingSchema": {
+    "properties": {
+      "deviceName": {
+        "binding:method": "POST",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:body": {
+          "options": {
+            "filter": {
+              "name": "",
+              "ostype": "cisco-ios"
+            },
+            "start": 0,
+            "limit": 10000,
+            "sort": [
+              {
+                "name": 1
+              }
+            ],
+            "order": "ascending"
+          }
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/configuration_manager",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/devices/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/list",
+          "keyPointer": "/name"
+        }
+      },
+      "kentikAdapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/adapters",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/data/name"
+        }
+      }
+    }
+  },
+  "validationSchema": {},
+  "version": "2020.1"
+}

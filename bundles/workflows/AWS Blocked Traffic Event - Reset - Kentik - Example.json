@@ -1,0 +1,291 @@
+{
+  "name": "AWS Blocked Traffic Event - Reset - Kentik - Example",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0,
+      "y": 0.5,
+      "nodeLocation": {
+        "x": 360,
+        "y": 996
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.8399138549892319,
+      "y": 0.4897172236503856,
+      "nodeLocation": {
+        "x": 1776,
+        "y": 996
+      }
+    },
+    "ce19": {
+      "name": "revokeSecurityGroupIngress",
+      "canvasName": "revokeSecurityGroupIngress",
+      "summary": "Revoke Ingress IP",
+      "description": "Revoke Ingress IP",
+      "location": "Adapter",
+      "locationType": "Awsec2",
+      "app": "Awsec2",
+      "type": "automatic",
+      "displayName": "Awsec2",
+      "variables": {
+        "incoming": {
+          "cidrIp": "$var.b2c1.cidrSourceIP",
+          "fromPort": 80,
+          "groupId": "$var.a524.return_data",
+          "groupName": "",
+          "ipPermissions": "",
+          "ipProtocol": "tcp",
+          "sourceSecurityGroupName": "",
+          "sourceSecurityGroupOwnerId": "",
+          "toPort": 80,
+          "dryRun": false,
+          "adapter_id": "$var.b2c1.awsEC2Adapter"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.6525484565685571,
+      "y": 0.480719794344473,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1536,
+        "y": 996
+      }
+    },
+    "3ea2": {
+      "name": "describeSecurityGroups",
+      "canvasName": "describeSecurityGroups",
+      "summary": "Get Security Groups from AWS",
+      "description": "Get Security Groups from AWS",
+      "location": "Adapter",
+      "locationType": "Awsec2",
+      "app": "Awsec2",
+      "type": "automatic",
+      "displayName": "Awsec2",
+      "variables": {
+        "incoming": {
+          "filter": "$var.b2c1.securityGroupSearchData",
+          "groupId": "",
+          "groupName": "",
+          "dryRun": false,
+          "nextToken": "",
+          "maxResults": "",
+          "adapter_id": "$var.b2c1.awsEC2Adapter"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.36180904522613067,
+      "y": 0.48586118251928023,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 912,
+        "y": 996
+      }
+    },
+    "a524": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Security Group ID",
+      "description": "Query SG ID",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.DescribeSecurityGroupsResponse.securityGroupInfo.item.groupId",
+          "obj": "$var.3ea2.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "x": 0.49820531227566406,
+      "y": 0.4922879177377892,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1224,
+        "y": 996
+      }
+    },
+    "b2c1": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Process AWS Blocked Traffic Event - Reset Inputs",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "654144da2c883d00f315fdd2",
+          "variableMap": {
+            "formData": "$var.job.formData"
+          },
+          "options": ""
+        },
+        "outgoing": {
+          "cidrSourceIP": null,
+          "awsEC2Adapter": null,
+          "securityGroupSearchData": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 600,
+        "y": 996
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "b2c1": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_end": {},
+    "ce19": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "3ea2": {
+      "a524": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "a524": {
+      "ce19": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b2c1": {
+      "3ea2": {
+        "state": "success",
+        "type": "standard"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "formData": {
+        "$id": "formData",
+        "type": "object",
+        "properties": {
+          "sourceIP": {
+            "type": "string",
+            "examples": [
+              "10.10.10.10"
+            ]
+          },
+          "awsEC2Adapter": {
+            "type": "string",
+            "examples": [
+              "AWS"
+            ]
+          },
+          "awsSecurityGroup": {
+            "type": "string",
+            "examples": [
+              "webserver-kentik"
+            ]
+          }
+        },
+        "required": []
+      }
+    },
+    "required": [
+      "formData"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "formData": {
+        "$id": "formData",
+        "type": "object",
+        "properties": {
+          "sourceIP": {
+            "type": "string",
+            "examples": [
+              "10.10.10.10"
+            ]
+          },
+          "awsEC2Adapter": {
+            "type": "string",
+            "examples": [
+              "AWS"
+            ]
+          },
+          "awsSecurityGroup": {
+            "type": "string",
+            "examples": [
+              "webserver-kentik"
+            ]
+          }
+        },
+        "required": []
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "last_updated": "2023-10-31T21:09:02.032Z",
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "created": "2023-06-29T22:33:20.270Z",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.44.64-2022.1.33.0",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "canvasVersion": 1.5,
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

@@ -1,0 +1,314 @@
+{
+  "bundleName": "Kentik - REST - Example",
+  "version": "0.0.1",
+  "fingerprint": "6541703445972b007f6d4b7b",
+  "createdEpoch": "1698787380014",
+  "artifacts": [
+    {
+      "id": "AWS Blocked Traffic - Kentik - Example",
+      "name": "AWS Blocked Traffic - Kentik - Example",
+      "type": "automation",
+      "location": "/bundles/automations/AWS Blocked Traffic - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "AWS Blocked Traffic - Reset - Kentik - Example",
+      "name": "AWS Blocked Traffic - Reset - Kentik - Example",
+      "type": "automation",
+      "location": "/bundles/automations/AWS Blocked Traffic - Reset - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding - Kentik - Example",
+      "name": "Device Onboarding - Kentik - Example",
+      "type": "automation",
+      "location": "/bundles/automations/Device Onboarding - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding - Reset - Kentik - Example",
+      "name": "Device Onboarding - Reset - Kentik - Example",
+      "type": "automation",
+      "location": "/bundles/automations/Device Onboarding - Reset - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "AWS Blocked Traffic Event - Kentik - Example",
+      "name": "AWS Blocked Traffic Event - Kentik - Example",
+      "type": "workflow",
+      "location": "/bundles/workflows/AWS Blocked Traffic Event - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "AWS Blocked Traffic Event - Reset - Kentik - Example",
+      "name": "AWS Blocked Traffic Event - Reset - Kentik - Example",
+      "type": "workflow",
+      "location": "/bundles/workflows/AWS Blocked Traffic Event - Reset - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding - Kentik - Example",
+      "name": "Device Onboarding - Kentik - Example",
+      "type": "workflow",
+      "location": "/bundles/workflows/Device Onboarding - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding - Reset - Kentik - Example",
+      "name": "Device Onboarding - Reset - Kentik - Example",
+      "type": "workflow",
+      "location": "/bundles/workflows/Device Onboarding - Reset - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Create Incident - ServiceNow",
+      "name": "Create Incident - ServiceNow",
+      "type": "workflow",
+      "location": "/bundles/workflows/Create Incident - ServiceNow.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Create Change Request - ServiceNow",
+      "name": "Create Change Request - ServiceNow",
+      "type": "workflow",
+      "location": "/bundles/workflows/Create Change Request - ServiceNow.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Send Notification - Microsoft - Teams - REST",
+      "name": "Send Notification - Microsoft - Teams - REST",
+      "type": "workflow",
+      "location": "/bundles/workflows/Send Notification - Microsoft - Teams - REST.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Update Change Request - ServiceNow",
+      "name": "Update Change Request - ServiceNow",
+      "type": "workflow",
+      "location": "/bundles/workflows/Update Change Request - ServiceNow.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Push Configuration to Device - IAG",
+      "name": "Push Configuration to Device - IAG",
+      "type": "workflow",
+      "location": "/bundles/workflows/Push Configuration to Device - IAG.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Create Device - Kentik",
+      "name": "Create Device - Kentik",
+      "type": "workflow",
+      "location": "/bundles/workflows/Create Device - Kentik.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding Flow Test - Kentik - Example",
+      "name": "Device Onboarding Flow Test - Kentik - Example",
+      "type": "workflow",
+      "location": "/bundles/workflows/Device Onboarding Flow Test - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Command Template Runner",
+      "name": "Command Template Runner",
+      "type": "workflow",
+      "location": "/bundles/workflows/Command Template Runner.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Flow Test - Kentik",
+      "name": "Device Flow Test - Kentik",
+      "type": "workflow",
+      "location": "/bundles/workflows/Device Flow Test - Kentik.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "AWS Blocked Traffic Event - Reset - Kentik Example",
+      "name": "AWS Blocked Traffic Event - Reset - Kentik Example",
+      "type": "json-forms",
+      "location": "/bundles/json_forms/AWS Blocked Traffic Event - Reset - Kentik Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding - Kentik - Example",
+      "name": "Device Onboarding - Kentik - Example",
+      "type": "json-forms",
+      "location": "/bundles/json_forms/Device Onboarding - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Device Onboarding Reset - Kentik - Example",
+      "name": "Device Onboarding Reset - Kentik - Example",
+      "type": "json-forms",
+      "location": "/bundles/json_forms/Device Onboarding Reset - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "IOS-XE Flow Config - Kentik - Example",
+      "name": "IOS-XE Flow Config - Kentik - Example",
+      "type": "template",
+      "location": "/bundles/templates/IOS-XE Flow Config - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "IOS-XE Flow Config - Reset - Kentik - Example",
+      "name": "IOS-XE Flow Config - Reset - Kentik - Example",
+      "type": "template",
+      "location": "/bundles/templates/IOS-XE Flow Config - Reset - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Ping - IOS - Kentik - Example",
+      "name": "Ping - IOS - Kentik - Example",
+      "type": "mop-template",
+      "location": "/bundles/mop_templates/Ping - IOS - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "649dd079d8cf7a00af456027",
+      "name": "AWS Blocked Traffic Event",
+      "type": "transformation",
+      "location": "/bundles/transformations/AWS Blocked Traffic Event.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "649e1ee2d8cf7a00af456028",
+      "name": "AWS Blocked Traffic Event - Allowed List Error",
+      "type": "transformation",
+      "location": "/bundles/transformations/AWS Blocked Traffic Event - Allowed List Error.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "654144da2c883d00f315fdd2",
+      "name": "Process AWS Blocked Traffic Event - Reset Inputs",
+      "type": "transformation",
+      "location": "/bundles/transformations/Process AWS Blocked Traffic Event - Reset Inputs.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "650b63ef64654800d3248063",
+      "name": "Device ID to Netbox Asset Tag - Kentik - Example",
+      "type": "transformation",
+      "location": "/bundles/transformations/Device ID to Netbox Asset Tag - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "650b873164654800d3248064",
+      "name": "IOS-XE Config - Kentik - Example",
+      "type": "transformation",
+      "location": "/bundles/transformations/IOS-XE Config - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "650b4bab64654800d3248062",
+      "name": "Device Onboarding - Kentik - Example",
+      "type": "transformation",
+      "location": "/bundles/transformations/Device Onboarding - Kentik - Example.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "653fc12f2c883d00f315fdcf",
+      "name": "Process Kentik Device Onboarding Form Inputs",
+      "type": "transformation",
+      "location": "/bundles/transformations/Process Kentik Device Onboarding Form Inputs.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "653fe9a52c883d00f315fdd0",
+      "name": "Process Kentik Device Onboarding Reset Form Inputs",
+      "type": "transformation",
+      "location": "/bundles/transformations/Process Kentik Device Onboarding Reset Form Inputs.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "621a5d367393d9019373d137",
+      "name": "Build CR Update Payload - ServiceNow",
+      "type": "transformation",
+      "location": "/bundles/transformations/Build CR Update Payload - ServiceNow.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "654104d02c883d00f315fdd1",
+      "name": "Build IAG Device Configuration Push Data",
+      "type": "transformation",
+      "location": "/bundles/transformations/Build IAG Device Configuration Push Data.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "64f3937db3e59e00cc64337a",
+      "name": "Create Device - Kentik",
+      "type": "transformation",
+      "location": "/bundles/transformations/Create Device - Kentik.json",
+      "properties": {
+        "entryPoint": false
+      }
+    }
+  ]
+}

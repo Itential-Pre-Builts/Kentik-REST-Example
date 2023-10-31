@@ -1,0 +1,34 @@
+{
+  "_id": "649e080b05ac3b00d8ac0971",
+  "name": "AWS Blocked Traffic - Reset - Kentik - Example",
+  "description": "",
+  "componentName": "AWS Blocked Traffic Event - Reset - Kentik - Example",
+  "componentType": "workflows",
+  "gbac": {
+    "write": [],
+    "read": []
+  },
+  "created": "2023-06-29T22:39:07.066Z",
+  "createdBy": "mike.elrom@itential.com",
+  "lastUpdated": "2023-10-31T21:09:02.238Z",
+  "lastUpdatedBy": "chris.calloway@itential.com",
+  "triggers": [
+    {
+      "_id": "6526d02310fa0e0141ace8f8",
+      "created": "2023-06-29T22:39:42.897Z",
+      "createdBy": "mike.elrom@itential.com",
+      "lastUpdated": "2023-10-31T21:09:02.325Z",
+      "lastUpdatedBy": "chris.calloway@itential.com",
+      "name": "Start AWS Blocked Traffic Event - Reset with Form",
+      "type": "manual",
+      "enabled": true,
+      "actionType": "automations",
+      "actionId": "649e080b05ac3b00d8ac0971",
+      "description": "",
+      "formId": "AWS Blocked Traffic Event - Reset - Kentik Example",
+      "formData": {},
+      "formSchemaHash": "1970a8be1311297a9c0be0c46236721ffe0fa33e3d269e71c054f0bc46e589e7",
+      "migrationVersion": 2
+    }
+  ]
+}

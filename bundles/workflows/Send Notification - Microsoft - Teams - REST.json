@@ -1,0 +1,262 @@
+{
+  "name": "Send Notification - Microsoft - Teams - REST",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.470335339638865,
+      "y": 0.6465968586387435,
+      "nodeLocation": {
+        "x": -1440,
+        "y": 1296
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": -0.00357653791130186,
+      "y": 0.6606896551724138,
+      "nodeLocation": {
+        "x": -648,
+        "y": 1296
+      }
+    },
+    "47cf": {
+      "name": "createNotification",
+      "canvasName": "createNotification",
+      "summary": "Create Notification In MS Teams",
+      "description": "Create a notification in msteams using webhook key",
+      "location": "Adapter",
+      "locationType": "Msteams",
+      "app": "Msteams",
+      "type": "automatic",
+      "displayName": "Msteams",
+      "variables": {
+        "incoming": {
+          "text": "$var.job.text",
+          "title": "$var.job.title",
+          "webhookKey": "$var.job.webhookKey",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "$var.job.errorMessage",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.26655202063628547,
+      "y": 0.6518324607329843,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -1200,
+        "y": 1296
+      }
+    },
+    "99f2": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Verify Notification Created",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "operand_1": {
+                    "task": "47cf",
+                    "variable": "result"
+                  },
+                  "operand_2": {
+                    "task": "static",
+                    "variable": 1
+                  },
+                  "operator": "==",
+                  "query": "response",
+                  "rightQuery": ""
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -888,
+        "y": 1296
+      }
+    },
+    "c6b6": {
+      "name": "delay",
+      "canvasName": "delay",
+      "summary": "Wait 10 Seconds For Retry",
+      "description": "Waiting 10 seconds before retrying to submit to MS Teams.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "time": 10
+        },
+        "outgoing": {
+          "time_in_milliseconds": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -888,
+        "y": 1404
+      }
+    }
+  },
+  "transitions": {
+    "4971": {},
+    "workflow_start": {
+      "47cf": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "47cf": {
+      "99f2": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "99f2": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      },
+      "c6b6": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "c6b6": {
+      "47cf": {
+        "state": "success",
+        "type": "revert"
+      }
+    },
+    "d30a": {}
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "title": "text",
+        "type": "string"
+      },
+      "title": {
+        "title": "title",
+        "type": "string"
+      },
+      "webhookKey": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "text",
+      "title",
+      "webhookKey",
+      "adapterId"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "title": "text",
+        "type": "string"
+      },
+      "title": {
+        "title": "title",
+        "type": "string"
+      },
+      "webhookKey": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "errorMessage": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "font_size": 12,
+  "created": "2020-12-16T22:04:24.265Z",
+  "created_by": {
+    "provenance": "LDAP Server",
+    "username": "abhansali",
+    "firstname": "Ankit",
+    "inactive": true
+  },
+  "createdVersion": "5.10.4-2020.1.22.0",
+  "last_updated": "2023-10-31T21:09:02.036Z",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "type": "automation",
+  "canvasVersion": 1.5,
+  "preAutomationTime": 0,
+  "sla": 0,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

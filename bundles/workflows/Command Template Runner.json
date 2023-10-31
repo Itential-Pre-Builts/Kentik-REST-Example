@@ -1,0 +1,823 @@
+{
+  "name": "Command Template Runner",
+  "tasks": {
+    "525": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Template Passed, Do Not Auto Approve",
+      "description": "The template passed but is not set to auto approve",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": true,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "autoApprove",
+                    "task": "job",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": false,
+                    "task": "static"
+                  }
+                },
+                {
+                  "query": "result",
+                  "operand_1": {
+                    "variable": "mop_template_results",
+                    "task": "8ce4"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.353836784409257,
+      "y": 0.5738188976377953,
+      "nodeLocation": {
+        "x": 1212,
+        "y": 1104
+      }
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -0.08670520231213873,
+      "y": 0.4957983193277311,
+      "nodeLocation": {
+        "x": 348,
+        "y": 996
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.5803897685749086,
+      "y": 0.4891732283464567,
+      "nodeLocation": {
+        "x": 1776,
+        "y": 996
+      }
+    },
+    "8ce4": {
+      "name": "RunCommandTemplate",
+      "canvasName": "RunCommandTemplate",
+      "summary": "Run Command Template",
+      "description": "Run a Command Template against a device",
+      "location": "Application",
+      "locationType": null,
+      "app": "MOP",
+      "type": "automatic",
+      "displayName": "MOP",
+      "variables": {
+        "incoming": {
+          "template": "$var.job.templateName",
+          "variables": "$var.job.templateVariables",
+          "devices": "$var.927c.pushedArray"
+        },
+        "outgoing": {
+          "mop_template_results": "$var.job.templateResults"
+        },
+        "error": "$var.job.templateError",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.1711092003439381,
+      "y": 0.49601063829787234,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 900,
+        "y": 996
+      }
+    },
+    "81d8": {
+      "name": "viewTemplateResults",
+      "canvasName": "viewTemplateResults",
+      "summary": "View Command Template Results",
+      "description": "View the results of the command template",
+      "location": "Application",
+      "app": "MOP",
+      "displayName": "MOP",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "mop_template_results": "$var.8ce4.mop_template_results"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/mop/task/viewTemplateResults",
+      "groups": [],
+      "x": 0.35627283800243603,
+      "y": 0.6988188976377953,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1212,
+        "y": 1212
+      }
+    },
+    "6bd2": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Template Failed, Do Not Reattempt",
+      "description": "The template did not pass, but should not be reattempted",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": true,
+              "evaluations": [
+                {
+                  "query": "result",
+                  "operand_1": {
+                    "variable": "mop_template_results",
+                    "task": "8ce4"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": false,
+                    "task": "static"
+                  }
+                },
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "reattempt",
+                    "task": "job",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": false,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.16991473812423874,
+      "y": 0.6958661417322834,
+      "nodeLocation": {
+        "x": 900,
+        "y": 1104
+      }
+    },
+    "f1a7": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "Template Failure",
+      "description": "Show the template failure message and decision options",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "WorkFlowEngine",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "Template Failed",
+          "message": "$var.job.templateName",
+          "body": "The Command Template has failed. Do you want to retry or skip?",
+          "variables": {},
+          "btn_success": "Retry",
+          "btn_failure": "Skip"
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "groups": [],
+      "x": 0.48964677222898906,
+      "y": 0.39960629921259844,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1524,
+        "y": 780
+      }
+    },
+    "543a": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Template Errored, Check Reattempt",
+      "description": "The template encountered an error, check if it should be reattempted",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "reattempt",
+                    "task": "job",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.3501827040194884,
+      "y": 0.39960629921259844,
+      "nodeLocation": {
+        "x": 1212,
+        "y": 888
+      }
+    },
+    "849c": {
+      "name": "reattempt",
+      "canvasName": "reattempt",
+      "summary": "Reattempt Template",
+      "description": "Reattempt the template after waiting the specified number of minutes",
+      "location": "Application",
+      "locationType": null,
+      "app": "MOP",
+      "type": "automatic",
+      "displayName": "MOP",
+      "variables": {
+        "incoming": {
+          "job_id": "$var.job._id",
+          "attemptID": "connection",
+          "minutes": "$var.job.reattemptWaitTime",
+          "attempts": "$var.job.reattemptQuantity"
+        },
+        "outgoing": {
+          "response": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.3556638246041413,
+      "y": 0.23917322834645668,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 1212,
+        "y": 780
+      }
+    },
+    "f884": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Template Failed, Reattempt",
+      "description": "The template did not pass, but should be reattempted",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": true,
+              "evaluations": [
+                {
+                  "query": "result",
+                  "operand_1": {
+                    "variable": "mop_template_results",
+                    "task": "8ce4"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": false,
+                    "task": "static"
+                  }
+                },
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "reattempt",
+                    "task": "job",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.1705237515225335,
+      "y": 0.234251968503937,
+      "nodeLocation": {
+        "x": 900,
+        "y": 780
+      }
+    },
+    "b1a0": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Template Passed, Auto Approve",
+      "description": "The template passed and is set to auto approve",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": true,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "autoApprove",
+                    "task": "job",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                },
+                {
+                  "query": "result",
+                  "operand_1": {
+                    "variable": "mop_template_results",
+                    "task": "8ce4"
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.34995700773860705,
+      "y": 0.4867021276595745,
+      "nodeLocation": {
+        "x": 1212,
+        "y": 996
+      }
+    },
+    "5df9": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Check Template Result",
+      "description": "Check if the template resulted in a pass or fail",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": true,
+              "evaluations": [
+                {
+                  "query": "result",
+                  "operand_1": {
+                    "variable": "mop_template_results",
+                    "task": "8ce4",
+                    "editable": true
+                  },
+                  "operator": "==",
+                  "operand_2": {
+                    "variable": true,
+                    "task": "static"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": 0.49086479902557856,
+      "y": 0.7047244094488189,
+      "nodeLocation": {
+        "x": 1524,
+        "y": 1212
+      }
+    },
+    "927c": {
+      "name": "arrayPush",
+      "canvasName": "push",
+      "summary": "Build Device Array",
+      "description": "Put the device name into an array as required by the \"RunCommandTemplate\" task",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Array",
+      "variables": {
+        "incoming": {
+          "arr": [],
+          "elementN": "$var.job.deviceName"
+        },
+        "outgoing": {
+          "pushedArray": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.02064409578860446,
+      "y": 0.49459783913565425,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": 588,
+        "y": 996
+      }
+    }
+  },
+  "transitions": {
+    "525": {
+      "81d8": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "927c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "8ce4": {
+      "525": {
+        "type": "standard",
+        "state": "success"
+      },
+      "543a": {
+        "type": "standard",
+        "state": "error"
+      },
+      "f884": {
+        "type": "standard",
+        "state": "success"
+      },
+      "b1a0": {
+        "type": "standard",
+        "state": "success"
+      },
+      "6bd2": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "81d8": {
+      "8ce4": {
+        "type": "revert",
+        "state": "failure"
+      },
+      "5df9": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "6bd2": {
+      "81d8": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f1a7": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "8ce4": {
+        "type": "revert",
+        "state": "success"
+      }
+    },
+    "543a": {
+      "849c": {
+        "type": "standard",
+        "state": "success"
+      },
+      "f1a7": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "849c": {
+      "8ce4": {
+        "type": "revert",
+        "state": "success"
+      },
+      "f1a7": {
+        "type": "standard",
+        "state": "error"
+      }
+    },
+    "f884": {
+      "849c": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "b1a0": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5df9": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      },
+      "f1a7": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "927c": {
+      "8ce4": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "autoApprove": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "templateName": {
+        "title": "template",
+        "type": "string",
+        "examples": [
+          "show version"
+        ]
+      },
+      "templateVariables": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "reattempt": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "title": "job_id",
+        "type": "string",
+        "examples": [
+          "test"
+        ]
+      },
+      "reattemptWaitTime": {
+        "title": "minutes",
+        "type": "integer",
+        "examples": [
+          1
+        ]
+      },
+      "reattemptQuantity": {
+        "title": "attempts",
+        "type": "integer",
+        "examples": [
+          2
+        ]
+      },
+      "deviceName": {
+        "type": [
+          "array",
+          "string",
+          "boolean",
+          "integer",
+          "number",
+          "object"
+        ],
+        "title": "elementN",
+        "examples": [
+          "Device3"
+        ]
+      }
+    },
+    "required": [
+      "autoApprove",
+      "templateName",
+      "templateVariables",
+      "reattempt",
+      "_id",
+      "reattemptWaitTime",
+      "reattemptQuantity",
+      "deviceName"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "autoApprove": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "templateName": {
+        "title": "template",
+        "type": "string",
+        "examples": [
+          "show version"
+        ]
+      },
+      "templateVariables": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "reattempt": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "reattemptWaitTime": {
+        "title": "minutes",
+        "type": "integer",
+        "examples": [
+          1
+        ]
+      },
+      "reattemptQuantity": {
+        "title": "attempts",
+        "type": "integer",
+        "examples": [
+          2
+        ]
+      },
+      "deviceName": {
+        "type": [
+          "array",
+          "string",
+          "boolean",
+          "integer",
+          "number",
+          "object"
+        ],
+        "title": "elementN",
+        "examples": [
+          "Device3"
+        ]
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "templateResults": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "templateError": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "created": "2021-11-19T22:24:44.051Z",
+  "createdVersion": "5.40.5-2021.1.28.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "font_size": 12,
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "last_updated": "2023-10-31T21:09:02.041Z",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "preAutomationTime": 0,
+  "sla": 0,
+  "type": "automation",
+  "canvasVersion": 1.5,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

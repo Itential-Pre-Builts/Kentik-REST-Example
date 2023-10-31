@@ -1,0 +1,1719 @@
+{
+  "name": "AWS Blocked Traffic Event - Kentik - Example",
+  "tasks": {
+    "1232": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create Incident - ServiceNow",
+      "description": "Create Incident - ServiceNow",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Create Incident - ServiceNow",
+          "variables": {
+            "summary": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "comments": {
+              "editable": true,
+              "task": "572f",
+              "value": "serviceNowComments"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "serviceNowAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": -0.0416367552045944,
+      "y": 0.9449101796407186,
+      "nodeLocation": {
+        "x": -2304,
+        "y": 1836
+      }
+    },
+    "1587": {
+      "name": "stub",
+      "canvasName": "stub",
+      "summary": "Blocked Traffic Path",
+      "description": "Blocked Traffic Path",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Tools",
+      "variables": {
+        "incoming": {
+          "type": "success",
+          "delay": "",
+          "response": ""
+        },
+        "outgoing": {
+          "response": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -1116,
+        "y": 1932
+      }
+    },
+    "4257": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "AWS Blocked Traffic Event",
+      "description": "Build AWS blocked traffic data",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "649dd079d8cf7a00af456027",
+          "variableMap": {
+            "iapURL": "$var.job.iapUrl",
+            "serviceNowURL": "$var.job.serviceNowUrl",
+            "companyId": "$var.job.CompanyID",
+            "currentState": "$var.job.CurrentState",
+            "dimensions": "$var.job.Dimensions",
+            "links": "$var.job.Links",
+            "description": "$var.job.Description",
+            "endTime": "$var.job.EndTime",
+            "jobId": "$var.job._id",
+            "alarmPolicyName": "$var.job.AlarmPolicyName",
+            "serviceNowChangeSysId": "$var.d6d4.return_data",
+            "serviceNowIncidentSysId": "$var.9e2a.return_data",
+            "isActive": "$var.job.IsActive",
+            "previousState": "$var.job.PreviousState",
+            "startTime": "$var.job.StartTime",
+            "type": "$var.job.Type",
+            "alarmId": "$var.job.AlarmID",
+            "alarmPolicyId": "$var.job.AlarmPolicyID",
+            "alarmPolicyMetadataType": "$var.job.AlarmPolicyMetadataType",
+            "alarmSeverity": "$var.job.AlarmSeverity",
+            "alarmThresholdId": "$var.job.AlarmThresholdID",
+            "metrics": "$var.job.Metrics"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "teamsMessageStart": null,
+          "teamsMessageStartSuccess": null,
+          "teamsMessageStartFailure": null,
+          "serviceNowSummary": null,
+          "serviceNowComments": null,
+          "seviceNowChangeComments": null,
+          "securityGroupFilter": null,
+          "sourceIpCIDR": null,
+          "sourceIP": null
+        },
+        "decorators": []
+      },
+      "groups": [],
+      "x": 0.2613065326633166,
+      "y": 0.9550128534704371,
+      "task_name": "AWS Blocked Traffic Event",
+      "retrySettings": null,
+      "nodeLocation": {
+        "x": -1680,
+        "y": 1836
+      }
+    },
+    "5847": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "AWS Blocked Traffic Event",
+      "description": "Build AWS blocked traffic event data",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "649dd079d8cf7a00af456027",
+          "variableMap": {
+            "iapURL": "$var.job.iapUrl",
+            "serviceNowURL": "$var.job.serviceNowUrl",
+            "companyId": "$var.job.CompanyID",
+            "currentState": "$var.job.CurrentState",
+            "dimensions": "$var.job.Dimensions",
+            "links": "$var.job.Links",
+            "description": "$var.job.Description",
+            "endTime": "$var.job.EndTime",
+            "jobId": "$var.job._id",
+            "alarmPolicyName": "$var.job.AlarmPolicyName",
+            "serviceNowChangeSysId": "pending",
+            "serviceNowIncidentSysId": "pending",
+            "isActive": "$var.job.IsActive",
+            "previousState": "$var.job.PreviousState",
+            "startTime": "$var.job.StartTime",
+            "type": "$var.job.Type",
+            "alarmId": "$var.job.AlarmID",
+            "alarmPolicyId": "$var.job.AlarmPolicyID",
+            "alarmPolicyMetadataType": "$var.job.AlarmPolicyMetadataType",
+            "alarmSeverity": "$var.job.AlarmSeverity",
+            "alarmThresholdId": "$var.job.AlarmThresholdID",
+            "metrics": "$var.job.Metrics"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "teamsMessageStart": null,
+          "teamsMessageStartSuccess": null,
+          "teamsMessageStartFailure": null,
+          "serviceNowSummary": null,
+          "serviceNowComments": null,
+          "seviceNowChangeComments": null,
+          "securityGroupFilter": null,
+          "sourceIpCIDR": null,
+          "sourceIP": null
+        },
+        "decorators": []
+      },
+      "groups": [],
+      "x": -1.2153625269203159,
+      "y": 0.7840616966580977,
+      "task_name": "AWS Blocked Traffic Event",
+      "retrySettings": null,
+      "nodeLocation": {
+        "x": -4632,
+        "y": 1728
+      }
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": -1.5987170349251603,
+      "y": 0.7904191616766467,
+      "nodeLocation": {
+        "x": -5184,
+        "y": 1728
+      }
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 0.9763101220387652,
+      "y": 1.255784061696658,
+      "nodeLocation": {
+        "x": -1116,
+        "y": 1728
+      }
+    },
+    "7c58": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Create Change Request",
+      "description": "Create Change Request",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Create Change Request - ServiceNow",
+          "variables": {
+            "title": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "summary": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "description": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "comments": {
+              "editable": true,
+              "task": "5847",
+              "value": "seviceNowChangeComments"
+            },
+            "assignmentGroup": {
+              "editable": true,
+              "task": "static",
+              "value": ""
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "serviceNowAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": -0.8305814788226848,
+      "y": 0.7866323907455013,
+      "nodeLocation": {
+        "x": -4008,
+        "y": 1728
+      }
+    },
+    "8c16": {
+      "name": "describeSecurityGroups",
+      "canvasName": "describeSecurityGroups",
+      "summary": "Describe SG",
+      "description": "Get Security Group to confirm the source ingress is missing",
+      "location": "Adapter",
+      "locationType": "Awsec2",
+      "app": "Awsec2",
+      "type": "automatic",
+      "displayName": "Awsec2",
+      "variables": {
+        "incoming": {
+          "filter": "$var.5847.securityGroupFilter",
+          "groupId": "",
+          "groupName": "",
+          "dryRun": false,
+          "nextToken": "",
+          "maxResults": "",
+          "adapter_id": "$var.job.awsEC2Adapter"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": -0.19669777458722182,
+      "y": 0.7748502994011977,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -2916,
+        "y": 1728
+      }
+    },
+    "f484": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Send Notification MSTeams - Event",
+      "description": "Send Teams Notification",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "572f",
+              "value": "teamsMessageStart"
+            },
+            "title": {
+              "editable": true,
+              "task": "572f",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "allPolicyEventsWebhookUrl"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": -0.34099066762383345,
+      "y": 0.7789203084832905,
+      "nodeLocation": {
+        "x": -3228,
+        "y": 1728
+      }
+    },
+    "d6d4": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Change Request sysid",
+      "description": "Query Change Request sysid",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "createdCR.response.id",
+          "obj": "$var.7c58.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "x": -0.6848528356066045,
+      "y": 0.7313624678663239,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -3768,
+        "y": 1620
+      }
+    },
+    "fbe8": {
+      "name": "authorizeSecurityGroupIngress",
+      "canvasName": "authorizeSecurityGroupIngress",
+      "summary": "Authorize Ingress on SG",
+      "description": "Authorize Ingress on SG for Web Server",
+      "location": "Adapter",
+      "locationType": "Awsec2",
+      "app": "Awsec2",
+      "type": "automatic",
+      "displayName": "Awsec2",
+      "variables": {
+        "incoming": {
+          "cidrIp": "$var.5847.sourceIpCIDR",
+          "fromPort": 80,
+          "groupId": "$var.d861.return_data",
+          "groupName": "",
+          "ipPermissions": "",
+          "ipProtocol": "tcp",
+          "sourceSecurityGroupName": "",
+          "sourceSecurityGroupOwnerId": "",
+          "toPort": 80,
+          "dryRun": false,
+          "adapter_id": "$var.job.awsEC2Adapter"
+        },
+        "outgoing": {
+          "result": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.12921751615218952,
+      "y": 0.7712082262210797,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -1992,
+        "y": 1728
+      }
+    },
+    "d861": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Security Group ID",
+      "description": "Query Security Group ID",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.DescribeSecurityGroupsResponse.securityGroupInfo.item.groupId",
+          "obj": "$var.8c16.result"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "x": -0.10050251256281408,
+      "y": 0.770059880239521,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -2604,
+        "y": 1728
+      }
+    },
+    "c038": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Eval Src IP in SG",
+      "description": "Run an evaluation to ensure the Source IP does not already exist in the Security Group",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "response.DescribeSecurityGroupsResponse.securityGroupInfo.item.ipPermissions.item.ipRanges.item.cidrIp",
+                  "operand_1": {
+                    "variable": "result",
+                    "task": "8c16"
+                  },
+                  "operator": "!contains",
+                  "operand_2": {
+                    "variable": "sourceIpCIDR",
+                    "task": "5847"
+                  },
+                  "rightQuery": ""
+                },
+                {
+                  "query": "response.DescribeSecurityGroupsResponse.securityGroupInfo.item.ipPermissions.item.ipRanges.item.cidrIp",
+                  "operand_1": {
+                    "variable": "result",
+                    "task": "8c16"
+                  },
+                  "operator": "!=",
+                  "operand_2": {
+                    "variable": "sourceIpCIDR",
+                    "task": "5847"
+                  },
+                  "rightQuery": ""
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": -0.04594400574300072,
+      "y": 0.7640718562874251,
+      "nodeLocation": {
+        "x": -2304,
+        "y": 1728
+      }
+    },
+    "572f": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "AWS Blocked Traffic Event",
+      "description": "Build AWS blocked traffic event data",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "649dd079d8cf7a00af456027",
+          "variableMap": {
+            "iapURL": "$var.job.iapUrl",
+            "serviceNowURL": "$var.job.serviceNowUrl",
+            "companyId": "$var.job.CompanyID",
+            "currentState": "$var.job.CurrentState",
+            "dimensions": "$var.job.Dimensions",
+            "links": "$var.job.Links",
+            "description": "$var.job.Description",
+            "endTime": "$var.job.EndTime",
+            "jobId": "$var.job._id",
+            "alarmPolicyName": "$var.job.AlarmPolicyName",
+            "serviceNowChangeSysId": "$var.d6d4.return_data",
+            "serviceNowIncidentSysId": "pending",
+            "isActive": "$var.job.IsActive",
+            "previousState": "$var.job.PreviousState",
+            "startTime": "$var.job.StartTime",
+            "type": "$var.job.Type",
+            "alarmId": "$var.job.AlarmID",
+            "alarmPolicyId": "$var.job.AlarmPolicyID",
+            "alarmPolicyMetadataType": "$var.job.AlarmPolicyMetadataType",
+            "alarmSeverity": "$var.job.AlarmSeverity",
+            "alarmThresholdId": "$var.job.AlarmThresholdID",
+            "metrics": "$var.job.Metrics"
+          },
+          "options": {
+            "extractOutput": false,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "teamsMessageStart": null,
+          "teamsMessageStartSuccess": null,
+          "teamsMessageStartFailure": null,
+          "serviceNowSummary": null,
+          "serviceNowComments": null,
+          "seviceNowChangeComments": null,
+          "securityGroupFilter": null,
+          "sourceIpCIDR": null,
+          "sourceIP": null
+        },
+        "decorators": []
+      },
+      "groups": [],
+      "x": -0.5326633165829145,
+      "y": 0.7853470437017995,
+      "task_name": "AWS Blocked Traffic Event",
+      "retrySettings": null,
+      "nodeLocation": {
+        "x": -3540,
+        "y": 1728
+      }
+    },
+    "9e2a": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Incident sysid",
+      "description": "Query incidentId from incident",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "createdIncident.response.id",
+          "obj": "$var.1232.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "x": 0.14213926776740848,
+      "y": 0.9524421593830334,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -1992,
+        "y": 1836
+      }
+    },
+    "7dc": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Send Notification MSTeams - Success",
+      "description": "Send Teams Notification",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "572f",
+              "value": "teamsMessageStartSuccess"
+            },
+            "title": {
+              "editable": true,
+              "task": "572f",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "policyAutomatedAuthorizationWebhookUrl"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": 0.7300789662598708,
+      "y": 0.7789203084832905,
+      "nodeLocation": {
+        "x": -1380,
+        "y": 1728
+      }
+    },
+    "79f3": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Send Notification MSTeams - Failure",
+      "description": "Send Teams Notification",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "4257",
+              "value": "teamsMessageStartFailure"
+            },
+            "title": {
+              "editable": true,
+              "task": "4257",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "policyAutomatedFailureWebhookUrl"
+            },
+            "fileName": {
+              "task": "4257",
+              "value": "teamsMessageStart"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": 0.45513280689160085,
+      "y": 0.9460154241645244,
+      "nodeLocation": {
+        "x": -1380,
+        "y": 1836
+      }
+    },
+    "f3ec": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Update Change Request - ServiceNow",
+      "description": "Update Change Request - ServiceNow",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Update Change Request - ServiceNow",
+          "variables": {
+            "crNumber": {
+              "editable": true,
+              "task": "e365",
+              "value": "return_data"
+            },
+            "comments": {
+              "editable": true,
+              "task": "fbe8",
+              "value": "result"
+            },
+            "state": {
+              "editable": true,
+              "task": "static",
+              "value": ""
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "serviceNowAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": 0.3180186647523331,
+      "y": 0.7647814910025706,
+      "nodeLocation": {
+        "x": -1680,
+        "y": 1728
+      }
+    },
+    "e365": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Change Request number",
+      "description": "Query Change Request number",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "createdCR.response.number",
+          "obj": "$var.7c58.job_details"
+        },
+        "outgoing": {
+          "return_data": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "groups": [],
+      "x": -0.6805455850681982,
+      "y": 0.8264781491002571,
+      "scheduled": false,
+      "nodeLocation": {
+        "x": -3768,
+        "y": 1836
+      }
+    },
+    "fd52": {
+      "name": "newVariable",
+      "canvasName": "newVariable",
+      "summary": "List of Permitted IPs",
+      "description": "List of valid IPs to approve traffic against. Can replace with call to external service to get valid IPs",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "name": "allowedIPList",
+          "value": [
+            "10.10.10.10"
+          ]
+        },
+        "outgoing": {
+          "value": null
+        }
+      },
+      "groups": [],
+      "x": -1.3718592964824121,
+      "y": 0.7853470437017995,
+      "nodeLocation": {
+        "x": -4944,
+        "y": 1728
+      }
+    },
+    "2a1a": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Eval Src IP in Allowed List",
+      "description": "Run an evaluation to ensure the source IP is allowed to be added to the SG ingress",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "query": "",
+                  "operand_1": {
+                    "variable": "allowedIPList",
+                    "task": "job"
+                  },
+                  "operator": "contains",
+                  "operand_2": {
+                    "variable": "sourceIP",
+                    "task": "5847"
+                  },
+                  "rightQuery": ""
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": null
+        }
+      },
+      "groups": [],
+      "x": -1.0265613783201724,
+      "y": 0.7776349614395887,
+      "nodeLocation": {
+        "x": -4320,
+        "y": 1728
+      }
+    },
+    "5c3": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Send Notification MSTeams Failure - Allowed List",
+      "description": "Send Teams Notification",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "b2b8",
+              "value": "teamsDeniedMessage"
+            },
+            "title": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "allPolicyEventsWebhookUrl"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "groups": [],
+      "actor": "job",
+      "x": -1.0251256281407035,
+      "y": 1.2673521850899743,
+      "nodeLocation": {
+        "x": -4320,
+        "y": 1932
+      }
+    },
+    "b2b8": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "AWS Blocked Traffic Event - Allowed List Error",
+      "description": "Build AWS blocked traffic event allowed list data",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "649e1ee2d8cf7a00af456028",
+          "variableMap": {
+            "links": "$var.job.Links",
+            "dimensions": "$var.job.Dimensions",
+            "jobId": "$var.job._id",
+            "allowedIPList": "$var.job.allowedIPList",
+            "iapUrl": "$var.job.iapUrl"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "teamsDeniedMessage": null
+        },
+        "decorators": []
+      },
+      "groups": [],
+      "x": -1.0265613783201724,
+      "y": 1.012853470437018,
+      "task_name": "AWS Blocked Traffic Event - Allowed List Error",
+      "retrySettings": null,
+      "nodeLocation": {
+        "x": -4320,
+        "y": 1824
+      }
+    }
+  },
+  "transitions": {
+    "1232": {
+      "9e2a": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "1587": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "4257": {
+      "79f3": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5847": {
+      "2a1a": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "fd52": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "7c58": {
+      "d6d4": {
+        "type": "standard",
+        "state": "success"
+      },
+      "e365": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "8c16": {
+      "d861": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f484": {
+      "8c16": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d6d4": {
+      "572f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "fbe8": {
+      "f3ec": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "d861": {
+      "c038": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "c038": {
+      "1232": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "fbe8": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "572f": {
+      "f484": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "9e2a": {
+      "4257": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "7dc": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "79f3": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f3ec": {
+      "7dc": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "e365": {
+      "572f": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "fd52": {
+      "5847": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "2a1a": {
+      "b2b8": {
+        "type": "standard",
+        "state": "failure"
+      },
+      "7c58": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "5c3": {
+      "1587": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "b2b8": {
+      "5c3": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "84f7": {},
+    "71ef": {}
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "serviceNowAdapter": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "iapUrl": {
+        "$id": "iapURL",
+        "type": "string",
+        "examples": [
+          "https://iap_1:3443"
+        ]
+      },
+      "serviceNowUrl": {
+        "$id": "serviceNowURL",
+        "type": "string",
+        "examples": [
+          "https://servicenow_dev.com"
+        ]
+      },
+      "CompanyID": {
+        "$id": "companyId",
+        "type": "number",
+        "examples": [
+          180173
+        ]
+      },
+      "CurrentState": {
+        "$id": "currentState",
+        "type": "string",
+        "examples": [
+          "ackReq"
+        ]
+      },
+      "Dimensions": {
+        "$id": "dimensions",
+        "type": "object",
+        "properties": {
+          "AS_src": {
+            "type": "string",
+            "examples": [
+              "198465"
+            ]
+          },
+          "Geography_src": {
+            "type": "string",
+            "examples": [
+              "GB"
+            ]
+          },
+          "IP_dst": {
+            "type": "string",
+            "examples": [
+              "10.0.18.252"
+            ],
+            "format": "ipv4"
+          },
+          "IP_src": {
+            "type": "string",
+            "examples": [
+              "45.129.14.30"
+            ],
+            "format": "ipv4"
+          },
+          "kt_aws_action": {
+            "type": "string",
+            "examples": [
+              "REJECT"
+            ]
+          },
+          "kt_aws_dst_sg": {
+            "type": "string",
+            "examples": [
+              "webserver-kentik"
+            ]
+          },
+          "kt_aws_dst_vpc_id": {
+            "type": "string",
+            "examples": [
+              "vpc-0bf366171dd4f9121"
+            ]
+          }
+        },
+        "required": []
+      },
+      "Links": {
+        "$id": "links",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string",
+              "examples": [
+                "DashboardAlarmURL"
+              ]
+            },
+            "Label": {
+              "type": "string",
+              "examples": [
+                "Open in Dashboard"
+              ]
+            },
+            "Value": {
+              "type": "string",
+              "examples": [
+                "https://portal.kentik.com/v4/library/dashboards/18392"
+              ]
+            }
+          },
+          "required": []
+        }
+      },
+      "Description": {
+        "$id": "description",
+        "type": "string",
+        "examples": [
+          "Alarm for Web Server Traffic Rejections Requires Ack"
+        ]
+      },
+      "EndTime": {
+        "$id": "endTime",
+        "type": "string",
+        "examples": [
+          "2023-06-29 18:36:48 UTC"
+        ]
+      },
+      "_id": {
+        "$id": "jobId",
+        "type": "string",
+        "examples": [
+          "7517dfb1b5fd4af2bac87a02"
+        ]
+      },
+      "AlarmPolicyName": {
+        "$id": "alarmPolicyName",
+        "type": "string",
+        "examples": [
+          "Web Server Traffic Rejections"
+        ]
+      },
+      "IsActive": {
+        "$id": "isActive",
+        "type": "boolean",
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "PreviousState": {
+        "$id": "previousState",
+        "type": "string",
+        "examples": [
+          "alarm"
+        ]
+      },
+      "StartTime": {
+        "$id": "startTime",
+        "type": "string",
+        "examples": [
+          "2023-06-29 18:26:48 UTC"
+        ]
+      },
+      "Type": {
+        "$id": "type",
+        "type": "string",
+        "examples": [
+          "alarm"
+        ]
+      },
+      "AlarmID": {
+        "$id": "alarmId",
+        "type": "string",
+        "examples": [
+          "266940386"
+        ]
+      },
+      "AlarmPolicyID": {
+        "$id": "alarmPolicyId",
+        "type": "string",
+        "examples": [
+          "187811"
+        ]
+      },
+      "AlarmPolicyMetadataType": {
+        "$id": "alarmPolicyMetadataType",
+        "type": "string",
+        "examples": [
+          "Custom"
+        ]
+      },
+      "AlarmSeverity": {
+        "$id": "alarmSeverity",
+        "type": "string",
+        "examples": [
+          "critical"
+        ]
+      },
+      "AlarmThresholdID": {
+        "$id": "alarmThresholdId",
+        "type": "string",
+        "examples": [
+          "446709"
+        ]
+      },
+      "Metrics": {
+        "$id": "metrics",
+        "type": "object",
+        "properties": {
+          "bits": {
+            "type": "number",
+            "examples": [
+              2.6666669845581055
+            ]
+          }
+        },
+        "required": []
+      },
+      "awsEC2Adapter": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "allPolicyEventsWebhookUrl": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "msTeamsAdapter": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "policyAutomatedAuthorizationWebhookUrl": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "policyAutomatedFailureWebhookUrl": {
+        "title": "webhookKey",
+        "type": "string"
+      }
+    },
+    "required": [
+      "serviceNowAdapter",
+      "iapUrl",
+      "serviceNowUrl",
+      "CompanyID",
+      "CurrentState",
+      "Dimensions",
+      "Links",
+      "Description",
+      "EndTime",
+      "_id",
+      "AlarmPolicyName",
+      "IsActive",
+      "PreviousState",
+      "StartTime",
+      "Type",
+      "AlarmID",
+      "AlarmPolicyID",
+      "AlarmPolicyMetadataType",
+      "AlarmSeverity",
+      "AlarmThresholdID",
+      "Metrics",
+      "awsEC2Adapter",
+      "allPolicyEventsWebhookUrl",
+      "msTeamsAdapter",
+      "policyAutomatedAuthorizationWebhookUrl",
+      "policyAutomatedFailureWebhookUrl"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "serviceNowAdapter": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "iapUrl": {
+        "$id": "iapURL",
+        "type": "string",
+        "examples": [
+          "https://iap_1:3443"
+        ]
+      },
+      "serviceNowUrl": {
+        "$id": "serviceNowURL",
+        "type": "string",
+        "examples": [
+          "https://servicenow_dev.com"
+        ]
+      },
+      "CompanyID": {
+        "$id": "companyId",
+        "type": "number",
+        "examples": [
+          180173
+        ]
+      },
+      "CurrentState": {
+        "$id": "currentState",
+        "type": "string",
+        "examples": [
+          "ackReq"
+        ]
+      },
+      "Dimensions": {
+        "$id": "dimensions",
+        "type": "object",
+        "properties": {
+          "AS_src": {
+            "type": "string",
+            "examples": [
+              "198465"
+            ]
+          },
+          "Geography_src": {
+            "type": "string",
+            "examples": [
+              "GB"
+            ]
+          },
+          "IP_dst": {
+            "type": "string",
+            "examples": [
+              "10.0.18.252"
+            ],
+            "format": "ipv4"
+          },
+          "IP_src": {
+            "type": "string",
+            "examples": [
+              "45.129.14.30"
+            ],
+            "format": "ipv4"
+          },
+          "kt_aws_action": {
+            "type": "string",
+            "examples": [
+              "REJECT"
+            ]
+          },
+          "kt_aws_dst_sg": {
+            "type": "string",
+            "examples": [
+              "webserver-kentik"
+            ]
+          },
+          "kt_aws_dst_vpc_id": {
+            "type": "string",
+            "examples": [
+              "vpc-0bf366171dd4f9121"
+            ]
+          }
+        },
+        "required": []
+      },
+      "Links": {
+        "$id": "links",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Name": {
+              "type": "string",
+              "examples": [
+                "DashboardAlarmURL"
+              ]
+            },
+            "Label": {
+              "type": "string",
+              "examples": [
+                "Open in Dashboard"
+              ]
+            },
+            "Value": {
+              "type": "string",
+              "examples": [
+                "https://portal.kentik.com/v4/library/dashboards/18392"
+              ]
+            }
+          },
+          "required": []
+        }
+      },
+      "Description": {
+        "$id": "description",
+        "type": "string",
+        "examples": [
+          "Alarm for Web Server Traffic Rejections Requires Ack"
+        ]
+      },
+      "EndTime": {
+        "$id": "endTime",
+        "type": "string",
+        "examples": [
+          "2023-06-29 18:36:48 UTC"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "AlarmPolicyName": {
+        "$id": "alarmPolicyName",
+        "type": "string",
+        "examples": [
+          "Web Server Traffic Rejections"
+        ]
+      },
+      "IsActive": {
+        "$id": "isActive",
+        "type": "boolean",
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "PreviousState": {
+        "$id": "previousState",
+        "type": "string",
+        "examples": [
+          "alarm"
+        ]
+      },
+      "StartTime": {
+        "$id": "startTime",
+        "type": "string",
+        "examples": [
+          "2023-06-29 18:26:48 UTC"
+        ]
+      },
+      "Type": {
+        "$id": "type",
+        "type": "string",
+        "examples": [
+          "alarm"
+        ]
+      },
+      "AlarmID": {
+        "$id": "alarmId",
+        "type": "string",
+        "examples": [
+          "266940386"
+        ]
+      },
+      "AlarmPolicyID": {
+        "$id": "alarmPolicyId",
+        "type": "string",
+        "examples": [
+          "187811"
+        ]
+      },
+      "AlarmPolicyMetadataType": {
+        "$id": "alarmPolicyMetadataType",
+        "type": "string",
+        "examples": [
+          "Custom"
+        ]
+      },
+      "AlarmSeverity": {
+        "$id": "alarmSeverity",
+        "type": "string",
+        "examples": [
+          "critical"
+        ]
+      },
+      "AlarmThresholdID": {
+        "$id": "alarmThresholdId",
+        "type": "string",
+        "examples": [
+          "446709"
+        ]
+      },
+      "Metrics": {
+        "$id": "metrics",
+        "type": "object",
+        "properties": {
+          "bits": {
+            "type": "number",
+            "examples": [
+              2.6666669845581055
+            ]
+          }
+        },
+        "required": []
+      },
+      "awsEC2Adapter": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "allPolicyEventsWebhookUrl": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "msTeamsAdapter": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "policyAutomatedAuthorizationWebhookUrl": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "policyAutomatedFailureWebhookUrl": {
+        "title": "webhookKey",
+        "type": "string"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "allowedIPList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "last_updated": "2023-10-31T21:19:47.562Z",
+  "lastUpdatedVersion": "5.46.0-2023.1.19.0",
+  "created": "2023-06-02T15:54:40.814Z",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.44.64-2022.1.33.0",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "canvasVersion": 1.5,
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

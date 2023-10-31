@@ -1,0 +1,39 @@
+{
+  "_id": "648a86b1ef88ae00e584c18f",
+  "name": "AWS Blocked Traffic - Kentik - Example",
+  "description": "",
+  "componentName": "AWS Blocked Traffic Event - Kentik - Example",
+  "componentType": "workflows",
+  "gbac": {
+    "write": [],
+    "read": []
+  },
+  "created": "2023-06-15T03:34:09.957Z",
+  "createdBy": "mike.elrom@itential.com",
+  "lastUpdated": "2023-10-31T21:09:02.238Z",
+  "lastUpdatedBy": "chris.calloway@itential.com",
+  "triggers": [
+    {
+      "_id": "6526d02310fa0e0141ace8f6",
+      "created": "2023-06-15T03:34:36.914Z",
+      "createdBy": "mike.elrom@itential.com",
+      "lastUpdated": "2023-10-31T21:09:02.322Z",
+      "lastUpdatedBy": "chris.calloway@itential.com",
+      "name": "Rejected Traffic Trigger",
+      "type": "endpoint",
+      "enabled": true,
+      "actionType": "automations",
+      "actionId": "648a86b1ef88ae00e584c18f",
+      "description": "",
+      "verb": "POST",
+      "routeName": "test-webhook",
+      "schema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      },
+      "jst": null,
+      "migrationVersion": 2
+    }
+  ]
+}

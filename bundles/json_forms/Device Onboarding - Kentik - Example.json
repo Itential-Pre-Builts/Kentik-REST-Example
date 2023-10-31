@@ -1,0 +1,476 @@
+{
+  "id": "650deb7bc3bb0900c56fcf48",
+  "created": "2023-09-22T19:31:07.384Z",
+  "createdBy": "chris.calloway@itential.com",
+  "lastUpdated": "2023-10-31T21:09:02.227Z",
+  "lastUpdatedBy": "chris.calloway@itential.com",
+  "name": "Device Onboarding - Kentik - Example",
+  "description": "",
+  "struct": {
+    "type": "array",
+    "items": [
+      {
+        "nodeId": "c10b70ba-7714-41ce-8dc1-8918c67de15d",
+        "type": "string",
+        "title": "Device",
+        "description": "Select a Cisco IOS device to onboard to Kentik",
+        "placeholder": "Select a Cisco IOS device to onboard to Kentik",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "customKey": "deviceName",
+        "readOnly": false,
+        "method": "POST",
+        "uniqueItems": false,
+        "base": "/configuration_manager",
+        "originalHref": "/devices/ ",
+        "href": "/devices/ ",
+        "body": {
+          "options": {
+            "filter": {
+              "name": "",
+              "ostype": "cisco-ios"
+            },
+            "start": 0,
+            "limit": 10000,
+            "sort": [
+              {
+                "name": 1
+              }
+            ],
+            "order": "ascending"
+          }
+        },
+        "sourcePointer": "/list",
+        "sourceKeyPointer": "/name",
+        "labelKeyPointer": "",
+        "helper": "Select a Cisco IOS device to onboard to Kentik"
+      },
+      {
+        "nodeId": "279d1a52-86d3-41b0-b157-52a2fc885381",
+        "type": "string",
+        "title": "IAP URL",
+        "description": "IAP URL to use for hyperlink in ServiceNow and MS Teams to job for onboarding device",
+        "placeholder": "Enter IAP URL for ServiceNow hyperlink",
+        "required": true,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default",
+        "customKey": false,
+        "disabled": false,
+        "readonly": false,
+        "helper": "IAP URL to use for hyperlink in ServiceNow and MS Teams to job for onboarding device. For example, https://iap_01:3443",
+        "default": "",
+        "href": null,
+        "base": null,
+        "sourceKeyPointer": null,
+        "sourcePointer": null,
+        "method": null,
+        "transformation": null
+      },
+      {
+        "nodeId": "cd8b5983-b2e5-4b0a-b3e1-1b33ca85175b",
+        "type": "string",
+        "title": "ServiceNow URL",
+        "description": "",
+        "placeholder": "Enter ServiceNow URL for MS Teams notification message",
+        "required": true,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default",
+        "helper": "ServiceNow URL for MS Teams notification message. For example, https://servicenow_dev.com"
+      },
+      {
+        "nodeId": "fb4ee7a3-5ace-41a9-a06a-da47eee459af",
+        "type": "string",
+        "title": "ServiceNow Adapter",
+        "description": "Select ServiceNow adapter to use for job",
+        "placeholder": "Select ServiceNow adapter to use for job",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "method": "GET",
+        "uniqueItems": false,
+        "base": "/adapters",
+        "href": "/ ",
+        "originalHref": "/:name",
+        "sourcePointer": "/results",
+        "sourceKeyPointer": "/data/name",
+        "variables": [],
+        "customKey": false,
+        "helper": "Select ServiceNow adapter to use for job"
+      },
+      {
+        "nodeId": "4f9e321a-a775-400e-8376-8ed20bc8470e",
+        "type": "string",
+        "title": "NetBox Adapter",
+        "description": "Select NetBox adapter to use for job",
+        "placeholder": "Select NetBox adapter to use for job",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "helper": "Select NetBox adapter to use for job",
+        "method": "GET",
+        "uniqueItems": false,
+        "base": "/adapters",
+        "originalHref": "/:name",
+        "href": "/ ",
+        "sourcePointer": "/results",
+        "sourceKeyPointer": "/data/name"
+      },
+      {
+        "nodeId": "29e494c4-40c1-4039-977f-3559e0544290",
+        "type": "string",
+        "title": "MS Teams Adapter",
+        "description": "Select MS Teams adapter to use for job",
+        "placeholder": "Select MS Teams adapter to use for job",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "helper": "Select MS Teams adapter to use for job",
+        "method": "GET",
+        "uniqueItems": false,
+        "base": "/adapters",
+        "originalHref": "/:name",
+        "href": "/ ",
+        "sourcePointer": "/results",
+        "sourceKeyPointer": "/data/name"
+      },
+      {
+        "nodeId": "d4953942-223b-4025-92f0-4b004b78ecd5",
+        "type": "string",
+        "title": "Kentik Adapter",
+        "description": "Select Kentik adapter to use for job",
+        "placeholder": "Select Kentik adapter to use for job",
+        "required": true,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "helper": "Select Kentik adapter to use for job",
+        "method": "GET",
+        "uniqueItems": false,
+        "base": "/adapters",
+        "originalHref": "/:name",
+        "href": "/ ",
+        "sourcePointer": "/results",
+        "sourceKeyPointer": "/data/name"
+      },
+      {
+        "nodeId": "1c252b04-f1fb-482e-8890-81f488c03727",
+        "type": "string",
+        "title": "Device Onboarding Webhook URL",
+        "description": "",
+        "placeholder": "Enter MS Teams Incoming Webhook URL for Device Onboarding channel",
+        "required": true,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default",
+        "default": "",
+        "helper": "MS Teams Incoming Webhook URL for Device Onboarding channel. See https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet#create-incoming-webhooks-1 for more information about creating Incoming Webhooks in MS Teams",
+        "disabled": false,
+        "readonly": false,
+        "href": null,
+        "base": null,
+        "sourceKeyPointer": null,
+        "sourcePointer": null,
+        "method": null,
+        "transformation": null
+      }
+    ]
+  },
+  "schema": {
+    "title": "Device Onboarding - Kentik - Example",
+    "description": "",
+    "type": "object",
+    "required": [
+      "deviceName",
+      "iapUrl",
+      "serviceNowUrl",
+      "serviceNowAdapter",
+      "netBoxAdapter",
+      "msTeamsAdapter",
+      "kentikAdapter",
+      "deviceOnboardingWebhookUrl"
+    ],
+    "properties": {
+      "deviceName": {
+        "type": "string",
+        "title": "Device",
+        "_id": "/properties/deviceName",
+        "description": "Select a Cisco IOS device to onboard to Kentik",
+        "enum": [],
+        "enumNames": []
+      },
+      "iapUrl": {
+        "type": "string",
+        "title": "IAP URL",
+        "_id": "/properties/iapUrl",
+        "description": "IAP URL to use for hyperlink in ServiceNow and MS Teams to job for onboarding device",
+        "default": ""
+      },
+      "serviceNowUrl": {
+        "type": "string",
+        "title": "ServiceNow URL",
+        "_id": "/properties/serviceNowUrl",
+        "description": ""
+      },
+      "serviceNowAdapter": {
+        "type": "string",
+        "title": "ServiceNow Adapter",
+        "_id": "/properties/serviceNowAdapter",
+        "description": "Select ServiceNow adapter to use for job",
+        "enum": [],
+        "enumNames": []
+      },
+      "netBoxAdapter": {
+        "type": "string",
+        "title": "NetBox Adapter",
+        "_id": "/properties/netBoxAdapter",
+        "description": "Select NetBox adapter to use for job",
+        "enum": [],
+        "enumNames": []
+      },
+      "msTeamsAdapter": {
+        "type": "string",
+        "title": "MS Teams Adapter",
+        "_id": "/properties/msTeamsAdapter",
+        "description": "Select MS Teams adapter to use for job",
+        "enum": [],
+        "enumNames": []
+      },
+      "kentikAdapter": {
+        "type": "string",
+        "title": "Kentik Adapter",
+        "_id": "/properties/kentikAdapter",
+        "description": "Select Kentik adapter to use for job",
+        "enum": [],
+        "enumNames": []
+      },
+      "deviceOnboardingWebhookUrl": {
+        "type": "string",
+        "title": "Device Onboarding Webhook URL",
+        "_id": "/properties/deviceOnboardingWebhookUrl",
+        "description": "",
+        "default": ""
+      }
+    }
+  },
+  "uiSchema": {
+    "deviceName": {
+      "ui:placeholder": "Select a Cisco IOS device to onboard to Kentik",
+      "ui:help": "Select a Cisco IOS device to onboard to Kentik"
+    },
+    "iapUrl": {
+      "ui:placeholder": "Enter IAP URL for ServiceNow hyperlink",
+      "ui:help": "IAP URL to use for hyperlink in ServiceNow and MS Teams to job for onboarding device. For example, https://iap_01:3443"
+    },
+    "serviceNowUrl": {
+      "ui:placeholder": "Enter ServiceNow URL for MS Teams notification message",
+      "ui:help": "ServiceNow URL for MS Teams notification message. For example, https://servicenow_dev.com"
+    },
+    "serviceNowAdapter": {
+      "ui:placeholder": "Select ServiceNow adapter to use for job",
+      "ui:help": "Select ServiceNow adapter to use for job"
+    },
+    "netBoxAdapter": {
+      "ui:placeholder": "Select NetBox adapter to use for job",
+      "ui:help": "Select NetBox adapter to use for job"
+    },
+    "msTeamsAdapter": {
+      "ui:placeholder": "Select MS Teams adapter to use for job",
+      "ui:help": "Select MS Teams adapter to use for job"
+    },
+    "kentikAdapter": {
+      "ui:placeholder": "Select Kentik adapter to use for job",
+      "ui:help": "Select Kentik adapter to use for job"
+    },
+    "deviceOnboardingWebhookUrl": {
+      "ui:placeholder": "Enter MS Teams Incoming Webhook URL for Device Onboarding channel",
+      "ui:help": "MS Teams Incoming Webhook URL for Device Onboarding channel. See https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet#create-incoming-webhooks-1 for more information about creating Incoming Webhooks in MS Teams"
+    }
+  },
+  "bindingSchema": {
+    "properties": {
+      "deviceName": {
+        "binding:method": "POST",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:body": {
+          "options": {
+            "filter": {
+              "name": "",
+              "ostype": "cisco-ios"
+            },
+            "start": 0,
+            "limit": 10000,
+            "sort": [
+              {
+                "name": 1
+              }
+            ],
+            "order": "ascending"
+          }
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/configuration_manager",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/devices/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/list",
+          "keyPointer": "/name"
+        }
+      },
+      "serviceNowAdapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/adapters",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/data/name"
+        }
+      },
+      "netBoxAdapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/adapters",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/data/name"
+        }
+      },
+      "msTeamsAdapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/adapters",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/data/name"
+        }
+      },
+      "kentikAdapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/adapters",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/data/name"
+        }
+      }
+    }
+  },
+  "validationSchema": {},
+  "version": "2020.1"
+}

@@ -1,0 +1,141 @@
+{
+  "id": "649e07e65874d100a9c27745",
+  "created": "2023-06-29T22:38:30.293Z",
+  "createdBy": "chris.calloway@itential.com",
+  "lastUpdated": "2023-10-31T21:09:02.226Z",
+  "lastUpdatedBy": "chris.calloway@itential.com",
+  "name": "AWS Blocked Traffic Event - Reset - Kentik Example",
+  "description": "",
+  "struct": {
+    "type": "array",
+    "items": [
+      {
+        "nodeId": "3a57efed-da4d-4a5b-bcc6-a3f39fd10f07",
+        "type": "string",
+        "title": "Source IP",
+        "description": "",
+        "placeholder": "Enter source IP",
+        "required": false,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default",
+        "customKey": "sourceIP",
+        "format": "ipv4"
+      },
+      {
+        "nodeId": "4b3a56ed-88d7-44b6-9f25-bbeb497fbe55",
+        "type": "string",
+        "title": "AWS EC2 Adapter",
+        "description": "Adapter to use to connect to AWS",
+        "placeholder": "Select adapter to use to connect to AWS",
+        "required": false,
+        "enum": [],
+        "enumNames": [],
+        "binding": true,
+        "rel": "collection",
+        "targetPointer": "/enum",
+        "customKey": "awsEC2Adapter",
+        "helper": "Adapter to use to connect to AWS",
+        "method": "GET",
+        "uniqueItems": false,
+        "base": "/adapters",
+        "originalHref": "/:name",
+        "href": "/ ",
+        "sourcePointer": "/results",
+        "sourceKeyPointer": "/data/name"
+      },
+      {
+        "nodeId": "51211815-79e0-45e5-81a2-be07211bfcfd",
+        "type": "string",
+        "title": "AWS Security Group",
+        "description": "AWS security group to update to remove allowed source IP",
+        "placeholder": "Enter AWS security group to update",
+        "required": false,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default",
+        "customKey": "awsSecurityGroup",
+        "helper": "AWS security group to update to remove allowed source IP"
+      }
+    ]
+  },
+  "schema": {
+    "title": "AWS Blocked Traffic Event - Reset - Kentik Example",
+    "description": "",
+    "type": "object",
+    "required": [],
+    "properties": {
+      "sourceIP": {
+        "type": "string",
+        "title": "Source IP",
+        "_id": "/properties/sourceIP",
+        "description": "",
+        "format": "ipv4"
+      },
+      "awsEC2Adapter": {
+        "type": "string",
+        "title": "AWS EC2 Adapter",
+        "_id": "/properties/awsEC2Adapter",
+        "description": "Adapter to use to connect to AWS",
+        "enum": [],
+        "enumNames": []
+      },
+      "awsSecurityGroup": {
+        "type": "string",
+        "title": "AWS Security Group",
+        "_id": "/properties/awsSecurityGroup",
+        "description": "AWS security group to update to remove allowed source IP"
+      }
+    }
+  },
+  "uiSchema": {
+    "sourceIP": {
+      "ui:placeholder": "Enter source IP"
+    },
+    "awsEC2Adapter": {
+      "ui:placeholder": "Select adapter to use to connect to AWS",
+      "ui:help": "Adapter to use to connect to AWS"
+    },
+    "awsSecurityGroup": {
+      "ui:placeholder": "Enter AWS security group to update",
+      "ui:help": "AWS security group to update to remove allowed source IP"
+    }
+  },
+  "bindingSchema": {
+    "properties": {
+      "awsEC2Adapter": {
+        "binding:method": "GET",
+        "binding:link": {
+          "$ref": "/links",
+          "rel": "collection"
+        },
+        "binding:target": {
+          "propertyPointer": "/enum"
+        },
+        "binding:hyperSchema": {
+          "type": "object",
+          "base": "/adapters",
+          "links": [
+            {
+              "rel": "collection",
+              "href": "/ ",
+              "targetMediaType": "application/json",
+              "targetSchema": {
+                "$ref": "#"
+              },
+              "variables": []
+            }
+          ]
+        },
+        "binding:source": {
+          "propertyPointer": "/results",
+          "keyPointer": "/data/name"
+        }
+      }
+    }
+  },
+  "validationSchema": {},
+  "version": "2020.1"
+}

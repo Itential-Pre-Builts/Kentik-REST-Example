@@ -1,0 +1,580 @@
+{
+  "name": "Create Device - Kentik",
+  "tasks": {
+    "3598": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Device",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.device",
+          "obj": "$var.07a6.result"
+        },
+        "outgoing": {
+          "return_data": "$var.job.device"
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 396,
+        "y": -468
+      }
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "nodeLocation": {
+        "x": -792,
+        "y": -468
+      },
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "nodeLocation": {
+        "x": 636,
+        "y": -468
+      },
+      "x": 1,
+      "y": 0.5
+    },
+    "07a6": {
+      "name": "createDevice",
+      "canvasName": "createDevice",
+      "summary": "Create Device",
+      "description": "Creates and returns a device object containing information about an individual device (see  About Devices ). * Required fields. ** Conditionally required fields.",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "body": "$var.6a97.devicePayload",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": null
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 84,
+        "y": -468
+      }
+    },
+    "89a2": {
+      "name": "findSites",
+      "canvasName": "findSites",
+      "summary": "List Sites",
+      "description": "Returns an array of site objects, each of which contains information about an individual site (see  About Sites ). * Required fields.",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -552,
+        "y": -468
+      }
+    },
+    "6a97": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Device Onboarding - Kentik JST",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "64f3937db3e59e00cc64337a",
+          "variableMap": {
+            "name": "$var.job.name",
+            "type": "$var.job.type",
+            "description": "$var.job.description",
+            "planId": "$var.job.planId",
+            "sampleRate": "$var.job.sampleRate",
+            "sendingIPs": "$var.job.sendingIPs",
+            "snmpIP": "$var.job.snmpIP",
+            "snmpCommunity": "$var.job.snmpCommunity",
+            "snmpConfUsername": "$var.job.snmpConfUsername",
+            "snmpConfAuthenticationProtocol": "$var.job.snmpConfAuthenticationProtocol",
+            "snmpConfAuthenticationPassphrase": "$var.job.snmpConfAuthenticationPassphrase",
+            "snmpPrivacyProtocol": "$var.job.snmpPrivacyProtocol",
+            "snmpPrivacyPassphrase": "$var.job.snmpPrivacyPassphrase",
+            "bgpType": "$var.job.bgpType",
+            "bgpNeighborIP": "$var.job.bgpNeighborIP",
+            "bgpNeighborIP6": "$var.job.bgpNeighborIP6",
+            "bgpNeighborASN": "$var.job.bgpNeighborASN",
+            "bgpNeighborPassword": "$var.job.bgpNeighborPassword",
+            "siteInfo": "$var.89a2.result",
+            "siteName": "$var.job.siteName"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": false,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "devicePayload": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": -240,
+        "y": -468
+      }
+    }
+  },
+  "transitions": {
+    "3598": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_start": {
+      "89a2": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_end": {},
+    "07a6": {
+      "3598": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "89a2": {
+      "6a97": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "6a97": {
+      "07a6": {
+        "state": "success",
+        "type": "standard"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "name": {
+        "$id": "name",
+        "type": "string",
+        "examples": [
+          "test-device"
+        ]
+      },
+      "type": {
+        "$id": "type",
+        "type": "string",
+        "examples": [
+          "router"
+        ]
+      },
+      "description": {
+        "$id": "description",
+        "type": "string",
+        "examples": [
+          "my device"
+        ]
+      },
+      "planId": {
+        "$id": "planId",
+        "type": "integer",
+        "examples": [
+          44662
+        ]
+      },
+      "sampleRate": {
+        "$id": "sampleRate",
+        "type": "integer",
+        "examples": [
+          1
+        ]
+      },
+      "sendingIPs": {
+        "$id": "sendingIPs",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "examples": [
+            "192.168.178.1"
+          ],
+          "format": "ipv4"
+        }
+      },
+      "snmpIP": {
+        "$id": "snmpIP",
+        "type": "string",
+        "examples": [
+          "192.168.178.1"
+        ],
+        "format": "ipv4"
+      },
+      "snmpCommunity": {
+        "$id": "snmpCommunity",
+        "type": "string",
+        "examples": [
+          "kentikSNMP"
+        ]
+      },
+      "snmpConfUsername": {
+        "$id": "snmpConfUsername",
+        "type": "string",
+        "examples": [
+          "kentik"
+        ]
+      },
+      "snmpConfAuthenticationProtocol": {
+        "$id": "snmpConfAuthenticationProtocol",
+        "type": "string",
+        "examples": [
+          "SHA"
+        ]
+      },
+      "snmpConfAuthenticationPassphrase": {
+        "$id": "snmpConfAuthenticationPassphrase",
+        "type": "string",
+        "examples": [
+          "Pass"
+        ]
+      },
+      "snmpPrivacyProtocol": {
+        "$id": "snmpPrivacyProtocol",
+        "type": "string",
+        "examples": [
+          "AES"
+        ]
+      },
+      "snmpPrivacyPassphrase": {
+        "$id": "snmpPrivacyPassphrase",
+        "type": "string",
+        "examples": [
+          "AESPassword"
+        ]
+      },
+      "bgpType": {
+        "$id": "bgpType",
+        "type": "string",
+        "examples": [
+          "device"
+        ]
+      },
+      "bgpNeighborIP": {
+        "$id": "bgpNeighborIP",
+        "type": "string",
+        "examples": [
+          "209.1.1.1"
+        ],
+        "format": "ipv4"
+      },
+      "bgpNeighborIP6": {
+        "$id": "bgpNeighborIP6",
+        "type": "string",
+        "examples": [
+          "ff44::ffff"
+        ],
+        "format": "ipv6"
+      },
+      "bgpNeighborASN": {
+        "$id": "bgpNeighborASN",
+        "type": "string",
+        "examples": [
+          "1"
+        ]
+      },
+      "bgpNeighborPassword": {
+        "$id": "bgpNeighborPassword",
+        "type": "string",
+        "examples": [
+          "pass"
+        ]
+      },
+      "siteName": {
+        "$id": "siteName",
+        "type": "string",
+        "examples": [
+          "mySite"
+        ]
+      }
+    },
+    "required": [
+      "adapterId",
+      "name",
+      "type",
+      "description",
+      "planId",
+      "sampleRate",
+      "sendingIPs",
+      "snmpIP",
+      "snmpCommunity",
+      "snmpConfUsername",
+      "snmpConfAuthenticationProtocol",
+      "snmpConfAuthenticationPassphrase",
+      "snmpPrivacyProtocol",
+      "snmpPrivacyPassphrase",
+      "bgpType",
+      "bgpNeighborIP",
+      "bgpNeighborIP6",
+      "bgpNeighborASN",
+      "bgpNeighborPassword",
+      "siteName"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "name": {
+        "$id": "name",
+        "type": "string",
+        "examples": [
+          "test-device"
+        ]
+      },
+      "type": {
+        "$id": "type",
+        "type": "string",
+        "examples": [
+          "router"
+        ]
+      },
+      "description": {
+        "$id": "description",
+        "type": "string",
+        "examples": [
+          "my device"
+        ]
+      },
+      "planId": {
+        "$id": "planId",
+        "type": "integer",
+        "examples": [
+          44662
+        ]
+      },
+      "sampleRate": {
+        "$id": "sampleRate",
+        "type": "integer",
+        "examples": [
+          1
+        ]
+      },
+      "sendingIPs": {
+        "$id": "sendingIPs",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "examples": [
+            "192.168.178.1"
+          ],
+          "format": "ipv4"
+        }
+      },
+      "snmpIP": {
+        "$id": "snmpIP",
+        "type": "string",
+        "examples": [
+          "192.168.178.1"
+        ],
+        "format": "ipv4"
+      },
+      "snmpCommunity": {
+        "$id": "snmpCommunity",
+        "type": "string",
+        "examples": [
+          "kentikSNMP"
+        ]
+      },
+      "snmpConfUsername": {
+        "$id": "snmpConfUsername",
+        "type": "string",
+        "examples": [
+          "kentik"
+        ]
+      },
+      "snmpConfAuthenticationProtocol": {
+        "$id": "snmpConfAuthenticationProtocol",
+        "type": "string",
+        "examples": [
+          "SHA"
+        ]
+      },
+      "snmpConfAuthenticationPassphrase": {
+        "$id": "snmpConfAuthenticationPassphrase",
+        "type": "string",
+        "examples": [
+          "Pass"
+        ]
+      },
+      "snmpPrivacyProtocol": {
+        "$id": "snmpPrivacyProtocol",
+        "type": "string",
+        "examples": [
+          "AES"
+        ]
+      },
+      "snmpPrivacyPassphrase": {
+        "$id": "snmpPrivacyPassphrase",
+        "type": "string",
+        "examples": [
+          "AESPassword"
+        ]
+      },
+      "bgpType": {
+        "$id": "bgpType",
+        "type": "string",
+        "examples": [
+          "device"
+        ]
+      },
+      "bgpNeighborIP": {
+        "$id": "bgpNeighborIP",
+        "type": "string",
+        "examples": [
+          "209.1.1.1"
+        ],
+        "format": "ipv4"
+      },
+      "bgpNeighborIP6": {
+        "$id": "bgpNeighborIP6",
+        "type": "string",
+        "examples": [
+          "ff44::ffff"
+        ],
+        "format": "ipv6"
+      },
+      "bgpNeighborASN": {
+        "$id": "bgpNeighborASN",
+        "type": "string",
+        "examples": [
+          "1"
+        ]
+      },
+      "bgpNeighborPassword": {
+        "$id": "bgpNeighborPassword",
+        "type": "string",
+        "examples": [
+          "pass"
+        ]
+      },
+      "siteName": {
+        "$id": "siteName",
+        "type": "string",
+        "examples": [
+          "mySite"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "device": {
+        "title": "return_data",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "object"
+          },
+          {
+            "type": "array"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "examples": [
+          "value"
+        ]
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "errorHandler": null,
+  "preAutomationTime": 0,
+  "sla": 0,
+  "outputData": {},
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.46.0-2023.1.14.0",
+  "last_updated": "2023-10-31T21:09:02.038Z",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "created": "2023-09-02T20:18:00.957Z",
+  "canvasVersion": 3,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

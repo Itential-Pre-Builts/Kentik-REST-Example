@@ -1,0 +1,539 @@
+{
+  "name": "Device Flow Test - Kentik",
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1152,
+        "y": -96
+      },
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "nodeLocation": {
+        "x": 4620,
+        "y": -96
+      },
+      "x": 1,
+      "y": 0.5
+    },
+    "efe2": {
+      "name": "genericAdapterRequestNoBasePath",
+      "canvasName": "genericAdapterRequestNoBasePath",
+      "summary": "Get Flow Summary",
+      "description": "Makes the requested generic call",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "uriPath": "/api/ui/devices/non-cloud-status",
+          "restMethod": "GET",
+          "queryData": "",
+          "requestBody": "",
+          "addlHeaders": "",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2436,
+        "y": -96
+      }
+    },
+    "3cde": {
+      "name": "makeData",
+      "canvasName": "makeData",
+      "summary": "Query Filter",
+      "description": "This task takes an input and converts it to a different data type. For example, converting a number into a string.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Tools",
+      "variables": {
+        "incoming": {
+          "input": "response[<!id!>].metadata.status",
+          "outputType": "string",
+          "variables": "$var.275c.return_data"
+        },
+        "outgoing": {
+          "output": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2100,
+        "y": -96
+      }
+    },
+    "275c": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Device",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "response.device",
+          "obj": "$var.6ce0.result"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1764,
+        "y": -96
+      }
+    },
+    "c4ab": {
+      "name": "evaluation",
+      "canvasName": "evaluation",
+      "summary": "Eval Time Diff",
+      "description": "Run an evaluation",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "all_true_flag": false,
+          "evaluation_groups": [
+            {
+              "all_true_flag": false,
+              "evaluations": [
+                {
+                  "operand_1": {
+                    "task": "6f53",
+                    "variable": "timeDiff"
+                  },
+                  "operand_2": {
+                    "task": "static",
+                    "variable": 0
+                  },
+                  "operator": ">=",
+                  "query": "milliseconds",
+                  "rightQuery": ""
+                }
+              ]
+            }
+          ]
+        },
+        "outgoing": {
+          "return_value": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 4056,
+        "y": -96
+      }
+    },
+    "f120": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query Flow Summary",
+      "description": "Query flow summary to find data for device",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "$var.3cde.output",
+          "obj": "$var.efe2.result"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2748,
+        "y": -96
+      }
+    },
+    "6ce0": {
+      "name": "findDevice",
+      "canvasName": "findDevice",
+      "summary": "findDevice",
+      "description": "Returns a device object containing information about an individual device (see  About Devices ). * Required fields.",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "deviceId": "$var.job.deviceName",
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1440,
+        "y": -96
+      }
+    },
+    "6f53": {
+      "name": "calculateTimeDiff",
+      "canvasName": "calculateTimeDiff",
+      "summary": "Calculate time difference",
+      "description": "Subtracts the difference between two given times and returns the result between them as a duration.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Time",
+      "variables": {
+        "incoming": {
+          "firstTime": "$var.35e4.merged_object",
+          "secondTime": "$var.job.startTime"
+        },
+        "outgoing": {
+          "timeDiff": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 3732,
+        "y": -96
+      }
+    },
+    "988b": {
+      "name": "query",
+      "canvasName": "query",
+      "summary": "Query flow last seen",
+      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "pass_on_null": false,
+          "query": "flow_last_seen",
+          "obj": "$var.f120.return_data"
+        },
+        "outgoing": {
+          "return_data": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 3072,
+        "y": -96
+      }
+    },
+    "35e4": {
+      "name": "merge",
+      "canvasName": "merge",
+      "summary": "Merge Data",
+      "description": "Merge data into a single object",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "data_to_merge": [
+            {
+              "key": "time",
+              "value": {
+                "task": "988b",
+                "variable": "return_data"
+              }
+            },
+            {
+              "key": "formatString",
+              "value": {
+                "task": "static",
+                "variable": "YYYY-MM-DDTHH:mm:ss.SSSZ"
+              }
+            }
+          ]
+        },
+        "outgoing": {
+          "merged_object": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 3396,
+        "y": -96
+      }
+    },
+    "926b": {
+      "name": "makeData",
+      "canvasName": "makeData",
+      "summary": "Test Result",
+      "description": "This task takes an input and converts it to a different data type. For example, converting a number into a string.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Tools",
+      "variables": {
+        "incoming": {
+          "input": "pass",
+          "outputType": "string",
+          "variables": ""
+        },
+        "outgoing": {
+          "output": "$var.job.testResult"
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 4368,
+        "y": -192
+      }
+    },
+    "93a8": {
+      "name": "makeData",
+      "canvasName": "makeData",
+      "summary": "Test Result",
+      "description": "This task takes an input and converts it to a different data type. For example, converting a number into a string.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Tools",
+      "variables": {
+        "incoming": {
+          "input": "fail",
+          "outputType": "string",
+          "variables": ""
+        },
+        "outgoing": {
+          "output": "$var.job.testResult"
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 4368,
+        "y": 0
+      }
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "6ce0": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "workflow_end": {},
+    "efe2": {
+      "f120": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "3cde": {
+      "efe2": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "275c": {
+      "3cde": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "c4ab": {
+      "926b": {
+        "state": "success",
+        "type": "standard"
+      },
+      "93a8": {
+        "type": "standard",
+        "state": "failure"
+      }
+    },
+    "f120": {
+      "988b": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "6ce0": {
+      "275c": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "6f53": {
+      "c4ab": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "988b": {
+      "35e4": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "35e4": {
+      "6f53": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "926b": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "93a8": {
+      "workflow_end": {
+        "state": "success",
+        "type": "standard"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "deviceName": {
+        "title": "deviceId",
+        "type": "number"
+      },
+      "startTime": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      }
+    },
+    "required": [
+      "adapterId",
+      "deviceName",
+      "startTime"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "adapterId": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "deviceName": {
+        "title": "deviceId",
+        "type": "number"
+      },
+      "startTime": {
+        "type": [
+          "array",
+          "boolean",
+          "null",
+          "number",
+          "object",
+          "string"
+        ]
+      },
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      },
+      "testResult": {
+        "title": "output",
+        "type": [
+          "array",
+          "string",
+          "boolean",
+          "number",
+          "object"
+        ]
+      }
+    }
+  },
+  "type": "automation",
+  "font_size": 12,
+  "errorHandler": null,
+  "preAutomationTime": 0,
+  "sla": 0,
+  "outputData": {},
+  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "created_by": {
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "createdVersion": "5.46.0-2023.1.21",
+  "last_updated": "2023-10-31T21:09:02.042Z",
+  "last_updated_by": {
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
+    "inactive": false
+  },
+  "created": "2023-09-25T18:24:15.198Z",
+  "canvasVersion": 3,
+  "tags": [],
+  "groups": [],
+  "migrationVersion": 2
+}

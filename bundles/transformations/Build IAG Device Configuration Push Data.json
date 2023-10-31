@@ -1,0 +1,149 @@
+{
+  "_id": "654104d02c883d00f315fdd1",
+  "name": "Build IAG Device Configuration Push Data",
+  "description": "Builds inputs for pushing configuration to device over IAG",
+  "incoming": [
+    {
+      "$id": "renderedJinja2Template",
+      "type": "object",
+      "properties": {
+        "renderedTemplate": {
+          "type": "string",
+          "examples": [
+            "banner"
+          ]
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "deviceName",
+      "type": "string",
+      "examples": [
+        "deviceName"
+      ]
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "configurationArray",
+      "type": "array"
+    },
+    {
+      "$id": "deviceArray",
+      "type": "array"
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "declaration",
+      "library": "Array",
+      "method": "new Array",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      },
+      "context": "#",
+      "polymorphIndex": 0
+    },
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "deviceName",
+        "ptr": ""
+      },
+      "to": {
+        "location": "declaration",
+        "name": 1,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 3,
+      "type": "declaration",
+      "library": "Array",
+      "method": "new Array",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 1
+      },
+      "context": "#",
+      "polymorphIndex": 0
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "renderedJinja2Template",
+        "ptr": "/renderedTemplate"
+      },
+      "to": {
+        "location": "declaration",
+        "name": 3,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 3,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "configurationArray",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "declaration",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "deviceArray",
+        "ptr": ""
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 1,
+    "row": 5
+  },
+  "created": "2023-10-31T21:09:01.981Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.981Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

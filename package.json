@@ -1,7 +1,6 @@
 {
-  "name": "@itentialopensource/artifact-template",
-  "version": "0.0.0",
-  "description": "Template for creating new artifacts",
+  "version": "0.0.1",
+  "description": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
   "scripts": {
     "setup-hooks": "sh ./scripts/setup-hooks.sh",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,16 +12,12 @@
     "test:integration": "cypress run --config-file ./test/cypress.json --spec \"./test/cypress/integration/cypressTests.spec.js\"",
     "cypress:open": "cypress open --config-file ./test/cypress.json"
   },
-  "repository": {
-    "type": "gitlab",
-    "hostname": "gitlab.com",
-    "path": "itentialopensource/pre-built-automations"
-  },
   "keywords": [
     "Itential",
     "IAP"
   ],
   "contributors": [
+    "Itential",
     "Itential"
   ],
   "author": "Itential",
@@ -41,5 +36,21 @@
     "mocha-junit-reporter": "^2.0.2",
     "r2": "^2.0.1"
   },
-  "IAPDependencies": {}
+  "IAPCategories": [],
+  "repository": {
+    "type": "gitlab",
+    "hostname": "gitlab.com",
+    "path": "itentialopensource/pre-built-automations"
+  },
+  "IAPDependencies": {
+    "@itential/app-operations_manager": "",
+    "@itential/app-json_forms": "",
+    "@itential/app-workflow_engine": "",
+    "@itentialopensource/adapter-aws_ec2": "",
+    "@itentialopensource/adapter-kentik_v5": "",
+    "@itentialopensource/adapter-netbox_v33": "",
+    "@itentialopensource/adapter-servicenow": "",
+    "@itentialopensource/adapter-msteams": ""
+  },
+  "name": "@itentialopensource/kentik-rest-example"
 }

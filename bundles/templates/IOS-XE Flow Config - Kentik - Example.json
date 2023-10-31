@@ -1,0 +1,28 @@
+{
+  "_id": "64ff5f12285e4a009f064820",
+  "command": "",
+  "template": "conf t\n\nsnmp-server community {{snmpCommunity}} RO \n\n! if using a specific netflow records\n! else use netflow-original which comes by default\nflow record {{customFlowRecord}}\n    match ipv4 tos\n    match ipv4 protocol\n    match ipv4 source address\n    match ipv4 destination address\n    match transport source-port\n    match transport destination-port\n    match interface input\n    collect routing source as\n    collect routing destination as\n    collect routing next-hop address ipv4\n    collect transport tcp flags\n    collect interface output\n    collect counter bytes\n    collect counter packets\n    collect timestamp sys-uptime first\n    collect timestamp sys-uptime last\n!\nsampler {{netflowSampler}}\n    mode random 1 out-of {{deviceSampleRate+1}}\n!\nflow exporter {{exporter}}\n    ! Direct export to Kentik Flow Ingest (without Flow Proxy)\n    description {{publicFlowIngestDescription}}\n    destination {{kentikIngestIP}} {% if vrfName %}vrf {{vrfName}}{% endif %} \n    source {{sourceInterface}}\n    transport udp {{kentikIngestUDPPort}}\n    version 9\n!\n!\nflow monitor {{flowMonitor}}\n    exporter {{exporter}}\n    cache timeout inactive 10\n    cache timeout active 60\n    ! if using custom Netflow records\n    record {{customFlowRecord}}\n    ! if using standard default Netflow records\n    record netflow-original\nexit\n{% for i in sourceInterfaces %}\ninterface {{i}}\n    ip flow monitor {{flowMonitor}} input\n{% endfor %}\n\n{% if vrfName %} \n! Add a route to Kentik Ingest IP if in the <vrfName> in case it has no route to it\nip route vrf {{vrfName}} {{kentikIngestIP}} 255.255.255.255 {{vrfGatewayIP}}\n{% endif %} \n\nexit\n\n",
+  "type": "jinja2",
+  "name": "IOS-XE Flow Config - Kentik - Example",
+  "version": 1,
+  "tags": [],
+  "data": "{\n  \"snmpCommunity\": \"kentikSNMP\",\n  \"customFlowRecord\": \"itential-flow\",\n  \"netflowSampler\": \"itential-sampler\",\n  \"deviceSampleRate\": 1,\n  \"exporter\": \"itential-exporter\",\n  \"publicFlowIngestDescription\": \"4e076f80f88b4e089de43072\",\n  \"kentikIngestIP\": \"208.76.14.230\",\n  \"kentikIngestUDPPort\": \"20013\",\n  \"vrfName\": \"itential-vrf\",\n  \"vrfGatewayIP\": \"10.10.10.10\",\n  \"flowMonitor\": \"itential-monitor\",\n  \"sourceInterface\":\"GigabitEthernet1\",\n  \"sourceInterfaces\": [\n    \"GigabitEthernet1\",\n    \"GigabitEthernet1.33\"\n  ]\n}",
+  "group": "Kentik",
+  "description": "https://github.com/kentik/config-snippets/blob/0a48bdcb627a68c6bc2a7d7736012eeb341557bc/Cisco/IOS-XE/netflow-9.conf",
+  "created": "2023-10-26T17:40:18.940Z",
+  "lastUpdated": "2023-10-31T21:09:02.113Z",
+  "createdBy": {
+    "_id": "64c196af3ad306006949326f",
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  },
+  "lastUpdatedBy": {
+    "_id": "64c196af3ad306006949326f",
+    "provenance": "CloudAAA",
+    "username": "mike.elrom@itential.com",
+    "firstname": "Michael",
+    "inactive": false
+  }
+}

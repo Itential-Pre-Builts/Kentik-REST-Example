@@ -1,0 +1,107 @@
+{
+  "_id": "650b63ef64654800d3248063",
+  "name": "Device ID to Netbox Asset Tag - Kentik - Example",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "netboxDevice",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "examples": [
+            3
+          ]
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "kentikDevice",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "examples": [
+            "167024"
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "netboxId",
+      "type": "integer",
+      "examples": [
+        3
+      ]
+    },
+    {
+      "$id": "netboxDevice",
+      "type": "object",
+      "properties": {
+        "asset_tag": {
+          "type": "string",
+          "examples": [
+            "123"
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "netboxDevice",
+        "ptr": "/id"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "netboxId",
+        "ptr": ""
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "kentikDevice",
+        "ptr": "/id"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "netboxDevice",
+        "ptr": "/asset_tag"
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 1,
+    "row": 5
+  },
+  "created": "2023-10-31T21:09:01.986Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-10-31T21:09:01.986Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}
