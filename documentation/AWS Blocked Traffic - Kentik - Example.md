@@ -70,6 +70,10 @@ This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
       <td>ServiceNow</td>
       <td></td>
       <td></td>
+    </tr>    <tr>
+      <td>Itential Automation Gateway</td>
+      <td></td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -91,13 +95,19 @@ This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
   <tbody>
     <tr>
       <td>adapter-aws_ec2</td>
-      <td>1.0.0</td>
+      <td>^0.6.9</td>
     </tr>    <tr>
       <td>adapter-service_now</td>
-      <td>1.0.0</td>
+      <td>^2.6.3</td>
     </tr>    <tr>
       <td>adapter-ms_teams</td>
-      <td>1.0.0</td>
+      <td>^0.13.0</td>
+    </tr>    <tr>
+      <td>adapter-kentik_v5</td>
+      <td>^0.1.1</td>
+    </tr>    <tr>
+      <td>adapter-automation_gateway</td>
+      <td>^4.29.0-2023.1.12</td>
     </tr>
   </tbody>
 </table>
@@ -151,11 +161,233 @@ The following table lists the inputs to the Example Project:
   </thead>
   <tbody>
     <tr>
+      <td>serviceNowAdapter</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>ServiceNow adapter to use for this job</td>
+      <td><pre lang="json">servicenow</pre></td>
+    </tr>    <tr>
+      <td>msTeamsAdapter</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Microsoft Teams adapter to use for this job</td>
+      <td><pre lang="json">msteams</pre></td>
+    </tr>    <tr>
+      <td>awsEC2Adapter</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>AWS EC2 adapter to use for this job</td>
+      <td><pre lang="json">aws_ec2</pre></td>
+    </tr>    <tr>
       <td>iapUrl</td>
       <td>string</td>
       <td>yes</td>
       <td>IAP URL to use in MS Teams and ServiceNow messages</td>
       <td><pre lang="json">https://iap_dev:443</pre></td>
+    </tr>    <tr>
+      <td>serviceNowUrl</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>ServiceNow URL to use in MS Teams messages</td>
+      <td><pre lang="json">https://servicenow_dev.com</pre></td>
+    </tr>    <tr>
+      <td>deviceOnboardingWebhookUrl</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Microsoft Teams Webhook URL for notification of device onboarding event.</td>
+      <td><pre lang="json">webhookURL</pre></td>
+    </tr>    <tr>
+      <td>allPolicyEventsWebhookUrl</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Microsoft Teams Webhook URL for notification of any policy event.</td>
+      <td><pre lang="json">webhookURL</pre></td>
+    </tr>    <tr>
+      <td>policyAutomatedAuthorizationWebhookUrl</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Microsoft Teams Webhook URL for notification of any policy authorization remediation event.</td>
+      <td><pre lang="json">webhookURL</pre></td>
+    </tr>    <tr>
+      <td>policyAutomatedFailureWebhookUrl</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Microsoft Teams Webhook URL for notification of any policy remediation failure event.</td>
+      <td><pre lang="json">webhookURL</pre></td>
+    </tr>    <tr>
+      <td>CompanyID</td>
+      <td>number</td>
+      <td>yes</td>
+      <td>Company ID in Kentik</td>
+      <td><pre lang="json">180173</pre></td>
+    </tr>    <tr>
+      <td>CurrentState</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Current state in Kentik</td>
+      <td><pre lang="json">ackReq</pre></td>
+    </tr>    <tr>
+      <td>Dimensions</td>
+      <td>object</td>
+      <td>yes</td>
+      <td>Kentik dimensions data</td>
+      <td><pre lang="json">{}</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.AS_src</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>AS source</td>
+      <td><pre lang="json">198465</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.Geography_src</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Geography source</td>
+      <td><pre lang="json">GB</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.IP_dst</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>IP destination</td>
+      <td><pre lang="json">10.0.18.252</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.IP_src</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>IP source</td>
+      <td><pre lang="json">45.129.14.30</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.kt_aws_action</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik AWS action</td>
+      <td><pre lang="json">REJECT</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.kt_aws_dst_sg</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik AWS destination security group</td>
+      <td><pre lang="json">security-group</pre></td>
+    </tr>    <tr>
+      <td>Dimensions.kt_aws_dst_vpc_id</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik AWS destination VPC ID</td>
+      <td><pre lang="json">vpc-0bf364141dd4f9120</pre></td>
+    </tr>    <tr>
+      <td>Links</td>
+      <td>array</td>
+      <td>yes</td>
+      <td>Kentik links</td>
+      <td><pre lang="json">[]</pre></td>
+    </tr>    <tr>
+      <td>Links[i].Name</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik link name</td>
+      <td><pre lang="json">DashboardAlarmURL</pre></td>
+    </tr>    <tr>
+      <td>Links[i].Label</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik link label</td>
+      <td><pre lang="json">Open in Dashboard</pre></td>
+    </tr>    <tr>
+      <td>Links[i].Value</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik link value</td>
+      <td><pre lang="json">https://portal.kentik.com/v4/library/dashboards/18392</pre></td>
+    </tr>    <tr>
+      <td>Description</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Kentik alarm description</td>
+      <td><pre lang="json">Alarm for Web Server Traffic Rejections Requires Ack</pre></td>
+    </tr>    <tr>
+      <td>EndTime</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>End time of alarm</td>
+      <td><pre lang="json">2023-06-29 18:36:48 UTC</pre></td>
+    </tr>    <tr>
+      <td>EndTime</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>End time of alarm</td>
+      <td><pre lang="json">2023-06-29 18:36:48 UTC</pre></td>
+    </tr>    <tr>
+      <td>AlarmPolicyName</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Alarm policy name</td>
+      <td><pre lang="json">Web Server Traffic Rejections</pre></td>
+    </tr>    <tr>
+      <td>IsActive</td>
+      <td>boolean</td>
+      <td>yes</td>
+      <td>Set to true if alarm policy is active and false if inactive</td>
+      <td><pre lang="json">true</pre></td>
+    </tr>    <tr>
+      <td>PreviousState</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Previous state</td>
+      <td><pre lang="json">alarm</pre></td>
+    </tr>    <tr>
+      <td>StartTime</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Start time of alarm</td>
+      <td><pre lang="json">2023-06-29 18:26:48 UTC</pre></td>
+    </tr>    <tr>
+      <td>Type</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Type of alarm</td>
+      <td><pre lang="json">alarm</pre></td>
+    </tr>    <tr>
+      <td>AlarmID</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Alarm ID</td>
+      <td><pre lang="json">266940386</pre></td>
+    </tr>    <tr>
+      <td>AlarmPolicyID</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Alarm Policy ID</td>
+      <td><pre lang="json">187811</pre></td>
+    </tr>    <tr>
+      <td>AlarmPolicyMetadataType</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Alarm policy metadata type</td>
+      <td><pre lang="json">Custom</pre></td>
+    </tr>    <tr>
+      <td>AlarmSeverity</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Alarm severity</td>
+      <td><pre lang="json">critical</pre></td>
+    </tr>    <tr>
+      <td>AlarmThresholdID</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Alarm threshold ID</td>
+      <td><pre lang="json">446709</pre></td>
+    </tr>    <tr>
+      <td>Metrics</td>
+      <td>object</td>
+      <td>yes</td>
+      <td>Alarm metrics</td>
+      <td><pre lang="json">{}</pre></td>
+    </tr>    <tr>
+      <td>Metrics.bits</td>
+      <td>number</td>
+      <td>yes</td>
+      <td>Amount of bits</td>
+      <td><pre lang="json">2.6666669845581055</pre></td>
     </tr>
   </tbody>
 </table>
