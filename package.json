@@ -45,7 +45,6 @@
     "@itential/app-operations_manager": "",
     "@itential/app-json_forms": "",
     "@itential/app-workflow_engine": "",
-    "@itentialopensource/adapter-kentik_v5": "",
     "@itentialopensource/adapter-netbox_v33": "",
     "@itentialopensource/adapter-servicenow": "",
     "@itentialopensource/adapter-msteams": ""
