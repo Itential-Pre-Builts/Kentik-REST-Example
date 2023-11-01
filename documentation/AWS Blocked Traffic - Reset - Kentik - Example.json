@@ -1,0 +1,59 @@
+{
+  "iapVersions": [
+    "2023.1"
+  ],
+  "adapters": [
+    {
+      "isDependency": true,
+      "name": "adapter-aws_ec2",
+      "overview": "Adapter that connects to AWS.",
+      "webName": "Amazon EC2",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2",
+      "version": "^0.6.9",
+      "docLink": "https://docs.itential.com/opensource/docs/amazon-aws-ec2",
+      "webLink": "https://www.itential.com/adapters/amazon-ec2/"
+    }
+  ],
+  "externalDependencyList": [
+    {
+      "name": "AWS"
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "Removes IP from security group in AWS"
+    }
+  ],
+  "entryPoint": {
+    "name": "AWS Blocked Traffic - Reset - Kentik - Example",
+    "type": "Operations Manager Automation"
+  },
+  "inputs": [
+    {
+      "name": "sourceIP",
+      "type": "string",
+      "required": "yes",
+      "description": "IP to remove from security group in AWS",
+      "exampleValue": "10.10.10.10"
+    },
+    {
+      "name": "awsEC2Adapter",
+      "type": "string",
+      "required": "yes",
+      "description": "The AWS EC2 adapter to use in job",
+      "exampleValue": "AWS"
+    },
+    {
+      "name": "awsSecurityGroup",
+      "type": "string",
+      "required": "yes",
+      "description": "The AWS security group from which to remove IP address provided",
+      "exampleValue": "security-group-east"
+    }
+  ],
+  "queryOutput": {},
+  "name": "AWS Blocked Traffic - Reset - Kentik - Example",
+  "overview": "Workflow that is used to remove source IP from security group in AWS to reset data for AWS Blocked Traffic - Kentik - Example automation",
+  "webName": "AWS Blocked Traffic Reset",
+  "assetType": "Workflow"
+}

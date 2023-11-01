@@ -8,24 +8,49 @@
       "name": "adapter-aws_ec2",
       "overview": "Adapter that connects to AWS.",
       "webName": "Amazon EC2",
-      "repoLink": "https://gitlab.com/itentialopensource/adapters/security/adapter-panorama",
-      "version": "1.0.0",
-      "docLink": "test",
-      "webLink": "test"
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2",
+      "version": "^0.6.9",
+      "docLink": "https://docs.itential.com/opensource/docs/amazon-aws-ec2",
+      "webLink": "https://www.itential.com/adapters/amazon-ec2/"
     },
     {
       "isDependency": true,
       "name": "adapter-service_now",
       "overview": "Adapter that connects to ServiceNow",
       "webName": "ServiceNow",
-      "version": "1.0.0"
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
+      "version": "^2.6.3",
+      "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
+      "webLink": "https://www.itential.com/adapters/servicenow/"
     },
     {
       "isDependency": true,
       "name": "adapter-ms_teams",
-      "overview": "Adapter that connects to MS Teams",
-      "webName": "MS Teams",
-      "version": "1.0.0"
+      "overview": "Adapter that connects to Microsoft Teams",
+      "webName": "Microsoft Teams",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+      "version": "^0.13.0",
+      "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+      "webLink": "https://www.itential.com/adapters/microsoft-teams/"
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-kentik_v5",
+      "overview": "Adapter that connects to Kentik",
+      "webName": "",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+      "version": "^0.1.1",
+      "docLink": "",
+      "webLink": ""
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-automation_gateway",
+      "overview": "Adapter that connects to Itential Automation Gateway",
+      "webName": "Itential Automation Gateway",
+      "version": "^4.29.0-2023.1.12",
+      "docLink": "",
+      "webLink": "https://www.itential.com/automation-gateway/"
     }
   ],
   "externalDependencyList": [
@@ -40,6 +65,9 @@
     },
     {
       "name": "ServiceNow"
+    },
+    {
+      "name": "Itential Automation Gateway"
     }
   ],
   "capabilities": [
@@ -65,11 +93,270 @@
   },
   "inputs": [
     {
+      "name": "serviceNowAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "ServiceNow adapter to use for this job",
+      "exampleValue": "servicenow"
+    },
+    {
+      "name": "msTeamsAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams adapter to use for this job",
+      "exampleValue": "msteams"
+    },
+    {
+      "name": "awsEC2Adapter",
+      "type": "string",
+      "required": "yes",
+      "description": "AWS EC2 adapter to use for this job",
+      "exampleValue": "aws_ec2"
+    },
+    {
       "name": "iapUrl",
       "type": "string",
       "required": "yes",
       "description": "IAP URL to use in MS Teams and ServiceNow messages",
       "exampleValue": "https://iap_dev:443"
+    },
+    {
+      "name": "serviceNowUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "ServiceNow URL to use in MS Teams messages",
+      "exampleValue": "https://servicenow_dev.com"
+    },
+    {
+      "name": "deviceOnboardingWebhookUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams Webhook URL for notification of device onboarding event.",
+      "exampleValue": "webhookURL"
+    },
+    {
+      "name": "allPolicyEventsWebhookUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams Webhook URL for notification of any policy event.",
+      "exampleValue": "webhookURL"
+    },
+    {
+      "name": "policyAutomatedAuthorizationWebhookUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams Webhook URL for notification of any policy authorization remediation event.",
+      "exampleValue": "webhookURL"
+    },
+    {
+      "name": "policyAutomatedFailureWebhookUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams Webhook URL for notification of any policy remediation failure event.",
+      "exampleValue": "webhookURL"
+    },
+    {
+      "name": "CompanyID",
+      "type": "number",
+      "required": "yes",
+      "description": "Company ID in Kentik",
+      "exampleValue": "180173"
+    },
+    {
+      "name": "CurrentState",
+      "type": "string",
+      "required": "yes",
+      "description": "Current state in Kentik",
+      "exampleValue": "ackReq"
+    },
+    {
+      "name": "Dimensions",
+      "type": "object",
+      "required": "yes",
+      "description": "Kentik dimensions data",
+      "exampleValue": "{}"
+    },
+    {
+      "name": "Dimensions.AS_src",
+      "type": "string",
+      "required": "yes",
+      "description": "AS source",
+      "exampleValue": "198465"
+    },
+    {
+      "name": "Dimensions.Geography_src",
+      "type": "string",
+      "required": "yes",
+      "description": "Geography source",
+      "exampleValue": "GB"
+    },
+    {
+      "name": "Dimensions.IP_dst",
+      "type": "string",
+      "required": "yes",
+      "description": "IP destination",
+      "exampleValue": "10.0.18.252"
+    },
+    {
+      "name": "Dimensions.IP_src",
+      "type": "string",
+      "required": "yes",
+      "description": "IP source",
+      "exampleValue": "45.129.14.30"
+    },
+    {
+      "name": "Dimensions.kt_aws_action",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik AWS action",
+      "exampleValue": "REJECT"
+    },
+    {
+      "name": "Dimensions.kt_aws_dst_sg",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik AWS destination security group",
+      "exampleValue": "security-group"
+    },
+    {
+      "name": "Dimensions.kt_aws_dst_vpc_id",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik AWS destination VPC ID",
+      "exampleValue": "vpc-0bf364141dd4f9120"
+    },
+    {
+      "name": "Links",
+      "type": "array",
+      "required": "yes",
+      "description": "Kentik links",
+      "exampleValue": "[]"
+    },
+    {
+      "name": "Links[i].Name",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik link name",
+      "exampleValue": "DashboardAlarmURL"
+    },
+    {
+      "name": "Links[i].Label",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik link label",
+      "exampleValue": "Open in Dashboard"
+    },
+    {
+      "name": "Links[i].Value",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik link value",
+      "exampleValue": "https://portal.kentik.com/v4/library/dashboards/18392"
+    },
+    {
+      "name": "Description",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik alarm description",
+      "exampleValue": "Alarm for Web Server Traffic Rejections Requires Ack"
+    },
+    {
+      "name": "EndTime",
+      "type": "string",
+      "required": "yes",
+      "description": "End time of alarm",
+      "exampleValue": "2023-06-29 18:36:48 UTC"
+    },
+    {
+      "name": "EndTime",
+      "type": "string",
+      "required": "yes",
+      "description": "End time of alarm",
+      "exampleValue": "2023-06-29 18:36:48 UTC"
+    },
+    {
+      "name": "AlarmPolicyName",
+      "type": "string",
+      "required": "yes",
+      "description": "Alarm policy name",
+      "exampleValue": "Web Server Traffic Rejections"
+    },
+    {
+      "name": "IsActive",
+      "type": "boolean",
+      "required": "yes",
+      "description": "Set to true if alarm policy is active and false if inactive",
+      "exampleValue": "true"
+    },
+    {
+      "name": "PreviousState",
+      "type": "string",
+      "required": "yes",
+      "description": "Previous state",
+      "exampleValue": "alarm"
+    },
+    {
+      "name": "StartTime",
+      "type": "string",
+      "required": "yes",
+      "description": "Start time of alarm",
+      "exampleValue": "2023-06-29 18:26:48 UTC"
+    },
+    {
+      "name": "Type",
+      "type": "string",
+      "required": "yes",
+      "description": "Type of alarm",
+      "exampleValue": "alarm"
+    },
+    {
+      "name": "AlarmID",
+      "type": "string",
+      "required": "yes",
+      "description": "Alarm ID",
+      "exampleValue": "266940386"
+    },
+    {
+      "name": "AlarmPolicyID",
+      "type": "string",
+      "required": "yes",
+      "description": "Alarm Policy ID",
+      "exampleValue": "187811"
+    },
+    {
+      "name": "AlarmPolicyMetadataType",
+      "type": "string",
+      "required": "yes",
+      "description": "Alarm policy metadata type",
+      "exampleValue": "Custom"
+    },
+    {
+      "name": "AlarmSeverity",
+      "type": "string",
+      "required": "yes",
+      "description": "Alarm severity",
+      "exampleValue": "critical"
+    },
+    {
+      "name": "AlarmThresholdID",
+      "type": "string",
+      "required": "yes",
+      "description": "Alarm threshold ID",
+      "exampleValue": "446709"
+    },
+    {
+      "name": "Metrics",
+      "type": "object",
+      "required": "yes",
+      "description": "Alarm metrics",
+      "exampleValue": "{}"
+    },
+    {
+      "name": "Metrics.bits",
+      "type": "number",
+      "required": "yes",
+      "description": "Amount of bits",
+      "exampleValue": "2.6666669845581055"
     }
   ],
   "queryOutput": {},

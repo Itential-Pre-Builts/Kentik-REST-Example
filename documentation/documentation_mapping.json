@@ -4,6 +4,18 @@
     {
       "name": "AWS Blocked Traffic - Kentik - Example",
       "path": "/documentation/AWS Blocked Traffic - Kentik - Example.json"
+    },
+    {
+      "name": "AWS Blocked Traffic - Reset - Kentik - Example",
+      "path": "/documentation/AWS Blocked Traffic - Reset - Kentik - Example.json"
+    },
+    {
+      "name": "Device Onboarding - Kentik - Example",
+      "path": "/documentation/Device Onboarding - Kentik - Example.json"
+    },
+    {
+      "name": "Device Onboarding - Reset - Kentik - Example",
+      "path": "/documentation/Device Onboarding - Reset - Kentik - Example.json"
     }
   ]
 }

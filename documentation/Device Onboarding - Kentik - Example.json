@@ -1,0 +1,182 @@
+{
+  "iapVersions": [
+    "2023.1"
+  ],
+  "adapters": [
+    {
+      "isDependency": true,
+      "name": "adapter-aws_ec2",
+      "overview": "Adapter that connects to AWS.",
+      "webName": "Amazon EC2",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2",
+      "version": "^0.6.9",
+      "docLink": "https://docs.itential.com/opensource/docs/amazon-aws-ec2",
+      "webLink": "https://www.itential.com/adapters/amazon-ec2/"
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-service_now",
+      "overview": "Adapter that connects to ServiceNow",
+      "webName": "ServiceNow",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
+      "version": "^2.6.3",
+      "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
+      "webLink": "https://www.itential.com/adapters/servicenow/"
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-ms_teams",
+      "overview": "Adapter that connects to Microsoft Teams",
+      "webName": "Microsoft Teams",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+      "version": "^0.13.0",
+      "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+      "webLink": "https://www.itential.com/adapters/microsoft-teams/"
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-kentik_v5",
+      "overview": "Adapter that connects to Kentik",
+      "webName": "",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+      "version": "^0.1.1",
+      "docLink": "",
+      "webLink": ""
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-netbox_v33",
+      "overview": "Adapter that connects to NetBox",
+      "webName": "",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+      "version": "^2.0.0",
+      "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+      "webLink": ""
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-automation_gateway",
+      "overview": "Adapter that connects to Itential Automation Gateway",
+      "webName": "Itential Automation Gateway",
+      "version": "^4.29.0-2023.1.12",
+      "docLink": "",
+      "webLink": "https://www.itential.com/automation-gateway/"
+    }
+  ],
+  "externalDependencyList": [
+    {
+      "name": "Kentik"
+    },
+    {
+      "name": "AWS"
+    },
+    {
+      "name": "MS Teams"
+    },
+    {
+      "name": "ServiceNow"
+    },
+    {
+      "name": "NetBox"
+    },
+    {
+      "name": "Itential Automation Gateway"
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "Creates ServiceNow Change Request"
+    },
+    {
+      "capability": "Retrieves device details from NetBox"
+    },
+    {
+      "capability": "Sends Microsoft Teams notification before device creation attempt"
+    },
+    {
+      "capability": "Creates device in Kentik"
+    },
+    {
+      "capability": "Updates NetBox device details with Kentik ID"
+    },
+    {
+      "capability": "Gets Kentik company settings for flow test"
+    },
+    {
+      "capability": "Configures Cisco IOS device over Itential Automation Gateway for flow test"
+    },
+    {
+      "capability": "Runs traffic flow test in Kentik"
+    },
+    {
+      "capability": "Sends Microsoft Teams notification after device creation and flow test with links to Kentik, SerivceNow Change Request, and Itential job"
+    }
+  ],
+  "entryPoint": {
+    "name": "Device Onboarding - Kentik - Example",
+    "type": "Operations Manager Automation"
+  },
+  "inputs": [
+    {
+      "name": "deviceName",
+      "type": "string",
+      "required": "yes",
+      "description": "Cisco IOS device to onboard to Kentik",
+      "exampleValue": "IOS_Device_Name"
+    },
+    {
+      "name": "iapUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "IAP URL to use in MS Teams and ServiceNow messages",
+      "exampleValue": "https://iap_dev:443"
+    },
+    {
+      "name": "serviceNowUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "ServiceNow URL to use in MS Teams messages",
+      "exampleValue": "https://servicenow_dev.com"
+    },
+    {
+      "name": "deviceOnboardingWebhookUrl",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams Webhook URL for notification of device onboarding event.",
+      "exampleValue": "webhookURL"
+    },
+    {
+      "name": "serviceNowAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "ServiceNow adapter to use for the job",
+      "exampleValue": "servicenow"
+    },
+    {
+      "name": "netBoxAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "NetBox adapter to use for the job",
+      "exampleValue": "netboxv3"
+    },
+    {
+      "name": "msTeamsAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "Microsoft Teams adapter to use for the job",
+      "exampleValue": "msteams"
+    },
+    {
+      "name": "kentikAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "Kentik adapter to use for the job",
+      "exampleValue": "kentik"
+    }
+  ],
+  "queryOutput": {},
+  "name": "Device Onboarding - Kentik - Example",
+  "overview": "Automation that onboards a device as listed in NetBox to Kentik while creating ServiceNow Change Request and sending Microsoft Teams notifications. Also configures flow test on device and runs flow test in Kentik. Only supports Cisco IOS device type.",
+  "webName": "Kentik Device Onboarding Example",
+  "assetType": "Workflow"
+}

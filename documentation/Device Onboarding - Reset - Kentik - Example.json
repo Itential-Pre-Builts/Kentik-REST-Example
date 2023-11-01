@@ -1,0 +1,67 @@
+{
+  "iapVersions": [
+    "2023.1"
+  ],
+  "adapters": [
+    {
+      "isDependency": true,
+      "name": "adapter-kentik_v5",
+      "overview": "Adapter that connects to Kentik",
+      "webName": "",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+      "version": "^0.1.1",
+      "docLink": "",
+      "webLink": ""
+    },
+    {
+      "isDependency": true,
+      "name": "adapter-automation_gateway",
+      "overview": "Adapter that connects to Itential Automation Gateway",
+      "webName": "Itential Automation Gateway",
+      "version": "^4.29.0-2023.1.12",
+      "docLink": "",
+      "webLink": "https://www.itential.com/automation-gateway/"
+    }
+  ],
+  "externalDependencyList": [
+    {
+      "name": "Kentik"
+    },
+    {
+      "name": "Itential Automation Gateway"
+    }
+  ],
+  "capabilities": [
+    {
+      "capability": "Removes flow test configuration on Cisco IOS device over Itential Automation Gateway"
+    },
+    {
+      "capability": "Archives and then deletes device from Kentik"
+    }
+  ],
+  "entryPoint": {
+    "name": "Device Onboarding - Reset - Kentik - Example",
+    "type": "Operations Manager Automation"
+  },
+  "inputs": [
+    {
+      "name": "deviceName",
+      "type": "string",
+      "required": "yes",
+      "description": "Name of device to delete from Kentik",
+      "exampleValue": "ios_device"
+    },
+    {
+      "name": "kentikAdapter",
+      "type": "string",
+      "required": "yes",
+      "description": "Name of Kentik adapter to use for the job",
+      "exampleValue": "kentik"
+    }
+  ],
+  "queryOutput": {},
+  "name": "Device Onboarding - Reset - Kentik - Example",
+  "overview": "Automation removes flow test Cisco IOS device configuration and deletes device from Kentik to reset data for Device Onboarding - Kentik - Example automation",
+  "webName": "Kentik Device Onboarding Reset Example",
+  "assetType": "Workflow"
+}
