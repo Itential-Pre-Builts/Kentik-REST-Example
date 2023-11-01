@@ -1,0 +1,180 @@
+# AWS Blocked Traffic - Kentik - Example
+
+## Table of Contents
+
+- [AWS Blocked Traffic - Kentik - Example](#aws-blocked-traffic---kentik---example)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Getting Started](#getting-started)
+    - [Supported IAP Versions](#supported-iap-versions)
+    - [External Dependencies](#external-dependencies)
+    - [Adapters](#adapters)
+    - [How to Install](#how-to-install)
+    - [Testing](#testing)
+  - [Using this Example Project](#using-this-example-project)
+    - [Entry Point IAP Component](#entry-point-iap-component)
+    - [Inputs](#inputs)
+    - [Outputs](#outputs)
+    - [Example Inputs and Outputs](#example-inputs-and-outputs)
+  - [Support](#support)
+
+## Overview
+
+Workflow that is started from Kentik that determines if IP address is whitelisted and if so adds it to security group in AWS. If the IP address is not whitelisted, a message is sent to MS Teams notifying of the alarm.
+
+Capabilities include:
+- Checks if source IP is in allowed IP list
+- Sends MS Teams message indicating alarm triggered
+- Adds source IP to AWS security group if source IP is in allowed IP list
+- Sends MS Teams notification if unable to add source IP to AWS security group
+- Creates ServiceNow Change Request if alarm triggered
+
+
+## Getting Started
+
+### Supported IAP Versions
+
+Itential Example Projects are built and tested on particular versions of IAP. In addition, Example Projects are often dependent on external systems and as such, these Example Projects will have dependencies on these other systems. This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
+
+
+- IAP **2023.1**
+
+
+
+### External Dependencies
+
+This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>OS Version</th>
+      <th>API Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kentik</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>AWS</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>MS Teams</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>ServiceNow</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+### Adapters
+
+This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>adapter-aws_ec2</td>
+      <td>1.0.0</td>
+    </tr>    <tr>
+      <td>adapter-service_now</td>
+      <td>1.0.0</td>
+    </tr>    <tr>
+      <td>adapter-ms_teams</td>
+      <td>1.0.0</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+### How to Install
+
+To install the Example Project:
+
+- Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Supported IAP Versions](#supported-iap-versions) section in order to install the Example Project.
+- Import the Example Project in [Admin Essentials](https://docs.itential.com/docs/importing-a-prebuilt-4). 
+
+### Testing
+
+While Itential tests this Example Project and its capabilities, it is often the case the customer environments offer their own unique circumstances. Therefore, it is our recommendation that you deploy this Example Project into a development/testing environment in which you can test the Example Project.
+
+## Using this Example Project
+
+### Entry Point IAP Component
+
+The primary IAP component to run this Example Project is listed below:
+
+<table>
+  <thead>
+    <tr>
+      <th>IAP Component Name</th>
+      <th>IAP Component Type</th>
+    </tr>
+  </thead>
+  <tbody>
+      <td>AWS Blocked Traffic - Kentik - Example</td>
+      <td>Operations Manager Automation</td>
+    </tr>
+  </tbody>
+</table>
+
+### Inputs
+
+The following table lists the inputs to the Example Project:
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+      <th>Example Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>iapUrl</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>IAP URL to use in MS Teams and ServiceNow messages</td>
+      <td><pre lang="json">https://iap_dev:443</pre></td>
+    </tr>
+  </tbody>
+</table>
+
+  
+
+
+### Outputs
+
+There are no outputs for this Example Project.
+
+
+
+### Example Inputs and Outputs
+
+No example inputs or outputs found.
+
+
+
+## Support
+
+Please use your Itential Customer Success account if you need support when using this Example Project.

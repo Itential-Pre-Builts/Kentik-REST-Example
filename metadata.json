@@ -1,0 +1,114 @@
+{
+  "name": "Kentik - REST - Example",
+  "webName": "Kentik Example Workflows",
+  "type": "Example Project",
+  "vendor": "Kentik",
+  "product": "REST",
+  "method": "Example",
+  "osVersions": [
+    ""
+  ],
+  "apiVersions": [
+    ""
+  ],
+  "iapVersions": [
+    "2023.1"
+  ],
+  "domains": [
+    "Cloud"
+  ],
+  "tags": [
+    "Configuration Management"
+  ],
+  "useCases": [
+    "Device Onboarding"
+  ],
+  "deprecated": {
+    "isDeprecated": false,
+    "deprecatedOn": "",
+    "endOfLife": "",
+    "replacedBy": {
+      "name": "",
+      "overview": "",
+      "repoLink": "",
+      "docLink": "",
+      "webLink": "",
+      "isProductFeature": false
+    }
+  },
+  "brokerSince": "",
+  "documentation": {
+    "storeLink": "",
+    "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example",
+    "npmLink": "https://www.npmjs.com/package/@itentialopensource/kentik-rest-example",
+    "docLink": "",
+    "demoLinks": [],
+    "faqLink": "",
+    "contributeLink": "",
+    "issueLink": "",
+    "webLink": "",
+    "vendorLink": "https://www.kentik.com/",
+    "productLink": "https://www.kentik.com/product/kentik-platform/",
+    "apiLinks": [
+      "https://kb.kentik.com/v0/Ab09.htm"
+    ]
+  },
+  "assets": [
+    {
+      "name": "AWS Blocked Traffic - Kentik - Example",
+      "webName": "Kentik AWS Blocked Traffic Alarm Example",
+      "assetType": "Workflow",
+      "overview": "Workflow that is started from Kentik that determines if IP address is whitelisted and if so adds it to security group in AWS. If the IP address is not whitelisted, a message is sent to MS Teams notifying of the alarm.",
+      "iapVersions": [
+        "2023.1"
+      ],
+      "exampleInput": "",
+      "exampleOutput": ""
+    }
+  ],
+  "relatedItems": {
+    "adapters": [
+      {
+        "name": "adapter-ms_teams",
+        "webName": "MS Teams",
+        "overview": "Adapter that connects to MS Teams",
+        "isDependency": true,
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "",
+        "versions": [
+          "1.0.0"
+        ]
+      },
+      {
+        "name": "adapter-aws_ec2",
+        "webName": "Amazon EC2",
+        "overview": "Adapter that connects to AWS.",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/security/adapter-panorama",
+        "docLink": "test",
+        "webLink": "test",
+        "versions": [
+          "1.0.0"
+        ]
+      },
+      {
+        "name": "adapter-service_now",
+        "webName": "ServiceNow",
+        "overview": "Adapter that connects to ServiceNow",
+        "isDependency": true,
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "",
+        "versions": [
+          "1.0.0"
+        ]
+      }
+    ],
+    "integrations": [],
+    "ecosystemApplications": [],
+    "workflowProjects": [],
+    "transformationProjects": [],
+    "exampleProjects": []
+  }
+}
