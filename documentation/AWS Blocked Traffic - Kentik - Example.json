@@ -158,14 +158,14 @@
     {
       "name": "CompanyID",
       "type": "number",
-      "required": "yes",
+      "required": "no",
       "description": "Company ID in Kentik",
       "exampleValue": "180173"
     },
     {
       "name": "CurrentState",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Current state in Kentik",
       "exampleValue": "ackReq"
     },
@@ -186,9 +186,9 @@
     {
       "name": "Dimensions.Geography_src",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Geography source",
-      "exampleValue": "GB"
+      "exampleValue": "US"
     },
     {
       "name": "Dimensions.IP_dst",
@@ -207,7 +207,7 @@
     {
       "name": "Dimensions.kt_aws_action",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Kentik AWS action",
       "exampleValue": "REJECT"
     },
@@ -242,9 +242,9 @@
     {
       "name": "Links[i].Label",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Kentik link label",
-      "exampleValue": "Open in Dashboard"
+      "exampleValue": "Open Dashboard"
     },
     {
       "name": "Links[i].Value",
@@ -256,107 +256,49 @@
     {
       "name": "Description",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Kentik alarm description",
       "exampleValue": "Alarm for Web Server Traffic Rejections Requires Ack"
-    },
-    {
-      "name": "EndTime",
-      "type": "string",
-      "required": "yes",
-      "description": "End time of alarm",
-      "exampleValue": "2023-06-29 18:36:48 UTC"
-    },
-    {
-      "name": "EndTime",
-      "type": "string",
-      "required": "yes",
-      "description": "End time of alarm",
-      "exampleValue": "2023-06-29 18:36:48 UTC"
     },
     {
       "name": "AlarmPolicyName",
       "type": "string",
       "required": "yes",
-      "description": "Alarm policy name",
-      "exampleValue": "Web Server Traffic Rejections"
-    },
-    {
-      "name": "IsActive",
-      "type": "boolean",
-      "required": "yes",
-      "description": "Set to true if alarm policy is active and false if inactive",
-      "exampleValue": "true"
-    },
-    {
-      "name": "PreviousState",
-      "type": "string",
-      "required": "yes",
-      "description": "Previous state",
-      "exampleValue": "alarm"
-    },
-    {
-      "name": "StartTime",
-      "type": "string",
-      "required": "yes",
-      "description": "Start time of alarm",
-      "exampleValue": "2023-06-29 18:26:48 UTC"
-    },
-    {
-      "name": "Type",
-      "type": "string",
-      "required": "yes",
-      "description": "Type of alarm",
-      "exampleValue": "alarm"
+      "description": "The name of the alert policy generating this notification",
+      "exampleValue": "US Policy Rejected Web Server Traffic"
     },
     {
       "name": "AlarmID",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Alarm ID",
       "exampleValue": "266940386"
     },
     {
-      "name": "AlarmPolicyID",
-      "type": "string",
-      "required": "yes",
-      "description": "Alarm Policy ID",
-      "exampleValue": "187811"
-    },
-    {
       "name": "AlarmPolicyMetadataType",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Alarm policy metadata type",
       "exampleValue": "Custom"
     },
     {
       "name": "AlarmSeverity",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Alarm severity",
       "exampleValue": "critical"
     },
     {
       "name": "AlarmThresholdID",
       "type": "string",
-      "required": "yes",
+      "required": "no",
       "description": "Alarm threshold ID",
       "exampleValue": "446709"
-    },
+    }
+  ],
+  "exampleInputsAndOutputs": [
     {
-      "name": "Metrics",
-      "type": "object",
-      "required": "yes",
-      "description": "Alarm metrics",
-      "exampleValue": "{}"
-    },
-    {
-      "name": "Metrics.bits",
-      "type": "number",
-      "required": "yes",
-      "description": "Amount of bits",
-      "exampleValue": "2.6666669845581055"
+      "exampleInput": "{\n  \"iapUrl\": \"https://iap-dev:443\",\n  \"serviceNowUrl\": \"https://service-now.com\",\n  \"allPolicyEventsWebhookUrl\": \"webhookurl1\",\n  \"policyAutomatedFailureWebhookUrl\": \"webhookurl2\",\n  \"policyAutomatedAuthorizationWebhookUrl\": \"webhookurl3\",\n  \"serviceNowAdapter\": \"ServiceNow\",\n  \"awsEC2Adapter\": \"AWS\",\n  \"msTeamsAdapter\": \"MS Teams\",\n  \"AlarmPolicyName\": \"US Policy Rejected Web Server Traffic\",\n  \"Dimensions\": {\n    \"AS_src\": \"1000\",\n    \"IP_dst\": \"11.11.11.11\",\n    \"IP_src\": \"10.10.10.10\",\n    \"kt_aws_dst_sg\": \"aws_security_group\"\n  },\n  \"Links\": [\n    {\n      \"Name\": \"DashboardAlarmURL\",\n      \"Label\": \"Open Dashboard\",\n      \"Value\": \"https://portal.kentik.com/v4/library/dashboards/10000\"\n    },\n    {\n      \"Name\": \"DetailsAlarmURL\",\n      \"Label\": \"Open Details\",\n      \"Value\": \"https://portal.kentik.com/v4/alerting/a215729224\"\n    }\n  ]\n}"
     }
   ],
   "queryOutput": {},

@@ -515,7 +515,7 @@
                   "items": {
                     "type": "string",
                     "examples": [
-                      "97.97.52.81"
+                      "10.10.10.10"
                     ],
                     "format": "ipv4"
                   }

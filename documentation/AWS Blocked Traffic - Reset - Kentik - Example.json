@@ -51,6 +51,11 @@
       "exampleValue": "security-group-east"
     }
   ],
+  "exampleInputsAndOutputs": [
+    {
+      "exampleInput": "{\n    \"sourceIP\": \"10.10.10.10\",\n    \"awsEC2Adapter\": \"AWS\",\n    \"awsSecurityGroup\": \"security_group\"\n  }"
+    }
+  ],
   "queryOutput": {},
   "name": "AWS Blocked Traffic - Reset - Kentik - Example",
   "overview": "Workflow that is used to remove source IP from security group in AWS to reset data for AWS Blocked Traffic - Kentik - Example automation",

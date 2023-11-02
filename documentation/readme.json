@@ -1,40 +1,43 @@
 {
-  "name": "Kentik - REST - Example",
-  "overview": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
   "domains": [
     "Cloud"
   ],
   "tags": [
     "Configuration Management"
   ],
-  "productLink": "https://www.kentik.com/product/kentik-platform/",
-  "apiLinks": [
-    "https://kb.kentik.com/v0/Ab09.htm"
+  "useCases": [
+    "Device Onboarding"
   ],
-  "storeLink": "",
-  "docLink": "",
-  "issueLink": "",
+  "apiLinks": [
+    "https://kb.kentik.com/v0/Ab09.htm",
+    "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
+    "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
+    "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies"
+  ],
   "deprecated": {
     "isDeprecated": false,
-    "deprecatedOn": "",
-    "endOfLife": "",
     "replacedBy": {
+      "isProductFeature": false,
       "name": "",
       "overview": "",
       "repoLink": "",
       "docLink": "",
-      "webLink": "",
-      "isProductFeature": false
-    }
+      "webLink": ""
+    },
+    "deprecatedOn": "",
+    "endOfLife": ""
   },
+  "name": "Kentik - REST - Example",
+  "overview": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
+  "productLink": "https://www.kentik.com/product/kentik-platform/",
+  "storeLink": "",
+  "docLink": "",
+  "issueLink": "",
   "type": "Example Project",
   "vendorLink": "https://www.kentik.com/",
   "faqLink": "",
   "contributeLink": "",
   "webName": "Kentik Example Workflows",
-  "useCases": [
-    "Device Onboarding"
-  ],
   "webLink": "",
   "demoLinks": []
 }

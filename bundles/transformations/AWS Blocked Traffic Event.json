@@ -18,20 +18,6 @@
       ]
     },
     {
-      "$id": "companyId",
-      "type": "number",
-      "examples": [
-        180173
-      ]
-    },
-    {
-      "$id": "currentState",
-      "type": "string",
-      "examples": [
-        "ackReq"
-      ]
-    },
-    {
       "$id": "dimensions",
       "type": "object",
       "properties": {
@@ -39,12 +25,6 @@
           "type": "string",
           "examples": [
             "198465"
-          ]
-        },
-        "Geography_src": {
-          "type": "string",
-          "examples": [
-            "GB"
           ]
         },
         "IP_dst": {
@@ -61,22 +41,10 @@
           ],
           "format": "ipv4"
         },
-        "kt_aws_action": {
-          "type": "string",
-          "examples": [
-            "REJECT"
-          ]
-        },
         "kt_aws_dst_sg": {
           "type": "string",
           "examples": [
             "webserver-kentik"
-          ]
-        },
-        "kt_aws_dst_vpc_id": {
-          "type": "string",
-          "examples": [
-            "vpc-0bf366171dd4f9121"
           ]
         }
       },
@@ -94,12 +62,6 @@
               "DashboardAlarmURL"
             ]
           },
-          "Label": {
-            "type": "string",
-            "examples": [
-              "Open in Dashboard"
-            ]
-          },
           "Value": {
             "type": "string",
             "examples": [
@@ -109,20 +71,6 @@
         },
         "required": []
       }
-    },
-    {
-      "$id": "description",
-      "type": "string",
-      "examples": [
-        "Alarm for Web Server Traffic Rejections Requires Ack"
-      ]
-    },
-    {
-      "$id": "endTime",
-      "type": "string",
-      "examples": [
-        "2023-06-29 18:36:48 UTC"
-      ]
     },
     {
       "$id": "jobId",
@@ -151,83 +99,6 @@
       "examples": [
         "f298220c87b6611035617558dabb3563"
       ]
-    },
-    {
-      "$id": "isActive",
-      "type": "boolean",
-      "examples": [
-        true,
-        false
-      ]
-    },
-    {
-      "$id": "previousState",
-      "type": "string",
-      "examples": [
-        "alarm"
-      ]
-    },
-    {
-      "$id": "startTime",
-      "type": "string",
-      "examples": [
-        "2023-06-29 18:26:48 UTC"
-      ]
-    },
-    {
-      "$id": "type",
-      "type": "string",
-      "examples": [
-        "alarm"
-      ]
-    },
-    {
-      "$id": "alarmId",
-      "type": "string",
-      "examples": [
-        "266940386"
-      ]
-    },
-    {
-      "$id": "alarmPolicyId",
-      "type": "string",
-      "examples": [
-        "187811"
-      ]
-    },
-    {
-      "$id": "alarmPolicyMetadataType",
-      "type": "string",
-      "examples": [
-        "Custom"
-      ]
-    },
-    {
-      "$id": "alarmSeverity",
-      "type": "string",
-      "examples": [
-        "critical"
-      ]
-    },
-    {
-      "$id": "alarmThresholdId",
-      "type": "string",
-      "examples": [
-        "446709"
-      ]
-    },
-    {
-      "$id": "metrics",
-      "type": "object",
-      "properties": {
-        "bits": {
-          "type": "number",
-          "examples": [
-            2.6666669845581055
-          ]
-        }
-      },
-      "required": []
     }
   ],
   "outgoing": [
@@ -1423,7 +1294,7 @@
     "provenance": "CloudAAA",
     "username": "chris.calloway@itential.com"
   },
-  "lastUpdated": "2023-10-31T21:09:01.990Z",
+  "lastUpdated": "2023-11-02T15:26:24.621Z",
   "lastUpdatedBy": {
     "_id": "64c178c76dba2ac92808b07e",
     "provenance": "CloudAAA",
