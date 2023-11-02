@@ -91,26 +91,12 @@
           "variableMap": {
             "iapURL": "$var.job.iapUrl",
             "serviceNowURL": "$var.job.serviceNowUrl",
-            "companyId": "$var.job.CompanyID",
-            "currentState": "$var.job.CurrentState",
             "dimensions": "$var.job.Dimensions",
             "links": "$var.job.Links",
-            "description": "$var.job.Description",
-            "endTime": "$var.job.EndTime",
             "jobId": "$var.job._id",
             "alarmPolicyName": "$var.job.AlarmPolicyName",
             "serviceNowChangeSysId": "$var.d6d4.return_data",
-            "serviceNowIncidentSysId": "$var.9e2a.return_data",
-            "isActive": "$var.job.IsActive",
-            "previousState": "$var.job.PreviousState",
-            "startTime": "$var.job.StartTime",
-            "type": "$var.job.Type",
-            "alarmId": "$var.job.AlarmID",
-            "alarmPolicyId": "$var.job.AlarmPolicyID",
-            "alarmPolicyMetadataType": "$var.job.AlarmPolicyMetadataType",
-            "alarmSeverity": "$var.job.AlarmSeverity",
-            "alarmThresholdId": "$var.job.AlarmThresholdID",
-            "metrics": "$var.job.Metrics"
+            "serviceNowIncidentSysId": "$var.9e2a.return_data"
           },
           "options": {
             "extractOutput": false,
@@ -157,26 +143,12 @@
           "variableMap": {
             "iapURL": "$var.job.iapUrl",
             "serviceNowURL": "$var.job.serviceNowUrl",
-            "companyId": "$var.job.CompanyID",
-            "currentState": "$var.job.CurrentState",
             "dimensions": "$var.job.Dimensions",
             "links": "$var.job.Links",
-            "description": "$var.job.Description",
-            "endTime": "$var.job.EndTime",
             "jobId": "$var.job._id",
             "alarmPolicyName": "$var.job.AlarmPolicyName",
             "serviceNowChangeSysId": "pending",
-            "serviceNowIncidentSysId": "pending",
-            "isActive": "$var.job.IsActive",
-            "previousState": "$var.job.PreviousState",
-            "startTime": "$var.job.StartTime",
-            "type": "$var.job.Type",
-            "alarmId": "$var.job.AlarmID",
-            "alarmPolicyId": "$var.job.AlarmPolicyID",
-            "alarmPolicyMetadataType": "$var.job.AlarmPolicyMetadataType",
-            "alarmSeverity": "$var.job.AlarmSeverity",
-            "alarmThresholdId": "$var.job.AlarmThresholdID",
-            "metrics": "$var.job.Metrics"
+            "serviceNowIncidentSysId": "pending"
           },
           "options": {
             "extractOutput": false,
@@ -553,26 +525,12 @@
           "variableMap": {
             "iapURL": "$var.job.iapUrl",
             "serviceNowURL": "$var.job.serviceNowUrl",
-            "companyId": "$var.job.CompanyID",
-            "currentState": "$var.job.CurrentState",
             "dimensions": "$var.job.Dimensions",
             "links": "$var.job.Links",
-            "description": "$var.job.Description",
-            "endTime": "$var.job.EndTime",
             "jobId": "$var.job._id",
             "alarmPolicyName": "$var.job.AlarmPolicyName",
             "serviceNowChangeSysId": "$var.d6d4.return_data",
-            "serviceNowIncidentSysId": "pending",
-            "isActive": "$var.job.IsActive",
-            "previousState": "$var.job.PreviousState",
-            "startTime": "$var.job.StartTime",
-            "type": "$var.job.Type",
-            "alarmId": "$var.job.AlarmID",
-            "alarmPolicyId": "$var.job.AlarmPolicyID",
-            "alarmPolicyMetadataType": "$var.job.AlarmPolicyMetadataType",
-            "alarmSeverity": "$var.job.AlarmSeverity",
-            "alarmThresholdId": "$var.job.AlarmThresholdID",
-            "metrics": "$var.job.Metrics"
+            "serviceNowIncidentSysId": "pending"
           },
           "options": {
             "extractOutput": false,
@@ -1167,20 +1125,6 @@
           "https://servicenow_dev.com"
         ]
       },
-      "CompanyID": {
-        "$id": "companyId",
-        "type": "number",
-        "examples": [
-          180173
-        ]
-      },
-      "CurrentState": {
-        "$id": "currentState",
-        "type": "string",
-        "examples": [
-          "ackReq"
-        ]
-      },
       "Dimensions": {
         "$id": "dimensions",
         "type": "object",
@@ -1189,12 +1133,6 @@
             "type": "string",
             "examples": [
               "198465"
-            ]
-          },
-          "Geography_src": {
-            "type": "string",
-            "examples": [
-              "GB"
             ]
           },
           "IP_dst": {
@@ -1211,22 +1149,10 @@
             ],
             "format": "ipv4"
           },
-          "kt_aws_action": {
-            "type": "string",
-            "examples": [
-              "REJECT"
-            ]
-          },
           "kt_aws_dst_sg": {
             "type": "string",
             "examples": [
               "webserver-kentik"
-            ]
-          },
-          "kt_aws_dst_vpc_id": {
-            "type": "string",
-            "examples": [
-              "vpc-0bf366171dd4f9121"
             ]
           }
         },
@@ -1244,12 +1170,6 @@
                 "DashboardAlarmURL"
               ]
             },
-            "Label": {
-              "type": "string",
-              "examples": [
-                "Open in Dashboard"
-              ]
-            },
             "Value": {
               "type": "string",
               "examples": [
@@ -1259,20 +1179,6 @@
           },
           "required": []
         }
-      },
-      "Description": {
-        "$id": "description",
-        "type": "string",
-        "examples": [
-          "Alarm for Web Server Traffic Rejections Requires Ack"
-        ]
-      },
-      "EndTime": {
-        "$id": "endTime",
-        "type": "string",
-        "examples": [
-          "2023-06-29 18:36:48 UTC"
-        ]
       },
       "_id": {
         "$id": "jobId",
@@ -1287,83 +1193,6 @@
         "examples": [
           "Web Server Traffic Rejections"
         ]
-      },
-      "IsActive": {
-        "$id": "isActive",
-        "type": "boolean",
-        "examples": [
-          true,
-          false
-        ]
-      },
-      "PreviousState": {
-        "$id": "previousState",
-        "type": "string",
-        "examples": [
-          "alarm"
-        ]
-      },
-      "StartTime": {
-        "$id": "startTime",
-        "type": "string",
-        "examples": [
-          "2023-06-29 18:26:48 UTC"
-        ]
-      },
-      "Type": {
-        "$id": "type",
-        "type": "string",
-        "examples": [
-          "alarm"
-        ]
-      },
-      "AlarmID": {
-        "$id": "alarmId",
-        "type": "string",
-        "examples": [
-          "266940386"
-        ]
-      },
-      "AlarmPolicyID": {
-        "$id": "alarmPolicyId",
-        "type": "string",
-        "examples": [
-          "187811"
-        ]
-      },
-      "AlarmPolicyMetadataType": {
-        "$id": "alarmPolicyMetadataType",
-        "type": "string",
-        "examples": [
-          "Custom"
-        ]
-      },
-      "AlarmSeverity": {
-        "$id": "alarmSeverity",
-        "type": "string",
-        "examples": [
-          "critical"
-        ]
-      },
-      "AlarmThresholdID": {
-        "$id": "alarmThresholdId",
-        "type": "string",
-        "examples": [
-          "446709"
-        ]
-      },
-      "Metrics": {
-        "$id": "metrics",
-        "type": "object",
-        "properties": {
-          "bits": {
-            "type": "number",
-            "examples": [
-              2.6666669845581055
-            ]
-          }
-        },
-        "required": []
       },
       "awsEC2Adapter": {
         "type": [
@@ -1402,24 +1231,10 @@
       "serviceNowAdapter",
       "iapUrl",
       "serviceNowUrl",
-      "CompanyID",
-      "CurrentState",
       "Dimensions",
       "Links",
-      "Description",
-      "EndTime",
       "_id",
       "AlarmPolicyName",
-      "IsActive",
-      "PreviousState",
-      "StartTime",
-      "Type",
-      "AlarmID",
-      "AlarmPolicyID",
-      "AlarmPolicyMetadataType",
-      "AlarmSeverity",
-      "AlarmThresholdID",
-      "Metrics",
       "awsEC2Adapter",
       "allPolicyEventsWebhookUrl",
       "msTeamsAdapter",
@@ -1454,20 +1269,6 @@
           "https://servicenow_dev.com"
         ]
       },
-      "CompanyID": {
-        "$id": "companyId",
-        "type": "number",
-        "examples": [
-          180173
-        ]
-      },
-      "CurrentState": {
-        "$id": "currentState",
-        "type": "string",
-        "examples": [
-          "ackReq"
-        ]
-      },
       "Dimensions": {
         "$id": "dimensions",
         "type": "object",
@@ -1476,12 +1277,6 @@
             "type": "string",
             "examples": [
               "198465"
-            ]
-          },
-          "Geography_src": {
-            "type": "string",
-            "examples": [
-              "GB"
             ]
           },
           "IP_dst": {
@@ -1498,22 +1293,10 @@
             ],
             "format": "ipv4"
           },
-          "kt_aws_action": {
-            "type": "string",
-            "examples": [
-              "REJECT"
-            ]
-          },
           "kt_aws_dst_sg": {
             "type": "string",
             "examples": [
               "webserver-kentik"
-            ]
-          },
-          "kt_aws_dst_vpc_id": {
-            "type": "string",
-            "examples": [
-              "vpc-0bf366171dd4f9121"
             ]
           }
         },
@@ -1531,12 +1314,6 @@
                 "DashboardAlarmURL"
               ]
             },
-            "Label": {
-              "type": "string",
-              "examples": [
-                "Open in Dashboard"
-              ]
-            },
             "Value": {
               "type": "string",
               "examples": [
@@ -1546,20 +1323,6 @@
           },
           "required": []
         }
-      },
-      "Description": {
-        "$id": "description",
-        "type": "string",
-        "examples": [
-          "Alarm for Web Server Traffic Rejections Requires Ack"
-        ]
-      },
-      "EndTime": {
-        "$id": "endTime",
-        "type": "string",
-        "examples": [
-          "2023-06-29 18:36:48 UTC"
-        ]
       },
       "_id": {
         "type": "string",
@@ -1571,83 +1334,6 @@
         "examples": [
           "Web Server Traffic Rejections"
         ]
-      },
-      "IsActive": {
-        "$id": "isActive",
-        "type": "boolean",
-        "examples": [
-          true,
-          false
-        ]
-      },
-      "PreviousState": {
-        "$id": "previousState",
-        "type": "string",
-        "examples": [
-          "alarm"
-        ]
-      },
-      "StartTime": {
-        "$id": "startTime",
-        "type": "string",
-        "examples": [
-          "2023-06-29 18:26:48 UTC"
-        ]
-      },
-      "Type": {
-        "$id": "type",
-        "type": "string",
-        "examples": [
-          "alarm"
-        ]
-      },
-      "AlarmID": {
-        "$id": "alarmId",
-        "type": "string",
-        "examples": [
-          "266940386"
-        ]
-      },
-      "AlarmPolicyID": {
-        "$id": "alarmPolicyId",
-        "type": "string",
-        "examples": [
-          "187811"
-        ]
-      },
-      "AlarmPolicyMetadataType": {
-        "$id": "alarmPolicyMetadataType",
-        "type": "string",
-        "examples": [
-          "Custom"
-        ]
-      },
-      "AlarmSeverity": {
-        "$id": "alarmSeverity",
-        "type": "string",
-        "examples": [
-          "critical"
-        ]
-      },
-      "AlarmThresholdID": {
-        "$id": "alarmThresholdId",
-        "type": "string",
-        "examples": [
-          "446709"
-        ]
-      },
-      "Metrics": {
-        "$id": "metrics",
-        "type": "object",
-        "properties": {
-          "bits": {
-            "type": "number",
-            "examples": [
-              2.6666669845581055
-            ]
-          }
-        },
-        "required": []
       },
       "awsEC2Adapter": {
         "type": [
@@ -1694,7 +1380,7 @@
   },
   "type": "automation",
   "font_size": 12,
-  "last_updated": "2023-10-31T21:19:47.562Z",
+  "last_updated": "2023-11-02T15:48:53.860Z",
   "lastUpdatedVersion": "5.46.0-2023.1.19.0",
   "created": "2023-06-02T15:54:40.814Z",
   "created_by": {

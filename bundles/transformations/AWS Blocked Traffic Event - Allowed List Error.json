@@ -15,12 +15,6 @@
               "DashboardAlarmURL"
             ]
           },
-          "Label": {
-            "type": "string",
-            "examples": [
-              "Open in Dashboard"
-            ]
-          },
           "Value": {
             "type": "string",
             "examples": [
@@ -41,12 +35,6 @@
             "198465"
           ]
         },
-        "Geography_src": {
-          "type": "string",
-          "examples": [
-            "GB"
-          ]
-        },
         "IP_dst": {
           "type": "string",
           "examples": [
@@ -61,22 +49,10 @@
           ],
           "format": "ipv4"
         },
-        "kt_aws_action": {
-          "type": "string",
-          "examples": [
-            "REJECT"
-          ]
-        },
         "kt_aws_dst_sg": {
           "type": "string",
           "examples": [
             "webserver-kentik"
-          ]
-        },
-        "kt_aws_dst_vpc_id": {
-          "type": "string",
-          "examples": [
-            "vpc-0bf366171dd4f9121"
           ]
         }
       },
@@ -377,7 +353,7 @@
       "method": "getProperty",
       "args": [
         null,
-        "Value"
+        "Name"
       ],
       "view": {
         "row": 1,
@@ -407,7 +383,7 @@
       "method": "getProperty",
       "args": [
         null,
-        "Name"
+        "Value"
       ],
       "view": {
         "row": 1,
@@ -442,36 +418,6 @@
       "view": {
         "row": 4,
         "col": 2
-      },
-      "context": "#"
-    },
-    {
-      "id": 34,
-      "type": "assign",
-      "from": {
-        "location": "method",
-        "name": 24,
-        "ptr": "/return"
-      },
-      "to": {
-        "location": "template",
-        "name": 9,
-        "ptr": "/args/1/value"
-      },
-      "context": "#"
-    },
-    {
-      "id": 35,
-      "type": "assign",
-      "from": {
-        "location": "method",
-        "name": 30,
-        "ptr": "/return"
-      },
-      "to": {
-        "location": "template",
-        "name": 9,
-        "ptr": "/args/2/value"
       },
       "context": "#"
     },
@@ -517,6 +463,36 @@
         "location": "template",
         "name": 9,
         "ptr": "/args/10/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 50,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 24,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 51,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 30,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 9,
+        "ptr": "/args/1/value"
       },
       "context": "#"
     },
@@ -833,7 +809,7 @@
     "provenance": "CloudAAA",
     "username": "chris.calloway@itential.com"
   },
-  "lastUpdated": "2023-10-31T21:09:01.988Z",
+  "lastUpdated": "2023-11-02T15:31:36.276Z",
   "lastUpdatedBy": {
     "_id": "64c178c76dba2ac92808b07e",
     "provenance": "CloudAAA",
