@@ -161,8 +161,20 @@ There are no outputs for this Example Project.
 
 ### Example Inputs and Outputs
 
-No example inputs or outputs found.
+  
+#### Example 1
 
+    
+Input:
+<pre>{
+    "sourceIP": "10.10.10.10",
+    "awsEC2Adapter": "AWS",
+    "awsSecurityGroup": "security_group"
+  } </pre>
+
+    
+    
+  
 
 
 ## Support

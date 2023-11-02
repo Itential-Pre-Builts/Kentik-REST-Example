@@ -163,8 +163,21 @@ There are no outputs for this Example Project.
 
 ### Example Inputs and Outputs
 
-No example inputs or outputs found.
+  
+#### Example 1
 
+    
+Input:
+<pre>{
+  "formData":  {
+    "deviceName": "ios_device",
+    "kentikAdapter": "Kentik v5"
+  }
+} </pre>
+
+    
+    
+  
 
 
 ## Support

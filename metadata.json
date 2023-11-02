@@ -25,16 +25,16 @@
   ],
   "deprecated": {
     "isDeprecated": false,
-    "deprecatedOn": "",
-    "endOfLife": "",
     "replacedBy": {
+      "isProductFeature": false,
       "name": "",
       "overview": "",
       "repoLink": "",
       "docLink": "",
-      "webLink": "",
-      "isProductFeature": false
-    }
+      "webLink": ""
+    },
+    "deprecatedOn": "",
+    "endOfLife": ""
   },
   "brokerSince": "",
   "documentation": {
@@ -50,7 +50,10 @@
     "vendorLink": "https://www.kentik.com/",
     "productLink": "https://www.kentik.com/product/kentik-platform/",
     "apiLinks": [
-      "https://kb.kentik.com/v0/Ab09.htm"
+      "https://kb.kentik.com/v0/Ab09.htm",
+      "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
+      "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
+      "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies"
     ]
   },
   "assets": [
@@ -62,7 +65,7 @@
       "iapVersions": [
         "2023.1"
       ],
-      "exampleInput": "",
+      "exampleInput": "{\n  \"iapUrl\": \"https://iap-dev:443\",\n  \"serviceNowUrl\": \"https://service-now.com\",\n  \"allPolicyEventsWebhookUrl\": \"webhookurl1\",\n  \"policyAutomatedFailureWebhookUrl\": \"webhookurl2\",\n  \"policyAutomatedAuthorizationWebhookUrl\": \"webhookurl3\",\n  \"serviceNowAdapter\": \"ServiceNow\",\n  \"awsEC2Adapter\": \"AWS\",\n  \"msTeamsAdapter\": \"MS Teams\",\n  \"AlarmPolicyName\": \"US Policy Rejected Web Server Traffic\",\n  \"Dimensions\": {\n    \"AS_src\": \"1000\",\n    \"IP_dst\": \"11.11.11.11\",\n    \"IP_src\": \"10.10.10.10\",\n    \"kt_aws_dst_sg\": \"aws_security_group\"\n  },\n  \"Links\": [\n    {\n      \"Name\": \"DashboardAlarmURL\",\n      \"Label\": \"Open Dashboard\",\n      \"Value\": \"https://portal.kentik.com/v4/library/dashboards/10000\"\n    },\n    {\n      \"Name\": \"DetailsAlarmURL\",\n      \"Label\": \"Open Details\",\n      \"Value\": \"https://portal.kentik.com/v4/alerting/a215729224\"\n    }\n  ]\n}",
       "exampleOutput": ""
     },
     {
@@ -73,7 +76,7 @@
       "iapVersions": [
         "2023.1"
       ],
-      "exampleInput": "",
+      "exampleInput": "{\n    \"sourceIP\": \"10.10.10.10\",\n    \"awsEC2Adapter\": \"AWS\",\n    \"awsSecurityGroup\": \"security_group\"\n  }",
       "exampleOutput": ""
     },
     {
@@ -84,7 +87,7 @@
       "iapVersions": [
         "2023.1"
       ],
-      "exampleInput": "",
+      "exampleInput": "{\n  \"formData\": {\n    \"iapUrl\": \"https://iap-dev:443\",\n    \"deviceOnboardingWebhookUrl\": \"webhookURL1\",\n    \"serviceNowUrl\": \"https://service-now-dev.com\",\n    \"deviceName\": \"ios_device\",\n    \"serviceNowAdapter\": \"ServiceNow\",\n    \"netBoxAdapter\": \"NetboxV3\",\n    \"msTeamsAdapter\": \"MS Teams\",\n    \"kentikAdapter\": \"Kentik v5\"\n  }\n}",
       "exampleOutput": ""
     },
     {
@@ -95,36 +98,12 @@
       "iapVersions": [
         "2023.1"
       ],
-      "exampleInput": "",
+      "exampleInput": "{\n  \"formData\":  {\n    \"deviceName\": \"ios_device\",\n    \"kentikAdapter\": \"Kentik v5\"\n  }\n}",
       "exampleOutput": ""
     }
   ],
   "relatedItems": {
     "adapters": [
-      {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
-        "versions": [
-          "^0.13.0"
-        ]
-      },
-      {
-        "name": "adapter-netbox_v33",
-        "webName": "",
-        "overview": "Adapter that connects to NetBox",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
-        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
-        "webLink": "",
-        "versions": [
-          "^2.0.0"
-        ]
-      },
       {
         "name": "adapter-kentik_v5",
         "webName": "",
@@ -171,6 +150,30 @@
         "webLink": "https://www.itential.com/automation-gateway/",
         "versions": [
           "^4.29.0-2023.1.12"
+        ]
+      },
+      {
+        "name": "adapter-netbox_v33",
+        "webName": "",
+        "overview": "Adapter that connects to NetBox",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+        "webLink": "",
+        "versions": [
+          "^2.0.0"
+        ]
+      },
+      {
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
+        "versions": [
+          "^0.13.0"
         ]
       }
     ],

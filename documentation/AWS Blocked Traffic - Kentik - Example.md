@@ -217,13 +217,13 @@ The following table lists the inputs to the Example Project:
     </tr>    <tr>
       <td>CompanyID</td>
       <td>number</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Company ID in Kentik</td>
       <td><pre lang="json">180173</pre></td>
     </tr>    <tr>
       <td>CurrentState</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Current state in Kentik</td>
       <td><pre lang="json">ackReq</pre></td>
     </tr>    <tr>
@@ -241,9 +241,9 @@ The following table lists the inputs to the Example Project:
     </tr>    <tr>
       <td>Dimensions.Geography_src</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Geography source</td>
-      <td><pre lang="json">GB</pre></td>
+      <td><pre lang="json">US</pre></td>
     </tr>    <tr>
       <td>Dimensions.IP_dst</td>
       <td>string</td>
@@ -259,7 +259,7 @@ The following table lists the inputs to the Example Project:
     </tr>    <tr>
       <td>Dimensions.kt_aws_action</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Kentik AWS action</td>
       <td><pre lang="json">REJECT</pre></td>
     </tr>    <tr>
@@ -289,9 +289,9 @@ The following table lists the inputs to the Example Project:
     </tr>    <tr>
       <td>Links[i].Label</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Kentik link label</td>
-      <td><pre lang="json">Open in Dashboard</pre></td>
+      <td><pre lang="json">Open Dashboard</pre></td>
     </tr>    <tr>
       <td>Links[i].Value</td>
       <td>string</td>
@@ -301,93 +301,39 @@ The following table lists the inputs to the Example Project:
     </tr>    <tr>
       <td>Description</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Kentik alarm description</td>
       <td><pre lang="json">Alarm for Web Server Traffic Rejections Requires Ack</pre></td>
-    </tr>    <tr>
-      <td>EndTime</td>
-      <td>string</td>
-      <td>yes</td>
-      <td>End time of alarm</td>
-      <td><pre lang="json">2023-06-29 18:36:48 UTC</pre></td>
-    </tr>    <tr>
-      <td>EndTime</td>
-      <td>string</td>
-      <td>yes</td>
-      <td>End time of alarm</td>
-      <td><pre lang="json">2023-06-29 18:36:48 UTC</pre></td>
     </tr>    <tr>
       <td>AlarmPolicyName</td>
       <td>string</td>
       <td>yes</td>
-      <td>Alarm policy name</td>
-      <td><pre lang="json">Web Server Traffic Rejections</pre></td>
-    </tr>    <tr>
-      <td>IsActive</td>
-      <td>boolean</td>
-      <td>yes</td>
-      <td>Set to true if alarm policy is active and false if inactive</td>
-      <td><pre lang="json">true</pre></td>
-    </tr>    <tr>
-      <td>PreviousState</td>
-      <td>string</td>
-      <td>yes</td>
-      <td>Previous state</td>
-      <td><pre lang="json">alarm</pre></td>
-    </tr>    <tr>
-      <td>StartTime</td>
-      <td>string</td>
-      <td>yes</td>
-      <td>Start time of alarm</td>
-      <td><pre lang="json">2023-06-29 18:26:48 UTC</pre></td>
-    </tr>    <tr>
-      <td>Type</td>
-      <td>string</td>
-      <td>yes</td>
-      <td>Type of alarm</td>
-      <td><pre lang="json">alarm</pre></td>
+      <td>The name of the alert policy generating this notification</td>
+      <td><pre lang="json">US Policy Rejected Web Server Traffic</pre></td>
     </tr>    <tr>
       <td>AlarmID</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Alarm ID</td>
       <td><pre lang="json">266940386</pre></td>
     </tr>    <tr>
-      <td>AlarmPolicyID</td>
-      <td>string</td>
-      <td>yes</td>
-      <td>Alarm Policy ID</td>
-      <td><pre lang="json">187811</pre></td>
-    </tr>    <tr>
       <td>AlarmPolicyMetadataType</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Alarm policy metadata type</td>
       <td><pre lang="json">Custom</pre></td>
     </tr>    <tr>
       <td>AlarmSeverity</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Alarm severity</td>
       <td><pre lang="json">critical</pre></td>
     </tr>    <tr>
       <td>AlarmThresholdID</td>
       <td>string</td>
-      <td>yes</td>
+      <td>no</td>
       <td>Alarm threshold ID</td>
       <td><pre lang="json">446709</pre></td>
-    </tr>    <tr>
-      <td>Metrics</td>
-      <td>object</td>
-      <td>yes</td>
-      <td>Alarm metrics</td>
-      <td><pre lang="json">{}</pre></td>
-    </tr>    <tr>
-      <td>Metrics.bits</td>
-      <td>number</td>
-      <td>yes</td>
-      <td>Amount of bits</td>
-      <td><pre lang="json">2.6666669845581055</pre></td>
     </tr>
   </tbody>
 </table>
@@ -403,8 +349,44 @@ There are no outputs for this Example Project.
 
 ### Example Inputs and Outputs
 
-No example inputs or outputs found.
+  
+#### Example 1
 
+    
+Input:
+<pre>{
+  "iapUrl": "https://iap-dev:443",
+  "serviceNowUrl": "https://service-now.com",
+  "allPolicyEventsWebhookUrl": "webhookurl1",
+  "policyAutomatedFailureWebhookUrl": "webhookurl2",
+  "policyAutomatedAuthorizationWebhookUrl": "webhookurl3",
+  "serviceNowAdapter": "ServiceNow",
+  "awsEC2Adapter": "AWS",
+  "msTeamsAdapter": "MS Teams",
+  "AlarmPolicyName": "US Policy Rejected Web Server Traffic",
+  "Dimensions": {
+    "AS_src": "1000",
+    "IP_dst": "11.11.11.11",
+    "IP_src": "10.10.10.10",
+    "kt_aws_dst_sg": "aws_security_group"
+  },
+  "Links": [
+    {
+      "Name": "DashboardAlarmURL",
+      "Label": "Open Dashboard",
+      "Value": "https://portal.kentik.com/v4/library/dashboards/10000"
+    },
+    {
+      "Name": "DetailsAlarmURL",
+      "Label": "Open Details",
+      "Value": "https://portal.kentik.com/v4/alerting/a215729224"
+    }
+  ]
+} </pre>
+
+    
+    
+  
 
 
 ## Support

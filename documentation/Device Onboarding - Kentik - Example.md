@@ -234,8 +234,27 @@ There are no outputs for this Example Project.
 
 ### Example Inputs and Outputs
 
-No example inputs or outputs found.
+  
+#### Example 1
 
+    
+Input:
+<pre>{
+  "formData": {
+    "iapUrl": "https://iap-dev:443",
+    "deviceOnboardingWebhookUrl": "webhookURL1",
+    "serviceNowUrl": "https://service-now-dev.com",
+    "deviceName": "ios_device",
+    "serviceNowAdapter": "ServiceNow",
+    "netBoxAdapter": "NetboxV3",
+    "msTeamsAdapter": "MS Teams",
+    "kentikAdapter": "Kentik v5"
+  }
+} </pre>
+
+    
+    
+  
 
 
 ## Support
