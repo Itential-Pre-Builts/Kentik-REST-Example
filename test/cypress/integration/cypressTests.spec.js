@@ -391,7 +391,7 @@ describe('Default: Cypress Tests', function () {
   })
 
   describe('Device Flow Test - Kentik - REST', function() {
-    it.skip('Device Flow Test - Kentik - REST: Device Onboarding Flow Test - Kentik - Example: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik', function () {
+    it('Device Flow Test - Kentik - REST: Device Onboarding Flow Test - Kentik - Example: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik', function () {
       const importWorkflow = true;
       const isStub = true;
       // create the job runner so it can be used in future tests
@@ -409,7 +409,7 @@ describe('Default: Cypress Tests', function () {
           expect(jobVariables).eql(DeviceFlowTestKentikRESTJob22Data.expectedTaskResults.variables);
         });
         /* Restore the workflow without the stub tasks */
-        // replaceStubTasks(workflowRunner, DeviceFlowTestKentikRESTJob22Workflow);
+        replaceStubTasks(workflowRunner, DeviceFlowTestKentikRESTJob22Workflow);
       });
     })
   })

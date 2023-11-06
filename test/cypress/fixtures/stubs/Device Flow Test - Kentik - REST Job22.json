@@ -13,21 +13,12 @@
   "expectedTaskResults": {
     "status": "complete",
     "variables": {
-      "deviceName": "ATLSWITCH01",
-      "autoApprove": true,
-      "templateName": "Ping - IOS",
-      "templateVariables": {
-        "address": "google.com",
-        "repeat": "1000"
-      },
-      "reattempt": false,
-      "reattemptWaitTime": 0,
-      "reattemptQuantity": 0,
       "adapterId": "Kentik v5",
       "startTime": {
         "time": "2023-11-03T04:51:29.660000-1100",
         "formatString": "YYYY-MM-DDTHH:mm:ss.SSSSSSZZ"
       },
+      "deviceName": "ATLSWITCH01",
       "testResult": "fail"
     }
   },
