@@ -1138,7 +1138,7 @@
           "IP_dst": {
             "type": "string",
             "examples": [
-              "13.13.13.13"
+              "10.0.18.252"
             ],
             "format": "ipv4"
           },
@@ -1282,7 +1282,7 @@
           "IP_dst": {
             "type": "string",
             "examples": [
-              "13.13.13.13"
+              "10.0.18.252"
             ],
             "format": "ipv4"
           },
@@ -1380,23 +1380,23 @@
   },
   "type": "automation",
   "font_size": 12,
-  "last_updated": "2023-11-02T15:48:53.860Z",
+  "last_updated": "2023-11-06T19:15:31.518Z",
   "lastUpdatedVersion": "5.46.0-2023.1.19.0",
   "created": "2023-06-02T15:54:40.814Z",
   "created_by": {
     "provenance": "CloudAAA",
     "username": "mike.elrom@itential.com",
-    "firstname": "Michael",
-    "inactive": false
+    "firstname": "Mike",
+    "inactive": true
   },
   "createdVersion": "5.44.64-2022.1.33.0",
   "preAutomationTime": 0,
   "sla": 0,
   "canvasVersion": 1.5,
   "last_updated_by": {
-    "provenance": "CloudAAA",
-    "username": "chris.calloway@itential.com",
-    "firstname": "Chris",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
     "inactive": false
   },
   "tags": [],
