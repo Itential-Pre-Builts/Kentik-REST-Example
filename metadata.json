@@ -105,18 +105,6 @@
   "relatedItems": {
     "adapters": [
       {
-        "name": "adapter-kentik_v5",
-        "webName": "",
-        "overview": "Adapter that connects to Kentik",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
-        "docLink": "",
-        "webLink": "",
-        "versions": [
-          "^0.1.1"
-        ]
-      },
-      {
         "name": "adapter-aws_ec2",
         "webName": "Amazon EC2",
         "overview": "Adapter that connects to AWS.",
@@ -126,6 +114,18 @@
         "webLink": "https://www.itential.com/adapters/amazon-ec2/",
         "versions": [
           "^0.6.9"
+        ]
+      },
+      {
+        "name": "adapter-netbox_v33",
+        "webName": "",
+        "overview": "Adapter that connects to NetBox",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+        "webLink": "",
+        "versions": [
+          "^2.0.0"
         ]
       },
       {
@@ -141,6 +141,18 @@
         ]
       },
       {
+        "name": "adapter-kentik_v5",
+        "webName": "",
+        "overview": "Adapter that connects to Kentik",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+        "docLink": "",
+        "webLink": "",
+        "versions": [
+          "^0.1.1"
+        ]
+      },
+      {
         "name": "adapter-automation_gateway",
         "webName": "Itential Automation Gateway",
         "overview": "Adapter that connects to Itential Automation Gateway",
@@ -150,18 +162,6 @@
         "webLink": "https://www.itential.com/automation-gateway/",
         "versions": [
           "^4.29.0-2023.1.12"
-        ]
-      },
-      {
-        "name": "adapter-netbox_v33",
-        "webName": "",
-        "overview": "Adapter that connects to NetBox",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
-        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
-        "webLink": "",
-        "versions": [
-          "^2.0.0"
         ]
       },
       {

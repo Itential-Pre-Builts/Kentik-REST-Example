@@ -249,7 +249,7 @@ The following table lists the inputs to the Example Project:
       <td>string</td>
       <td>yes</td>
       <td>IP destination</td>
-      <td><pre lang="json">10.0.18.252</pre></td>
+      <td><pre lang="json">13.13.13.13</pre></td>
     </tr>    <tr>
       <td>Dimensions.IP_src</td>
       <td>string</td>

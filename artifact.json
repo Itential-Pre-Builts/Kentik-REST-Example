@@ -1,7 +1,7 @@
 {
   "metadata": {
     "name": "@itentialopensource/kentik-rest-example",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
     "license": "Apache-2.0",
     "repository": {
@@ -165,19 +165,19 @@
         }
       },
       {
-        "id": "Create Device - Kentik",
-        "name": "Create Device - Kentik",
+        "id": "Create Device - Kentik - REST",
+        "name": "Create Device - Kentik - REST",
         "type": "workflow",
-        "location": "/bundles/workflows/Create Device - Kentik.json",
+        "location": "/bundles/workflows/Create Device - Kentik - REST.json",
         "properties": {
           "entryPoint": false
         }
       },
       {
-        "id": "Device Flow Test - Kentik",
-        "name": "Device Flow Test - Kentik",
+        "id": "Device Flow Test - Kentik - REST",
+        "name": "Device Flow Test - Kentik - REST",
         "type": "workflow",
-        "location": "/bundles/workflows/Device Flow Test - Kentik.json",
+        "location": "/bundles/workflows/Device Flow Test - Kentik - REST.json",
         "properties": {
           "entryPoint": false
         }
@@ -241,6 +241,15 @@
         "name": "Build IAG Device Configuration Push Data",
         "type": "transformation",
         "location": "/bundles/transformations/Build IAG Device Configuration Push Data.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "6544148b2c883d00f315fdd3",
+        "name": "Find Kentik Device by Name",
+        "type": "transformation",
+        "location": "/bundles/transformations/Find Kentik Device by Name.json",
         "properties": {
           "entryPoint": false
         }
@@ -1875,23 +1884,23 @@
         },
         "type": "automation",
         "font_size": 12,
-        "last_updated": "2023-11-02T15:48:53.860Z",
+        "last_updated": "2023-11-06T19:15:31.518Z",
         "lastUpdatedVersion": "5.46.0-2023.1.19.0",
         "created": "2023-06-02T15:54:40.814Z",
         "created_by": {
           "provenance": "CloudAAA",
           "username": "mike.elrom@itential.com",
-          "firstname": "Michael",
-          "inactive": false
+          "firstname": "Mike",
+          "inactive": true
         },
         "createdVersion": "5.44.64-2022.1.33.0",
         "preAutomationTime": 0,
         "sla": 0,
         "canvasVersion": 1.5,
         "last_updated_by": {
-          "provenance": "CloudAAA",
-          "username": "chris.calloway@itential.com",
-          "firstname": "Chris",
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
           "inactive": false
         },
         "tags": [],
@@ -2305,7 +2314,7 @@
             "name": "childJob",
             "canvasName": "childJob",
             "summary": "Create Device - Kentik",
-            "description": "Runs a child job inside a workflow.",
+            "description": "Create device in Kentik",
             "location": "Application",
             "locationType": null,
             "app": "WorkFlowEngine",
@@ -2314,7 +2323,7 @@
             "variables": {
               "incoming": {
                 "task": "",
-                "workflow": "Create Device - Kentik",
+                "workflow": "Create Device - Kentik - REST",
                 "variables": {
                   "siteName": {
                     "task": "babf",
@@ -3340,8 +3349,8 @@
         "preAutomationTime": 0,
         "sla": 0,
         "outputData": {},
-        "last_updated": "2023-10-31T21:09:02.034Z",
-        "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+        "last_updated": "2023-11-03T15:39:59.561Z",
+        "lastUpdatedVersion": "5.46.0-2023.1.19.0",
         "created": "2023-09-02T20:18:46.321Z",
         "created_by": {
           "provenance": "CloudAAA",
@@ -5254,7 +5263,7 @@
             "name": "childJob",
             "canvasName": "childJob",
             "summary": "Device Flow Test - Kentik",
-            "description": "Runs a child job inside a workflow.",
+            "description": "Runs device flow test in Kentik",
             "location": "Application",
             "locationType": null,
             "app": "WorkFlowEngine",
@@ -5263,7 +5272,7 @@
             "variables": {
               "incoming": {
                 "task": "",
-                "workflow": "Device Flow Test - Kentik",
+                "workflow": "Device Flow Test - Kentik - REST",
                 "variables": {
                   "deviceName": {
                     "task": "job",
@@ -5399,25 +5408,10 @@
           "type": "object",
           "properties": {
             "deviceName": {
-              "anyOf": [
-                {
-                  "type": [
-                    "array",
-                    "string",
-                    "boolean",
-                    "integer",
-                    "number",
-                    "object"
-                  ],
-                  "title": "elementN",
-                  "examples": [
-                    "Device3"
-                  ]
-                },
-                {
-                  "title": "deviceId",
-                  "type": "number"
-                }
+              "$id": "deviceName",
+              "type": "string",
+              "examples": [
+                "deviceName"
               ]
             },
             "_id": {
@@ -5448,25 +5442,10 @@
           "type": "object",
           "properties": {
             "deviceName": {
-              "anyOf": [
-                {
-                  "type": [
-                    "array",
-                    "string",
-                    "boolean",
-                    "integer",
-                    "number",
-                    "object"
-                  ],
-                  "title": "elementN",
-                  "examples": [
-                    "Device3"
-                  ]
-                },
-                {
-                  "title": "deviceId",
-                  "type": "number"
-                }
+              "$id": "deviceName",
+              "type": "string",
+              "examples": [
+                "deviceName"
               ]
             },
             "_id": {
@@ -5494,7 +5473,7 @@
         "preAutomationTime": 0,
         "sla": 0,
         "outputData": {},
-        "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+        "lastUpdatedVersion": "5.46.0-2023.1.19.0",
         "created_by": {
           "provenance": "CloudAAA",
           "username": "mike.elrom@itential.com",
@@ -5502,7 +5481,7 @@
           "inactive": false
         },
         "createdVersion": "5.46.0-2023.1.21",
-        "last_updated": "2023-10-31T21:09:02.042Z",
+        "last_updated": "2023-11-03T15:41:33.902Z",
         "created": "2023-09-22T18:31:58.653Z",
         "canvasVersion": 3,
         "last_updated_by": {
@@ -6815,13 +6794,13 @@
     {
       "type": "workflow",
       "data": {
-        "name": "Create Device - Kentik",
+        "name": "Create Device - Kentik - REST",
         "tasks": {
           "3598": {
             "name": "query",
             "canvasName": "query",
-            "summary": "Query Device",
-            "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+            "summary": "Query Created Kentik Device",
+            "description": "Query device created in Kentik",
             "location": "Application",
             "locationType": null,
             "app": "WorkFlowEngine",
@@ -6867,8 +6846,8 @@
           "07a6": {
             "name": "createDevice",
             "canvasName": "createDevice",
-            "summary": "Create Device",
-            "description": "Creates and returns a device object containing information about an individual device (see  About Devices ). * Required fields. ** Conditionally required fields.",
+            "summary": "Create Device - Kentik",
+            "description": "Creates device in Kentik",
             "location": "Adapter",
             "locationType": "KentikV5",
             "app": "KentikV5",
@@ -6893,8 +6872,8 @@
           "89a2": {
             "name": "findSites",
             "canvasName": "findSites",
-            "summary": "List Sites",
-            "description": "Returns an array of site objects, each of which contains information about an individual site (see  About Sites ). * Required fields.",
+            "summary": "Get Kentik Sites",
+            "description": "Gets list of Kentik sites",
             "location": "Adapter",
             "locationType": "KentikV5",
             "app": "KentikV5",
@@ -6918,8 +6897,8 @@
           "6a97": {
             "name": "transformation",
             "canvasName": "transformation",
-            "summary": "Device Onboarding - Kentik JST",
-            "description": "Perform a JSON Transformation using the JST library.",
+            "summary": "Build Create Device Data - Kentik",
+            "description": "Builds inputs to create device in Kentik",
             "location": "Application",
             "locationType": null,
             "app": "WorkFlowEngine",
@@ -7057,8 +7036,7 @@
                 "type": "string",
                 "examples": [
                   "192.168.178.1"
-                ],
-                "format": "ipv4"
+                ]
               }
             },
             "snmpIP": {
@@ -7066,8 +7044,7 @@
               "type": "string",
               "examples": [
                 "192.168.178.1"
-              ],
-              "format": "ipv4"
+              ]
             },
             "snmpCommunity": {
               "$id": "snmpCommunity",
@@ -7123,16 +7100,14 @@
               "type": "string",
               "examples": [
                 "209.1.1.1"
-              ],
-              "format": "ipv4"
+              ]
             },
             "bgpNeighborIP6": {
               "$id": "bgpNeighborIP6",
               "type": "string",
               "examples": [
                 "ff44::ffff"
-              ],
-              "format": "ipv6"
+              ]
             },
             "bgpNeighborASN": {
               "$id": "bgpNeighborASN",
@@ -7234,8 +7209,7 @@
                 "type": "string",
                 "examples": [
                   "192.168.178.1"
-                ],
-                "format": "ipv4"
+                ]
               }
             },
             "snmpIP": {
@@ -7243,8 +7217,7 @@
               "type": "string",
               "examples": [
                 "192.168.178.1"
-              ],
-              "format": "ipv4"
+              ]
             },
             "snmpCommunity": {
               "$id": "snmpCommunity",
@@ -7300,16 +7273,14 @@
               "type": "string",
               "examples": [
                 "209.1.1.1"
-              ],
-              "format": "ipv4"
+              ]
             },
             "bgpNeighborIP6": {
               "$id": "bgpNeighborIP6",
               "type": "string",
               "examples": [
                 "ff44::ffff"
-              ],
-              "format": "ipv6"
+              ]
             },
             "bgpNeighborASN": {
               "$id": "bgpNeighborASN",
@@ -7373,7 +7344,7 @@
         "preAutomationTime": 0,
         "sla": 0,
         "outputData": {},
-        "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+        "lastUpdatedVersion": "5.46.0-2023.1.19.0",
         "created_by": {
           "provenance": "CloudAAA",
           "username": "mike.elrom@itential.com",
@@ -7381,7 +7352,7 @@
           "inactive": false
         },
         "createdVersion": "5.46.0-2023.1.14.0",
-        "last_updated": "2023-10-31T21:09:02.038Z",
+        "last_updated": "2023-11-02T20:18:32.488Z",
         "last_updated_by": {
           "provenance": "CloudAAA",
           "username": "chris.calloway@itential.com",
@@ -7398,13 +7369,13 @@
     {
       "type": "workflow",
       "data": {
-        "name": "Device Flow Test - Kentik",
+        "name": "Device Flow Test - Kentik - REST",
         "tasks": {
           "workflow_start": {
             "name": "workflow_start",
             "groups": [],
             "nodeLocation": {
-              "x": 1152,
+              "x": 1560,
               "y": -96
             },
             "x": 0,
@@ -7414,7 +7385,7 @@
             "name": "workflow_end",
             "groups": [],
             "nodeLocation": {
-              "x": 4620,
+              "x": 4284,
               "y": -96
             },
             "x": 1,
@@ -7424,7 +7395,7 @@
             "name": "genericAdapterRequestNoBasePath",
             "canvasName": "genericAdapterRequestNoBasePath",
             "summary": "Get Flow Summary",
-            "description": "Makes the requested generic call",
+            "description": "Gets flow summary in Kentik",
             "location": "Adapter",
             "locationType": "KentikV5",
             "app": "KentikV5",
@@ -7447,60 +7418,6 @@
             "groups": [],
             "nodeLocation": {
               "x": 2436,
-              "y": -96
-            }
-          },
-          "3cde": {
-            "name": "makeData",
-            "canvasName": "makeData",
-            "summary": "Query Filter",
-            "description": "This task takes an input and converts it to a different data type. For example, converting a number into a string.",
-            "location": "Application",
-            "locationType": null,
-            "app": "WorkFlowEngine",
-            "type": "automatic",
-            "displayName": "Tools",
-            "variables": {
-              "incoming": {
-                "input": "response[<!id!>].metadata.status",
-                "outputType": "string",
-                "variables": "$var.275c.return_data"
-              },
-              "outgoing": {
-                "output": ""
-              }
-            },
-            "actor": "Pronghorn",
-            "groups": [],
-            "nodeLocation": {
-              "x": 2100,
-              "y": -96
-            }
-          },
-          "275c": {
-            "name": "query",
-            "canvasName": "query",
-            "summary": "Query Device",
-            "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
-            "location": "Application",
-            "locationType": null,
-            "app": "WorkFlowEngine",
-            "type": "operation",
-            "displayName": "WorkFlowEngine",
-            "variables": {
-              "incoming": {
-                "pass_on_null": false,
-                "query": "response.device",
-                "obj": "$var.6ce0.result"
-              },
-              "outgoing": {
-                "return_data": ""
-              }
-            },
-            "actor": "Pronghorn",
-            "groups": [],
-            "nodeLocation": {
-              "x": 1764,
               "y": -96
             }
           },
@@ -7545,7 +7462,7 @@
             "actor": "Pronghorn",
             "groups": [],
             "nodeLocation": {
-              "x": 4056,
+              "x": 3720,
               "y": -96
             }
           },
@@ -7562,7 +7479,7 @@
             "variables": {
               "incoming": {
                 "pass_on_null": false,
-                "query": "$var.3cde.output",
+                "query": "$var.f1f0.deviceFilter",
                 "obj": "$var.efe2.result"
               },
               "outgoing": {
@@ -7573,32 +7490,6 @@
             "groups": [],
             "nodeLocation": {
               "x": 2748,
-              "y": -96
-            }
-          },
-          "6ce0": {
-            "name": "findDevice",
-            "canvasName": "findDevice",
-            "summary": "findDevice",
-            "description": "Returns a device object containing information about an individual device (see  About Devices ). * Required fields.",
-            "location": "Adapter",
-            "locationType": "KentikV5",
-            "app": "KentikV5",
-            "type": "automatic",
-            "displayName": "Kentik v5",
-            "variables": {
-              "incoming": {
-                "deviceId": "$var.job.deviceName",
-                "adapter_id": "$var.job.adapterId"
-              },
-              "outgoing": {
-                "result": ""
-              }
-            },
-            "actor": "Pronghorn",
-            "groups": [],
-            "nodeLocation": {
-              "x": 1440,
               "y": -96
             }
           },
@@ -7624,34 +7515,7 @@
             "actor": "Pronghorn",
             "groups": [],
             "nodeLocation": {
-              "x": 3732,
-              "y": -96
-            }
-          },
-          "988b": {
-            "name": "query",
-            "canvasName": "query",
-            "summary": "Query flow last seen",
-            "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
-            "location": "Application",
-            "locationType": null,
-            "app": "WorkFlowEngine",
-            "type": "operation",
-            "displayName": "WorkFlowEngine",
-            "variables": {
-              "incoming": {
-                "pass_on_null": false,
-                "query": "flow_last_seen",
-                "obj": "$var.f120.return_data"
-              },
-              "outgoing": {
-                "return_data": ""
-              }
-            },
-            "actor": "Pronghorn",
-            "groups": [],
-            "nodeLocation": {
-              "x": 3072,
+              "x": 3396,
               "y": -96
             }
           },
@@ -7671,7 +7535,7 @@
                   {
                     "key": "time",
                     "value": {
-                      "task": "988b",
+                      "task": "f120",
                       "variable": "return_data"
                     }
                   },
@@ -7691,7 +7555,7 @@
             "actor": "Pronghorn",
             "groups": [],
             "nodeLocation": {
-              "x": 3396,
+              "x": 3060,
               "y": -96
             }
           },
@@ -7718,7 +7582,7 @@
             "actor": "Pronghorn",
             "groups": [],
             "nodeLocation": {
-              "x": 4368,
+              "x": 4032,
               "y": -192
             }
           },
@@ -7745,14 +7609,72 @@
             "actor": "Pronghorn",
             "groups": [],
             "nodeLocation": {
-              "x": 4368,
+              "x": 4032,
               "y": 0
+            }
+          },
+          "2aa1": {
+            "name": "findDevices",
+            "canvasName": "findDevices",
+            "summary": "Get Kentik Devices",
+            "description": "Gets all Kentik devices",
+            "location": "Adapter",
+            "locationType": "KentikV5",
+            "app": "KentikV5",
+            "type": "automatic",
+            "displayName": "Kentik v5",
+            "variables": {
+              "incoming": {
+                "adapter_id": "$var.job.adapterId"
+              },
+              "outgoing": {
+                "result": ""
+              }
+            },
+            "actor": "Pronghorn",
+            "groups": [],
+            "nodeLocation": {
+              "x": 1812,
+              "y": -96
+            }
+          },
+          "f1f0": {
+            "name": "transformation",
+            "canvasName": "transformation",
+            "summary": "Find Kentik Device by Name",
+            "description": "Find Kentik device by name",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "tr_id": "6544148b2c883d00f315fdd3",
+                "variableMap": {
+                  "kentikDevices": "$var.2aa1.result",
+                  "deviceName": "$var.job.deviceName"
+                },
+                "options": {
+                  "extractOutput": true
+                }
+              },
+              "outgoing": {
+                "deviceFilter": null
+              },
+              "decorators": []
+            },
+            "actor": "Pronghorn",
+            "groups": [],
+            "nodeLocation": {
+              "x": 2124,
+              "y": -96
             }
           }
         },
         "transitions": {
           "workflow_start": {
-            "6ce0": {
+            "2aa1": {
               "state": "success",
               "type": "standard"
             }
@@ -7760,18 +7682,6 @@
           "workflow_end": {},
           "efe2": {
             "f120": {
-              "state": "success",
-              "type": "standard"
-            }
-          },
-          "3cde": {
-            "efe2": {
-              "state": "success",
-              "type": "standard"
-            }
-          },
-          "275c": {
-            "3cde": {
               "state": "success",
               "type": "standard"
             }
@@ -7787,25 +7697,13 @@
             }
           },
           "f120": {
-            "988b": {
-              "state": "success",
-              "type": "standard"
-            }
-          },
-          "6ce0": {
-            "275c": {
+            "35e4": {
               "state": "success",
               "type": "standard"
             }
           },
           "6f53": {
             "c4ab": {
-              "state": "success",
-              "type": "standard"
-            }
-          },
-          "988b": {
-            "35e4": {
               "state": "success",
               "type": "standard"
             }
@@ -7827,6 +7725,18 @@
               "state": "success",
               "type": "standard"
             }
+          },
+          "2aa1": {
+            "f1f0": {
+              "state": "success",
+              "type": "standard"
+            }
+          },
+          "f1f0": {
+            "efe2": {
+              "state": "success",
+              "type": "standard"
+            }
           }
         },
         "inputSchema": {
@@ -7842,10 +7752,6 @@
                 "string"
               ]
             },
-            "deviceName": {
-              "title": "deviceId",
-              "type": "number"
-            },
             "startTime": {
               "type": [
                 "array",
@@ -7855,12 +7761,19 @@
                 "object",
                 "string"
               ]
+            },
+            "deviceName": {
+              "$id": "deviceName",
+              "type": "string",
+              "examples": [
+                "deviceName"
+              ]
             }
           },
           "required": [
             "adapterId",
-            "deviceName",
-            "startTime"
+            "startTime",
+            "deviceName"
           ]
         },
         "outputSchema": {
@@ -7876,10 +7789,6 @@
                 "string"
               ]
             },
-            "deviceName": {
-              "title": "deviceId",
-              "type": "number"
-            },
             "startTime": {
               "type": [
                 "array",
@@ -7888,6 +7797,13 @@
                 "number",
                 "object",
                 "string"
+              ]
+            },
+            "deviceName": {
+              "$id": "deviceName",
+              "type": "string",
+              "examples": [
+                "deviceName"
               ]
             },
             "_id": {
@@ -7915,23 +7831,23 @@
         "preAutomationTime": 0,
         "sla": 0,
         "outputData": {},
-        "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+        "lastUpdatedVersion": "5.46.0-2023.1.19.0",
         "created_by": {
           "provenance": "CloudAAA",
-          "username": "mike.elrom@itential.com",
-          "firstname": "Michael",
+          "username": "chris.calloway@itential.com",
+          "firstname": "Chris",
           "inactive": false
         },
-        "createdVersion": "5.46.0-2023.1.21",
-        "last_updated": "2023-10-31T21:09:02.042Z",
+        "createdVersion": "5.46.0-2023.1.19.0",
+        "canvasVersion": 3,
+        "last_updated": "2023-11-03T14:12:27.771Z",
         "last_updated_by": {
           "provenance": "CloudAAA",
           "username": "chris.calloway@itential.com",
           "firstname": "Chris",
           "inactive": false
         },
-        "created": "2023-09-25T18:24:15.198Z",
-        "canvasVersion": 3,
+        "created": "2023-11-03T14:04:27.662Z",
         "tags": [],
         "groups": [],
         "migrationVersion": 2
@@ -8987,6 +8903,398 @@
           "username": "chris.calloway@itential.com"
         },
         "lastUpdated": "2023-10-31T21:09:01.981Z",
+        "lastUpdatedBy": {
+          "_id": "64c178c76dba2ac92808b07e",
+          "provenance": "CloudAAA",
+          "username": "chris.calloway@itential.com"
+        },
+        "version": "4.1.2-2023.1.10",
+        "tags": []
+      }
+    },
+    {
+      "type": "transformation",
+      "data": {
+        "_id": "6544148b2c883d00f315fdd3",
+        "name": "Find Kentik Device by Name",
+        "description": "Find Kentik Device by Name",
+        "incoming": [
+          {
+            "$id": "kentikDevices",
+            "type": "object",
+            "properties": {
+              "response": {
+                "type": "object",
+                "properties": {
+                  "devices": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "examples": [
+                            "165963"
+                          ]
+                        },
+                        "device_name": {
+                          "type": "string",
+                          "examples": [
+                            "test"
+                          ]
+                        },
+                        "device_type": {
+                          "type": "string",
+                          "examples": [
+                            "router"
+                          ]
+                        }
+                      },
+                      "required": []
+                    }
+                  }
+                },
+                "required": []
+              }
+            },
+            "required": []
+          },
+          {
+            "$id": "deviceName",
+            "type": "string",
+            "examples": [
+              "deviceName"
+            ]
+          }
+        ],
+        "outgoing": [
+          {
+            "$id": "deviceFilter",
+            "type": "string",
+            "examples": [
+              "device"
+            ]
+          }
+        ],
+        "steps": [
+          {
+            "id": 2,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "kentikDevices",
+              "ptr": "/response/devices"
+            },
+            "to": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/args/0/value"
+            },
+            "context": "#"
+          },
+          {
+            "id": 10,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "deviceName",
+              "ptr": ""
+            },
+            "to": {
+              "location": "method",
+              "name": 9,
+              "ptr": "/args/0/value"
+            },
+            "context": "#"
+          },
+          {
+            "id": 9,
+            "type": "method",
+            "library": "String",
+            "method": "toLowerCase",
+            "args": [
+              null
+            ],
+            "view": {
+              "row": 2,
+              "col": 1
+            },
+            "context": "#"
+          },
+          {
+            "id": 11,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 9,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/args/2/value"
+            },
+            "context": "#"
+          },
+          {
+            "id": 1,
+            "type": "method",
+            "library": "Array",
+            "method": "find",
+            "args": [
+              null,
+              "findDevice",
+              null
+            ],
+            "view": {
+              "row": 1,
+              "col": 2
+            },
+            "context": "#"
+          },
+          {
+            "id": 5,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "method",
+              "name": 4,
+              "ptr": "/args/0/value"
+            },
+            "context": "#"
+          },
+          {
+            "id": 4,
+            "type": "method",
+            "library": "Object",
+            "method": "getProperty",
+            "args": [
+              null,
+              "id"
+            ],
+            "view": {
+              "row": 1,
+              "col": 3
+            },
+            "context": "#"
+          },
+          {
+            "id": 7,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 4,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "template",
+              "name": 6,
+              "ptr": "/args/0/value"
+            },
+            "context": "#"
+          },
+          {
+            "id": 6,
+            "type": "template",
+            "library": "String",
+            "method": "templateLiteral",
+            "template": "response[${deviceId}].metadata.status.flow_last_seen",
+            "args": [
+              null
+            ],
+            "view": {
+              "row": 1,
+              "col": 4
+            },
+            "context": "#"
+          },
+          {
+            "id": 8,
+            "type": "assign",
+            "from": {
+              "location": "template",
+              "name": 6,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "outgoing",
+              "name": "deviceFilter",
+              "ptr": ""
+            },
+            "context": "#"
+          }
+        ],
+        "functions": [
+          {
+            "incoming": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "examples": [
+                      "165963"
+                    ]
+                  },
+                  "device_name": {
+                    "type": "string",
+                    "examples": [
+                      "test"
+                    ]
+                  },
+                  "device_type": {
+                    "type": "string",
+                    "examples": [
+                      "router"
+                    ]
+                  }
+                },
+                "required": [],
+                "$id": "element"
+              },
+              {
+                "title": "index",
+                "type": "number",
+                "optional": true,
+                "$id": "index"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "examples": [
+                        "165963"
+                      ]
+                    },
+                    "device_name": {
+                      "type": "string",
+                      "examples": [
+                        "test"
+                      ]
+                    },
+                    "device_type": {
+                      "type": "string",
+                      "examples": [
+                        "router"
+                      ]
+                    }
+                  },
+                  "required": []
+                },
+                "$id": "array",
+                "optional": true
+              },
+              {
+                "$id": "thisArg",
+                "type": "object",
+                "properties": {
+                  "0_toLowerCase return": {
+                    "type": "string"
+                  }
+                },
+                "isContext": true,
+                "isThis": true,
+                "isIndexed": true
+              }
+            ],
+            "outgoing": [
+              {
+                "title": "return",
+                "type": "boolean",
+                "$id": "return"
+              }
+            ],
+            "steps": [
+              {
+                "id": 2,
+                "type": "assign",
+                "from": {
+                  "location": "incoming",
+                  "name": "element",
+                  "ptr": "/device_name"
+                },
+                "to": {
+                  "location": "method",
+                  "name": 1,
+                  "ptr": "/args/0/value"
+                },
+                "context": "#"
+              },
+              {
+                "id": 3,
+                "type": "assign",
+                "from": {
+                  "location": "incoming",
+                  "name": "thisArg",
+                  "ptr": "/0_toLowerCase return"
+                },
+                "to": {
+                  "location": "method",
+                  "name": 1,
+                  "ptr": "/args/1/value"
+                },
+                "context": "#"
+              },
+              {
+                "id": 1,
+                "type": "method",
+                "library": "Equality",
+                "method": "identity",
+                "args": [
+                  null,
+                  null
+                ],
+                "view": {
+                  "row": 1,
+                  "col": 1
+                },
+                "context": "#"
+              },
+              {
+                "id": 4,
+                "type": "assign",
+                "from": {
+                  "location": "method",
+                  "name": 1,
+                  "ptr": "/return"
+                },
+                "to": {
+                  "location": "outgoing",
+                  "name": "return",
+                  "ptr": ""
+                },
+                "context": "#"
+              }
+            ],
+            "functions": [],
+            "name": "findDevice",
+            "view": {
+              "col": 1,
+              "row": 4
+            },
+            "id": "findDevice",
+            "comments": []
+          }
+        ],
+        "comments": [],
+        "view": {
+          "col": 4,
+          "row": 5
+        },
+        "created": "2023-11-02T21:28:43.254Z",
+        "createdBy": {
+          "_id": "64c178c76dba2ac92808b07e",
+          "provenance": "CloudAAA",
+          "username": "chris.calloway@itential.com"
+        },
+        "lastUpdated": "2023-11-02T22:18:02.263Z",
         "lastUpdatedBy": {
           "_id": "64c178c76dba2ac92808b07e",
           "provenance": "CloudAAA",
@@ -14080,21 +14388,6 @@
             "context": "#"
           },
           {
-            "id": 49,
-            "type": "assign",
-            "from": {
-              "location": "incoming",
-              "name": "serviceNowIncidentSysId",
-              "ptr": ""
-            },
-            "to": {
-              "location": "method",
-              "name": 47,
-              "ptr": "/args/2/value"
-            },
-            "context": "#"
-          },
-          {
             "id": 56,
             "type": "assign",
             "from": {
@@ -14211,6 +14504,21 @@
               "location": "template",
               "name": 55,
               "ptr": "/args/5/value"
+            },
+            "context": "#"
+          },
+          {
+            "id": 79,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "serviceNowURL",
+              "ptr": ""
+            },
+            "to": {
+              "location": "template",
+              "name": 78,
+              "ptr": "/args/1/value"
             },
             "context": "#"
           },
@@ -14610,7 +14918,7 @@
             "context": "#"
           },
           {
-            "id": 43,
+            "id": 73,
             "type": "assign",
             "from": {
               "location": "template",
@@ -14618,14 +14926,14 @@
               "ptr": "/return"
             },
             "to": {
-              "location": "method",
-              "name": 42,
+              "location": "template",
+              "name": 72,
               "ptr": "/args/0/value"
             },
             "context": "#"
           },
           {
-            "id": 46,
+            "id": 76,
             "type": "assign",
             "from": {
               "location": "template",
@@ -14633,14 +14941,14 @@
               "ptr": "/return"
             },
             "to": {
-              "location": "method",
-              "name": 45,
+              "location": "template",
+              "name": 75,
               "ptr": "/args/0/value"
             },
             "context": "#"
           },
           {
-            "id": 48,
+            "id": 80,
             "type": "assign",
             "from": {
               "location": "template",
@@ -14648,14 +14956,14 @@
               "ptr": "/return"
             },
             "to": {
-              "location": "method",
-              "name": 47,
+              "location": "template",
+              "name": 78,
               "ptr": "/args/0/value"
             },
             "context": "#"
           },
           {
-            "id": 53,
+            "id": 83,
             "type": "assign",
             "from": {
               "location": "template",
@@ -14663,21 +14971,20 @@
               "ptr": "/return"
             },
             "to": {
-              "location": "method",
-              "name": 52,
-              "ptr": "/args/1/value"
+              "location": "template",
+              "name": 82,
+              "ptr": "/args/0/value"
             },
             "context": "#"
           },
           {
-            "id": 42,
-            "type": "method",
+            "id": 72,
+            "type": "template",
             "library": "String",
-            "method": "concat",
+            "method": "templateLiteral",
+            "template": "${renderedTeamsMessage}<br/>An automated attempt to remediate the problem will now occur.",
             "args": [
-              null,
-              "<br/>",
-              "An automated attempt to remediate the problem will now occur."
+              null
             ],
             "view": {
               "row": 1,
@@ -14686,14 +14993,13 @@
             "context": "#"
           },
           {
-            "id": 45,
-            "type": "method",
+            "id": 75,
+            "type": "template",
             "library": "String",
-            "method": "concat",
+            "method": "templateLiteral",
+            "template": "${renderedTeamsMessage}<br/>Remediation Successful! Security Group has been altered to authorize ingress traffic.",
             "args": [
-              null,
-              "<br/>",
-              "Remediation Successful! Security Group has been altered to authorize ingress traffic."
+              null
             ],
             "view": {
               "row": 2,
@@ -14702,14 +15008,13 @@
             "context": "#"
           },
           {
-            "id": 52,
-            "type": "method",
+            "id": 82,
+            "type": "template",
             "library": "String",
-            "method": "concat",
+            "method": "templateLiteral",
+            "template": "[code]${renderedTeamsMessage}[/code]",
             "args": [
-              "[code]",
-              null,
-              "[/code]"
+              null
             ],
             "view": {
               "row": 4,
@@ -14718,15 +15023,14 @@
             "context": "#"
           },
           {
-            "id": 47,
-            "type": "method",
+            "id": 78,
+            "type": "template",
             "library": "String",
-            "method": "concat",
+            "method": "templateLiteral",
+            "template": "${renderedTeamsMessage}<br/>Remediation Failed! Security Group already includes source IP.<br/>ServiceNow Incident Opened: <a href=${serviceNowURL}/now/nav/ui/classic/params/target/incident.do%3Fsys_id%3D>ServiceNow Incident</a>",
             "args": [
               null,
-              "<br/>Remediation Failed! Security Group already includes source IP.<br/>ServiceNow Incident Opened: <a href=https://itentialdev2.service-now.com/now/nav/ui/classic/params/target/incident.do%3Fsys_id%3D",
-              null,
-              ">ServiceNow Incident</a>"
+              null
             ],
             "view": {
               "row": 3,
@@ -14780,11 +15084,11 @@
             "context": "#"
           },
           {
-            "id": 44,
+            "id": 74,
             "type": "assign",
             "from": {
-              "location": "method",
-              "name": 42,
+              "location": "template",
+              "name": 72,
               "ptr": "/return"
             },
             "to": {
@@ -14795,11 +15099,11 @@
             "context": "#"
           },
           {
-            "id": 50,
+            "id": 77,
             "type": "assign",
             "from": {
-              "location": "method",
-              "name": 45,
+              "location": "template",
+              "name": 75,
               "ptr": "/return"
             },
             "to": {
@@ -14810,11 +15114,11 @@
             "context": "#"
           },
           {
-            "id": 54,
+            "id": 84,
             "type": "assign",
             "from": {
-              "location": "method",
-              "name": 52,
+              "location": "template",
+              "name": 82,
               "ptr": "/return"
             },
             "to": {
@@ -14825,11 +15129,11 @@
             "context": "#"
           },
           {
-            "id": 51,
+            "id": 81,
             "type": "assign",
             "from": {
-              "location": "method",
-              "name": 47,
+              "location": "template",
+              "name": 78,
               "ptr": "/return"
             },
             "to": {
@@ -15002,7 +15306,7 @@
           "provenance": "CloudAAA",
           "username": "chris.calloway@itential.com"
         },
-        "lastUpdated": "2023-11-02T15:26:24.621Z",
+        "lastUpdated": "2023-11-06T18:34:36.212Z",
         "lastUpdatedBy": {
           "_id": "64c178c76dba2ac92808b07e",
           "provenance": "CloudAAA",
@@ -15054,7 +15358,7 @@
               "IP_dst": {
                 "type": "string",
                 "examples": [
-                  "10.0.18.252"
+                  "13.13.13.13"
                 ],
                 "format": "ipv4"
               },
@@ -15836,5 +16140,5 @@
       }
     }
   ],
-  "readme": "# Kentik - REST - Example\n\n## Overview\n\nProject for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.\n\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/AWS Blocked Traffic - Kentik - Example.md' target='_blank'>AWS Blocked Traffic - Kentik - Example</a>\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/AWS Blocked Traffic - Reset - Kentik - Example.md' target='_blank'>AWS Blocked Traffic - Reset - Kentik - Example</a>\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/Device Onboarding - Kentik - Example.md' target='_blank'>Device Onboarding - Kentik - Example</a>\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/Device Onboarding - Reset - Kentik - Example.md' target='_blank'>Device Onboarding - Reset - Kentik - Example</a>\n\n\n\n## External Dependencies\n\n<table>\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>OS Version</th>\n      <th>API Version</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>NetBox</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>MS Teams</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>Itential Automation Gateway</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>AWS</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>ServiceNow</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>Kentik</td>\n      <td></td>\n      <td></td>\n    </tr>\n  </tbody>\n</table>\n\n## Adapters\n\n<table>\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Version</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>adapter-automation_gateway</td>\n      <td>^4.29.0-2023.1.12</td>\n    </tr>    <tr>\n      <td>adapter-service_now</td>\n      <td>^2.6.3</td>\n    </tr>    <tr>\n      <td>adapter-aws_ec2</td>\n      <td>^0.6.9</td>\n    </tr>    <tr>\n      <td>adapter-netbox_v33</td>\n      <td>^2.0.0</td>\n    </tr>    <tr>\n      <td>adapter-kentik_v5</td>\n      <td>^0.1.1</td>\n    </tr>    <tr>\n      <td>adapter-ms_teams</td>\n      <td>^0.13.0</td>\n    </tr>\n  </tbody>\n</table>"
+  "readme": "# Kentik - REST - Example\n\n## Overview\n\nProject for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.\n\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/AWS Blocked Traffic - Kentik - Example.md' target='_blank'>AWS Blocked Traffic - Kentik - Example</a>\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/AWS Blocked Traffic - Reset - Kentik - Example.md' target='_blank'>AWS Blocked Traffic - Reset - Kentik - Example</a>\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/Device Onboarding - Kentik - Example.md' target='_blank'>Device Onboarding - Kentik - Example</a>\n\n<a href='https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example/-/blob/master/documentation/Device Onboarding - Reset - Kentik - Example.md' target='_blank'>Device Onboarding - Reset - Kentik - Example</a>\n\n\n\n## External Dependencies\n\n<table>\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>OS Version</th>\n      <th>API Version</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Itential Automation Gateway</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>Kentik</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>AWS</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>MS Teams</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>ServiceNow</td>\n      <td></td>\n      <td></td>\n    </tr>    <tr>\n      <td>NetBox</td>\n      <td></td>\n      <td></td>\n    </tr>\n  </tbody>\n</table>\n\n## Adapters\n\n<table>\n  <thead>\n    <tr>\n      <th>Name</th>\n      <th>Version</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>adapter-kentik_v5</td>\n      <td>^0.1.1</td>\n    </tr>    <tr>\n      <td>adapter-automation_gateway</td>\n      <td>^4.29.0-2023.1.12</td>\n    </tr>    <tr>\n      <td>adapter-aws_ec2</td>\n      <td>^0.6.9</td>\n    </tr>    <tr>\n      <td>adapter-netbox_v33</td>\n      <td>^2.0.0</td>\n    </tr>    <tr>\n      <td>adapter-service_now</td>\n      <td>^2.6.3</td>\n    </tr>    <tr>\n      <td>adapter-ms_teams</td>\n      <td>^0.13.0</td>\n    </tr>\n  </tbody>\n</table>"
 }
