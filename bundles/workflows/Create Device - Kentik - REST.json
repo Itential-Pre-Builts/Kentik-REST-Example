@@ -1,11 +1,11 @@
 {
-  "name": "Create Device - Kentik",
+  "name": "Create Device - Kentik - REST",
   "tasks": {
     "3598": {
       "name": "query",
       "canvasName": "query",
-      "summary": "Query Device",
-      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
+      "summary": "Query Created Kentik Device",
+      "description": "Query device created in Kentik",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",
@@ -51,8 +51,8 @@
     "07a6": {
       "name": "createDevice",
       "canvasName": "createDevice",
-      "summary": "Create Device",
-      "description": "Creates and returns a device object containing information about an individual device (see  About Devices ). * Required fields. ** Conditionally required fields.",
+      "summary": "Create Device - Kentik",
+      "description": "Creates device in Kentik",
       "location": "Adapter",
       "locationType": "KentikV5",
       "app": "KentikV5",
@@ -77,8 +77,8 @@
     "89a2": {
       "name": "findSites",
       "canvasName": "findSites",
-      "summary": "List Sites",
-      "description": "Returns an array of site objects, each of which contains information about an individual site (see  About Sites ). * Required fields.",
+      "summary": "Get Kentik Sites",
+      "description": "Gets list of Kentik sites",
       "location": "Adapter",
       "locationType": "KentikV5",
       "app": "KentikV5",
@@ -102,8 +102,8 @@
     "6a97": {
       "name": "transformation",
       "canvasName": "transformation",
-      "summary": "Device Onboarding - Kentik JST",
-      "description": "Perform a JSON Transformation using the JST library.",
+      "summary": "Build Create Device Data - Kentik",
+      "description": "Builds inputs to create device in Kentik",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",
@@ -241,8 +241,7 @@
           "type": "string",
           "examples": [
             "192.168.178.1"
-          ],
-          "format": "ipv4"
+          ]
         }
       },
       "snmpIP": {
@@ -250,8 +249,7 @@
         "type": "string",
         "examples": [
           "192.168.178.1"
-        ],
-        "format": "ipv4"
+        ]
       },
       "snmpCommunity": {
         "$id": "snmpCommunity",
@@ -307,16 +305,14 @@
         "type": "string",
         "examples": [
           "209.1.1.1"
-        ],
-        "format": "ipv4"
+        ]
       },
       "bgpNeighborIP6": {
         "$id": "bgpNeighborIP6",
         "type": "string",
         "examples": [
           "ff44::ffff"
-        ],
-        "format": "ipv6"
+        ]
       },
       "bgpNeighborASN": {
         "$id": "bgpNeighborASN",
@@ -418,8 +414,7 @@
           "type": "string",
           "examples": [
             "192.168.178.1"
-          ],
-          "format": "ipv4"
+          ]
         }
       },
       "snmpIP": {
@@ -427,8 +422,7 @@
         "type": "string",
         "examples": [
           "192.168.178.1"
-        ],
-        "format": "ipv4"
+        ]
       },
       "snmpCommunity": {
         "$id": "snmpCommunity",
@@ -484,16 +478,14 @@
         "type": "string",
         "examples": [
           "209.1.1.1"
-        ],
-        "format": "ipv4"
+        ]
       },
       "bgpNeighborIP6": {
         "$id": "bgpNeighborIP6",
         "type": "string",
         "examples": [
           "ff44::ffff"
-        ],
-        "format": "ipv6"
+        ]
       },
       "bgpNeighborASN": {
         "$id": "bgpNeighborASN",
@@ -557,7 +549,7 @@
   "preAutomationTime": 0,
   "sla": 0,
   "outputData": {},
-  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "lastUpdatedVersion": "5.46.0-2023.1.19.0",
   "created_by": {
     "provenance": "CloudAAA",
     "username": "mike.elrom@itential.com",
@@ -565,7 +557,7 @@
     "inactive": false
   },
   "createdVersion": "5.46.0-2023.1.14.0",
-  "last_updated": "2023-10-31T21:09:02.038Z",
+  "last_updated": "2023-11-02T20:18:32.488Z",
   "last_updated_by": {
     "provenance": "CloudAAA",
     "username": "chris.calloway@itential.com",

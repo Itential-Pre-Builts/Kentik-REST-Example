@@ -1,0 +1,201 @@
+{
+  "input": {
+    "description": "Device Onboarding Flow Test - Kentik - Example: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik",
+    "variables": {
+      "deviceName": "ATLSWITCH01",
+      "adapterId": "Kentik v5"
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "deviceName": "ATLSWITCH01",
+      "adapterId": "Kentik v5"
+    }
+  },
+  "stubTasks": [
+    {
+      "taskId": "7c4b",
+      "variables": {
+        "incoming": {
+          "task": "7c4b",
+          "workflow": "Command Template Runner",
+          "variables": {
+            "deviceName": {
+              "task": "job",
+              "value": "deviceName"
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": true
+            },
+            "templateName": {
+              "task": "static",
+              "value": "Ping - IOS - Kentik - Example"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "address": "google.com",
+                "repeat": "1000"
+              }
+            },
+            "reattempt": {
+              "task": "static",
+              "value": false
+            },
+            "_id": {
+              "task": "job",
+              "value": "_id"
+            },
+            "reattemptWaitTime": {
+              "task": "static",
+              "value": 0
+            },
+            "reattemptQuantity": {
+              "task": "static",
+              "value": 0
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "deviceName": "ATLSWITCH01",
+            "autoApprove": true,
+            "templateName": "Ping - IOS - Kentik - Example",
+            "templateVariables": {
+              "address": "google.com",
+              "repeat": "1000"
+            },
+            "reattempt": false,
+            "_id": "667d14cdc04d44ab85d4a30b",
+            "reattemptWaitTime": 0,
+            "reattemptQuantity": 0,
+            "initiator": "test@itential.com",
+            "templateResults": {
+              "all_pass_flag": true,
+              "result": true,
+              "commands_results": [
+                {
+                  "raw": "ping <!address!> repeat <!repeat!>",
+                  "all_pass_flag": true,
+                  "evaluated": "ping google.com repeat 1000",
+                  "command": "ping google.com repeat 1000",
+                  "parameters": {
+                    "address": "google.com",
+                    "repeat": "1000"
+                  },
+                  "rules": [
+                    {
+                      "rule": "Success",
+                      "eval": "contains",
+                      "severity": "error",
+                      "raw": "Success",
+                      "result": true
+                    }
+                  ],
+                  "device": "ATLSWITCH01",
+                  "response": "Type escape sequence to abort.\nSending 1000, 100-byte ICMP Echos to 172.253.62.113, timeout is 2 seconds:\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n!!!!!!!!!!!!!!!!!!!!\nSuccess rate is 100 percent (1000/1000), round-trip min/avg/max = 1/1/3 ms",
+                  "result": true
+                }
+              ],
+              "name": "Ping - IOS - Kentik - Example"
+            }
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": 2436,
+        "y": 12
+      }
+    },
+    {
+      "taskId": "0bcf",
+      "variables": {
+        "incoming": {
+          "task": "0bcf",
+          "workflow": "Device Flow Test - Kentik - REST",
+          "variables": {
+            "deviceName": {
+              "task": "job",
+              "value": "deviceName"
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": true
+            },
+            "templateName": {
+              "task": "static",
+              "value": "Ping - IOS"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "address": "google.com",
+                "repeat": "1000"
+              }
+            },
+            "reattempt": {
+              "task": "static",
+              "value": false
+            },
+            "_id": {
+              "task": "job",
+              "value": "_id"
+            },
+            "reattemptWaitTime": {
+              "task": "static",
+              "value": 0
+            },
+            "reattemptQuantity": {
+              "task": "static",
+              "value": 0
+            },
+            "startTime": {
+              "task": "07ef",
+              "value": "time"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "adapterId"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "deviceName": "ATLSWITCH01",
+            "autoApprove": true,
+            "templateName": "Ping - IOS",
+            "templateVariables": {
+              "address": "google.com",
+              "repeat": "1000"
+            },
+            "reattempt": false,
+            "_id": "2470c5ded8c34635b418f431",
+            "reattemptWaitTime": 0,
+            "reattemptQuantity": 0,
+            "adapterId": "Kentik v5",
+            "startTime": {
+              "time": "2023-11-03T04:51:29.660000-1100",
+              "formatString": "YYYY-MM-DDTHH:mm:ss.SSSSSSZZ"
+            },
+            "initiator": "test@itential.com",
+            "testResult": "pass"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": 2736,
+        "y": 12
+      }
+    }
+  ]
+}

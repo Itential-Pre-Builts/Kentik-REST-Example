@@ -1,0 +1,1413 @@
+{
+  "input": {
+    "description": "It should run Device Onboarding - Reset - Kentik - Example and delete flow configuration and device from Kentik",
+    "variables": {
+      "formData": {
+        "deviceName": "ATLSWITCH01",
+        "kentikAdapter": "Kentik v5"
+      }
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "formData": {
+        "deviceName": "ATLSWITCH01",
+        "kentikAdapter": "Kentik v5"
+      }
+    }
+  },
+  "stubTasks": [
+    {
+      "taskId": "e202",
+      "variables": {
+        "incoming": {
+          "task": "e202",
+          "workflow": "Push Configuration to Device - IAG",
+          "variables": {
+            "device": {
+              "task": "8bc3",
+              "value": "deviceName"
+            },
+            "templateName": {
+              "task": "static",
+              "value": "IOS-XE Flow Config - Reset - Kentik - Example"
+            },
+            "templateVariables": {
+              "task": "static",
+              "value": {
+                "test": "test"
+              }
+            },
+            "autoApprove": {
+              "task": "static",
+              "value": "true"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "templateName": "IOS-XE Flow Config - Reset - Kentik - Example",
+            "templateVariables": {
+              "test": "test"
+            },
+            "autoApprove": true,
+            "device": "ATLSWITCH01",
+            "_id": "8da07910c76d49778b7b1c98",
+            "initiator": "test@itential.com"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -888,
+        "y": 12
+      }
+    },
+    {
+      "taskId": "10bc",
+      "variables": {
+        "incoming": {
+          "deviceId": "180802"
+        },
+        "outgoing": {
+          "result": {
+            "icode": "AD.204",
+            "response": "success"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": 48,
+        "y": 12
+      }
+    },
+    {
+      "taskId": "f0d2",
+      "variables": {
+        "incoming": {
+          "deviceId": "ATLSWITCH01"
+        },
+        "outgoing": {
+          "result": {
+            "icode": "AD.200",
+            "response": {
+              "device": {
+                "id": "180802",
+                "company_id": "180173",
+                "device_name": "atlswitch01",
+                "device_type": "router",
+                "device_status": "V",
+                "device_description": "New Test Device",
+                "site": {
+                  "id": 18245,
+                  "site_name": "ATL HQ",
+                  "lat": 33.7914918,
+                  "lon": -84.3898086,
+                  "company_id": 180173
+                },
+                "plan": {
+                  "active": true,
+                  "bgp_enabled": true,
+                  "cdate": "2023-04-14T15:54:21.665Z",
+                  "company_id": 180173,
+                  "description": "Free Flowpak Plan",
+                  "deviceTypes": [],
+                  "devices": [],
+                  "edate": "2023-04-14T15:54:21.665Z",
+                  "fast_retention": 30,
+                  "full_retention": 30,
+                  "id": 44662,
+                  "max_bigdata_fps": 30,
+                  "max_devices": 100,
+                  "max_fps": 20005,
+                  "name": "Free Flowpak Plan",
+                  "metadata": {
+                    "type": "flowpak",
+                    "isPak": true,
+                    "pakFps": 10000
+                  }
+                },
+                "labels": [],
+                "all_interfaces": [],
+                "device_flow_type": "auto",
+                "device_sample_rate": "1",
+                "sending_ips": [
+                  "3.230.106.58"
+                ],
+                "device_snmp_ip": "3.230.106.58",
+                "device_snmp_community": "kentikSNMP",
+                "minimize_snmp": false,
+                "device_bgp_type": "none",
+                "device_bgp_neighbor_ip": null,
+                "device_bgp_neighbor_ip6": null,
+                "device_bgp_neighbor_asn": null,
+                "device_bgp_flowspec": false,
+                "device_bgp_password": null,
+                "use_bgp_device_id": null,
+                "custom_columns": "ULT_EXIT_PORT=260,ULT_EXIT_DEVICE_ID=261,i_inet_ult_exit=262,i_ult_exit_device_name=263,i_ult_exit_snmp_alias=264,i_ult_exit_interface_description=265,i_ult_exit_site_id=266,i_ult_exit_site=267,SRC_THREAT_TYPE=2452,DST_THREAT_TYPE=2453,src_connect_type=2456,dst_connect_type=2457,src_network_bndry=2458,dst_network_bndry=2459,i_src_connect_type_name=2460,i_dst_connect_type_name=2461,i_src_network_bndry_name=2462,i_dst_network_bndry_name=2463,ULT_EXIT_NETWORK_BNDRY=2638,ULT_EXIT_CONNECT_TYPE=2639,i_ult_exit_network_bndry_name=2640,i_ult_exit_connect_type_name=2641,SRC_THREAT_HOST=2742,DST_THREAT_HOST=2743,SRC_THREAT_BNETCC=2744,DST_THREAT_BNETCC=2745,APP_PROTOCOL=2880,INT00=2881,INT01=2882,INT02=2883,INT03=2884,INT04=2885,INT05=2886,STR00=2887,STR01=2888,STR02=2889,STR03=2890,STR04=2891,STR05=2892,SRC_CDN_INT=2906,DST_CDN_INT=2907,TRF_ORIGINATION=2948,TRF_TERMINATION=2949,i_trf_profile=2950,i_src_cdn=2952,i_dst_cdn=2953,host_direction=2965,i_TRF_ORIGINATION=2966,i_TRF_TERMINATION=2967,i_host_direction=2968,FLOW_FLAGS=3152,SERVICE_NAME=3352,SERVICE_TYPE=4648,SERVICE_PROVIDER=5326,INPUT_VRF=6286,OUTPUT_VRF=6287,i_input_vrf=6290,i_output_vrf=6291,i_input_vrf_rd=6292,i_output_vrf_rd=6293,i_input_vrf_rt=6294,i_output_vrf_rt=6295,INET_00=6498,INET_01=6499,INET_02=6500,INET_03=6501,INET_04=6502,INT64_00=6503,INT64_01=6504,INT64_02=6505,INT64_03=6506,INT64_04=6507,STR06=7662,STR07=7663,STR08=7664,STR09=7665,STR10=7666,STR11=7667,STR12=7668,STR13=7669,STR14=7670,STR15=7671,STR16=7672,i_dst_rpki_name=8135,dst_rpki=8136,i_dst_rpki_min_name=8399,dscp=8400,application=8582,INT06=10434,INT07=10435,INT08=10436,INT09=10437,INT64_05=10438,INT64_06=10439,INT64_07=10440,INT64_08=10441,INT64_09=10442,src_cloud=13267,dst_cloud=13268,src_cloud_service=13269,dst_cloud_service=13270,STR17=13800,STR18=13801,STR19=13802,STR20=13803,STR21=13804,STR22=13805,STR23=13806,STR24=13807,STR25=13808,STR26=13809,STR27=13810,STR28=13811,STR29=13812,STR30=13813,STR31=13814,STR32=13815,simple_trf_prof=16233,MEMBER_ID=16234,DST_SR_SID=18958,DST_SR_SIDPATH=18959,site_market_id=75357,i_site_market=75358,ULT_EXIT_SITE_MARKET_ID=75359,i_ult_exit_site_market=75360,flow_start_timestamp=80501,flow_end_timestamp=80502,flow_duration=80503,km_measurement_id=80928,km_measurement_name=80929,km_device_id=80930,km_child_id=80931,km_entity_type=80932,km_float000=80948,km_float001=80949,km_float002=80950,km_float003=80951,km_float004=80952,km_float005=80953,km_float006=80954,km_float007=80955,km_float008=80956,km_float009=80957,km_metric_mask=81747,km_dimension_mask=81748,INT64_10=82634,INT64_11=82635,INT64_12=82636,INT64_13=82637,INT64_14=82638,INT64_15=82639,INT64_16=82640,INT64_17=82641,INT64_18=82642,INT64_19=82643,INT64_20=82644,INT64_21=82645,INT64_22=82646,INT64_23=82647,INT64_24=82648,INT64_25=82649,INT64_26=82650,INT64_27=82651,INT64_28=82652,INT64_29=82653,INT64_30=82654,INT64_31=82655,INT64_32=82656,INT64_33=82657,INT64_34=82658,INT64_35=82659,INT64_36=82660,INT64_37=82661,INT64_38=82662,INT64_39=82663,INT64_40=82664,INT64_41=82665,INT64_42=82666,INT64_43=82667,INT64_44=82668,INT64_45=82669,INT64_46=82670,INT64_47=82671,INT64_48=82672,INT64_49=82673,STR33=82674,STR34=82675,STR35=82676,STR36=82677,STR37=82678,STR38=82679,STR39=82680,STR40=82681,STR41=82682,STR42=82683,STR43=82684,STR44=82685,STR45=82686,STR46=82687,STR47=82688,STR48=82689,STR49=82690,km_float010=83740,km_float011=83741,km_float012=83742,km_float013=83743,km_float014=83744,km_float015=83745,km_float016=83746,km_float017=83747,km_float018=83748,km_float019=83749,km_float020=83750,km_float021=83751,km_float022=83752,km_float023=83753,km_float024=83754,km_float025=83755,km_float026=83756,km_float027=83757,km_float028=83758,km_float029=83759,km_float030=83760,km_float031=83761,km_float032=83762,km_float033=83763,km_float034=83764,km_float035=83765,km_float036=83766,km_float037=83767,km_float038=83768,km_float039=83769,km_float040=83770,km_float041=83771,km_float042=83772,km_float043=83773,km_float044=83774,km_float045=83775,km_float046=83776,km_float047=83777,km_float048=83778,km_float049=83779,device_sample_rate=86310",
+                "custom_column_data": [
+                  {
+                    "field_id": "260",
+                    "col_name": "ULT_EXIT_PORT",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "261",
+                    "col_name": "ULT_EXIT_DEVICE_ID",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "262",
+                    "col_name": "i_inet_ult_exit",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "263",
+                    "col_name": "i_ult_exit_device_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "264",
+                    "col_name": "i_ult_exit_snmp_alias",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "265",
+                    "col_name": "i_ult_exit_interface_description",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "266",
+                    "col_name": "i_ult_exit_site_id",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "267",
+                    "col_name": "i_ult_exit_site",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2452",
+                    "col_name": "SRC_THREAT_TYPE",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2453",
+                    "col_name": "DST_THREAT_TYPE",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2456",
+                    "col_name": "src_connect_type",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2457",
+                    "col_name": "dst_connect_type",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2458",
+                    "col_name": "src_network_bndry",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2459",
+                    "col_name": "dst_network_bndry",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2460",
+                    "col_name": "i_src_connect_type_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2461",
+                    "col_name": "i_dst_connect_type_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2462",
+                    "col_name": "i_src_network_bndry_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2463",
+                    "col_name": "i_dst_network_bndry_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2638",
+                    "col_name": "ULT_EXIT_NETWORK_BNDRY",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2639",
+                    "col_name": "ULT_EXIT_CONNECT_TYPE",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2640",
+                    "col_name": "i_ult_exit_network_bndry_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2641",
+                    "col_name": "i_ult_exit_connect_type_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2742",
+                    "col_name": "SRC_THREAT_HOST",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2743",
+                    "col_name": "DST_THREAT_HOST",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2744",
+                    "col_name": "SRC_THREAT_BNETCC",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2745",
+                    "col_name": "DST_THREAT_BNETCC",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2880",
+                    "col_name": "APP_PROTOCOL",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2881",
+                    "col_name": "INT00",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2882",
+                    "col_name": "INT01",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2883",
+                    "col_name": "INT02",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2884",
+                    "col_name": "INT03",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2885",
+                    "col_name": "INT04",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2886",
+                    "col_name": "INT05",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2887",
+                    "col_name": "STR00",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2888",
+                    "col_name": "STR01",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2889",
+                    "col_name": "STR02",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2890",
+                    "col_name": "STR03",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2891",
+                    "col_name": "STR04",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2892",
+                    "col_name": "STR05",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2906",
+                    "col_name": "SRC_CDN_INT",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2907",
+                    "col_name": "DST_CDN_INT",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2948",
+                    "col_name": "TRF_ORIGINATION",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2949",
+                    "col_name": "TRF_TERMINATION",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2950",
+                    "col_name": "i_trf_profile",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2952",
+                    "col_name": "i_src_cdn",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2953",
+                    "col_name": "i_dst_cdn",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2965",
+                    "col_name": "host_direction",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "2966",
+                    "col_name": "i_TRF_ORIGINATION",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2967",
+                    "col_name": "i_TRF_TERMINATION",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "2968",
+                    "col_name": "i_host_direction",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "3152",
+                    "col_name": "FLOW_FLAGS",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "3352",
+                    "col_name": "SERVICE_NAME",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "4648",
+                    "col_name": "SERVICE_TYPE",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "5326",
+                    "col_name": "SERVICE_PROVIDER",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6286",
+                    "col_name": "INPUT_VRF",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "6287",
+                    "col_name": "OUTPUT_VRF",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "6290",
+                    "col_name": "i_input_vrf",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6291",
+                    "col_name": "i_output_vrf",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6292",
+                    "col_name": "i_input_vrf_rd",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6293",
+                    "col_name": "i_output_vrf_rd",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6294",
+                    "col_name": "i_input_vrf_rt",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6295",
+                    "col_name": "i_output_vrf_rt",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "6498",
+                    "col_name": "INET_00",
+                    "col_type": "addr"
+                  },
+                  {
+                    "field_id": "6499",
+                    "col_name": "INET_01",
+                    "col_type": "addr"
+                  },
+                  {
+                    "field_id": "6500",
+                    "col_name": "INET_02",
+                    "col_type": "addr"
+                  },
+                  {
+                    "field_id": "6501",
+                    "col_name": "INET_03",
+                    "col_type": "addr"
+                  },
+                  {
+                    "field_id": "6502",
+                    "col_name": "INET_04",
+                    "col_type": "addr"
+                  },
+                  {
+                    "field_id": "6503",
+                    "col_name": "INT64_00",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "6504",
+                    "col_name": "INT64_01",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "6505",
+                    "col_name": "INT64_02",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "6506",
+                    "col_name": "INT64_03",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "6507",
+                    "col_name": "INT64_04",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "7662",
+                    "col_name": "STR06",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7663",
+                    "col_name": "STR07",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7664",
+                    "col_name": "STR08",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7665",
+                    "col_name": "STR09",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7666",
+                    "col_name": "STR10",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7667",
+                    "col_name": "STR11",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7668",
+                    "col_name": "STR12",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7669",
+                    "col_name": "STR13",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7670",
+                    "col_name": "STR14",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7671",
+                    "col_name": "STR15",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "7672",
+                    "col_name": "STR16",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "8135",
+                    "col_name": "i_dst_rpki_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "8136",
+                    "col_name": "dst_rpki",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "8399",
+                    "col_name": "i_dst_rpki_min_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "8400",
+                    "col_name": "dscp",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "8582",
+                    "col_name": "application",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "10434",
+                    "col_name": "INT06",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "10435",
+                    "col_name": "INT07",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "10436",
+                    "col_name": "INT08",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "10437",
+                    "col_name": "INT09",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "10438",
+                    "col_name": "INT64_05",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "10439",
+                    "col_name": "INT64_06",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "10440",
+                    "col_name": "INT64_07",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "10441",
+                    "col_name": "INT64_08",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "10442",
+                    "col_name": "INT64_09",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "13267",
+                    "col_name": "src_cloud",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13268",
+                    "col_name": "dst_cloud",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13269",
+                    "col_name": "src_cloud_service",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13270",
+                    "col_name": "dst_cloud_service",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13800",
+                    "col_name": "STR17",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13801",
+                    "col_name": "STR18",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13802",
+                    "col_name": "STR19",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13803",
+                    "col_name": "STR20",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13804",
+                    "col_name": "STR21",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13805",
+                    "col_name": "STR22",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13806",
+                    "col_name": "STR23",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13807",
+                    "col_name": "STR24",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13808",
+                    "col_name": "STR25",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13809",
+                    "col_name": "STR26",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13810",
+                    "col_name": "STR27",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13811",
+                    "col_name": "STR28",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13812",
+                    "col_name": "STR29",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13813",
+                    "col_name": "STR30",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13814",
+                    "col_name": "STR31",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "13815",
+                    "col_name": "STR32",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "16233",
+                    "col_name": "simple_trf_prof",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "16234",
+                    "col_name": "MEMBER_ID",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "18958",
+                    "col_name": "DST_SR_SID",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "18959",
+                    "col_name": "DST_SR_SIDPATH",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "75357",
+                    "col_name": "site_market_id",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "75358",
+                    "col_name": "i_site_market",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "75359",
+                    "col_name": "ULT_EXIT_SITE_MARKET_ID",
+                    "col_type": "uint32"
+                  },
+                  {
+                    "field_id": "75360",
+                    "col_name": "i_ult_exit_site_market",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "80501",
+                    "col_name": "flow_start_timestamp",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "80502",
+                    "col_name": "flow_end_timestamp",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "80503",
+                    "col_name": "flow_duration",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "80928",
+                    "col_name": "km_measurement_id",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "80929",
+                    "col_name": "km_measurement_name",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "80930",
+                    "col_name": "km_device_id",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "80931",
+                    "col_name": "km_child_id",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "80932",
+                    "col_name": "km_entity_type",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "80948",
+                    "col_name": "km_float000",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80949",
+                    "col_name": "km_float001",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80950",
+                    "col_name": "km_float002",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80951",
+                    "col_name": "km_float003",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80952",
+                    "col_name": "km_float004",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80953",
+                    "col_name": "km_float005",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80954",
+                    "col_name": "km_float006",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80955",
+                    "col_name": "km_float007",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80956",
+                    "col_name": "km_float008",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "80957",
+                    "col_name": "km_float009",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "81747",
+                    "col_name": "km_metric_mask",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "81748",
+                    "col_name": "km_dimension_mask",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82634",
+                    "col_name": "INT64_10",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82635",
+                    "col_name": "INT64_11",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82636",
+                    "col_name": "INT64_12",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82637",
+                    "col_name": "INT64_13",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82638",
+                    "col_name": "INT64_14",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82639",
+                    "col_name": "INT64_15",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82640",
+                    "col_name": "INT64_16",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82641",
+                    "col_name": "INT64_17",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82642",
+                    "col_name": "INT64_18",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82643",
+                    "col_name": "INT64_19",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82644",
+                    "col_name": "INT64_20",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82645",
+                    "col_name": "INT64_21",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82646",
+                    "col_name": "INT64_22",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82647",
+                    "col_name": "INT64_23",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82648",
+                    "col_name": "INT64_24",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82649",
+                    "col_name": "INT64_25",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82650",
+                    "col_name": "INT64_26",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82651",
+                    "col_name": "INT64_27",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82652",
+                    "col_name": "INT64_28",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82653",
+                    "col_name": "INT64_29",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82654",
+                    "col_name": "INT64_30",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82655",
+                    "col_name": "INT64_31",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82656",
+                    "col_name": "INT64_32",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82657",
+                    "col_name": "INT64_33",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82658",
+                    "col_name": "INT64_34",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82659",
+                    "col_name": "INT64_35",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82660",
+                    "col_name": "INT64_36",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82661",
+                    "col_name": "INT64_37",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82662",
+                    "col_name": "INT64_38",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82663",
+                    "col_name": "INT64_39",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82664",
+                    "col_name": "INT64_40",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82665",
+                    "col_name": "INT64_41",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82666",
+                    "col_name": "INT64_42",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82667",
+                    "col_name": "INT64_43",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82668",
+                    "col_name": "INT64_44",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82669",
+                    "col_name": "INT64_45",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82670",
+                    "col_name": "INT64_46",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82671",
+                    "col_name": "INT64_47",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82672",
+                    "col_name": "INT64_48",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82673",
+                    "col_name": "INT64_49",
+                    "col_type": "uint64"
+                  },
+                  {
+                    "field_id": "82674",
+                    "col_name": "STR33",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82675",
+                    "col_name": "STR34",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82676",
+                    "col_name": "STR35",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82677",
+                    "col_name": "STR36",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82678",
+                    "col_name": "STR37",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82679",
+                    "col_name": "STR38",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82680",
+                    "col_name": "STR39",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82681",
+                    "col_name": "STR40",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82682",
+                    "col_name": "STR41",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82683",
+                    "col_name": "STR42",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82684",
+                    "col_name": "STR43",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82685",
+                    "col_name": "STR44",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82686",
+                    "col_name": "STR45",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82687",
+                    "col_name": "STR46",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82688",
+                    "col_name": "STR47",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82689",
+                    "col_name": "STR48",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "82690",
+                    "col_name": "STR49",
+                    "col_type": "string"
+                  },
+                  {
+                    "field_id": "83740",
+                    "col_name": "km_float010",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83741",
+                    "col_name": "km_float011",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83742",
+                    "col_name": "km_float012",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83743",
+                    "col_name": "km_float013",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83744",
+                    "col_name": "km_float014",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83745",
+                    "col_name": "km_float015",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83746",
+                    "col_name": "km_float016",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83747",
+                    "col_name": "km_float017",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83748",
+                    "col_name": "km_float018",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83749",
+                    "col_name": "km_float019",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83750",
+                    "col_name": "km_float020",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83751",
+                    "col_name": "km_float021",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83752",
+                    "col_name": "km_float022",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83753",
+                    "col_name": "km_float023",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83754",
+                    "col_name": "km_float024",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83755",
+                    "col_name": "km_float025",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83756",
+                    "col_name": "km_float026",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83757",
+                    "col_name": "km_float027",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83758",
+                    "col_name": "km_float028",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83759",
+                    "col_name": "km_float029",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83760",
+                    "col_name": "km_float030",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83761",
+                    "col_name": "km_float031",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83762",
+                    "col_name": "km_float032",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83763",
+                    "col_name": "km_float033",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83764",
+                    "col_name": "km_float034",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83765",
+                    "col_name": "km_float035",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83766",
+                    "col_name": "km_float036",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83767",
+                    "col_name": "km_float037",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83768",
+                    "col_name": "km_float038",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83769",
+                    "col_name": "km_float039",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83770",
+                    "col_name": "km_float040",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83771",
+                    "col_name": "km_float041",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83772",
+                    "col_name": "km_float042",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83773",
+                    "col_name": "km_float043",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83774",
+                    "col_name": "km_float044",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83775",
+                    "col_name": "km_float045",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83776",
+                    "col_name": "km_float046",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83777",
+                    "col_name": "km_float047",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83778",
+                    "col_name": "km_float048",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "83779",
+                    "col_name": "km_float049",
+                    "col_type": "float32"
+                  },
+                  {
+                    "field_id": "86310",
+                    "col_name": "device_sample_rate",
+                    "col_type": "uint32"
+                  }
+                ],
+                "device_chf_client_port": null,
+                "device_chf_client_protocol": null,
+                "device_chf_interface": null,
+                "device_agent_type": null,
+                "max_flow_rate": 20005,
+                "max_big_flow_rate": 30,
+                "device_proxy_bgp": "",
+                "device_proxy_bgp6": "",
+                "created_date": "2023-11-03T15:51:18.062Z",
+                "updated_date": "2023-11-03T15:51:18.062Z",
+                "device_snmp_v3_conf": {},
+                "snmp_last_updated": null,
+                "device_subtype": "router",
+                "max_interface": 750,
+                "max_interface_check": 500
+              }
+            }
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -576,
+        "y": 12
+      }
+    },
+    {
+      "taskId": "959a",
+      "variables": {
+        "incoming": {
+          "deviceId": "180802"
+        },
+        "outgoing": {
+          "result": {
+            "icode": "AD.204",
+            "response": "success"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": 360,
+        "y": 12
+      }
+    }
+  ]
+}

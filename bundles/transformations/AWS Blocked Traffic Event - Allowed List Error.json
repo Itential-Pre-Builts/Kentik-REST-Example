@@ -38,7 +38,7 @@
         "IP_dst": {
           "type": "string",
           "examples": [
-            "10.0.18.252"
+            "13.13.13.13"
           ],
           "format": "ipv4"
         },

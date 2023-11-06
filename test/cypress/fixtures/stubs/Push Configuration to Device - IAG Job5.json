@@ -1,0 +1,55 @@
+{
+  "input": {
+    "description": "Push Configuration to Device - IAG: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik",
+    "variables": {
+      "templateName": "IOS-XE Flow Config - Kentik - Example",
+      "templateVariables": {
+        "snmpCommunity": "kentikSNMP",
+        "customFlowRecord": "itential-flow",
+        "netflowSampler": "itential-sampler",
+        "deviceSampleRate": 1,
+        "exporter": "itential-exporter",
+        "publicFlowIngestDescription": "52c51d04e75947e5b72350c3",
+        "kentikIngestIP": "208.76.14.230",
+        "kentikIngestUDPPort": "20013",
+        "vrfName": "",
+        "vrfGatewayIP": "",
+        "flowMonitor": "itential-monitor",
+        "sourceInterface": "GigabitEthernet1",
+        "sourceInterfaces": [
+          "GigabitEthernet1",
+          "GigabitEthernet1.33"
+        ]
+      },
+      "autoApprove": true,
+      "device": "ATLSWITCH01"
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "autoApprove": true,
+      "templateName": "IOS-XE Flow Config - Kentik - Example",
+      "device": "ATLSWITCH01",
+      "templateVariables": {
+        "snmpCommunity": "kentikSNMP",
+        "customFlowRecord": "itential-flow",
+        "netflowSampler": "itential-sampler",
+        "deviceSampleRate": 1,
+        "exporter": "itential-exporter",
+        "publicFlowIngestDescription": "52c51d04e75947e5b72350c3",
+        "kentikIngestIP": "208.76.14.230",
+        "kentikIngestUDPPort": "20013",
+        "vrfName": "",
+        "vrfGatewayIP": "",
+        "flowMonitor": "itential-monitor",
+        "sourceInterface": "GigabitEthernet1",
+        "sourceInterfaces": [
+          "GigabitEthernet1",
+          "GigabitEthernet1.33"
+        ]
+      }
+    }
+  },
+  "stubTasks": []
+}

@@ -108,7 +108,7 @@
       "name": "childJob",
       "canvasName": "childJob",
       "summary": "Create Device - Kentik",
-      "description": "Runs a child job inside a workflow.",
+      "description": "Create device in Kentik",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",
@@ -117,7 +117,7 @@
       "variables": {
         "incoming": {
           "task": "",
-          "workflow": "Create Device - Kentik",
+          "workflow": "Create Device - Kentik - REST",
           "variables": {
             "siteName": {
               "task": "babf",
@@ -1143,8 +1143,8 @@
   "preAutomationTime": 0,
   "sla": 0,
   "outputData": {},
-  "last_updated": "2023-10-31T21:09:02.034Z",
-  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "last_updated": "2023-11-03T15:39:59.561Z",
+  "lastUpdatedVersion": "5.46.0-2023.1.19.0",
   "created": "2023-09-02T20:18:46.321Z",
   "created_by": {
     "provenance": "CloudAAA",

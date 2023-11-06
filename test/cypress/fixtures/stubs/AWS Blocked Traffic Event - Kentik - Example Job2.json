@@ -1,0 +1,660 @@
+{
+  "input": {
+    "description": "It should run AWS Blocked Traffic Event - Kentik - Example and automatically authorize IP",
+    "variables": {
+      "CompanyID": 180173,
+      "CurrentState": "alarm",
+      "Description": "Alarm for US Policy Rejected Web Server Traffic Active",
+      "EndTime": "ongoing",
+      "IsActive": true,
+      "PreviousState": "new",
+      "StartTime": "2023-11-02 18:40:30 UTC",
+      "Type": "alarm",
+      "AlarmID": "312934490",
+      "AlarmPolicyID": "187942",
+      "AlarmPolicyLabels": "",
+      "AlarmPolicyMetadataType": "Custom",
+      "AlarmPolicyName": "US Policy Rejected Web Server Traffic",
+      "AlarmSeverity": "critical",
+      "AlarmThresholdID": "446919",
+      "iapUrl": "https://itential-dev.io",
+      "serviceNowUrl": "https://service-now.dev.com",
+      "allPolicyEventsWebhookUrl": "webhook1",
+      "policyAutomatedFailureWebhookUrl": "webhook2",
+      "policyAutomatedAuthorizationWebhookUrl": "webhook3",
+      "serviceNowAdapter": "ServiceNow",
+      "awsEC2Adapter": "AWS",
+      "msTeamsAdapter": "MS Teams",
+      "Dimensions": {
+        "AS_src": "7018",
+        "Geography_src": "US",
+        "IP_dst": "11.11.11.11",
+        "IP_src": "10.10.10.10",
+        "Port_src": "62394",
+        "kt_aws_action": "REJECT",
+        "kt_aws_dst_sg": "security-group"
+      },
+      "Links": [
+        {
+          "Name": "DashboardAlarmURL",
+          "Label": "Open Dashboard",
+          "Value": "https://portal.kentik.com/v4/library/dashboards/18392"
+        },
+        {
+          "Name": "DetailsAlarmURL",
+          "Label": "Open Details",
+          "Value": "https://portal.kentik.com/v4/alerting/a312934490"
+        }
+      ]
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "CompanyID": 180173,
+      "CurrentState": "alarm",
+      "Description": "Alarm for US Policy Rejected Web Server Traffic Active",
+      "EndTime": "ongoing",
+      "IsActive": true,
+      "PreviousState": "new",
+      "StartTime": "2023-11-02 18:40:30 UTC",
+      "Type": "alarm",
+      "AlarmID": "312934490",
+      "AlarmPolicyID": "187942",
+      "AlarmPolicyLabels": "",
+      "AlarmPolicyMetadataType": "Custom",
+      "AlarmPolicyName": "US Policy Rejected Web Server Traffic",
+      "AlarmSeverity": "critical",
+      "AlarmThresholdID": "446919",
+      "iapUrl": "https://itential-dev.io",
+      "serviceNowUrl": "https://service-now.dev.com",
+      "allPolicyEventsWebhookUrl": "webhook1",
+      "policyAutomatedFailureWebhookUrl": "webhook2",
+      "policyAutomatedAuthorizationWebhookUrl": "webhook3",
+      "serviceNowAdapter": "ServiceNow",
+      "awsEC2Adapter": "AWS",
+      "msTeamsAdapter": "MS Teams",
+      "Dimensions": {
+        "AS_src": "7018",
+        "Geography_src": "US",
+        "IP_dst": "11.11.11.11",
+        "IP_src": "10.10.10.10",
+        "Port_src": "62394",
+        "kt_aws_action": "REJECT",
+        "kt_aws_dst_sg": "security-group"
+      },
+      "Links": [
+        {
+          "Name": "DashboardAlarmURL",
+          "Label": "Open Dashboard",
+          "Value": "https://portal.kentik.com/v4/library/dashboards/18392"
+        },
+        {
+          "Name": "DetailsAlarmURL",
+          "Label": "Open Details",
+          "Value": "https://portal.kentik.com/v4/alerting/a312934490"
+        }
+      ],
+      "allowedIPList": [
+        "10.10.10.10"
+      ]
+    }
+  },
+  "stubTasks": [
+    {
+      "taskId": "7c58",
+      "variables": {
+        "incoming": {
+          "task": "7c58",
+          "workflow": "Create Change Request - ServiceNow",
+          "variables": {
+            "title": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "summary": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "description": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "comments": {
+              "editable": true,
+              "task": "5847",
+              "value": "seviceNowChangeComments"
+            },
+            "assignmentGroup": {
+              "editable": true,
+              "task": "static",
+              "value": ""
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "serviceNowAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "assignmentGroup": "",
+            "adapterId": "ServiceNow",
+            "title": "US Policy Rejected Web Server Traffic",
+            "summary": "US Policy Rejected Web Server Traffic",
+            "description": "US Policy Rejected Web Server Traffic",
+            "comments": "[code]An alert has been captured in Kentik about a blocked Security Group (security-group) for the Web Server.\n<br />\n<ul>\n  <li><a href=\"https://portal.kentik.com/v4/library/dashboards/18392\">DashboardAlarmURL</a></li>\n  <li><a href=\"https://portal.kentik.com/v4/alerting/a312934490\">DetailsAlarmURL</a></li>\n  <li><a href=\"https://itential-dev.io/operations-manager/#/jobs/fa67d914bc854b4db6e5c85e\">Itential Job</a></li>\n  <li>IP Source: 10.10.10.10</li>\n  <li>IP Destination: 11.11.11.11</li>\n  <li>AS Source: 7018</li>\n</ul>  \n[/code]",
+            "_id": "532e7380ce8b4158b20909c9",
+            "initiator": "test@itential.com",
+            "createdCR": {
+              "icode": "AD.201",
+              "response": {
+                "id": "52ad5a01879e3550c78e84c6dabb35a1",
+                "number": "CHG0035070",
+                "summary": "US Policy Rejected Web Server Traffic",
+                "current_state": "-5",
+                "approve_state": "not requested",
+                "created_on": "2023-11-02 18:40:34",
+                "created_by": "POC",
+                "updated_on": "2023-11-02 18:40:34",
+                "updated_by": "POC",
+                "parent": "",
+                "reason": "",
+                "watch_list": "",
+                "upon_reject": "cancel",
+                "x_270915_itential_itential_wait_task": "",
+                "type": "normal",
+                "approval_history": "",
+                "test_plan": "",
+                "cab_delegate": "",
+                "knowledge": "false",
+                "order": "",
+                "phase": "requested",
+                "cmdb_ci": "",
+                "delivery_plan": "",
+                "contract": "",
+                "impact": "3",
+                "active": "true",
+                "work_notes_list": "",
+                "priority": "4",
+                "sys_domain_path": "/",
+                "cab_recommendation": "",
+                "production_system": "false",
+                "review_date": "",
+                "business_duration": "",
+                "group_list": "",
+                "requested_by": {
+                  "link": "https://service-now.dev.com/api/now/table/sys_user/a0a6e81987b1115035617558dabb3562",
+                  "value": "a0a6e81987b1115035617558dabb3562"
+                },
+                "change_plan": "",
+                "approval_set": "",
+                "implementation_plan": "",
+                "universal_request": "",
+                "end_date": "",
+                "correlation_display": "",
+                "delivery_task": "",
+                "additional_assignee_list": "",
+                "outside_maintenance_schedule": "false",
+                "std_change_producer_version": "",
+                "service_offering": "",
+                "sys_class_name": "change_request",
+                "closed_by": "",
+                "follow_up": "",
+                "reassignment_count": "0",
+                "review_status": "",
+                "assigned_to": "",
+                "start_date": "",
+                "sla_due": "",
+                "comments_and_work_notes": "",
+                "x_270915_itential_itential_job": "",
+                "escalation": "0",
+                "upon_approval": "proceed",
+                "correlation_id": "",
+                "made_sla": "true",
+                "backout_plan": "",
+                "conflict_status": "Not Run",
+                "task_effective_number": "CHG0035070",
+                "opened_by": {
+                  "link": "https://service-now.dev.com/api/now/table/sys_user/a0a6e81987b1115035617558dabb3562",
+                  "value": "a0a6e81987b1115035617558dabb3562"
+                },
+                "user_input": "",
+                "on_hold_task": "",
+                "sys_domain": {
+                  "link": "https://service-now.dev.com/api/now/table/sys_user_group/global",
+                  "value": "global"
+                },
+                "route_reason": "",
+                "closed_at": "",
+                "x_270915_itential_itential_instance": "iap-selab-prod-23.1",
+                "review_comments": "",
+                "business_service": "",
+                "time_worked": "",
+                "chg_model": {
+                  "link": "https://service-now.dev.com/api/now/table/chg_model/007c4001c343101035ae3f52c1d3aeb2",
+                  "value": "007c4001c343101035ae3f52c1d3aeb2"
+                },
+                "expected_start": "",
+                "opened_at": "2023-11-02 18:40:34",
+                "phase_state": "open",
+                "cab_date": "",
+                "work_notes": "",
+                "assignment_group": {
+                  "link": "https://service-now.dev.com/api/now/table/sys_user_group/b85d44954a3623120004689b2d5dd60a",
+                  "value": "b85d44954a3623120004689b2d5dd60a"
+                },
+                "description": "US Policy Rejected Web Server Traffic",
+                "on_hold_reason": "",
+                "calendar_duration": "",
+                "contact_type": "",
+                "cab_required": "false",
+                "urgency": "3",
+                "scope": "3",
+                "company": "",
+                "justification": "",
+                "activity_due": "",
+                "comments": "",
+                "due_date": "",
+                "sys_mod_count": "0",
+                "on_hold": "false",
+                "sys_tags": "",
+                "cab_date_time": "",
+                "conflict_last_run": "",
+                "unauthorized": "false",
+                "location": "",
+                "risk": "3",
+                "category": "Other",
+                "risk_impact_analysis": ""
+              },
+              "headers": {
+                "server": "snow_adc",
+                "date": "Thu, 02 Nov 2023 18:40:34 GMT",
+                "content-type": "application/json;charset=UTF-8",
+                "transfer-encoding": "chunked",
+                "connection": "close",
+                "set-cookie": [
+                  "BIGipServerpool_itentialdev2=ad8df156831b302e603d473859855537; httponly; secure; path=/; SameSite=None",
+                  "JSESSIONID=78A82E742C67275BABE500BC55FC3C01; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_user=; Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_user_session=; Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_user_route=glide.76faf6bf3239b7e1b6a99cabf2e7d8e2; Max-Age=2147483647; Expires=Tue, 20-Nov-2091 21:54:41 GMT; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_session_store=12ADD6CD875E3550C78E84C6DABB353F; Max-Age=1800; Expires=Thu, 02-Nov-2023 19:10:34 GMT; Path=/; HttpOnly; secure; SameSite=None"
+                ],
+                "server-timing": "sem_wait;dur=0, sesh_wait;dur=0",
+                "x-is-logged-in": "true",
+                "x-transaction-id": "56add6cd3fd4",
+                "location": "https://service-now.dev.com/api/now/table/change_request/52ad5a01879e3550c78e84c6dabb35a1",
+                "x-content-type-options": "nosniff",
+                "pragma": "no-store,no-cache",
+                "cache-control": "no-cache,no-store,must-revalidate,max-age=-1",
+                "expires": "0",
+                "strict-transport-security": "max-age=63072000; includeSubDomains"
+              },
+              "metrics": {
+                "code": 201,
+                "timeouts": 0,
+                "redirects": 0,
+                "retries": 0,
+                "tripTime": 350,
+                "isThrottling": false,
+                "capabilityTime": "419ms"
+              }
+            }
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -4008,
+        "y": 1728
+      }
+    },
+    {
+      "taskId": "8c16",
+      "variables": {
+        "incoming": {
+          "filter": [
+            {
+              "Name": "group-name",
+              "Value": "security-group"
+            }
+          ],
+          "groupId": "",
+          "groupName": "",
+          "dryRun": false,
+          "nextToken": "",
+          "maxResults": ""
+        },
+        "outgoing": {
+          "result": {
+            "icode": "AD.200",
+            "response": {
+              "DescribeSecurityGroupsResponse": {
+                "_attr": {
+                  "xmlns": "http://ec2.amazonaws.com/doc/2016-11-15/"
+                },
+                "requestId": "5a7577be-c31e-441d-859e-87a297ed517e",
+                "securityGroupInfo": {
+                  "item": {
+                    "ownerId": "623933009299",
+                    "groupId": "sg-095d45517c018f179",
+                    "groupName": "security-group",
+                    "groupDescription": "SG for Web Server Kentik Demo",
+                    "vpcId": "vpc-0bf366171dd4f9121",
+                    "ipPermissions": {
+                      "item": {
+                        "ipProtocol": "tcp",
+                        "fromPort": "80",
+                        "toPort": "80",
+                        "groups": "",
+                        "ipRanges": {
+                          "item": {
+                            "cidrIp": "11.11.11.11/32"
+                          }
+                        },
+                        "ipv6Ranges": "",
+                        "prefixListIds": ""
+                      }
+                    },
+                    "ipPermissionsEgress": {
+                      "item": {
+                        "ipProtocol": "-1",
+                        "groups": "",
+                        "ipRanges": {
+                          "item": {
+                            "cidrIp": "0.0.0.0/0"
+                          }
+                        },
+                        "ipv6Ranges": "",
+                        "prefixListIds": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -2916,
+        "y": 1728
+      }
+    },
+    {
+      "taskId": "f484",
+      "variables": {
+        "incoming": {
+          "task": "f484",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "572f",
+              "value": "teamsMessageStart"
+            },
+            "title": {
+              "editable": true,
+              "task": "572f",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "allPolicyEventsWebhookUrl"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "webhookKey": "webhook1",
+            "adapterId": "MS Teams",
+            "title": "US Policy Rejected Web Server Traffic",
+            "text": "An alert has been captured in Kentik about a blocked Security Group (security-group) for the Web Server.\n<br />\n<ul>\n  <li><a href=\"https://portal.kentik.com/v4/library/dashboards/18392\">DashboardAlarmURL</a></li>\n  <li><a href=\"https://portal.kentik.com/v4/alerting/a312934490\">DetailsAlarmURL</a></li>\n  <li><a href=\"https://itential-dev.io/operations-manager/#/jobs/fa67d914bc854b4db6e5c85e\">Itential Job</a></li>\n  <li><a href=\"https://service-now.dev.com/nav_to.do?uri=change_request.do?sys_id=52ad5a01879e3550c78e84c6dabb35a1\">ServiceNow Change Request</a></li>\n  <li>IP Source: 10.10.10.10</li>\n  <li>IP Destination: 11.11.11.11</li>\n  <li>AS Source: 7018</li>\n</ul><br/>An automated attempt to remediate the problem will now occur.",
+            "_id": "b32bc6ff0e9b4b3cbae1368e",
+            "initiator": "test@itential.com"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -3228,
+        "y": 1728
+      }
+    },
+    {
+      "taskId": "fbe8",
+      "variables": {
+        "incoming": {
+          "cidrIp": "10.10.10.10/32",
+          "fromPort": 80,
+          "groupId": "sg-095d45517c018f179",
+          "groupName": "",
+          "ipPermissions": "",
+          "ipProtocol": "tcp",
+          "sourceSecurityGroupName": "",
+          "sourceSecurityGroupOwnerId": "",
+          "toPort": 80,
+          "dryRun": false
+        },
+        "outgoing": {
+          "result": {
+            "icode": "AD.200",
+            "response": {
+              "AuthorizeSecurityGroupIngressResponse": {
+                "_attr": {
+                  "xmlns": "http://ec2.amazonaws.com/doc/2016-11-15/"
+                },
+                "requestId": "159e16be-ad68-469b-959e-801cfacdd081",
+                "return": "true",
+                "securityGroupRuleSet": {
+                  "item": {
+                    "groupOwnerId": "623933009299",
+                    "groupId": "sg-095d45517c018f179",
+                    "securityGroupRuleId": "sgr-0f84555229acaf021",
+                    "isEgress": "false",
+                    "ipProtocol": "tcp",
+                    "fromPort": "80",
+                    "toPort": "80",
+                    "cidrIpv4": "10.10.10.10/32"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -1992,
+        "y": 1728
+      }
+    },
+    {
+      "taskId": "7dc",
+      "variables": {
+        "incoming": {
+          "task": "7dc",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "572f",
+              "value": "teamsMessageStartSuccess"
+            },
+            "title": {
+              "editable": true,
+              "task": "572f",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "policyAutomatedAuthorizationWebhookUrl"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "webhookKey": "webhook3",
+            "adapterId": "MS Teams",
+            "text": "An alert has been captured in Kentik about a blocked Security Group (security-group) for the Web Server.\n<br />\n<ul>\n  <li><a href=\"https://portal.kentik.com/v4/library/dashboards/18392\">DashboardAlarmURL</a></li>\n  <li><a href=\"https://portal.kentik.com/v4/alerting/a312934490\">DetailsAlarmURL</a></li>\n  <li><a href=\"https://itential-dev.io/operations-manager/#/jobs/fa67d914bc854b4db6e5c85e\">Itential Job</a></li>\n  <li><a href=\"https://service-now.dev.com/nav_to.do?uri=change_request.do?sys_id=52ad5a01879e3550c78e84c6dabb35a1\">ServiceNow Change Request</a></li>\n  <li>IP Source: 10.10.10.10</li>\n  <li>IP Destination: 11.11.11.11</li>\n  <li>AS Source: 7018</li>\n</ul><br/>Remediation Successful! Security Group has been altered to authorize ingress traffic.",
+            "title": "US Policy Rejected Web Server Traffic",
+            "_id": "b0b2a2ba19cc4b8989c3cae1",
+            "initiator": "test@itential.com"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -1380,
+        "y": 1728
+      }
+    },
+    {
+      "taskId": "f3ec",
+      "variables": {
+        "incoming": {
+          "task": "f3ec",
+          "workflow": "Update Change Request - ServiceNow",
+          "variables": {
+            "crNumber": {
+              "editable": true,
+              "task": "e365",
+              "value": "return_data"
+            },
+            "comments": {
+              "editable": true,
+              "task": "fbe8",
+              "value": "result"
+            },
+            "state": {
+              "editable": true,
+              "task": "static",
+              "value": ""
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "serviceNowAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "state": "",
+            "adapterId": "ServiceNow",
+            "crNumber": "CHG0035070",
+            "comments": {
+              "icode": "AD.200",
+              "response": {
+                "AuthorizeSecurityGroupIngressResponse": {
+                  "_attr": {
+                    "xmlns": "http://ec2.amazonaws.com/doc/2016-11-15/"
+                  },
+                  "requestId": "159e16be-ad68-469b-959e-801cfacdd081",
+                  "return": "true",
+                  "securityGroupRuleSet": {
+                    "item": {
+                      "groupOwnerId": "623933009299",
+                      "groupId": "sg-095d45517c018f179",
+                      "securityGroupRuleId": "sgr-0f84555229acaf021",
+                      "isEgress": "false",
+                      "ipProtocol": "tcp",
+                      "fromPort": "80",
+                      "toPort": "80",
+                      "cidrIpv4": "10.10.10.10/32"
+                    }
+                  }
+                }
+              },
+              "headers": {
+                "x-amzn-requestid": "159e16be-ad68-469b-959e-801cfacdd081",
+                "cache-control": "no-cache, no-store",
+                "strict-transport-security": "max-age=31536000; includeSubDomains",
+                "content-type": "text/xml;charset=UTF-8",
+                "content-length": "728",
+                "date": "Thu, 02 Nov 2023 18:40:37 GMT",
+                "keep-alive": "timeout=20",
+                "server": "AmazonEC2",
+                "connection": "close"
+              },
+              "metrics": {
+                "code": 200,
+                "timeouts": 0,
+                "redirects": 0,
+                "retries": 0,
+                "tripTime": 359,
+                "isThrottling": false,
+                "capabilityTime": "383ms"
+              }
+            },
+            "_id": "999b0a5727f54ccf87ae946c",
+            "initiator": "test@itential.com",
+            "updatedCR": {
+              "icode": "AD.200",
+              "response": "success",
+              "headers": {
+                "server": "snow_adc",
+                "date": "Thu, 02 Nov 2023 18:40:39 GMT",
+                "content-type": "application/json;charset=UTF-8",
+                "transfer-encoding": "chunked",
+                "connection": "close",
+                "set-cookie": [
+                  "BIGipServerpool_itentialdev2=fb6521d2beae0cec7d17b677a2c3afbd; httponly; secure; path=/; SameSite=None",
+                  "JSESSIONID=EEB89F2168096DD6467FB6FB51615619; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_user=; Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_user_session=; Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_user_route=glide.3048cfb9d0fc11a8cb89c498ac5973b8; Max-Age=2147483647; Expires=Tue, 20-Nov-2091 21:54:46 GMT; Path=/; HttpOnly; secure; SameSite=None",
+                  "glide_session_store=F3AD964D871E395035617558DABB3563; Max-Age=1800; Expires=Thu, 02-Nov-2023 19:10:39 GMT; Path=/; HttpOnly; secure; SameSite=None"
+                ],
+                "server-timing": "sem_wait;dur=0, sesh_wait;dur=0",
+                "x-is-logged-in": "true",
+                "x-transaction-id": "3bad964d63c8",
+                "x-content-type-options": "nosniff",
+                "pragma": "no-store,no-cache",
+                "cache-control": "no-cache,no-store,must-revalidate,max-age=-1",
+                "expires": "0",
+                "strict-transport-security": "max-age=63072000; includeSubDomains"
+              },
+              "metrics": {
+                "code": 200,
+                "timeouts": 0,
+                "redirects": 0,
+                "retries": 0,
+                "tripTime": 524,
+                "isThrottling": false,
+                "capabilityTime": "539ms"
+              }
+            }
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -1680,
+        "y": 1728
+      }
+    }
+  ]
+}

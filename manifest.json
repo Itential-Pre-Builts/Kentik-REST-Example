@@ -140,19 +140,19 @@
       }
     },
     {
-      "id": "Create Device - Kentik",
-      "name": "Create Device - Kentik",
+      "id": "Create Device - Kentik - REST",
+      "name": "Create Device - Kentik - REST",
       "type": "workflow",
-      "location": "/bundles/workflows/Create Device - Kentik.json",
+      "location": "/bundles/workflows/Create Device - Kentik - REST.json",
       "properties": {
         "entryPoint": false
       }
     },
     {
-      "id": "Device Flow Test - Kentik",
-      "name": "Device Flow Test - Kentik",
+      "id": "Device Flow Test - Kentik - REST",
+      "name": "Device Flow Test - Kentik - REST",
       "type": "workflow",
-      "location": "/bundles/workflows/Device Flow Test - Kentik.json",
+      "location": "/bundles/workflows/Device Flow Test - Kentik - REST.json",
       "properties": {
         "entryPoint": false
       }
@@ -216,6 +216,15 @@
       "name": "Build IAG Device Configuration Push Data",
       "type": "transformation",
       "location": "/bundles/transformations/Build IAG Device Configuration Push Data.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "6544148b2c883d00f315fdd3",
+      "name": "Find Kentik Device by Name",
+      "type": "transformation",
+      "location": "/bundles/transformations/Find Kentik Device by Name.json",
       "properties": {
         "entryPoint": false
       }

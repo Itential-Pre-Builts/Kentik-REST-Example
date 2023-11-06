@@ -1,0 +1,42 @@
+{
+  "input": {
+    "description": "Send Notification - Microsoft - Teams - REST: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik",
+    "variables": {
+      "text": "Device Onboarding has begun for device ATLSWITCH01.\n<br />\n<ul>\n  <li><a href=\"https://itenial-dev.io/operations-manager/#/jobs/52c51d04e75947e5b72350c3\">Itential Job</a></li>\n  <li><a href=\"https://service-now.dev.com/nav_to.do?uri=change_request.do?sys_id=a6708359871e7550c78e84c6dabb3557\">ServiceNow Change Request</a></li>\n</ul>",
+      "title": "Kentik Device Onboarding: ATLSWITCH01",
+      "webhookKey": "webhookb2/8298318a-7429-4b0e-97e7-a3dbac8f18ad@a8413c80-2495-4b90-a922-6e9ff2974531/IncomingWebhook/de72c714167a465bbc05c1a53bf2483b/513eccf1-ccaf-4e41-a469-24f3922521c5",
+      "adapterId": "MS Teams"
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "webhookKey": "webhookb2/8298318a-7429-4b0e-97e7-a3dbac8f18ad@a8413c80-2495-4b90-a922-6e9ff2974531/IncomingWebhook/de72c714167a465bbc05c1a53bf2483b/513eccf1-ccaf-4e41-a469-24f3922521c5",
+      "text": "Device Onboarding has begun for device ATLSWITCH01.\n<br />\n<ul>\n  <li><a href=\"https://itenial-dev.io/operations-manager/#/jobs/52c51d04e75947e5b72350c3\">Itential Job</a></li>\n  <li><a href=\"https://service-now.dev.com/nav_to.do?uri=change_request.do?sys_id=a6708359871e7550c78e84c6dabb3557\">ServiceNow Change Request</a></li>\n</ul>",
+      "title": "Kentik Device Onboarding: ATLSWITCH01",
+      "adapterId": "MS Teams"
+    }
+  },
+  "stubTasks": [
+    {
+      "taskId": "47cf",
+      "variables": {
+        "incoming": {
+          "text": "Device Onboarding has begun for device ATLSWITCH01.\n<br />\n<ul>\n  <li><a href=\"https://itenial-dev.io/operations-manager/#/jobs/52c51d04e75947e5b72350c3\">Itential Job</a></li>\n  <li><a href=\"https://service-now.dev.com/nav_to.do?uri=change_request.do?sys_id=a6708359871e7550c78e84c6dabb3557\">ServiceNow Change Request</a></li>\n</ul>",
+          "title": "Kentik Device Onboarding: ATLSWITCH01",
+          "webhookKey": "webhookb2/8298318a-7429-4b0e-97e7-a3dbac8f18ad@a8413c80-2495-4b90-a922-6e9ff2974531/IncomingWebhook/de72c714167a465bbc05c1a53bf2483b/513eccf1-ccaf-4e41-a469-24f3922521c5"
+        },
+        "outgoing": {
+          "result": {
+            "icode": "AD.200",
+            "response": 1
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -1200,
+        "y": 1296
+      }
+    }
+  ]
+}

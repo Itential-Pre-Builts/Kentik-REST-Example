@@ -1,11 +1,11 @@
 {
-  "name": "Device Flow Test - Kentik",
+  "name": "Device Flow Test - Kentik - REST",
   "tasks": {
     "workflow_start": {
       "name": "workflow_start",
       "groups": [],
       "nodeLocation": {
-        "x": 1152,
+        "x": 1560,
         "y": -96
       },
       "x": 0,
@@ -15,7 +15,7 @@
       "name": "workflow_end",
       "groups": [],
       "nodeLocation": {
-        "x": 4620,
+        "x": 4284,
         "y": -96
       },
       "x": 1,
@@ -25,7 +25,7 @@
       "name": "genericAdapterRequestNoBasePath",
       "canvasName": "genericAdapterRequestNoBasePath",
       "summary": "Get Flow Summary",
-      "description": "Makes the requested generic call",
+      "description": "Gets flow summary in Kentik",
       "location": "Adapter",
       "locationType": "KentikV5",
       "app": "KentikV5",
@@ -48,60 +48,6 @@
       "groups": [],
       "nodeLocation": {
         "x": 2436,
-        "y": -96
-      }
-    },
-    "3cde": {
-      "name": "makeData",
-      "canvasName": "makeData",
-      "summary": "Query Filter",
-      "description": "This task takes an input and converts it to a different data type. For example, converting a number into a string.",
-      "location": "Application",
-      "locationType": null,
-      "app": "WorkFlowEngine",
-      "type": "automatic",
-      "displayName": "Tools",
-      "variables": {
-        "incoming": {
-          "input": "response[<!id!>].metadata.status",
-          "outputType": "string",
-          "variables": "$var.275c.return_data"
-        },
-        "outgoing": {
-          "output": ""
-        }
-      },
-      "actor": "Pronghorn",
-      "groups": [],
-      "nodeLocation": {
-        "x": 2100,
-        "y": -96
-      }
-    },
-    "275c": {
-      "name": "query",
-      "canvasName": "query",
-      "summary": "Query Device",
-      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
-      "location": "Application",
-      "locationType": null,
-      "app": "WorkFlowEngine",
-      "type": "operation",
-      "displayName": "WorkFlowEngine",
-      "variables": {
-        "incoming": {
-          "pass_on_null": false,
-          "query": "response.device",
-          "obj": "$var.6ce0.result"
-        },
-        "outgoing": {
-          "return_data": ""
-        }
-      },
-      "actor": "Pronghorn",
-      "groups": [],
-      "nodeLocation": {
-        "x": 1764,
         "y": -96
       }
     },
@@ -146,7 +92,7 @@
       "actor": "Pronghorn",
       "groups": [],
       "nodeLocation": {
-        "x": 4056,
+        "x": 3720,
         "y": -96
       }
     },
@@ -163,7 +109,7 @@
       "variables": {
         "incoming": {
           "pass_on_null": false,
-          "query": "$var.3cde.output",
+          "query": "$var.f1f0.deviceFilter",
           "obj": "$var.efe2.result"
         },
         "outgoing": {
@@ -174,32 +120,6 @@
       "groups": [],
       "nodeLocation": {
         "x": 2748,
-        "y": -96
-      }
-    },
-    "6ce0": {
-      "name": "findDevice",
-      "canvasName": "findDevice",
-      "summary": "findDevice",
-      "description": "Returns a device object containing information about an individual device (see  About Devices ). * Required fields.",
-      "location": "Adapter",
-      "locationType": "KentikV5",
-      "app": "KentikV5",
-      "type": "automatic",
-      "displayName": "Kentik v5",
-      "variables": {
-        "incoming": {
-          "deviceId": "$var.job.deviceName",
-          "adapter_id": "$var.job.adapterId"
-        },
-        "outgoing": {
-          "result": ""
-        }
-      },
-      "actor": "Pronghorn",
-      "groups": [],
-      "nodeLocation": {
-        "x": 1440,
         "y": -96
       }
     },
@@ -225,34 +145,7 @@
       "actor": "Pronghorn",
       "groups": [],
       "nodeLocation": {
-        "x": 3732,
-        "y": -96
-      }
-    },
-    "988b": {
-      "name": "query",
-      "canvasName": "query",
-      "summary": "Query flow last seen",
-      "description": "Query data using a dot/bracket notation string and a matching key/value pair.",
-      "location": "Application",
-      "locationType": null,
-      "app": "WorkFlowEngine",
-      "type": "operation",
-      "displayName": "WorkFlowEngine",
-      "variables": {
-        "incoming": {
-          "pass_on_null": false,
-          "query": "flow_last_seen",
-          "obj": "$var.f120.return_data"
-        },
-        "outgoing": {
-          "return_data": ""
-        }
-      },
-      "actor": "Pronghorn",
-      "groups": [],
-      "nodeLocation": {
-        "x": 3072,
+        "x": 3396,
         "y": -96
       }
     },
@@ -272,7 +165,7 @@
             {
               "key": "time",
               "value": {
-                "task": "988b",
+                "task": "f120",
                 "variable": "return_data"
               }
             },
@@ -292,7 +185,7 @@
       "actor": "Pronghorn",
       "groups": [],
       "nodeLocation": {
-        "x": 3396,
+        "x": 3060,
         "y": -96
       }
     },
@@ -319,7 +212,7 @@
       "actor": "Pronghorn",
       "groups": [],
       "nodeLocation": {
-        "x": 4368,
+        "x": 4032,
         "y": -192
       }
     },
@@ -346,14 +239,72 @@
       "actor": "Pronghorn",
       "groups": [],
       "nodeLocation": {
-        "x": 4368,
+        "x": 4032,
         "y": 0
+      }
+    },
+    "2aa1": {
+      "name": "findDevices",
+      "canvasName": "findDevices",
+      "summary": "Get Kentik Devices",
+      "description": "Gets all Kentik devices",
+      "location": "Adapter",
+      "locationType": "KentikV5",
+      "app": "KentikV5",
+      "type": "automatic",
+      "displayName": "Kentik v5",
+      "variables": {
+        "incoming": {
+          "adapter_id": "$var.job.adapterId"
+        },
+        "outgoing": {
+          "result": ""
+        }
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 1812,
+        "y": -96
+      }
+    },
+    "f1f0": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Find Kentik Device by Name",
+      "description": "Find Kentik device by name",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "6544148b2c883d00f315fdd3",
+          "variableMap": {
+            "kentikDevices": "$var.2aa1.result",
+            "deviceName": "$var.job.deviceName"
+          },
+          "options": {
+            "extractOutput": true
+          }
+        },
+        "outgoing": {
+          "deviceFilter": null
+        },
+        "decorators": []
+      },
+      "actor": "Pronghorn",
+      "groups": [],
+      "nodeLocation": {
+        "x": 2124,
+        "y": -96
       }
     }
   },
   "transitions": {
     "workflow_start": {
-      "6ce0": {
+      "2aa1": {
         "state": "success",
         "type": "standard"
       }
@@ -361,18 +312,6 @@
     "workflow_end": {},
     "efe2": {
       "f120": {
-        "state": "success",
-        "type": "standard"
-      }
-    },
-    "3cde": {
-      "efe2": {
-        "state": "success",
-        "type": "standard"
-      }
-    },
-    "275c": {
-      "3cde": {
         "state": "success",
         "type": "standard"
       }
@@ -388,25 +327,13 @@
       }
     },
     "f120": {
-      "988b": {
-        "state": "success",
-        "type": "standard"
-      }
-    },
-    "6ce0": {
-      "275c": {
+      "35e4": {
         "state": "success",
         "type": "standard"
       }
     },
     "6f53": {
       "c4ab": {
-        "state": "success",
-        "type": "standard"
-      }
-    },
-    "988b": {
-      "35e4": {
         "state": "success",
         "type": "standard"
       }
@@ -428,6 +355,18 @@
         "state": "success",
         "type": "standard"
       }
+    },
+    "2aa1": {
+      "f1f0": {
+        "state": "success",
+        "type": "standard"
+      }
+    },
+    "f1f0": {
+      "efe2": {
+        "state": "success",
+        "type": "standard"
+      }
     }
   },
   "inputSchema": {
@@ -443,10 +382,6 @@
           "string"
         ]
       },
-      "deviceName": {
-        "title": "deviceId",
-        "type": "number"
-      },
       "startTime": {
         "type": [
           "array",
@@ -456,12 +391,19 @@
           "object",
           "string"
         ]
+      },
+      "deviceName": {
+        "$id": "deviceName",
+        "type": "string",
+        "examples": [
+          "deviceName"
+        ]
       }
     },
     "required": [
       "adapterId",
-      "deviceName",
-      "startTime"
+      "startTime",
+      "deviceName"
     ]
   },
   "outputSchema": {
@@ -477,10 +419,6 @@
           "string"
         ]
       },
-      "deviceName": {
-        "title": "deviceId",
-        "type": "number"
-      },
       "startTime": {
         "type": [
           "array",
@@ -489,6 +427,13 @@
           "number",
           "object",
           "string"
+        ]
+      },
+      "deviceName": {
+        "$id": "deviceName",
+        "type": "string",
+        "examples": [
+          "deviceName"
         ]
       },
       "_id": {
@@ -516,23 +461,23 @@
   "preAutomationTime": 0,
   "sla": 0,
   "outputData": {},
-  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "lastUpdatedVersion": "5.46.0-2023.1.19.0",
   "created_by": {
     "provenance": "CloudAAA",
-    "username": "mike.elrom@itential.com",
-    "firstname": "Michael",
+    "username": "chris.calloway@itential.com",
+    "firstname": "Chris",
     "inactive": false
   },
-  "createdVersion": "5.46.0-2023.1.21",
-  "last_updated": "2023-10-31T21:09:02.042Z",
+  "createdVersion": "5.46.0-2023.1.19.0",
+  "canvasVersion": 3,
+  "last_updated": "2023-11-03T14:12:27.771Z",
   "last_updated_by": {
     "provenance": "CloudAAA",
     "username": "chris.calloway@itential.com",
     "firstname": "Chris",
     "inactive": false
   },
-  "created": "2023-09-25T18:24:15.198Z",
-  "canvasVersion": 3,
+  "created": "2023-11-03T14:04:27.662Z",
   "tags": [],
   "groups": [],
   "migrationVersion": 2

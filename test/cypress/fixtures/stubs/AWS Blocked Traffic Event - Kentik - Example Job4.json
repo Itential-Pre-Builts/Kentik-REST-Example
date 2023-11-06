@@ -1,0 +1,152 @@
+{
+  "input": {
+    "description": "It should run AWS Blocked Traffic Event - Kentik - Example and send notifcation of access attempt from non-white-listed IP",
+    "variables": {
+      "CompanyID": 180173,
+      "CurrentState": "alarm",
+      "Description": "Alarm for US Policy Rejected Web Server Traffic Active",
+      "EndTime": "ongoing",
+      "IsActive": true,
+      "PreviousState": "new",
+      "StartTime": "2023-11-02 18:44:30 UTC",
+      "Type": "alarm",
+      "AlarmID": "312935486",
+      "AlarmPolicyID": "187942",
+      "AlarmPolicyLabels": "",
+      "AlarmPolicyMetadataType": "Custom",
+      "AlarmPolicyName": "US Policy Rejected Web Server Traffic",
+      "AlarmSeverity": "critical",
+      "AlarmThresholdID": "446919",
+      "iapUrl": "https://itenial-dev.io",
+      "serviceNowUrl": "https://service-now.dev.com",
+      "allPolicyEventsWebhookUrl": "webhook1",
+      "policyAutomatedFailureWebhookUrl": "webhook2",
+      "policyAutomatedAuthorizationWebhookUrl": "webhook3",
+      "serviceNowAdapter": "ServiceNow",
+      "awsEC2Adapter": "AWS",
+      "msTeamsAdapter": "MS Teams",
+      "Dimensions": {
+        "AS_src": "63949",
+        "Geography_src": "US",
+        "IP_dst": "13.13.13.13",
+        "IP_src": "9.9.9.9",
+        "Port_src": "33683",
+        "kt_aws_action": "REJECT",
+        "kt_aws_dst_sg": "webserver-kentik"
+      },
+      "Links": [
+        {
+          "Name": "DashboardAlarmURL",
+          "Label": "Open Dashboard",
+          "Value": "https://portal.kentik.com/v4/library/dashboards/18392"
+        },
+        {
+          "Name": "DetailsAlarmURL",
+          "Label": "Open Details",
+          "Value": "https://portal.kentik.com/v4/alerting/a312935486"
+        }
+      ]
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "CompanyID": 180173,
+      "CurrentState": "alarm",
+      "Description": "Alarm for US Policy Rejected Web Server Traffic Active",
+      "EndTime": "ongoing",
+      "IsActive": true,
+      "PreviousState": "new",
+      "StartTime": "2023-11-02 18:44:30 UTC",
+      "Type": "alarm",
+      "AlarmID": "312935486",
+      "AlarmPolicyID": "187942",
+      "AlarmPolicyLabels": "",
+      "AlarmPolicyMetadataType": "Custom",
+      "AlarmPolicyName": "US Policy Rejected Web Server Traffic",
+      "AlarmSeverity": "critical",
+      "AlarmThresholdID": "446919",
+      "iapUrl": "https://itenial-dev.io",
+      "serviceNowUrl": "https://service-now.dev.com",
+      "allPolicyEventsWebhookUrl": "webhook1",
+      "policyAutomatedFailureWebhookUrl": "webhook2",
+      "policyAutomatedAuthorizationWebhookUrl": "webhook3",
+      "serviceNowAdapter": "ServiceNow",
+      "awsEC2Adapter": "AWS",
+      "msTeamsAdapter": "MS Teams",
+      "Dimensions": {
+        "AS_src": "63949",
+        "Geography_src": "US",
+        "IP_dst": "13.13.13.13",
+        "IP_src": "9.9.9.9",
+        "Port_src": "33683",
+        "kt_aws_action": "REJECT",
+        "kt_aws_dst_sg": "webserver-kentik"
+      },
+      "Links": [
+        {
+          "Name": "DashboardAlarmURL",
+          "Label": "Open Dashboard",
+          "Value": "https://portal.kentik.com/v4/library/dashboards/18392"
+        },
+        {
+          "Name": "DetailsAlarmURL",
+          "Label": "Open Details",
+          "Value": "https://portal.kentik.com/v4/alerting/a312935486"
+        }
+      ],
+      "allowedIPList": [
+        "10.10.10.10"
+      ]
+    }
+  },
+  "stubTasks": [
+    {
+      "taskId": "5c3",
+      "variables": {
+        "incoming": {
+          "task": "5c3",
+          "workflow": "Send Notification - Microsoft - Teams - REST",
+          "variables": {
+            "text": {
+              "editable": true,
+              "task": "b2b8",
+              "value": "teamsDeniedMessage"
+            },
+            "title": {
+              "editable": true,
+              "task": "5847",
+              "value": "serviceNowSummary"
+            },
+            "webhookKey": {
+              "task": "job",
+              "value": "allPolicyEventsWebhookUrl"
+            },
+            "adapterId": {
+              "task": "job",
+              "value": "msTeamsAdapter"
+            }
+          },
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": {
+            "status": "complete",
+            "webhookKey": "webhook1",
+            "adapterId": "MS Teams",
+            "text": "An alert has been captured in Kentik about a blocked Security Group (webserver-kentik) for the Web Server.\n<br />\n<ul>\n  <li><a href=\"https://portal.kentik.com/v4/library/dashboards/18392\">DashboardAlarmURL</a></li>\n  <li><a href=\"https://portal.kentik.com/v4/alerting/a312935486\">DetailsAlarmURL</a></li>\n  <li><a href=\"https://itenial-dev.io/operations-manager/#/jobs/59dd5618453c459f908669e7\">Itential Job</a></li>\n  <li>IP Source: 10.10.10.10</li>\n  <li>IP Destination: 13.13.13.13</li>\n  <li>AS Source: 63949</li>\n</ul>  \n\nHowever, the auto remediation request was ignored since the source IP is not part of the allowed IP List:\n<br/>\n<ul>\n<li>10.10.10.10</li> <li>11.11.11.11</li> <li>12.12.12.12</li>\n</ul>",
+            "title": "US Policy Rejected Web Server Traffic",
+            "_id": "a5c5e79b5a32480db90e2585",
+            "initiator": "test@itential.com"
+          }
+        }
+      },
+      "nodeLocation": {
+        "x": -4320,
+        "y": 1932
+      }
+    }
+  ]
+}

@@ -372,21 +372,6 @@
       "context": "#"
     },
     {
-      "id": 49,
-      "type": "assign",
-      "from": {
-        "location": "incoming",
-        "name": "serviceNowIncidentSysId",
-        "ptr": ""
-      },
-      "to": {
-        "location": "method",
-        "name": 47,
-        "ptr": "/args/2/value"
-      },
-      "context": "#"
-    },
-    {
       "id": 56,
       "type": "assign",
       "from": {
@@ -503,6 +488,21 @@
         "location": "template",
         "name": 55,
         "ptr": "/args/5/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 79,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "serviceNowURL",
+        "ptr": ""
+      },
+      "to": {
+        "location": "template",
+        "name": 78,
+        "ptr": "/args/1/value"
       },
       "context": "#"
     },
@@ -902,7 +902,7 @@
       "context": "#"
     },
     {
-      "id": 43,
+      "id": 73,
       "type": "assign",
       "from": {
         "location": "template",
@@ -910,14 +910,14 @@
         "ptr": "/return"
       },
       "to": {
-        "location": "method",
-        "name": 42,
+        "location": "template",
+        "name": 72,
         "ptr": "/args/0/value"
       },
       "context": "#"
     },
     {
-      "id": 46,
+      "id": 76,
       "type": "assign",
       "from": {
         "location": "template",
@@ -925,14 +925,14 @@
         "ptr": "/return"
       },
       "to": {
-        "location": "method",
-        "name": 45,
+        "location": "template",
+        "name": 75,
         "ptr": "/args/0/value"
       },
       "context": "#"
     },
     {
-      "id": 48,
+      "id": 80,
       "type": "assign",
       "from": {
         "location": "template",
@@ -940,14 +940,14 @@
         "ptr": "/return"
       },
       "to": {
-        "location": "method",
-        "name": 47,
+        "location": "template",
+        "name": 78,
         "ptr": "/args/0/value"
       },
       "context": "#"
     },
     {
-      "id": 53,
+      "id": 83,
       "type": "assign",
       "from": {
         "location": "template",
@@ -955,21 +955,20 @@
         "ptr": "/return"
       },
       "to": {
-        "location": "method",
-        "name": 52,
-        "ptr": "/args/1/value"
+        "location": "template",
+        "name": 82,
+        "ptr": "/args/0/value"
       },
       "context": "#"
     },
     {
-      "id": 42,
-      "type": "method",
+      "id": 72,
+      "type": "template",
       "library": "String",
-      "method": "concat",
+      "method": "templateLiteral",
+      "template": "${renderedTeamsMessage}<br/>An automated attempt to remediate the problem will now occur.",
       "args": [
-        null,
-        "<br/>",
-        "An automated attempt to remediate the problem will now occur."
+        null
       ],
       "view": {
         "row": 1,
@@ -978,14 +977,13 @@
       "context": "#"
     },
     {
-      "id": 45,
-      "type": "method",
+      "id": 75,
+      "type": "template",
       "library": "String",
-      "method": "concat",
+      "method": "templateLiteral",
+      "template": "${renderedTeamsMessage}<br/>Remediation Successful! Security Group has been altered to authorize ingress traffic.",
       "args": [
-        null,
-        "<br/>",
-        "Remediation Successful! Security Group has been altered to authorize ingress traffic."
+        null
       ],
       "view": {
         "row": 2,
@@ -994,14 +992,13 @@
       "context": "#"
     },
     {
-      "id": 52,
-      "type": "method",
+      "id": 82,
+      "type": "template",
       "library": "String",
-      "method": "concat",
+      "method": "templateLiteral",
+      "template": "[code]${renderedTeamsMessage}[/code]",
       "args": [
-        "[code]",
-        null,
-        "[/code]"
+        null
       ],
       "view": {
         "row": 4,
@@ -1010,15 +1007,14 @@
       "context": "#"
     },
     {
-      "id": 47,
-      "type": "method",
+      "id": 78,
+      "type": "template",
       "library": "String",
-      "method": "concat",
+      "method": "templateLiteral",
+      "template": "${renderedTeamsMessage}<br/>Remediation Failed! Security Group already includes source IP.<br/>ServiceNow Incident Opened: <a href=${serviceNowURL}/now/nav/ui/classic/params/target/incident.do%3Fsys_id%3D>ServiceNow Incident</a>",
       "args": [
         null,
-        "<br/>Remediation Failed! Security Group already includes source IP.<br/>ServiceNow Incident Opened: <a href=https://itentialdev2.service-now.com/now/nav/ui/classic/params/target/incident.do%3Fsys_id%3D",
-        null,
-        ">ServiceNow Incident</a>"
+        null
       ],
       "view": {
         "row": 3,
@@ -1072,11 +1068,11 @@
       "context": "#"
     },
     {
-      "id": 44,
+      "id": 74,
       "type": "assign",
       "from": {
-        "location": "method",
-        "name": 42,
+        "location": "template",
+        "name": 72,
         "ptr": "/return"
       },
       "to": {
@@ -1087,11 +1083,11 @@
       "context": "#"
     },
     {
-      "id": 50,
+      "id": 77,
       "type": "assign",
       "from": {
-        "location": "method",
-        "name": 45,
+        "location": "template",
+        "name": 75,
         "ptr": "/return"
       },
       "to": {
@@ -1102,11 +1098,11 @@
       "context": "#"
     },
     {
-      "id": 54,
+      "id": 84,
       "type": "assign",
       "from": {
-        "location": "method",
-        "name": 52,
+        "location": "template",
+        "name": 82,
         "ptr": "/return"
       },
       "to": {
@@ -1117,11 +1113,11 @@
       "context": "#"
     },
     {
-      "id": 51,
+      "id": 81,
       "type": "assign",
       "from": {
-        "location": "method",
-        "name": 47,
+        "location": "template",
+        "name": 78,
         "ptr": "/return"
       },
       "to": {
@@ -1294,7 +1290,7 @@
     "provenance": "CloudAAA",
     "username": "chris.calloway@itential.com"
   },
-  "lastUpdated": "2023-11-02T15:26:24.621Z",
+  "lastUpdated": "2023-11-06T18:34:36.212Z",
   "lastUpdatedBy": {
     "_id": "64c178c76dba2ac92808b07e",
     "provenance": "CloudAAA",

@@ -161,7 +161,7 @@
       "name": "childJob",
       "canvasName": "childJob",
       "summary": "Device Flow Test - Kentik",
-      "description": "Runs a child job inside a workflow.",
+      "description": "Runs device flow test in Kentik",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",
@@ -170,7 +170,7 @@
       "variables": {
         "incoming": {
           "task": "",
-          "workflow": "Device Flow Test - Kentik",
+          "workflow": "Device Flow Test - Kentik - REST",
           "variables": {
             "deviceName": {
               "task": "job",
@@ -306,25 +306,10 @@
     "type": "object",
     "properties": {
       "deviceName": {
-        "anyOf": [
-          {
-            "type": [
-              "array",
-              "string",
-              "boolean",
-              "integer",
-              "number",
-              "object"
-            ],
-            "title": "elementN",
-            "examples": [
-              "Device3"
-            ]
-          },
-          {
-            "title": "deviceId",
-            "type": "number"
-          }
+        "$id": "deviceName",
+        "type": "string",
+        "examples": [
+          "deviceName"
         ]
       },
       "_id": {
@@ -355,25 +340,10 @@
     "type": "object",
     "properties": {
       "deviceName": {
-        "anyOf": [
-          {
-            "type": [
-              "array",
-              "string",
-              "boolean",
-              "integer",
-              "number",
-              "object"
-            ],
-            "title": "elementN",
-            "examples": [
-              "Device3"
-            ]
-          },
-          {
-            "title": "deviceId",
-            "type": "number"
-          }
+        "$id": "deviceName",
+        "type": "string",
+        "examples": [
+          "deviceName"
         ]
       },
       "_id": {
@@ -401,7 +371,7 @@
   "preAutomationTime": 0,
   "sla": 0,
   "outputData": {},
-  "lastUpdatedVersion": "4.15.0-2023.1.123.0",
+  "lastUpdatedVersion": "5.46.0-2023.1.19.0",
   "created_by": {
     "provenance": "CloudAAA",
     "username": "mike.elrom@itential.com",
@@ -409,7 +379,7 @@
     "inactive": false
   },
   "createdVersion": "5.46.0-2023.1.21",
-  "last_updated": "2023-10-31T21:09:02.042Z",
+  "last_updated": "2023-11-03T15:41:33.902Z",
   "created": "2023-09-22T18:31:58.653Z",
   "canvasVersion": 3,
   "last_updated_by": {

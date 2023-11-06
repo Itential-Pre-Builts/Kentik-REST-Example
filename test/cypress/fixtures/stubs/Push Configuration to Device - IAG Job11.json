@@ -1,0 +1,25 @@
+{
+  "input": {
+    "description": "Push Configuration to Device - IAG: It should run Device Onboarding - Reset - Kentik - Example and delete flow configuration and device from Kentik",
+    "variables": {
+      "templateName": "IOS-XE Flow Config - Reset - Kentik - Example",
+      "templateVariables": {
+        "test": "test"
+      },
+      "autoApprove": true,
+      "device": "ATLSWITCH01"
+    }
+  },
+  "expectedTaskResults": {
+    "status": "complete",
+    "variables": {
+      "templateName": "IOS-XE Flow Config - Reset - Kentik - Example",
+      "templateVariables": {
+        "test": "test"
+      },
+      "autoApprove": true,
+      "device": "ATLSWITCH01"
+    }
+  },
+  "stubTasks": []
+}

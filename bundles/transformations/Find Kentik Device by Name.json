@@ -1,0 +1,389 @@
+{
+  "_id": "6544148b2c883d00f315fdd3",
+  "name": "Find Kentik Device by Name",
+  "description": "Find Kentik Device by Name",
+  "incoming": [
+    {
+      "$id": "kentikDevices",
+      "type": "object",
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "devices": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "examples": [
+                      "165963"
+                    ]
+                  },
+                  "device_name": {
+                    "type": "string",
+                    "examples": [
+                      "test"
+                    ]
+                  },
+                  "device_type": {
+                    "type": "string",
+                    "examples": [
+                      "router"
+                    ]
+                  }
+                },
+                "required": []
+              }
+            }
+          },
+          "required": []
+        }
+      },
+      "required": []
+    },
+    {
+      "$id": "deviceName",
+      "type": "string",
+      "examples": [
+        "deviceName"
+      ]
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "deviceFilter",
+      "type": "string",
+      "examples": [
+        "device"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "kentikDevices",
+        "ptr": "/response/devices"
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 10,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "deviceName",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 9,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 9,
+      "type": "method",
+      "library": "String",
+      "method": "toLowerCase",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 2,
+        "col": 1
+      },
+      "context": "#"
+    },
+    {
+      "id": 11,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 9,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/2/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 1,
+      "type": "method",
+      "library": "Array",
+      "method": "find",
+      "args": [
+        null,
+        "findDevice",
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      },
+      "context": "#"
+    },
+    {
+      "id": 5,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "method",
+        "name": 4,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 4,
+      "type": "method",
+      "library": "Object",
+      "method": "getProperty",
+      "args": [
+        null,
+        "id"
+      ],
+      "view": {
+        "row": 1,
+        "col": 3
+      },
+      "context": "#"
+    },
+    {
+      "id": 7,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 4,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "template",
+        "name": 6,
+        "ptr": "/args/0/value"
+      },
+      "context": "#"
+    },
+    {
+      "id": 6,
+      "type": "template",
+      "library": "String",
+      "method": "templateLiteral",
+      "template": "response[${deviceId}].metadata.status.flow_last_seen",
+      "args": [
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 4
+      },
+      "context": "#"
+    },
+    {
+      "id": 8,
+      "type": "assign",
+      "from": {
+        "location": "template",
+        "name": 6,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "deviceFilter",
+        "ptr": ""
+      },
+      "context": "#"
+    }
+  ],
+  "functions": [
+    {
+      "incoming": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "examples": [
+                "165963"
+              ]
+            },
+            "device_name": {
+              "type": "string",
+              "examples": [
+                "test"
+              ]
+            },
+            "device_type": {
+              "type": "string",
+              "examples": [
+                "router"
+              ]
+            }
+          },
+          "required": [],
+          "$id": "element"
+        },
+        {
+          "title": "index",
+          "type": "number",
+          "optional": true,
+          "$id": "index"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "examples": [
+                  "165963"
+                ]
+              },
+              "device_name": {
+                "type": "string",
+                "examples": [
+                  "test"
+                ]
+              },
+              "device_type": {
+                "type": "string",
+                "examples": [
+                  "router"
+                ]
+              }
+            },
+            "required": []
+          },
+          "$id": "array",
+          "optional": true
+        },
+        {
+          "$id": "thisArg",
+          "type": "object",
+          "properties": {
+            "0_toLowerCase return": {
+              "type": "string"
+            }
+          },
+          "isContext": true,
+          "isThis": true,
+          "isIndexed": true
+        }
+      ],
+      "outgoing": [
+        {
+          "title": "return",
+          "type": "boolean",
+          "$id": "return"
+        }
+      ],
+      "steps": [
+        {
+          "id": 2,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "element",
+            "ptr": "/device_name"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/0/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 3,
+          "type": "assign",
+          "from": {
+            "location": "incoming",
+            "name": "thisArg",
+            "ptr": "/0_toLowerCase return"
+          },
+          "to": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/args/1/value"
+          },
+          "context": "#"
+        },
+        {
+          "id": 1,
+          "type": "method",
+          "library": "Equality",
+          "method": "identity",
+          "args": [
+            null,
+            null
+          ],
+          "view": {
+            "row": 1,
+            "col": 1
+          },
+          "context": "#"
+        },
+        {
+          "id": 4,
+          "type": "assign",
+          "from": {
+            "location": "method",
+            "name": 1,
+            "ptr": "/return"
+          },
+          "to": {
+            "location": "outgoing",
+            "name": "return",
+            "ptr": ""
+          },
+          "context": "#"
+        }
+      ],
+      "functions": [],
+      "name": "findDevice",
+      "view": {
+        "col": 1,
+        "row": 4
+      },
+      "id": "findDevice",
+      "comments": []
+    }
+  ],
+  "comments": [],
+  "view": {
+    "col": 4,
+    "row": 5
+  },
+  "created": "2023-11-02T21:28:43.254Z",
+  "createdBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "lastUpdated": "2023-11-02T22:18:02.263Z",
+  "lastUpdatedBy": {
+    "_id": "64c178c76dba2ac92808b07e",
+    "provenance": "CloudAAA",
+    "username": "chris.calloway@itential.com"
+  },
+  "version": "4.1.2-2023.1.10",
+  "tags": []
+}

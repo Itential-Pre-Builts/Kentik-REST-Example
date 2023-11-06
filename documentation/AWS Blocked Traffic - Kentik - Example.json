@@ -195,7 +195,7 @@
       "type": "string",
       "required": "yes",
       "description": "IP destination",
-      "exampleValue": "10.0.18.252"
+      "exampleValue": "13.13.13.13"
     },
     {
       "name": "Dimensions.IP_src",
