@@ -1,12 +1,20 @@
 {
   "domains": [
-    "Cloud"
+    "Observability"
   ],
   "tags": [
-    "Configuration Management"
+    "Observability",
+    "Notifications",
+    "Alerts",
+    "Monitoring",
+    "Telemetry",
+    "Analytics",
+    "Diagnostics"
   ],
   "useCases": [
-    "Device Onboarding"
+    "Closed Loop Incident Resolution",
+    "Preventive Network Diagnostics",
+    "Add Device for Monitoring"
   ],
   "apiLinks": [
     "https://kb.kentik.com/v0/Ab09.htm",
