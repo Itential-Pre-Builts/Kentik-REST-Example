@@ -56,9 +56,9 @@ The AWS Blocked Traffic Event automation is started by Kentik sending a request 
       "allPolicyEventsWebhookUrl": "<webhook_url_1>",
       "policyAutomatedFailureWebhookUrl": "<webhook_url_2>",
       "policyAutomatedAuthorizationWebhookUrl": "<webhook_url_3>",
-      "serviceNowAdapter": "ServiceNow",
-      "awsEC2Adapter": "AWS",
-      "msTeamsAdapter": "MS Teams",
+      "serviceNowAdapter": "<service_now_adapter>",
+      "awsEC2Adapter": "<aws_ec2_adapter>",
+      "msTeamsAdapter": "<ms_teams_adapter>",
       "Dimensions": {{- (.Details.WithTag "dimension").ToMap | toJSON -}},
       "Links": {{- (.Details.WithTag "url") | toJSON -}}
     {{- end -}}
@@ -71,9 +71,9 @@ The AWS Blocked Traffic Event automation is started by Kentik sending a request 
       "allPolicyEventsWebhookUrl": "<webhook_url_1>",
       "policyAutomatedFailureWebhookUrl": "<webhook_url_2>",
       "policyAutomatedAuthorizationWebhookUrl": "<webhook_url_3>",
-      "serviceNowAdapter": "ServiceNow",
-      "awsEC2Adapter": "AWS",
-      "msTeamsAdapter": "MS Teams",
+      "serviceNowAdapter": "<service_now_adapter>",
+      "awsEC2Adapter": "<aws_ec2_adapter>",
+      "msTeamsAdapter": "<ms_teams_adapter>",
       "Dimensions": {{- (.Details.WithTag "dimension").ToMap | toJSON -}},
       "Links": {{- (.Details.WithTag "url") | toJSON -}}
     {{- end -}}
@@ -141,10 +141,6 @@ This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
       <td>ServiceNow</td>
       <td></td>
       <td></td>
-    </tr>    <tr>
-      <td>Itential Automation Gateway</td>
-      <td></td>
-      <td></td>
     </tr>
   </tbody>
 </table>
@@ -176,9 +172,6 @@ This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
     </tr>    <tr>
       <td>adapter-kentik_v5</td>
       <td>^0.1.1</td>
-    </tr>    <tr>
-      <td>adapter-automation_gateway</td>
-      <td>^4.29.0-2023.1.12</td>
     </tr>
   </tbody>
 </table>

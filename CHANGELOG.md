@@ -1,4 +1,12 @@
 
+## 1.0.0 [11-07-2023]
+
+* Create 1.0.0 release
+
+See merge request itentialopensource/pre-built-automations/staging/kentik-rest-example!5
+
+---
+
 ## 0.0.7 [11-07-2023]
 
 * Updates overview documentation for AWS Blocked Traffic and Device Onboarding automations
@@ -46,4 +54,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n
+\n\n\n\n\n\n\n
