@@ -63,7 +63,7 @@
       "name": "AWS Blocked Traffic - Kentik - Example",
       "webName": "Kentik AWS Blocked Traffic Alarm Example",
       "assetType": "Workflow",
-      "overview": "### Setting up Dependencies\n\n#### AWS\n\nA <a href='https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html' target='_blank'>Security Group in AWS</a> grants access of a hosted server to given source IP. This automation is able to update a given Security Group to have source IP after alert is sent by Kentik to IAP in the Kentik <a href='https://kb.kentik.com/v0/Ia04.htm#Ia04-AWS_Dimensions' target='_blank'>AWS Dimension field kt_aws_dst_sg</a>.\n\n#### Microsoft Teams\n\nThis IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. Three channels are used in this automation that each require creating an Incoming Webhook and are used for the following events:\n\n1. `Policy All Events`: receives messages any time an alert is sent from Kentik to IAP and starts a job in IAP.\n2. `Policy Automated Authorizations`: receives messages when a source IP detected by Kentik sending web traffic to a given server is added to Security Group in AWS to grant access to that server since the source IP is found in a white-list.\n3. `Policy Automated Failures`: received messages when a source IP fails to be added to Security Group in AWS. This can occur if a failure happens when performing that operation or the source IP is already found in the Security Group.\n\nFollow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for each of the three channels described above.\n\n#### Kentik\n\nThe AWS Blocked Traffic Event automation is started by Kentik sending a request to IAP upon a critical threshold met in traffic to a web server observed by Kentik. In order to use this automation a Notification Channel of type Custom Webhook must be set up in Kentik. The IAP URL and API endpoint for the AWS Blocked Traffic Event automation is provided in the configuration of the Custom Webhook in Kentik. A Go template as seen below is used to map the data sent from Kentik to a format the IAP automation can parse to perform a closed loop remediation of either enabling access to client sending traffic to web server observed by Kentik or continuing to block access if the IP is not white-listed.\n\n```python\n{\n  {{- . | toJSON | explodeJSONKeys -}},\n  {{- if .IsSingleEvent  -}}\n    {{- with .Event -}}\n      {{- . | toJSON | explodeJSONKeys -}},\n      {{- .Details.General.ToMap | toJSON | explodeJSONKeys -}},\n      \"iapUrl\": \"<iap_url>\",\n      \"serviceNowUrl\": \"<service_now_url>\",\n      \"allPolicyEventsWebhookUrl\": \"<webhook_url_1>\",\n      \"policyAutomatedFailureWebhookUrl\": \"<webhook_url_2>\",\n      \"policyAutomatedAuthorizationWebhookUrl\": \"<webhook_url_3>\",\n      \"serviceNowAdapter\": \"ServiceNow\",\n      \"awsEC2Adapter\": \"AWS\",\n      \"msTeamsAdapter\": \"MS Teams\",\n      \"Dimensions\": {{- (.Details.WithTag \"dimension\").ToMap | toJSON -}},\n      \"Links\": {{- (.Details.WithTag \"url\") | toJSON -}}\n    {{- end -}}\n  {{- else -}}\n    {{- with index .Events 0 -}}\n      {{- . | toJSON | explodeJSONKeys -}},\n      {{- .Details.General.ToMap | toJSON | explodeJSONKeys -}},\n      \"iapUrl\": \"<iap_url>\",\n      \"serviceNowUrl\": \"<service_now_url>\",\n      \"allPolicyEventsWebhookUrl\": \"<webhook_url_1>\",\n      \"policyAutomatedFailureWebhookUrl\": \"<webhook_url_2>\",\n      \"policyAutomatedAuthorizationWebhookUrl\": \"<webhook_url_3>\",\n      \"serviceNowAdapter\": \"ServiceNow\",\n      \"awsEC2Adapter\": \"AWS\",\n      \"msTeamsAdapter\": \"MS Teams\",\n      \"Dimensions\": {{- (.Details.WithTag \"dimension\").ToMap | toJSON -}},\n      \"Links\": {{- (.Details.WithTag \"url\") | toJSON -}}\n    {{- end -}}\n  {{- end -}}\n}\n```\n\nOnce the Custom Webhook is created with the above Go template as well as URL of the IAP API endpoint, a <a href='https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies' target='_blank'>Kentik Alert Policy</a> must be configured to send a request to IAP upon a threshold being reached using Custom Webhook created above. This automation was tested using a Critical threshold in the Alert Policy, but other threshold levels could be used.\n\n#### IP Whitelist\n\nA <a href='https://docs.itential.com/docs/newvariable-task-2023-1?highlight=new%20job%20variable' target='_blank'>newVariable task</a> at the start of the workflow `AWS Blocked Traffic Event - Kentik - Example` is used to create an IP whitelist for allowed source IPs to reach the server in AWS that Kentik is observing.\n\n### Running Automation and Resetting State\n\nIn order for Kentik to send a request to IAP the client source IP must not exist in the corresponding security group for the server in AWS. The `AWS Blocked Traffic - Reset - Kentik - Example` Operations Manager automation can delete a given source IP from a given security group.\n\nThere is a delay between when a source IP not in the AWS security group attempts to reach the server on AWS and when the Kentik request due to alarm threshold met is sent to IAP. Look for messages in Microsoft Teams when the request is sent to IAP from Kentik.",
+      "overview": "This is an end-to-end automation example where an alert is triggered within a Kentik policy due to a threshold being exceeded. In this example Kentik uses an integration to call IAP's <a href='https://docs.itential.com/docs/triggers-2023-1#api-endpoint-triggers' target='_blank'>northbound API trigger</a>. Once the trigger is executed it invokes an automation that then validates the traffic can be accepted and interacts with change management (ServiceNow), AWS EC2, and a notification platform (MS Teams).\n\nThis automation example can be installed and reviewed for ideas on how to incorporate Kentik into a closed loop alert remediation scenario with IAP. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.\n\n### Configuring Dependencies\n\n#### AWS\n\nA <a href='https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html' target='_blank'>Security Group in AWS</a> grants access of a hosted server to given source IP. This automation is able to update a given Security Group to have source IP after alert is sent by Kentik to IAP in the Kentik <a href='https://kb.kentik.com/v0/Ia04.htm#Ia04-AWS_Dimensions' target='_blank'>AWS Dimension field kt_aws_dst_sg</a>.\n\n#### Microsoft Teams\n\nThis IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. Three channels are used in this automation that each require creating an Incoming Webhook and are used for the following events:\n\n1. `Policy All Events`: receives messages any time an alert is sent from Kentik to IAP and starts a job in IAP.\n2. `Policy Automated Authorizations`: receives messages when a source IP detected by Kentik sending web traffic to a given server is added to Security Group in AWS to grant access to that server since the source IP is found in a white-list.\n3. `Policy Automated Failures`: received messages when a source IP fails to be added to Security Group in AWS. This can occur if a failure happens when performing that operation or the source IP is already found in the Security Group.\n\nFollow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for each of the three channels described above.\n\n#### Kentik\n\nThe AWS Blocked Traffic Event automation is started by Kentik sending a request to IAP upon a critical threshold met in traffic to a web server observed by Kentik. In order to use this automation a Notification Channel of type Custom Webhook must be set up in Kentik. The IAP URL and API endpoint for the AWS Blocked Traffic Event automation is provided in the configuration of the Custom Webhook in Kentik. A Go template as seen below is used to map the data sent from Kentik to a format the IAP automation can parse to perform a closed loop remediation of either enabling access to client sending traffic to web server observed by Kentik or continuing to block access if the IP is not white-listed.\n\n```python\n{\n  {{- . | toJSON | explodeJSONKeys -}},\n  {{- if .IsSingleEvent  -}}\n    {{- with .Event -}}\n      {{- . | toJSON | explodeJSONKeys -}},\n      {{- .Details.General.ToMap | toJSON | explodeJSONKeys -}},\n      \"iapUrl\": \"<iap_url>\",\n      \"serviceNowUrl\": \"<service_now_url>\",\n      \"allPolicyEventsWebhookUrl\": \"<webhook_url_1>\",\n      \"policyAutomatedFailureWebhookUrl\": \"<webhook_url_2>\",\n      \"policyAutomatedAuthorizationWebhookUrl\": \"<webhook_url_3>\",\n      \"serviceNowAdapter\": \"ServiceNow\",\n      \"awsEC2Adapter\": \"AWS\",\n      \"msTeamsAdapter\": \"MS Teams\",\n      \"Dimensions\": {{- (.Details.WithTag \"dimension\").ToMap | toJSON -}},\n      \"Links\": {{- (.Details.WithTag \"url\") | toJSON -}}\n    {{- end -}}\n  {{- else -}}\n    {{- with index .Events 0 -}}\n      {{- . | toJSON | explodeJSONKeys -}},\n      {{- .Details.General.ToMap | toJSON | explodeJSONKeys -}},\n      \"iapUrl\": \"<iap_url>\",\n      \"serviceNowUrl\": \"<service_now_url>\",\n      \"allPolicyEventsWebhookUrl\": \"<webhook_url_1>\",\n      \"policyAutomatedFailureWebhookUrl\": \"<webhook_url_2>\",\n      \"policyAutomatedAuthorizationWebhookUrl\": \"<webhook_url_3>\",\n      \"serviceNowAdapter\": \"ServiceNow\",\n      \"awsEC2Adapter\": \"AWS\",\n      \"msTeamsAdapter\": \"MS Teams\",\n      \"Dimensions\": {{- (.Details.WithTag \"dimension\").ToMap | toJSON -}},\n      \"Links\": {{- (.Details.WithTag \"url\") | toJSON -}}\n    {{- end -}}\n  {{- end -}}\n}\n```\n\nOnce the Custom Webhook is created with the above Go template as well as URL of the IAP API endpoint, a <a href='https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies' target='_blank'>Kentik Alert Policy</a> must be configured to send a request to IAP upon a threshold being reached using Custom Webhook created above. This automation was tested using a Critical threshold in the Alert Policy, but other threshold levels could be used.\n\n#### IP Whitelist\n\nA <a href='https://docs.itential.com/docs/newvariable-task-2023-1?highlight=new%20job%20variable' target='_blank'>newVariable task</a> at the start of the workflow `AWS Blocked Traffic Event - Kentik - Example` is used to create an IP whitelist for allowed source IPs to reach the server in AWS that Kentik is observing.\n\n### Running Automation and Resetting State\n\nIn order for Kentik to send a request to IAP the client source IP must not exist in the corresponding security group for the server in AWS. The `AWS Blocked Traffic - Reset - Kentik - Example` Operations Manager automation can delete a given source IP from a given security group.\n\nThere is a delay between when a source IP not in the AWS security group attempts to reach the server on AWS and when the Kentik request due to alarm threshold met is sent to IAP. Look for messages in Microsoft Teams when the request is sent to IAP from Kentik.",
       "iapVersions": [
         "2023.1"
       ],
@@ -85,7 +85,7 @@
       "name": "Device Onboarding - Kentik - Example",
       "webName": "Kentik Device Onboarding Example",
       "assetType": "Workflow",
-      "overview": "Automation that onboards a device as listed in NetBox to Kentik while creating ServiceNow Change Request and sending Microsoft Teams notifications. Also configures flow test on device and runs flow test in Kentik. Only supports Cisco IOS device type.",
+      "overview": "This automation example can be installed and reviewed for ideas on how to create a Cisco IOS device onboarded to Itential Automation Gateway and stored in an inventory system such as NetBox in Kentik. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.\n\n### Configuring Dependencies\n\n#### NetBox\n\nA single Cisco IOS device needs to be set in NetBox that has a name, a site name, and local config context data. See example object with these fields provided below.\n\n```json\n{\n  \"name\": \"ATLSWITCH01\",\n  \"site\": {\n    \"name\": \"ATL HQ\"\n  },\n  \"config_context\": {\n    \"ipAddress\": \"1.2.3.4\",\n    \"sampleRate\": 1,\n    \"snmpV3Conf\": {\n      \"userName\": \"username\",\n      \"privacyProtocol\": \"AES\",\n      \"privacyPassphrase\": \"passphrase\",\n      \"authenticationProtocol\": \"SHA\",\n      \"authenticationPassphrase\": \"password\"\n    },\n    \"description\": \"IOS Device\"\n  }\n}\n```\n\n#### Microsoft Teams\n\nThis IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.\n\nFollow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for setting up the webhook for that channel.\n\n#### Itential Automation Gateway\n\nA Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an Ansible inventory device. See example properties in JSON object below for this:\n\n```json\n{\n  \"ansible_network_os\": \"ios\",\n  \"host_key_checking\": 0,\n  \"ansible_port\": 22,\n  \"ansible_user\": \"username\",\n  \"ansible_password\": \"password\",\n  \"ansible_host\": \"10.10.10.10\",\n  \"ansible_connection\": \"network_cli\"\n}\n```\n",
       "iapVersions": [
         "2023.1"
       ],
@@ -107,42 +107,6 @@
   "relatedItems": {
     "adapters": [
       {
-        "name": "adapter-kentik_v5",
-        "webName": "",
-        "overview": "Adapter that connects to Kentik",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
-        "docLink": "",
-        "webLink": "",
-        "versions": [
-          "^0.1.1"
-        ]
-      },
-      {
-        "name": "adapter-automation_gateway",
-        "webName": "Itential Automation Gateway",
-        "overview": "Adapter that connects to Itential Automation Gateway",
-        "isDependency": true,
-        "repoLink": "",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automation-gateway/",
-        "versions": [
-          "^4.29.0-2023.1.12"
-        ]
-      },
-      {
-        "name": "adapter-service_now",
-        "webName": "ServiceNow",
-        "overview": "Adapter that connects to ServiceNow",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
-        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
-        "webLink": "https://www.itential.com/adapters/servicenow/",
-        "versions": [
-          "^2.6.3"
-        ]
-      },
-      {
         "name": "adapter-ms_teams",
         "webName": "Microsoft Teams",
         "overview": "Adapter that connects to Microsoft Teams",
@@ -152,6 +116,18 @@
         "webLink": "https://www.itential.com/adapters/microsoft-teams/",
         "versions": [
           "^0.13.0"
+        ]
+      },
+      {
+        "name": "adapter-kentik_v5",
+        "webName": "",
+        "overview": "Adapter that connects to Kentik",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+        "docLink": "",
+        "webLink": "",
+        "versions": [
+          "^0.1.1"
         ]
       },
       {
@@ -176,6 +152,30 @@
         "webLink": "https://www.itential.com/adapters/amazon-ec2/",
         "versions": [
           "^0.6.9"
+        ]
+      },
+      {
+        "name": "adapter-service_now",
+        "webName": "ServiceNow",
+        "overview": "Adapter that connects to ServiceNow",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
+        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
+        "webLink": "https://www.itential.com/adapters/servicenow/",
+        "versions": [
+          "^2.6.3"
+        ]
+      },
+      {
+        "name": "adapter-automation_gateway",
+        "webName": "Itential Automation Gateway",
+        "overview": "Adapter that connects to Itential Automation Gateway",
+        "isDependency": true,
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automation-gateway/",
+        "versions": [
+          "^4.29.0-2023.1.12"
         ]
       }
     ],

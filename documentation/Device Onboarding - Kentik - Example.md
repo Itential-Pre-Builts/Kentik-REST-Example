@@ -20,7 +20,57 @@
 
 ## Overview
 
-Automation that onboards a device as listed in NetBox to Kentik while creating ServiceNow Change Request and sending Microsoft Teams notifications. Also configures flow test on device and runs flow test in Kentik. Only supports Cisco IOS device type.
+This automation example can be installed and reviewed for ideas on how to create a Cisco IOS device onboarded to Itential Automation Gateway and stored in an inventory system such as NetBox in Kentik. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.
+
+### Configuring Dependencies
+
+#### NetBox
+
+A single Cisco IOS device needs to be set in NetBox that has a name, a site name, and local config context data. See example object with these fields provided below.
+
+```json
+{
+  "name": "ATLSWITCH01",
+  "site": {
+    "name": "ATL HQ"
+  },
+  "config_context": {
+    "ipAddress": "1.2.3.4",
+    "sampleRate": 1,
+    "snmpV3Conf": {
+      "userName": "username",
+      "privacyProtocol": "AES",
+      "privacyPassphrase": "passphrase",
+      "authenticationProtocol": "SHA",
+      "authenticationPassphrase": "password"
+    },
+    "description": "IOS Device"
+  }
+}
+```
+
+#### Microsoft Teams
+
+This IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.
+
+Follow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for setting up the webhook for that channel.
+
+#### Itential Automation Gateway
+
+A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an Ansible inventory device. See example properties in JSON object below for this:
+
+```json
+{
+  "ansible_network_os": "ios",
+  "host_key_checking": 0,
+  "ansible_port": 22,
+  "ansible_user": "username",
+  "ansible_password": "password",
+  "ansible_host": "10.10.10.10",
+  "ansible_connection": "network_cli"
+}
+```
+
 
 Capabilities include:
 - Creates ServiceNow Change Request

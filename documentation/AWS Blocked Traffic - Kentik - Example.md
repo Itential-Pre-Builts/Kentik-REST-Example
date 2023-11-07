@@ -20,7 +20,11 @@
 
 ## Overview
 
-### Setting up Dependencies
+This is an end-to-end automation example where an alert is triggered within a Kentik policy due to a threshold being exceeded. In this example Kentik uses an integration to call IAP's <a href='https://docs.itential.com/docs/triggers-2023-1#api-endpoint-triggers' target='_blank'>northbound API trigger</a>. Once the trigger is executed it invokes an automation that then validates the traffic can be accepted and interacts with change management (ServiceNow), AWS EC2, and a notification platform (MS Teams).
+
+This automation example can be installed and reviewed for ideas on how to incorporate Kentik into a closed loop alert remediation scenario with IAP. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.
+
+### Configuring Dependencies
 
 #### AWS
 
