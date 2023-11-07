@@ -115,6 +115,18 @@
   "relatedItems": {
     "adapters": [
       {
+        "name": "adapter-netbox_v33",
+        "webName": "",
+        "overview": "Adapter that connects to NetBox",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+        "webLink": "",
+        "versions": [
+          "^2.0.0"
+        ]
+      },
+      {
         "name": "adapter-automation_gateway",
         "webName": "Itential Automation Gateway",
         "overview": "Adapter that connects to Itential Automation Gateway",
@@ -136,18 +148,6 @@
         "webLink": "https://www.itential.com/adapters/servicenow/",
         "versions": [
           "^2.6.3"
-        ]
-      },
-      {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
-        "versions": [
-          "^0.13.0"
         ]
       },
       {
@@ -175,33 +175,21 @@
         ]
       },
       {
-        "name": "adapter-netbox_v33",
-        "webName": "",
-        "overview": "Adapter that connects to NetBox",
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
-        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
-        "webLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
         "versions": [
-          "^2.0.0"
+          "^0.13.0"
         ]
       }
     ],
     "integrations": [],
     "ecosystemApplications": [],
     "workflowProjects": [
-      {
-        "name": "ServiceNow - Now Platform - REST",
-        "webName": "ServiceNow Platform Modular Automations",
-        "overview": "Project with workflows for the Now Platform from ServiceNow",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
-        "versions": [
-          "^1.0.1-2023.1.2"
-        ]
-      },
       {
         "name": "Microsoft - Teams - REST",
         "webName": "Microsoft Teams Notification",
@@ -224,6 +212,18 @@
         "webLink": "https://www.itential.com/automations/kentik-device-management/",
         "versions": [
           "^1.0.3-2023.1.2"
+        ]
+      },
+      {
+        "name": "ServiceNow - Now Platform - REST",
+        "webName": "ServiceNow Platform Modular Automations",
+        "overview": "Project with workflows for the Now Platform from ServiceNow",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
+        "versions": [
+          "^1.0.1-2023.1.2"
         ]
       }
     ],
