@@ -1,4 +1,12 @@
 
+## 1.0.2 [11-08-2023]
+
+* Updates device onboarding overview
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!7
+
+---
+
 ## 1.0.1 [11-07-2023]
 
 * Updates metadata
@@ -62,4 +70,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n

@@ -20,7 +20,9 @@
 
 ## Overview
 
-This automation example can be installed and reviewed for ideas on how to create a Cisco IOS device onboarded to Itential Automation Gateway and stored in an inventory system such as NetBox in Kentik. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.
+This automation example can be installed and reviewed for ideas on how to query a Cisco IOS device from NetBox that has already been onboarded to Itential Automation Gateway (IAG) and then onboards the device into Kentik. Once onboarded into Kentik, the device is configured via IAG to send flow data to Kentik. Finally, the automation validates that Kentik has received flow data from the device.
+
+IAP updates NetBox with the Kentik device ID and keeps Change Management up to date integrating with ServiceNow and MS Teams for notifications throughout the automation. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.
 
 ### Configuring Dependencies
 
@@ -51,7 +53,7 @@ A single Cisco IOS device needs to be set in NetBox that has a name, a site name
 
 #### Microsoft Teams
 
-This IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.
+This IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for the device onboarding event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.
 
 Follow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for setting up the webhook for that channel.
 

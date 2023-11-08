@@ -47,7 +47,7 @@
   "brokerSince": "",
   "documentation": {
     "storeLink": "",
-    "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/staging/kentik-rest-example",
+    "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example",
     "npmLink": "https://www.npmjs.com/package/@itentialopensource/kentik-rest-example",
     "docLink": "",
     "demoLinks": [],
@@ -93,7 +93,7 @@
       "name": "Device Onboarding - Kentik - Example",
       "webName": "Kentik Device Onboarding Example",
       "assetType": "Workflow",
-      "overview": "This automation example can be installed and reviewed for ideas on how to create a Cisco IOS device onboarded to Itential Automation Gateway and stored in an inventory system such as NetBox in Kentik. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.\n\n### Configuring Dependencies\n\n#### NetBox\n\nA single Cisco IOS device needs to be set in NetBox that has a name, a site name, and local config context data. See example object with these fields provided below.\n\n```json\n{\n  \"name\": \"ATLSWITCH01\",\n  \"site\": {\n    \"name\": \"ATL HQ\"\n  },\n  \"config_context\": {\n    \"ipAddress\": \"1.2.3.4\",\n    \"sampleRate\": 1,\n    \"snmpV3Conf\": {\n      \"userName\": \"username\",\n      \"privacyProtocol\": \"AES\",\n      \"privacyPassphrase\": \"passphrase\",\n      \"authenticationProtocol\": \"SHA\",\n      \"authenticationPassphrase\": \"password\"\n    },\n    \"description\": \"IOS Device\"\n  }\n}\n```\n\n#### Microsoft Teams\n\nThis IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.\n\nFollow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for setting up the webhook for that channel.\n\n#### Itential Automation Gateway\n\nA Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an Ansible inventory device. See example properties in JSON object below for this:\n\n```json\n{\n  \"ansible_network_os\": \"ios\",\n  \"host_key_checking\": 0,\n  \"ansible_port\": 22,\n  \"ansible_user\": \"username\",\n  \"ansible_password\": \"password\",\n  \"ansible_host\": \"10.10.10.10\",\n  \"ansible_connection\": \"network_cli\"\n}\n```\n",
+      "overview": "This automation example can be installed and reviewed for ideas on how to query a Cisco IOS device from NetBox that has already been onboarded to Itential Automation Gateway (IAG) and then onboards the device into Kentik. Once onboarded into Kentik, the device is configured via IAG to send flow data to Kentik. Finally, the automation validates that Kentik has received flow data from the device.\n\nIAP updates NetBox with the Kentik device ID and keeps Change Management up to date integrating with ServiceNow and MS Teams for notifications throughout the automation. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.\n\n### Configuring Dependencies\n\n#### NetBox\n\nA single Cisco IOS device needs to be set in NetBox that has a name, a site name, and local config context data. See example object with these fields provided below.\n\n```json\n{\n  \"name\": \"ATLSWITCH01\",\n  \"site\": {\n    \"name\": \"ATL HQ\"\n  },\n  \"config_context\": {\n    \"ipAddress\": \"1.2.3.4\",\n    \"sampleRate\": 1,\n    \"snmpV3Conf\": {\n      \"userName\": \"username\",\n      \"privacyProtocol\": \"AES\",\n      \"privacyPassphrase\": \"passphrase\",\n      \"authenticationProtocol\": \"SHA\",\n      \"authenticationPassphrase\": \"password\"\n    },\n    \"description\": \"IOS Device\"\n  }\n}\n```\n\n#### Microsoft Teams\n\nThis IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for the device onboarding event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.\n\nFollow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for setting up the webhook for that channel.\n\n#### Itential Automation Gateway\n\nA Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an Ansible inventory device. See example properties in JSON object below for this:\n\n```json\n{\n  \"ansible_network_os\": \"ios\",\n  \"host_key_checking\": 0,\n  \"ansible_port\": 22,\n  \"ansible_user\": \"username\",\n  \"ansible_password\": \"password\",\n  \"ansible_host\": \"10.10.10.10\",\n  \"ansible_connection\": \"network_cli\"\n}\n```\n",
       "iapVersions": [
         "2023.1"
       ],
@@ -115,15 +115,15 @@
   "relatedItems": {
     "adapters": [
       {
-        "name": "adapter-automation_gateway",
-        "webName": "Itential Automation Gateway",
-        "overview": "Adapter that connects to Itential Automation Gateway",
+        "name": "adapter-kentik_v5",
+        "webName": "",
+        "overview": "Adapter that connects to Kentik",
         "isDependency": true,
-        "repoLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
         "docLink": "",
-        "webLink": "https://www.itential.com/automation-gateway/",
+        "webLink": "",
         "versions": [
-          "^4.29.0-2023.1.12"
+          "^0.1.1"
         ]
       },
       {
@@ -139,27 +139,27 @@
         ]
       },
       {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
+        "name": "adapter-automation_gateway",
+        "webName": "Itential Automation Gateway",
+        "overview": "Adapter that connects to Itential Automation Gateway",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automation-gateway/",
         "versions": [
-          "^0.13.0"
+          "^4.29.0-2023.1.12"
         ]
       },
       {
-        "name": "adapter-kentik_v5",
+        "name": "adapter-netbox_v33",
         "webName": "",
-        "overview": "Adapter that connects to Kentik",
+        "overview": "Adapter that connects to NetBox",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
-        "docLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
         "webLink": "",
         "versions": [
-          "^0.1.1"
+          "^2.0.0"
         ]
       },
       {
@@ -175,33 +175,21 @@
         ]
       },
       {
-        "name": "adapter-netbox_v33",
-        "webName": "",
-        "overview": "Adapter that connects to NetBox",
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
-        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
-        "webLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
         "versions": [
-          "^2.0.0"
+          "^0.13.0"
         ]
       }
     ],
     "integrations": [],
     "ecosystemApplications": [],
     "workflowProjects": [
-      {
-        "name": "ServiceNow - Now Platform - REST",
-        "webName": "ServiceNow Platform Modular Automations",
-        "overview": "Project with workflows for the Now Platform from ServiceNow",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
-        "versions": [
-          "^1.0.1-2023.1.2"
-        ]
-      },
       {
         "name": "Microsoft - Teams - REST",
         "webName": "Microsoft Teams Notification",
@@ -212,6 +200,18 @@
         "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
         "versions": [
           "^1.0.0-2023.1.1"
+        ]
+      },
+      {
+        "name": "ServiceNow - Now Platform - REST",
+        "webName": "ServiceNow Platform Modular Automations",
+        "overview": "Project with workflows for the Now Platform from ServiceNow",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
+        "versions": [
+          "^1.0.1-2023.1.2"
         ]
       },
       {
