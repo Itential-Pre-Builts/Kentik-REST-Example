@@ -48,6 +48,8 @@
   "faqLink": "",
   "contributeLink": "",
   "webName": "Kentik - Example Use Case Bundle",
-  "webLink": "",
-  "demoLinks": []
+  "webLink": "https://www.itential.com/automations/kentik-example-use-case-bundle/",
+  "demoLinks": [
+    "https://www.itential.com/tech-partners/kentik/"
+  ]
 }
