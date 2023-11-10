@@ -43,11 +43,15 @@ This is a workflow to reset the Device Onboarding - Kentik - Example.
       <td></td>
       <td></td>
     </tr>    <tr>
-      <td>AWS</td>
+      <td>Itential Automation Gateway</td>
       <td></td>
       <td></td>
     </tr>    <tr>
-      <td>ServiceNow</td>
+      <td>Kentik</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>AWS</td>
       <td></td>
       <td></td>
     </tr>    <tr>
@@ -55,11 +59,7 @@ This is a workflow to reset the Device Onboarding - Kentik - Example.
       <td></td>
       <td></td>
     </tr>    <tr>
-      <td>Itential Automation Gateway</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>Kentik</td>
+      <td>ServiceNow</td>
       <td></td>
       <td></td>
     </tr>
@@ -77,23 +77,23 @@ This is a workflow to reset the Device Onboarding - Kentik - Example.
   </thead>
   <tbody>
     <tr>
+      <td>adapter-aws_ec2</td>
+      <td>^0.6.9</td>
+    </tr>    <tr>
       <td>adapter-automation_gateway</td>
       <td>^4.29.0-2023.1.12</td>
     </tr>    <tr>
+      <td>adapter-netbox_v33</td>
+      <td>^2.0.0</td>
+    </tr>    <tr>
       <td>adapter-service_now</td>
       <td>^2.6.3</td>
-    </tr>    <tr>
-      <td>adapter-aws_ec2</td>
-      <td>^0.6.9</td>
     </tr>    <tr>
       <td>adapter-ms_teams</td>
       <td>^0.13.0</td>
     </tr>    <tr>
       <td>adapter-kentik_v5</td>
       <td>^0.1.1</td>
-    </tr>    <tr>
-      <td>adapter-netbox_v33</td>
-      <td>^2.0.0</td>
     </tr>
   </tbody>
 </table>
