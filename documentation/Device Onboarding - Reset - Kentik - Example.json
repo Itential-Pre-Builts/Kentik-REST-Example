@@ -67,6 +67,6 @@
   "queryOutput": {},
   "name": "Device Onboarding - Reset - Kentik - Example",
   "overview": "Automation removes flow test Cisco IOS device configuration and deletes device from Kentik to reset data for Device Onboarding - Kentik - Example automation",
-  "webName": "Kentik Device Onboarding Reset Example",
+  "webName": "Device Onboarding - Reset - Kentik - Example",
   "assetType": "Workflow"
 }

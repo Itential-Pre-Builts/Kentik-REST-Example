@@ -12,9 +12,9 @@
     "Diagnostics"
   ],
   "useCases": [
-    "Closed Loop Incident Resolution",
-    "Preventive Network Diagnostics",
-    "Add Device for Monitoring"
+    "Closed loop incident resolution",
+    "Preventive network diagnostics",
+    "Add device for monitoring"
   ],
   "apiLinks": [
     "https://kb.kentik.com/v0/Ab09.htm",
@@ -38,7 +38,7 @@
     "endOfLife": ""
   },
   "name": "Kentik - REST - Example",
-  "overview": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
+  "overview": "This Pre-Built Automation bundle contains several example use cases that are applicable when Itential is integrated with the Kentik Platform. Because every environment is different, these use cases are fully functioning examples that can be easily modified to operate in your specific environment. These workflows have been written with modularity in mind to make them easy to understand and simple to modify to suite your needs. Example use case in this project include:\n\n**AWS Blocked Traffic - Kentik - Example**\nThis is a workflow to receive an alert from Kentik for an AWS flow log, and determine whether to update an AWS Security Group based Source IP.\n\n**AWS Blocked Traffic - Reset - Kentik - Example**\nThis is a workflow to reset the AWS Security Group for the AWS Blocked Traffic - Reset - Kentik - Example.\n\n**Device Onboarding - Kentik - Example**\nThis is a workflow that will read inventory from an existing NetBox system, configure the device for monitoring, and onboard it into the Kentik platform.\n\n**Device Onboarding - Reset - Kentik - Example**\nThis is a workflow to reset the Device Onboarding - Kentik - Example.",
   "productLink": "https://www.kentik.com/product/kentik-platform/",
   "storeLink": "",
   "docLink": "",
@@ -47,7 +47,7 @@
   "vendorLink": "https://www.kentik.com/",
   "faqLink": "",
   "contributeLink": "",
-  "webName": "Kentik Example Workflows",
+  "webName": "Kentik - Example Use Case Bundle",
   "webLink": "",
   "demoLinks": []
 }

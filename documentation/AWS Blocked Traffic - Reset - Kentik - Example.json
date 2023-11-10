@@ -59,6 +59,6 @@
   "queryOutput": {},
   "name": "AWS Blocked Traffic - Reset - Kentik - Example",
   "overview": "Workflow that is used to remove source IP from security group in AWS to reset data for AWS Blocked Traffic - Kentik - Example automation",
-  "webName": "AWS Blocked Traffic Reset",
+  "webName": "AWS Blocked Traffic - Reset - Kentik - Example",
   "assetType": "Workflow"
 }
