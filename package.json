@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3-2023.1.1",
+  "version": "1.0.4-2023.1.2",
   "description": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
   "scripts": {
     "setup-hooks": "sh ./scripts/setup-hooks.sh",
