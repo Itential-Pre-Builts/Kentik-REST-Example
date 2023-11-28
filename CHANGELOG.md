@@ -1,4 +1,12 @@
 
+## 1.1.0 [11-28-2023]
+
+* Adds project file and updates installation instructions
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!12
+
+---
+
 ## 1.0.4 [11-10-2023]
 
 * Updates webLink and demoLinks in metadata
@@ -86,4 +94,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n

@@ -117,6 +117,18 @@
   "relatedItems": {
     "adapters": [
       {
+        "name": "adapter-automation_gateway",
+        "webName": "Itential Automation Gateway",
+        "overview": "Adapter that connects to Itential Automation Gateway",
+        "isDependency": true,
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automation-gateway/",
+        "versions": [
+          "^4.29.0-2023.1.12"
+        ]
+      },
+      {
         "name": "adapter-netbox_v33",
         "webName": "",
         "overview": "Adapter that connects to NetBox",
@@ -129,15 +141,15 @@
         ]
       },
       {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
+        "name": "adapter-service_now",
+        "webName": "ServiceNow",
+        "overview": "Adapter that connects to ServiceNow",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
+        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
+        "webLink": "https://www.itential.com/adapters/servicenow/",
         "versions": [
-          "^0.13.0"
+          "^2.6.3"
         ]
       },
       {
@@ -153,27 +165,15 @@
         ]
       },
       {
-        "name": "adapter-automation_gateway",
-        "webName": "Itential Automation Gateway",
-        "overview": "Adapter that connects to Itential Automation Gateway",
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
         "isDependency": true,
-        "repoLink": "",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automation-gateway/",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
         "versions": [
-          "^4.29.0-2023.1.12"
-        ]
-      },
-      {
-        "name": "adapter-service_now",
-        "webName": "ServiceNow",
-        "overview": "Adapter that connects to ServiceNow",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
-        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
-        "webLink": "https://www.itential.com/adapters/servicenow/",
-        "versions": [
-          "^2.6.3"
+          "^0.13.0"
         ]
       },
       {
@@ -192,18 +192,6 @@
     "integrations": [],
     "ecosystemApplications": [],
     "workflowProjects": [
-      {
-        "name": "Microsoft - Teams - REST",
-        "webName": "Microsoft Teams Notification",
-        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
-        "versions": [
-          "^1.0.0-2023.1.1"
-        ]
-      },
       {
         "name": "ServiceNow - Now Platform - REST",
         "webName": "ServiceNow Platform Modular Automations",
@@ -226,6 +214,18 @@
         "webLink": "https://www.itential.com/automations/kentik-device-management/",
         "versions": [
           "^1.0.3-2023.1.2"
+        ]
+      },
+      {
+        "name": "Microsoft - Teams - REST",
+        "webName": "Microsoft Teams Notification",
+        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
+        "versions": [
+          "^1.0.0-2023.1.1"
         ]
       }
     ],

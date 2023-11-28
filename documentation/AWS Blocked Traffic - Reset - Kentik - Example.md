@@ -87,7 +87,8 @@ This version of **AWS Blocked Traffic - Reset - Kentik - Example** has been test
 To install the Example Project:
 
 - Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Supported IAP Versions](#supported-iap-versions) section in order to install the Example Project.
-- Import the Example Project in [Admin Essentials](https://docs.itential.com/docs/importing-a-prebuilt-4). 
+- Import the Example Project in Projects. 
+- Import the Operations Manager Automation [AWS Blocked Traffic - Reset - Kentik - Example](https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/bundles/automations/AWS%20Blocked%20Traffic%20-%20Reset%20-%20Kentik%20-%20Example.json)
 
 ### Testing
 
