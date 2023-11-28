@@ -182,7 +182,7 @@ This version of **Device Onboarding - Kentik - Example** has been tested with:
 To install the Example Project:
 
 - Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Supported IAP Versions](#supported-iap-versions) section in order to install the Example Project.
-- Import the Example Project in Projects. 
+- Import the Example Project in Projects or from the [Project file](https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/Kentik%20-%20Example%20-%20REST.project.json) 
 - Import the Operations Manager Automation [Device Onboarding - Kentik - Example](https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/bundles/automations/Device%20Onboarding%20-%20Kentik%20-%20Example.json)
 
 ### Testing
