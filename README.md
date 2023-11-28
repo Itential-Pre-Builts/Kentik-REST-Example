@@ -16,7 +16,6 @@ This is a workflow that will read inventory from an existing NetBox system, conf
 **Device Onboarding - Reset - Kentik - Example**
 This is a workflow to reset the Device Onboarding - Kentik - Example.
 
-
 <a href='https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/documentation/AWS Blocked Traffic - Kentik - Example.md' target='_blank'>AWS Blocked Traffic - Kentik - Example</a>
 
 <a href='https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/documentation/AWS Blocked Traffic - Reset - Kentik - Example.md' target='_blank'>AWS Blocked Traffic - Reset - Kentik - Example</a>
@@ -24,8 +23,6 @@ This is a workflow to reset the Device Onboarding - Kentik - Example.
 <a href='https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/documentation/Device Onboarding - Kentik - Example.md' target='_blank'>Device Onboarding - Kentik - Example</a>
 
 <a href='https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/documentation/Device Onboarding - Reset - Kentik - Example.md' target='_blank'>Device Onboarding - Reset - Kentik - Example</a>
-
-
 
 ## External Dependencies
 
