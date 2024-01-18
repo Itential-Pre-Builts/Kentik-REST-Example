@@ -11,33 +11,14 @@
     "Analytics",
     "Diagnostics"
   ],
-  "useCases": [
-    "Closed loop incident resolution",
-    "Preventive network diagnostics",
-    "Add device for monitoring"
-  ],
-  "apiLinks": [
-    "https://kb.kentik.com/v0/Ab09.htm",
-    "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
-    "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
-    "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
-    "https://kb.kentik.com/v0/Ia04.htm",
-    "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet"
-  ],
+  "useCases": [],
   "deprecated": {
-    "isDeprecated": false,
-    "replacedBy": {
-      "isProductFeature": false,
-      "name": "",
-      "overview": "",
-      "repoLink": "",
-      "docLink": "",
-      "webLink": ""
-    },
-    "deprecatedOn": "",
-    "endOfLife": ""
+    "isDeprecated": false
   },
   "name": "Kentik - REST - Example",
+  "vendor": "Kentik",
+  "product": "Kentik Network Observability Platform",
+  "method": "REST",
   "overview": "This Pre-Built Automation bundle contains several example use cases that are applicable when Itential is integrated with the Kentik Platform. Because every environment is different, these use cases are fully functioning examples that can be easily modified to operate in your specific environment. These workflows have been written with modularity in mind to make them easy to understand and simple to modify to suite your needs. Example use case in this project include:\n\n**AWS Blocked Traffic - Kentik - Example**\nThis is a workflow to receive an alert from Kentik for an AWS flow log, and determine whether to update an AWS Security Group based Source IP.\n\n**AWS Blocked Traffic - Reset - Kentik - Example**\nThis is a workflow to reset the AWS Security Group for the AWS Blocked Traffic - Reset - Kentik - Example.\n\n**Device Onboarding - Kentik - Example**\nThis is a workflow that will read inventory from an existing NetBox system, configure the device for monitoring, and onboard it into the Kentik platform.\n\n**Device Onboarding - Reset - Kentik - Example**\nThis is a workflow to reset the Device Onboarding - Kentik - Example.",
   "productLink": "https://www.kentik.com/product/kentik-platform/",
   "storeLink": "",
@@ -49,8 +30,11 @@
   "contributeLink": "",
   "webName": "Kentik - Example Use Case Bundle",
   "webLink": "https://www.itential.com/automations/kentik-example-use-case-bundle/",
+  "trainingLinks": [],
   "demoLinks": [
-    "https://www.itential.com/tech-partners/kentik/"
-  ],
-  "bundleType": "project"
+    {
+      "title": "Itential Kentik Partnership Overview",
+      "link": "https://www.itential.com/tech-partners/kentik/"
+    }
+  ]
 }

@@ -56,8 +56,8 @@
     "b9ed": {
       "name": "renderJinjaTemplate",
       "canvasName": "renderJinjaTemplate",
-      "summary": "Render Jinja Template",
-      "description": "Renders jinja template output.",
+      "summary": "Renders Jinja Template",
+      "description": "Renders inputted Jinja Template with variables",
       "location": "Application",
       "locationType": null,
       "app": "TemplateBuilder",
@@ -119,8 +119,8 @@
     "f14d": {
       "name": "evaluation",
       "canvasName": "evaluation",
-      "summary": "Eval Success",
-      "description": "Run an evaluation",
+      "summary": "Evaluate Success",
+      "description": "Evaluate Success",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",

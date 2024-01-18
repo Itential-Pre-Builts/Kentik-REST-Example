@@ -132,7 +132,7 @@
       "name": "transformation",
       "canvasName": "transformation",
       "summary": "Process AWS Blocked Traffic Event - Reset Inputs",
-      "description": "Perform a JSON Transformation using the JST library.",
+      "description": "Process AWS Blocked Traffic Event - Reset Inputs",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",
