@@ -1,4 +1,12 @@
 
+## 1.0.7-2023.1.5 [01-18-2024]
+
+* Updates use case value for metadata
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!21
+
+---
+
 ## 1.0.6-2023.1.4 [01-18-2024]
 
 * Updates vendor, product, and method in readme data
@@ -102,4 +110,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n
