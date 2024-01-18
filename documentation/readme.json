@@ -11,7 +11,9 @@
     "Analytics",
     "Diagnostics"
   ],
-  "useCases": [],
+  "useCases": [
+    "Multi-Domain Orchestration"
+  ],
   "deprecated": {
     "isDeprecated": false
   },
