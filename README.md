@@ -180,15 +180,7 @@ A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an 
   </thead>
   <tbody>
     <tr>
-      <td>AWS</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
       <td>NetBox</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>Itential Automation Gateway</td>
       <td></td>
       <td></td>
     </tr>    <tr>
@@ -200,7 +192,15 @@ A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an 
       <td></td>
       <td></td>
     </tr>    <tr>
+      <td>AWS</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
       <td>ServiceNow</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>Itential Automation Gateway</td>
       <td></td>
       <td></td>
     </tr>
@@ -223,8 +223,8 @@ A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an 
       <td>^0.1.1</td>
       <td></td>
     </tr>    <tr>
-      <td>adapter-automation_gateway</td>
-      <td>^4.29.0-2023.1.12</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
+      <td>^0.6.9</td>
       <td></td>
     </tr>    <tr>
       <td><a href="https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams">adapter-ms_teams</a></td>
@@ -235,8 +235,8 @@ A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an 
       <td>^2.0.0</td>
       <td></td>
     </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
-      <td>^0.6.9</td>
+      <td>adapter-automation_gateway</td>
+      <td>^4.29.0-2023.1.12</td>
       <td></td>
     </tr>    <tr>
       <td><a href="https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow">adapter-service_now</a></td>

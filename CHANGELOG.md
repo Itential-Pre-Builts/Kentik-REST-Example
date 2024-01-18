@@ -1,4 +1,12 @@
 
+## 1.0.6-2023.1.4 [01-18-2024]
+
+* Updates vendor, product, and method in readme data
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!19
+
+---
+
 ## 1.0.5-2023.1.3 [01-18-2024]
 
 * Updates apiLinks and demoLinks data, updates Kentik adapter repository link, and addresses compliance issues.
@@ -94,4 +102,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n
