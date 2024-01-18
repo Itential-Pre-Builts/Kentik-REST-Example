@@ -58,7 +58,7 @@
       "name": "evaluation",
       "canvasName": "evaluation",
       "summary": "Verify Notification Created",
-      "description": "Run an evaluation",
+      "description": "Verify Notification Created",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",

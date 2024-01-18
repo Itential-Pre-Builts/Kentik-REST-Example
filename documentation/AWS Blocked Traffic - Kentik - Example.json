@@ -38,7 +38,7 @@
       "name": "adapter-kentik_v5",
       "overview": "Adapter that connects to Kentik",
       "webName": "",
-      "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+      "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
       "version": "^0.1.1",
       "docLink": "",
       "webLink": ""
@@ -311,6 +311,32 @@
       "required": "no",
       "description": "Alarm threshold ID",
       "exampleValue": "446709"
+    }
+  ],
+  "apiLinks": [
+    {
+      "title": "Kentik API Reference",
+      "link": "https://kb.kentik.com/v0/Ab09.htm"
+    },
+    {
+      "title": "Kentik Custom Webhook Templating Reference",
+      "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md"
+    },
+    {
+      "title": "Kentik Notification Channel Management Overview",
+      "link": "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels"
+    },
+    {
+      "title": "Kentik Alert Policies Management Overview",
+      "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies"
+    },
+    {
+      "title": "Kentik General Dimentions Overview",
+      "link": "https://kb.kentik.com/v0/Ia04.htm"
+    },
+    {
+      "title": "Microsoft Teams Creating Incoming Webhooks Overview",
+      "link": "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet"
     }
   ],
   "exampleInputsAndOutputs": [
