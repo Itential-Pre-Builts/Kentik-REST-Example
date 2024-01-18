@@ -15,6 +15,7 @@
     - [Entry Point IAP Component](#entry-point-iap-component)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
+    - [API Links](#api-links)
     - [Example Inputs and Outputs](#example-inputs-and-outputs)
   - [Support](#support)
 
@@ -70,12 +71,14 @@ This version of **AWS Blocked Traffic - Reset - Kentik - Example** has been test
     <tr>
       <th>Name</th>
       <th>Version</th>
+      <th>Configuration Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>adapter-aws_ec2</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
       <td>^0.6.9</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -87,13 +90,14 @@ This version of **AWS Blocked Traffic - Reset - Kentik - Example** has been test
 To install the Example Project:
 
 - Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Supported IAP Versions](#supported-iap-versions) section in order to install the Example Project.
-- Import the Example Project in [Admin Essentials](https://docs.itential.com/docs/importing-a-prebuilt-4). 
+- Import the Example Project in [Admin Essentials](https://docs.itential.com/docs/importing-a-prebuilt-4).
 
 ### Testing
 
 While Itential tests this Example Project and its capabilities, it is often the case the customer environments offer their own unique circumstances. Therefore, it is our recommendation that you deploy this Example Project into a development/testing environment in which you can test the Example Project.
 
 ## Using this Example Project
+
 
 ### Entry Point IAP Component
 
@@ -150,12 +154,16 @@ The following table lists the inputs to the Example Project:
   </tbody>
 </table>
 
-  
 
 
 ### Outputs
 
 There are no outputs for this Example Project.
+
+
+### API Links
+
+No API Links provided.
 
 
 

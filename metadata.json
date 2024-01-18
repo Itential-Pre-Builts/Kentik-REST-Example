@@ -26,23 +26,9 @@
     "Analytics",
     "Diagnostics"
   ],
-  "useCases": [
-    "Closed loop incident resolution",
-    "Preventive network diagnostics",
-    "Add device for monitoring"
-  ],
+  "useCases": [],
   "deprecated": {
-    "isDeprecated": false,
-    "replacedBy": {
-      "isProductFeature": false,
-      "name": "",
-      "overview": "",
-      "repoLink": "",
-      "docLink": "",
-      "webLink": ""
-    },
-    "deprecatedOn": "",
-    "endOfLife": ""
+    "isDeprecated": false
   },
   "brokerSince": "",
   "documentation": {
@@ -51,8 +37,12 @@
     "npmLink": "https://www.npmjs.com/package/@itentialopensource/kentik-rest-example",
     "docLink": "",
     "demoLinks": [
-      "https://www.itential.com/tech-partners/kentik/"
+      {
+        "title": "Itential Kentik Partnership Overview",
+        "link": "https://www.itential.com/tech-partners/kentik/"
+      }
     ],
+    "trainingLinks": [],
     "faqLink": "",
     "contributeLink": "",
     "issueLink": "",
@@ -60,12 +50,30 @@
     "vendorLink": "https://www.kentik.com/",
     "productLink": "https://www.kentik.com/product/kentik-platform/",
     "apiLinks": [
-      "https://kb.kentik.com/v0/Ab09.htm",
-      "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
-      "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
-      "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
-      "https://kb.kentik.com/v0/Ia04.htm",
-      "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet"
+      {
+        "title": "Kentik Notification Channel Management Overview",
+        "link": "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels"
+      },
+      {
+        "title": "Kentik General Dimentions Overview",
+        "link": "https://kb.kentik.com/v0/Ia04.htm"
+      },
+      {
+        "title": "Kentik Alert Policies Management Overview",
+        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies"
+      },
+      {
+        "title": "Kentik Custom Webhook Templating Reference",
+        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md"
+      },
+      {
+        "title": "Microsoft Teams Creating Incoming Webhooks Overview",
+        "link": "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet"
+      },
+      {
+        "title": "Kentik API Reference",
+        "link": "https://kb.kentik.com/v0/Ab09.htm"
+      }
     ]
   },
   "assets": [
@@ -124,8 +132,22 @@
         "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
         "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
         "webLink": "",
+        "configurationNotes": "",
         "versions": [
           "^2.0.0"
+        ]
+      },
+      {
+        "name": "adapter-aws_ec2",
+        "webName": "Amazon EC2",
+        "overview": "Adapter that connects to AWS.",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2",
+        "docLink": "https://docs.itential.com/opensource/docs/amazon-aws-ec2",
+        "webLink": "https://www.itential.com/adapters/amazon-ec2/",
+        "configurationNotes": "",
+        "versions": [
+          "^0.6.9"
         ]
       },
       {
@@ -133,23 +155,12 @@
         "webName": "",
         "overview": "Adapter that connects to Kentik",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/telemetry-analytics/adapter-kentik_v5",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
         "docLink": "",
         "webLink": "",
+        "configurationNotes": "",
         "versions": [
           "^0.1.1"
-        ]
-      },
-      {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
-        "versions": [
-          "^0.13.0"
         ]
       },
       {
@@ -160,6 +171,7 @@
         "repoLink": "",
         "docLink": "",
         "webLink": "https://www.itential.com/automation-gateway/",
+        "configurationNotes": "",
         "versions": [
           "^4.29.0-2023.1.12"
         ]
@@ -172,38 +184,28 @@
         "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
         "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
         "webLink": "https://www.itential.com/adapters/servicenow/",
+        "configurationNotes": "",
         "versions": [
           "^2.6.3"
         ]
       },
       {
-        "name": "adapter-aws_ec2",
-        "webName": "Amazon EC2",
-        "overview": "Adapter that connects to AWS.",
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2",
-        "docLink": "https://docs.itential.com/opensource/docs/amazon-aws-ec2",
-        "webLink": "https://www.itential.com/adapters/amazon-ec2/",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
+        "configurationNotes": "",
         "versions": [
-          "^0.6.9"
+          "^0.13.0"
         ]
       }
     ],
     "integrations": [],
     "ecosystemApplications": [],
     "workflowProjects": [
-      {
-        "name": "Kentik - REST",
-        "webName": "Kentik - Device Management",
-        "overview": "The integration of Itential and Kentik enables network teams to build automations that can immediately respond to events and alarms generated by the Kentik observability platform. In addition, Itential also offers a package of Pre-Built Automations to implement multiple use cases with the integration. The Kentik - REST Pre-Built provides automations that help Network Engineers automate common tasks performed in the Kentik platform. This Pre-Built contains multiple automations including:\\n\\n- Create a Device in Kentik - With this automation, users can create a device for a specific site and provide the device record as output.\\n- Run Device Flow Test - With this automation, users can run a device flow test for a specific device, providing the results of the test as output.",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/kentik-device-management/",
-        "versions": [
-          "^1.0.3-2023.1.2"
-        ]
-      },
       {
         "name": "ServiceNow - Now Platform - REST",
         "webName": "ServiceNow Platform Modular Automations",
@@ -226,6 +228,18 @@
         "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
         "versions": [
           "^1.0.0-2023.1.1"
+        ]
+      },
+      {
+        "name": "Kentik - REST",
+        "webName": "Kentik - Device Management",
+        "overview": "The integration of Itential and Kentik enables network teams to build automations that can immediately respond to events and alarms generated by the Kentik observability platform. In addition, Itential also offers a package of Pre-Built Automations to implement multiple use cases with the integration. The Kentik - REST Pre-Built provides automations that help Network Engineers automate common tasks performed in the Kentik platform. This Pre-Built contains multiple automations including:\\n\\n- Create a Device in Kentik - With this automation, users can create a device for a specific site and provide the device record as output.\\n- Run Device Flow Test - With this automation, users can run a device flow test for a specific device, providing the results of the test as output.",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/kentik-device-management/",
+        "versions": [
+          "^1.0.3-2023.1.2"
         ]
       }
     ],
