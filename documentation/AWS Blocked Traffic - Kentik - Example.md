@@ -15,6 +15,7 @@
     - [Entry Point IAP Component](#entry-point-iap-component)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
+    - [API Links](#api-links)
     - [Example Inputs and Outputs](#example-inputs-and-outputs)
   - [Support](#support)
 
@@ -157,21 +158,26 @@ This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
     <tr>
       <th>Name</th>
       <th>Version</th>
+      <th>Configuration Notes</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>adapter-aws_ec2</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
       <td>^0.6.9</td>
+      <td></td>
     </tr>    <tr>
-      <td>adapter-service_now</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow">adapter-service_now</a></td>
       <td>^2.6.3</td>
+      <td></td>
     </tr>    <tr>
-      <td>adapter-ms_teams</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams">adapter-ms_teams</a></td>
       <td>^0.13.0</td>
+      <td></td>
     </tr>    <tr>
-      <td>adapter-kentik_v5</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5">adapter-kentik_v5</a></td>
       <td>^0.1.1</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
@@ -183,14 +189,14 @@ This version of **AWS Blocked Traffic - Kentik - Example** has been tested with:
 To install the Example Project:
 
 - Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Supported IAP Versions](#supported-iap-versions) section in order to install the Example Project.
-- Import the Example Project in Projects or from the [Project file](https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/Kentik%20-%20Example%20-%20REST.project.json) 
-- Import the Operations Manager Automation [AWS Blocked Traffic - Kentik - Example](https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example/-/blob/master/bundles/automations/AWS%20Blocked%20Traffic%20-%20Kentik%20-%20Example.json)
+- Import the Example Project in [Admin Essentials](https://docs.itential.com/docs/importing-a-prebuilt-4).
 
 ### Testing
 
 While Itential tests this Example Project and its capabilities, it is often the case the customer environments offer their own unique circumstances. Therefore, it is our recommendation that you deploy this Example Project into a development/testing environment in which you can test the Example Project.
 
 ## Using this Example Project
+
 
 ### Entry Point IAP Component
 
@@ -403,12 +409,22 @@ The following table lists the inputs to the Example Project:
   </tbody>
 </table>
 
-  
 
 
 ### Outputs
 
 There are no outputs for this Example Project.
+
+
+### API Links
+
+
+- [Kentik API Reference](https://kb.kentik.com/v0/Ab09.htm)
+- [Kentik Custom Webhook Templating Reference](https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md)
+- [Kentik Notification Channel Management Overview](https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels)
+- [Kentik Alert Policies Management Overview](https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies)
+- [Kentik General Dimentions Overview](https://kb.kentik.com/v0/Ia04.htm)
+- [Microsoft Teams Creating Incoming Webhooks Overview](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)
 
 
 

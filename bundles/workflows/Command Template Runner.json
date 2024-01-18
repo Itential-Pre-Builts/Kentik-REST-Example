@@ -82,8 +82,8 @@
     "8ce4": {
       "name": "RunCommandTemplate",
       "canvasName": "RunCommandTemplate",
-      "summary": "Run Command Template",
-      "description": "Run a Command Template against a device",
+      "summary": "Run Command Template Against Device",
+      "description": "Run Command Template against a device",
       "location": "Application",
       "locationType": null,
       "app": "MOP",

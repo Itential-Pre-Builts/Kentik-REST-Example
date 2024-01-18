@@ -25,7 +25,7 @@
       "name": "childJob",
       "canvasName": "childJob",
       "summary": "Remove Provisioning",
-      "description": "Runs a child job inside a workflow.",
+      "description": "Remove Provisioning",
       "location": "Application",
       "locationType": null,
       "app": "WorkFlowEngine",
