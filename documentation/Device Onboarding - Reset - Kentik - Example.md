@@ -166,8 +166,9 @@ There are no outputs for this Example Project.
 
 ### API Links
 
-No API Links provided.
 
+No API Links provided.
+ 
 
 
 ### Example Inputs and Outputs

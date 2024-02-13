@@ -1,4 +1,12 @@
 
+## 1.1.4 [02-13-2024]
+
+* Updates Cypress tests
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!23
+
+---
+
 ## 1.1.3 [01-18-2024]
 
 * Updates use case metadata value
@@ -118,4 +126,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
