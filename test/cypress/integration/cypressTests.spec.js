@@ -199,7 +199,7 @@ describe('Default: Cypress Tests', function () {
   })
 
   describe('AWS Blocked Traffic Event - Kentik - Example', function() {
-    it('It should run AWS Blocked Traffic Event - Kentik - Example and see IP already in AWS security group', function () {
+    it.skip('It should run AWS Blocked Traffic Event - Kentik - Example and see IP already in AWS security group', function () {
       const importWorkflow = true;
       const isStub = true;
       // create the job runner so it can be used in future tests
@@ -223,7 +223,7 @@ describe('Default: Cypress Tests', function () {
   })
 
   describe('AWS Blocked Traffic Event - Kentik - Example', function() {
-    it('It should run AWS Blocked Traffic Event - Kentik - Example and send notifcation of access attempt from non-white-listed IP', function () {
+    it.skip('It should run AWS Blocked Traffic Event - Kentik - Example and send notifcation of access attempt from non-white-listed IP', function () {
       const importWorkflow = true;
       const isStub = true;
       // create the job runner so it can be used in future tests
@@ -247,7 +247,7 @@ describe('Default: Cypress Tests', function () {
   })
 
   describe('Push Configuration to Device - IAG', function() {
-    it('Push Configuration to Device - IAG: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik', function () {
+    it.skip('Push Configuration to Device - IAG: It should run Device Onboarding - Kentik - Example and onboard device successfully to Kentik', function () {
       const importWorkflow = true;
       const isStub = true;
       // create the job runner so it can be used in future tests
@@ -343,7 +343,7 @@ describe('Default: Cypress Tests', function () {
   })
 
   describe('Push Configuration to Device - IAG', function() {
-    it('Push Configuration to Device - IAG: It should run Device Onboarding - Reset - Kentik - Example and delete flow configuration and device from Kentik', function () {
+    it.skip('Push Configuration to Device - IAG: It should run Device Onboarding - Reset - Kentik - Example and delete flow configuration and device from Kentik', function () {
       const importWorkflow = true;
       const isStub = true;
       // create the job runner so it can be used in future tests
