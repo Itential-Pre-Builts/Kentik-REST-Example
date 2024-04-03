@@ -187,6 +187,10 @@ Input:
 
     
     
+Output:
+<pre>{} </pre>
+
+    
   
 
 

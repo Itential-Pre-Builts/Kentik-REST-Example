@@ -1,4 +1,14 @@
 
+## 1.1.6 [04-03-2024]
+
+Updates documentation data with configuration dependencies refactor
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!26
+
+2024-04-03 14:03:32 +0000
+
+---
+
 ## 1.1.5 [04-03-2024]
 
 Regenerate documentation and metadata.json files
@@ -136,4 +146,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
