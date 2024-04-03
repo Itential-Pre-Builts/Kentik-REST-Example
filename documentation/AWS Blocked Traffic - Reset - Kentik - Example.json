@@ -53,7 +53,8 @@
   ],
   "exampleInputsAndOutputs": [
     {
-      "exampleInput": "{\n    \"sourceIP\": \"10.10.10.10\",\n    \"awsEC2Adapter\": \"AWS\",\n    \"awsSecurityGroup\": \"security_group\"\n  }"
+      "exampleInput": "{\n    \"sourceIP\": \"10.10.10.10\",\n    \"awsEC2Adapter\": \"AWS\",\n    \"awsSecurityGroup\": \"security_group\"\n  }",
+      "exampleOutput": "{}"
     }
   ],
   "queryOutput": {},
