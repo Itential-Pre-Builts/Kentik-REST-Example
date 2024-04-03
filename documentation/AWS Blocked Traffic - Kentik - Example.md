@@ -15,22 +15,30 @@
     - [Entry Point IAP Component](#entry-point-iap-component)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
-    - [API Links](#api-links)
+    - [Query Output](#query-output)
     - [Example Inputs and Outputs](#example-inputs-and-outputs)
+    - [API Links](#api-links)
   - [Support](#support)
 
 ## Overview
 
-This is an end-to-end automation example where an alert is triggered within a Kentik policy due to a threshold being exceeded. In this example Kentik uses an integration to call IAP's <a href='https://docs.itential.com/docs/triggers-2023-1#api-endpoint-triggers' target='_blank'>northbound API trigger</a>. Once the trigger is executed it invokes an automation that then validates the traffic can be accepted and interacts with change management (ServiceNow), AWS EC2, and a notification platform (MS Teams).
+This is an end-to-end automation example where an alert is triggered within a Kentik policy due to a threshold being exceeded. In this example Kentik uses an integration to call IAP's <a href='https://docs.itential.com/docs/triggers-2023-1#api-endpoint-triggers' target='_blank'>northbound API trigger</a>. Once the trigger is executed it invokes an automation that then validates the traffic can be accepted and interacts with change management (ServiceNow), AWS EC2, and a notification platform (MS Teams).</br></br>This automation example can be installed and reviewed for ideas on how to incorporate Kentik into a closed loop alert remediation scenario with IAP.
 
-This automation example can be installed and reviewed for ideas on how to incorporate Kentik into a closed loop alert remediation scenario with IAP. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.
+Capabilities include:
+- Checks if source IP is in allowed IP list
+- Sends MS Teams message indicating alarm triggered
+- Adds source IP to AWS security group if source IP is in allowed IP list
+- Sends MS Teams notification if unable to add source IP to AWS security group
+- Creates ServiceNow Change Request if alarm triggered
+
+
 
 ### Configuring Dependencies
-
+  
 #### AWS
 
 A <a href='https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html' target='_blank'>Security Group in AWS</a> grants access of a hosted server to given source IP. This automation is able to update a given Security Group to have source IP after alert is sent by Kentik to IAP in the Kentik <a href='https://kb.kentik.com/v0/Ia04.htm#Ia04-AWS_Dimensions' target='_blank'>AWS Dimension field kt_aws_dst_sg</a>.
-
+  
 #### Microsoft Teams
 
 This IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for an alarm event, and the Kentik flow data. Three channels are used in this automation that each require creating an Incoming Webhook and are used for the following events:
@@ -40,7 +48,7 @@ This IAP automation sends formatted messages over Microsoft Teams with links to 
 3. `Policy Automated Failures`: received messages when a source IP fails to be added to Security Group in AWS. This can occur if a failure happens when performing that operation or the source IP is already found in the Security Group.
 
 Follow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for each of the three channels described above.
-
+  
 #### Kentik
 
 The AWS Blocked Traffic Event automation is started by Kentik sending a request to IAP upon a critical threshold met in traffic to a web server observed by Kentik. In order to use this automation a Notification Channel of type Custom Webhook must be set up in Kentik. The IAP URL and API endpoint for the AWS Blocked Traffic Event automation is provided in the configuration of the Custom Webhook in Kentik. A Go template as seen below is used to map the data sent from Kentik to a format the IAP automation can parse to perform a closed loop remediation of either enabling access to client sending traffic to web server observed by Kentik or continuing to block access if the IP is not white-listed.
@@ -83,24 +91,19 @@ The AWS Blocked Traffic Event automation is started by Kentik sending a request 
 ```
 
 Once the Custom Webhook is created with the above Go template as well as URL of the IAP API endpoint, a <a href='https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies' target='_blank'>Kentik Alert Policy</a> must be configured to send a request to IAP upon a threshold being reached using Custom Webhook created above. This automation was tested using a Critical threshold in the Alert Policy, but other threshold levels could be used.
-
+  
 #### IP Whitelist
 
 A <a href='https://docs.itential.com/docs/newvariable-task-2023-1?highlight=new%20job%20variable' target='_blank'>newVariable task</a> at the start of the workflow `AWS Blocked Traffic Event - Kentik - Example` is used to create an IP whitelist for allowed source IPs to reach the server in AWS that Kentik is observing.
+  
+
+
 
 ### Running Automation and Resetting State
 
 In order for Kentik to send a request to IAP the client source IP must not exist in the corresponding security group for the server in AWS. The `AWS Blocked Traffic - Reset - Kentik - Example` Operations Manager automation can delete a given source IP from a given security group.
 
 There is a delay between when a source IP not in the AWS security group attempts to reach the server on AWS and when the Kentik request due to alarm threshold met is sent to IAP. Look for messages in Microsoft Teams when the request is sent to IAP from Kentik.
-
-Capabilities include:
-- Checks if source IP is in allowed IP list
-- Sends MS Teams message indicating alarm triggered
-- Adds source IP to AWS security group if source IP is in allowed IP list
-- Sends MS Teams notification if unable to add source IP to AWS security group
-- Creates ServiceNow Change Request if alarm triggered
-
 
 ## Getting Started
 
@@ -200,7 +203,7 @@ While Itential tests this Example Project and its capabilities, it is often the 
 
 ### Entry Point IAP Component
 
-The primary IAP component to run this Example Project is listed below:
+The primary IAP component to run **AWS Blocked Traffic - Kentik - Example** is listed below:
 
 <table>
   <thead>
@@ -218,7 +221,7 @@ The primary IAP component to run this Example Project is listed below:
 
 ### Inputs
 
-The following table lists the inputs to the Example Project:
+The following table lists the inputs for **AWS Blocked Traffic - Kentik - Example**:
 
 <table>
   <thead>
@@ -413,20 +416,14 @@ The following table lists the inputs to the Example Project:
 
 ### Outputs
 
-There are no outputs for this Example Project.
+There are no outputs for **AWS Blocked Traffic - Kentik - Example**.
 
 
-### API Links
+### Query Output
+
+There are no query output examples for **AWS Blocked Traffic - Kentik - Example**.
 
 
-
-- [Kentik API Reference](https://kb.kentik.com/v0/Ab09.htm)
-- [Kentik Custom Webhook Templating Reference](https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md)
-- [Kentik Notification Channel Management Overview](https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels)
-- [Kentik Alert Policies Management Overview](https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies)
-- [Kentik General Dimentions Overview](https://kb.kentik.com/v0/Ia04.htm)
-- [Microsoft Teams Creating Incoming Webhooks Overview](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)
- 
 
 
 ### Example Inputs and Outputs
@@ -468,9 +465,54 @@ Input:
 
     
     
+Output:
+<pre>{} </pre>
+
+    
   
+
+
+### API Links
+
+
+<table>
+  <thead>
+    <tr>
+      <th>API Name</th>
+      <th>API Documentation Link</th>
+      <th>API Link Visibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kentik API Reference</td>
+      <td><a href="https://kb.kentik.com/v0/Ab09.htm">https://kb.kentik.com/v0/Ab09.htm</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Custom Webhook Templating Reference</td>
+      <td><a href="https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md">https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Notification Channel Management Overview</td>
+      <td><a href="https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels">https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Alert Policies Management Overview</td>
+      <td><a href="https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies">https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik General Dimentions Overview</td>
+      <td><a href="https://kb.kentik.com/v0/Ia04.htm">https://kb.kentik.com/v0/Ia04.htm</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Microsoft Teams Creating Incoming Webhooks Overview</td>
+      <td><a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet">https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet</a></td>
+      <td>Public</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ## Support
 
-Please use your Itential Customer Success account if you need support when using this Example Project.
+Please use your Itential Customer Success account if you need support when using **AWS Blocked Traffic - Kentik - Example**.

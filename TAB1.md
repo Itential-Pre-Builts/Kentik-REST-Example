@@ -1,6 +1,4 @@
-# Kentik - REST - Example
-
-## Overview
+# Overview 
 
 This contains several example use cases that are applicable when the Itential Automation Platform is integrated with the Kentik Platform. Because every environment is different, these use cases are fully functioning examples that can be modified to operate in your IT ecosystem. These workflows have been written with modularity in mind to make them easy to understand and simple to modify to suit your needs.
 
@@ -32,81 +30,4 @@ This contains several example use cases that are applicable when the Itential Au
   </tbody>
 </table>
 
-
-## External Dependencies
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>OS Version</th>
-      <th>API Version</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Kentik</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>NetBox</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>AWS</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>ServiceNow</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>Itential Automation Gateway</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>MS Teams</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-## Adapters
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Version</th>
-      <th>Configuration Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow">adapter-service_now</a></td>
-      <td>^2.6.3</td>
-      <td></td>
-    </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5">adapter-kentik_v5</a></td>
-      <td>^0.1.1</td>
-      <td></td>
-    </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
-      <td>^0.6.9</td>
-      <td></td>
-    </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33">adapter-netbox_v33</a></td>
-      <td>^2.0.0</td>
-      <td></td>
-    </tr>    <tr>
-      <td>adapter-automation_gateway</td>
-      <td>^4.29.0-2023.1.12</td>
-      <td></td>
-    </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams">adapter-ms_teams</a></td>
-      <td>^0.13.0</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+For further technical details on how to install and use this Example Project, please click the Technical Documentation tab. 

@@ -1,4 +1,14 @@
 
+## 1.0.9-2023.1.7 [04-03-2024]
+
+Updates documentation data with configuration dependencies refactor
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!27
+
+2024-04-03 14:06:25 +0000
+
+---
+
 ## 1.0.8-2023.1.6 [02-13-2024]
 
 * Updates Cypress tests
@@ -118,4 +128,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n

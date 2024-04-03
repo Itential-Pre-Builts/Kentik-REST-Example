@@ -15,18 +15,30 @@
     - [Entry Point IAP Component](#entry-point-iap-component)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
-    - [API Links](#api-links)
+    - [Query Output](#query-output)
     - [Example Inputs and Outputs](#example-inputs-and-outputs)
+    - [API Links](#api-links)
   - [Support](#support)
 
 ## Overview
 
-This automation example can be installed and reviewed for ideas on how to query a Cisco IOS device from NetBox that has already been onboarded to Itential Automation Gateway (IAG) and then onboards the device into Kentik. Once onboarded into Kentik, the device is configured via IAG to send flow data to Kentik. Finally, the automation validates that Kentik has received flow data from the device.
+This automation example can be installed and reviewed for ideas on how to query a Cisco IOS device from NetBox that has already been onboarded to Itential Automation Gateway (IAG) and then onboards the device into Kentik. Once onboarded into Kentik, the device is configured via IAG to send flow data to Kentik. Finally, the automation validates that Kentik has received flow data from the device.</br></br>IAP updates NetBox with the Kentik device ID and keeps Change Management up to date integrating with ServiceNow and MS Teams for notifications throughout the automation.
 
-IAP updates NetBox with the Kentik device ID and keeps Change Management up to date integrating with ServiceNow and MS Teams for notifications throughout the automation. If interested in fully running this automation, see `Configuring Dependencies` below for setting up required dependencies.
+Capabilities include:
+- Creates ServiceNow Change Request
+- Retrieves device details from NetBox
+- Sends Microsoft Teams notification before device creation attempt
+- Creates device in Kentik
+- Updates NetBox device details with Kentik ID
+- Gets Kentik company settings for flow test
+- Configures Cisco IOS device over Itential Automation Gateway for flow test
+- Runs traffic flow test in Kentik
+- Sends Microsoft Teams notification after device creation and flow test with links to Kentik, SerivceNow Change Request, and Itential job
+
+
 
 ### Configuring Dependencies
-
+  
 #### NetBox
 
 A single Cisco IOS device needs to be set in NetBox that has a name, a site name, and local config context data. See example object with these fields provided below.
@@ -51,13 +63,13 @@ A single Cisco IOS device needs to be set in NetBox that has a name, a site name
   }
 }
 ```
-
+  
 #### Microsoft Teams
 
 This IAP automation sends formatted messages over Microsoft Teams with links to the IAP job run, a ServiceNow Change Request created for the device onboarding event, and the Kentik flow data. One Microsoft Teams channel called `Device Onboarding` is used in this automation that requires creating an Incoming Webhook.
 
 Follow the Microsoft Teams documentation linked for <a href='https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet' target='_blank'>creating Incoming Webhooks</a> for setting up the webhook for that channel.
-
+  
 #### Itential Automation Gateway
 
 A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an Ansible inventory device. See example properties in JSON object below for this:
@@ -73,18 +85,8 @@ A Cisco IOS device must be onboarded to Itential Automation Gateway (IAG) as an 
   "ansible_connection": "network_cli"
 }
 ```
+  
 
-
-Capabilities include:
-- Creates ServiceNow Change Request
-- Retrieves device details from NetBox
-- Sends Microsoft Teams notification before device creation attempt
-- Creates device in Kentik
-- Updates NetBox device details with Kentik ID
-- Gets Kentik company settings for flow test
-- Configures Cisco IOS device over Itential Automation Gateway for flow test
-- Runs traffic flow test in Kentik
-- Sends Microsoft Teams notification after device creation and flow test with links to Kentik, SerivceNow Change Request, and Itential job
 
 
 ## Getting Started
@@ -201,7 +203,7 @@ While Itential tests this Example Project and its capabilities, it is often the 
 
 ### Entry Point IAP Component
 
-The primary IAP component to run this Example Project is listed below:
+The primary IAP component to run **Device Onboarding - Kentik - Example** is listed below:
 
 <table>
   <thead>
@@ -219,7 +221,7 @@ The primary IAP component to run this Example Project is listed below:
 
 ### Inputs
 
-The following table lists the inputs to the Example Project:
+The following table lists the inputs for **Device Onboarding - Kentik - Example**:
 
 <table>
   <thead>
@@ -288,18 +290,14 @@ The following table lists the inputs to the Example Project:
 
 ### Outputs
 
-There are no outputs for this Example Project.
+There are no outputs for **Device Onboarding - Kentik - Example**.
 
 
-### API Links
+### Query Output
+
+There are no query output examples for **Device Onboarding - Kentik - Example**.
 
 
-
-- [Kentik API Reference](https://kb.kentik.com/v0/Ab09.htm)
-- [Kentik Notification Channel Management Overview](https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels)
-- [Kentik General Dimentions Overview](https://kb.kentik.com/v0/Ia04.htm)
-- [Microsoft Teams Creating Incoming Webhooks Overview](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)
- 
 
 
 ### Example Inputs and Outputs
@@ -324,9 +322,46 @@ Input:
 
     
     
+Output:
+<pre>{} </pre>
+
+    
   
+
+
+### API Links
+
+
+<table>
+  <thead>
+    <tr>
+      <th>API Name</th>
+      <th>API Documentation Link</th>
+      <th>API Link Visibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kentik API Reference</td>
+      <td><a href="https://kb.kentik.com/v0/Ab09.htm">https://kb.kentik.com/v0/Ab09.htm</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Notification Channel Management Overview</td>
+      <td><a href="https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels">https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik General Dimentions Overview</td>
+      <td><a href="https://kb.kentik.com/v0/Ia04.htm">https://kb.kentik.com/v0/Ia04.htm</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Microsoft Teams Creating Incoming Webhooks Overview</td>
+      <td><a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet">https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet</a></td>
+      <td>Public</td>
+    </tr>
+  </tbody>
+</table>
 
 
 ## Support
 
-Please use your Itential Customer Success account if you need support when using this Example Project.
+Please use your Itential Customer Success account if you need support when using **Device Onboarding - Kentik - Example**.
