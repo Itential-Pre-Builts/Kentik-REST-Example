@@ -45,11 +45,11 @@ This contains several example use cases that are applicable when the Itential Au
   </thead>
   <tbody>
     <tr>
-      <td>Itential Automation Gateway</td>
+      <td>MS Teams</td>
       <td></td>
       <td></td>
     </tr>    <tr>
-      <td>NetBox</td>
+      <td>Itential Automation Gateway</td>
       <td></td>
       <td></td>
     </tr>    <tr>
@@ -57,15 +57,15 @@ This contains several example use cases that are applicable when the Itential Au
       <td></td>
       <td></td>
     </tr>    <tr>
-      <td>MS Teams</td>
+      <td>AWS</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>NetBox</td>
       <td></td>
       <td></td>
     </tr>    <tr>
       <td>Kentik</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>AWS</td>
       <td></td>
       <td></td>
     </tr>
@@ -84,20 +84,16 @@ This contains several example use cases that are applicable when the Itential Au
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33">adapter-netbox_v33</a></td>
-      <td>^2.0.0</td>
-      <td></td>
-    </tr>    <tr>
-      <td>adapter-automation_gateway</td>
-      <td>^4.29.0-2023.1.12</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
+      <td>^0.6.9</td>
       <td></td>
     </tr>    <tr>
       <td><a href="https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5">adapter-kentik_v5</a></td>
       <td>^0.1.1</td>
       <td></td>
     </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
-      <td>^0.6.9</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33">adapter-netbox_v33</a></td>
+      <td>^2.0.0</td>
       <td></td>
     </tr>    <tr>
       <td><a href="https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow">adapter-service_now</a></td>
@@ -106,6 +102,10 @@ This contains several example use cases that are applicable when the Itential Au
     </tr>    <tr>
       <td><a href="https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams">adapter-ms_teams</a></td>
       <td>^0.13.0</td>
+      <td></td>
+    </tr>    <tr>
+      <td>adapter-automation_gateway</td>
+      <td>^4.29.0-2023.1.12</td>
       <td></td>
     </tr>
   </tbody>
