@@ -15,8 +15,9 @@
     - [Entry Point IAP Component](#entry-point-iap-component)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
-    - [API Links](#api-links)
+    - [Query Output](#query-output)
     - [Example Inputs and Outputs](#example-inputs-and-outputs)
+    - [API Links](#api-links)
   - [Support](#support)
 
 ## Overview
@@ -25,6 +26,9 @@ Workflow that is used to remove source IP from security group in AWS to reset da
 
 Capabilities include:
 - Removes IP from security group in AWS
+
+
+
 
 
 ## Getting Started
@@ -101,7 +105,7 @@ While Itential tests this Example Project and its capabilities, it is often the 
 
 ### Entry Point IAP Component
 
-The primary IAP component to run this Example Project is listed below:
+The primary IAP component to run **AWS Blocked Traffic - Reset - Kentik - Example** is listed below:
 
 <table>
   <thead>
@@ -119,7 +123,7 @@ The primary IAP component to run this Example Project is listed below:
 
 ### Inputs
 
-The following table lists the inputs to the Example Project:
+The following table lists the inputs for **AWS Blocked Traffic - Reset - Kentik - Example**:
 
 <table>
   <thead>
@@ -158,14 +162,14 @@ The following table lists the inputs to the Example Project:
 
 ### Outputs
 
-There are no outputs for this Example Project.
+There are no outputs for **AWS Blocked Traffic - Reset - Kentik - Example**.
 
 
-### API Links
+### Query Output
+
+There are no query output examples for **AWS Blocked Traffic - Reset - Kentik - Example**.
 
 
-No API Links provided.
- 
 
 
 ### Example Inputs and Outputs
@@ -186,6 +190,12 @@ Input:
   
 
 
+### API Links
+
+
+No API Links provided.
+
+
 ## Support
 
-Please use your Itential Customer Success account if you need support when using this Example Project.
+Please use your Itential Customer Success account if you need support when using **AWS Blocked Traffic - Reset - Kentik - Example**.

@@ -15,8 +15,9 @@
     - [Entry Point IAP Component](#entry-point-iap-component)
     - [Inputs](#inputs)
     - [Outputs](#outputs)
-    - [API Links](#api-links)
+    - [Query Output](#query-output)
     - [Example Inputs and Outputs](#example-inputs-and-outputs)
+    - [API Links](#api-links)
   - [Support](#support)
 
 ## Overview
@@ -100,6 +101,9 @@ Capabilities include:
 - Adds source IP to AWS security group if source IP is in allowed IP list
 - Sends MS Teams notification if unable to add source IP to AWS security group
 - Creates ServiceNow Change Request if alarm triggered
+
+
+
 
 
 ## Getting Started
@@ -200,7 +204,7 @@ While Itential tests this Example Project and its capabilities, it is often the 
 
 ### Entry Point IAP Component
 
-The primary IAP component to run this Example Project is listed below:
+The primary IAP component to run **AWS Blocked Traffic - Kentik - Example** is listed below:
 
 <table>
   <thead>
@@ -218,7 +222,7 @@ The primary IAP component to run this Example Project is listed below:
 
 ### Inputs
 
-The following table lists the inputs to the Example Project:
+The following table lists the inputs for **AWS Blocked Traffic - Kentik - Example**:
 
 <table>
   <thead>
@@ -413,20 +417,14 @@ The following table lists the inputs to the Example Project:
 
 ### Outputs
 
-There are no outputs for this Example Project.
+There are no outputs for **AWS Blocked Traffic - Kentik - Example**.
 
 
-### API Links
+### Query Output
+
+There are no query output examples for **AWS Blocked Traffic - Kentik - Example**.
 
 
-
-- [Kentik API Reference](https://kb.kentik.com/v0/Ab09.htm)
-- [Kentik Custom Webhook Templating Reference](https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md)
-- [Kentik Notification Channel Management Overview](https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels)
-- [Kentik Alert Policies Management Overview](https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies)
-- [Kentik General Dimentions Overview](https://kb.kentik.com/v0/Ia04.htm)
-- [Microsoft Teams Creating Incoming Webhooks Overview](https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet)
- 
 
 
 ### Example Inputs and Outputs
@@ -471,6 +469,47 @@ Input:
   
 
 
+### API Links
+
+
+<table>
+  <thead>
+    <tr>
+      <th>API Name</th>
+      <th>API Documentation Link</th>
+      <th>API Link Visibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kentik API Reference</td>
+      <td><a href="https://kb.kentik.com/v0/Ab09.htm">https://kb.kentik.com/v0/Ab09.htm</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Custom Webhook Templating Reference</td>
+      <td><a href="https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md">https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Notification Channel Management Overview</td>
+      <td><a href="https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels">https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik Alert Policies Management Overview</td>
+      <td><a href="https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies">https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Kentik General Dimentions Overview</td>
+      <td><a href="https://kb.kentik.com/v0/Ia04.htm">https://kb.kentik.com/v0/Ia04.htm</a></td>
+      <td>Public</td>
+    </tr>    <tr>
+      <td>Microsoft Teams Creating Incoming Webhooks Overview</td>
+      <td><a href="https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet">https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet</a></td>
+      <td>Public</td>
+    </tr>
+  </tbody>
+</table>
+
+
 ## Support
 
-Please use your Itential Customer Success account if you need support when using this Example Project.
+Please use your Itential Customer Success account if you need support when using **AWS Blocked Traffic - Kentik - Example**.

@@ -1,4 +1,14 @@
 
+## 1.1.5 [04-03-2024]
+
+Regenerate documentation and metadata.json files
+
+See commit 4aeee10
+
+2024-02-13 20:38:55 +0000
+
+---
+
 ## 1.1.4 [02-13-2024]
 
 * Updates Cypress tests
@@ -126,4 +136,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
