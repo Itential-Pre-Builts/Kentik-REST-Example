@@ -61,7 +61,8 @@
   ],
   "exampleInputsAndOutputs": [
     {
-      "exampleInput": "{\n  \"formData\":  {\n    \"deviceName\": \"ios_device\",\n    \"kentikAdapter\": \"Kentik v5\"\n  }\n}"
+      "exampleInput": "{\n  \"formData\":  {\n    \"deviceName\": \"ios_device\",\n    \"kentikAdapter\": \"Kentik v5\"\n  }\n}",
+      "exampleOutput": "{}"
     }
   ],
   "queryOutput": {},
