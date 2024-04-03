@@ -12,7 +12,15 @@
     "Diagnostics"
   ],
   "useCases": [
-    "Multi-Domain Orchestration"
+    "Create Alert on item when issues arise during Automation",
+    "Closed loop incident resolution",
+    "Create, update, complete or cancel Change Management Requests",
+    "Inventory Reconciliation",
+    "Notification when issue during an Automation",
+    "Onboard, update, manage or remove Devices",
+    "Preventive network diagnostics",
+    "Provisioning and management of Network Elements",
+    "Start Automation in Itential"
   ],
   "deprecated": {
     "isDeprecated": false
