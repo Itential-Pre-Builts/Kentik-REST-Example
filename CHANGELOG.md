@@ -1,4 +1,14 @@
 
+## 1.1.8 [04-03-2024]
+
+Regenerate documentation and metadata.json files
+
+See commit 1211ec4
+
+2024-04-03 15:24:58 +0000
+
+---
+
 ## 1.1.7 [04-03-2024]
 
 Updates useCases in metadata
@@ -156,4 +166,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
