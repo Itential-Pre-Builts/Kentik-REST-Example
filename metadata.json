@@ -27,7 +27,15 @@
     "Diagnostics"
   ],
   "useCases": [
-    "Multi-Domain Orchestration"
+    "Create Alert on item when issues arise during Automation",
+    "Closed loop incident resolution",
+    "Create, update, complete or cancel Change Management Requests",
+    "Inventory Reconciliation",
+    "Notification when issue during an Automation",
+    "Onboard, update, manage or remove Devices",
+    "Preventive network diagnostics",
+    "Provisioning and management of Network Elements",
+    "Start Automation in Itential"
   ],
   "deprecated": {
     "isDeprecated": false
@@ -53,8 +61,8 @@
     "productLink": "https://www.kentik.com/product/kentik-platform/",
     "apiLinks": [
       {
-        "title": "Kentik Notification Channel Management Overview",
-        "link": "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
+        "title": "Kentik Custom Webhook Templating Reference",
+        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
         "public": true
       },
       {
@@ -63,13 +71,13 @@
         "public": true
       },
       {
-        "title": "Microsoft Teams Creating Incoming Webhooks Overview",
-        "link": "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet",
+        "title": "Kentik Alert Policies Management Overview",
+        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
         "public": true
       },
       {
-        "title": "Kentik Alert Policies Management Overview",
-        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
+        "title": "Kentik Notification Channel Management Overview",
+        "link": "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
         "public": true
       },
       {
@@ -78,8 +86,8 @@
         "public": true
       },
       {
-        "title": "Kentik Custom Webhook Templating Reference",
-        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
+        "title": "Microsoft Teams Creating Incoming Webhooks Overview",
+        "link": "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet",
         "public": true
       }
     ]
@@ -133,6 +141,19 @@
   "relatedItems": {
     "adapters": [
       {
+        "name": "adapter-netbox_v33",
+        "webName": "",
+        "overview": "Adapter that connects to NetBox",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+        "webLink": "",
+        "configurationNotes": "",
+        "versions": [
+          "^2.0.0"
+        ]
+      },
+      {
         "name": "adapter-automation_gateway",
         "webName": "Itential Automation Gateway",
         "overview": "Adapter that connects to Itential Automation Gateway",
@@ -143,19 +164,6 @@
         "configurationNotes": "",
         "versions": [
           "^4.29.0-2023.1.12"
-        ]
-      },
-      {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
-        "configurationNotes": "",
-        "versions": [
-          "^0.13.0"
         ]
       },
       {
@@ -172,16 +180,16 @@
         ]
       },
       {
-        "name": "adapter-netbox_v33",
+        "name": "adapter-kentik_v5",
         "webName": "",
-        "overview": "Adapter that connects to NetBox",
+        "overview": "Adapter that connects to Kentik",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
-        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
+        "docLink": "",
         "webLink": "",
         "configurationNotes": "",
         "versions": [
-          "^2.0.0"
+          "^0.1.1"
         ]
       },
       {
@@ -198,22 +206,34 @@
         ]
       },
       {
-        "name": "adapter-kentik_v5",
-        "webName": "",
-        "overview": "Adapter that connects to Kentik",
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
-        "docLink": "",
-        "webLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
         "configurationNotes": "",
         "versions": [
-          "^0.1.1"
+          "^0.13.0"
         ]
       }
     ],
     "integrations": [],
     "ecosystemApplications": [],
     "workflowProjects": [
+      {
+        "name": "Microsoft - Teams - REST",
+        "webName": "Microsoft Teams Notification",
+        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
+        "versions": [
+          "^1.0.0-2023.1.1"
+        ]
+      },
       {
         "name": "ServiceNow - Now Platform - REST",
         "webName": "ServiceNow Platform Modular Automations",
@@ -236,18 +256,6 @@
         "webLink": "https://www.itential.com/automations/kentik-device-management/",
         "versions": [
           "^1.0.3-2023.1.2"
-        ]
-      },
-      {
-        "name": "Microsoft - Teams - REST",
-        "webName": "Microsoft Teams Notification",
-        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
-        "versions": [
-          "^1.0.0-2023.1.1"
         ]
       }
     ],

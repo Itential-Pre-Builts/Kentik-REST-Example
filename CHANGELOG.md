@@ -1,4 +1,14 @@
 
+## 1.0.10-2023.1.8 [04-03-2024]
+
+Updates useCases in metadata
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!30
+
+2024-04-03 15:21:15 +0000
+
+---
+
 ## 1.0.9-2023.1.7 [04-03-2024]
 
 Updates documentation data with configuration dependencies refactor
@@ -128,4 +138,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
