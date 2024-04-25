@@ -22,7 +22,7 @@
   "author": "Itential",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@itential-tools/iap-cypress-testing-library": "^4.1.0",
+    "@itential-tools/iap-cypress-testing-library": "^4.3.0-alpha.3",
     "ajv": "6.10.0",
     "better-ajv-errors": "^0.6.1",
     "cypress": "^9.7.0",
