@@ -43,19 +43,11 @@ Itential Example Projects are built and tested on particular versions of IAP. In
   </thead>
   <tbody>
     <tr>
+      <td>ServiceNow</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
       <td>MS Teams</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>AWS</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>Itential Automation Gateway</td>
-      <td></td>
-      <td></td>
-    </tr>    <tr>
-      <td>Kentik</td>
       <td></td>
       <td></td>
     </tr>    <tr>
@@ -63,7 +55,15 @@ Itential Example Projects are built and tested on particular versions of IAP. In
       <td></td>
       <td></td>
     </tr>    <tr>
-      <td>ServiceNow</td>
+      <td>Kentik</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>Itential Automation Gateway</td>
+      <td></td>
+      <td></td>
+    </tr>    <tr>
+      <td>AWS</td>
       <td></td>
       <td></td>
     </tr>
@@ -86,12 +86,8 @@ Itential Example Projects are built and tested on particular versions of IAP. In
       <td>^2.0.0</td>
       <td></td>
     </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5">adapter-kentik_v5</a></td>
-      <td>^0.1.1</td>
-      <td></td>
-    </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
-      <td>^0.6.9</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams">adapter-ms_teams</a></td>
+      <td>^0.13.0</td>
       <td></td>
     </tr>    <tr>
       <td>adapter-automation_gateway</td>
@@ -102,8 +98,12 @@ Itential Example Projects are built and tested on particular versions of IAP. In
       <td>^2.6.3</td>
       <td></td>
     </tr>    <tr>
-      <td><a href="https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams">adapter-ms_teams</a></td>
-      <td>^0.13.0</td>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/cloud/adapter-aws_ec2">adapter-aws_ec2</a></td>
+      <td>^0.6.9</td>
+      <td></td>
+    </tr>    <tr>
+      <td><a href="https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5">adapter-kentik_v5</a></td>
+      <td>^0.1.1</td>
       <td></td>
     </tr>
   </tbody>
