@@ -12,7 +12,7 @@
     ""
   ],
   "iapVersions": [
-    "2023.1"
+    "2023.2"
   ],
   "domains": [
     "Observability"
@@ -61,23 +61,18 @@
     "productLink": "https://www.kentik.com/product/kentik-platform/",
     "apiLinks": [
       {
-        "title": "Kentik General Dimentions Overview",
-        "link": "https://kb.kentik.com/v0/Ia04.htm",
-        "public": true
-      },
-      {
         "title": "Kentik Custom Webhook Templating Reference",
         "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
         "public": true
       },
       {
-        "title": "Microsoft Teams Creating Incoming Webhooks Overview",
-        "link": "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet",
+        "title": "Kentik Alert Policies Management Overview",
+        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
         "public": true
       },
       {
-        "title": "Kentik Notification Channel Management Overview",
-        "link": "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
+        "title": "Kentik General Dimentions Overview",
+        "link": "https://kb.kentik.com/v0/Ia04.htm",
         "public": true
       },
       {
@@ -86,8 +81,13 @@
         "public": true
       },
       {
-        "title": "Kentik Alert Policies Management Overview",
-        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
+        "title": "Kentik Notification Channel Management Overview",
+        "link": "https://kb.kentik.com/v4/Cb24.htm#Cb24-Manage_Notification_Channels",
+        "public": true
+      },
+      {
+        "title": "Microsoft Teams Creating Incoming Webhooks Overview",
+        "link": "https://learn.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook?tabs=dotnet",
         "public": true
       }
     ]
@@ -99,7 +99,7 @@
       "assetType": "Workflow",
       "overview": "This is an end-to-end automation example where an alert is triggered within a Kentik policy due to a threshold being exceeded. In this example Kentik uses an integration to call IAP's <a href='https://docs.itential.com/docs/triggers-2023-1#api-endpoint-triggers' target='_blank'>northbound API trigger</a>. Once the trigger is executed it invokes an automation that then validates the traffic can be accepted and interacts with change management (ServiceNow), AWS EC2, and a notification platform (MS Teams).</br></br>This automation example can be installed and reviewed for ideas on how to incorporate Kentik into a closed loop alert remediation scenario with IAP.",
       "iapVersions": [
-        "2023.1"
+        "2023.2"
       ],
       "exampleInput": "{\n  \"iapUrl\": \"https://iap-dev:443\",\n  \"serviceNowUrl\": \"https://service-now.com\",\n  \"allPolicyEventsWebhookUrl\": \"webhookurl1\",\n  \"policyAutomatedFailureWebhookUrl\": \"webhookurl2\",\n  \"policyAutomatedAuthorizationWebhookUrl\": \"webhookurl3\",\n  \"serviceNowAdapter\": \"ServiceNow\",\n  \"awsEC2Adapter\": \"AWS\",\n  \"msTeamsAdapter\": \"MS Teams\",\n  \"AlarmPolicyName\": \"US Policy Rejected Web Server Traffic\",\n  \"Dimensions\": {\n    \"AS_src\": \"1000\",\n    \"IP_dst\": \"11.11.11.11\",\n    \"IP_src\": \"10.10.10.10\",\n    \"kt_aws_dst_sg\": \"aws_security_group\"\n  },\n  \"Links\": [\n    {\n      \"Name\": \"DashboardAlarmURL\",\n      \"Label\": \"Open Dashboard\",\n      \"Value\": \"https://portal.kentik.com/v4/library/dashboards/10000\"\n    },\n    {\n      \"Name\": \"DetailsAlarmURL\",\n      \"Label\": \"Open Details\",\n      \"Value\": \"https://portal.kentik.com/v4/alerting/a215729224\"\n    }\n  ]\n}",
       "exampleOutput": "{}"
@@ -110,7 +110,7 @@
       "assetType": "Workflow",
       "overview": "Workflow that is used to remove source IP from security group in AWS to reset data for AWS Blocked Traffic - Kentik - Example automation",
       "iapVersions": [
-        "2023.1"
+        "2023.2"
       ],
       "exampleInput": "{\n    \"sourceIP\": \"10.10.10.10\",\n    \"awsEC2Adapter\": \"AWS\",\n    \"awsSecurityGroup\": \"security_group\"\n  }",
       "exampleOutput": "{}"
@@ -121,7 +121,7 @@
       "assetType": "Workflow",
       "overview": "This automation example can be installed and reviewed for ideas on how to query a Cisco IOS device from NetBox that has already been onboarded to Itential Automation Gateway (IAG) and then onboards the device into Kentik. Once onboarded into Kentik, the device is configured via IAG to send flow data to Kentik. Finally, the automation validates that Kentik has received flow data from the device.</br></br>IAP updates NetBox with the Kentik device ID and keeps Change Management up to date integrating with ServiceNow and MS Teams for notifications throughout the automation.",
       "iapVersions": [
-        "2023.1"
+        "2023.2"
       ],
       "exampleInput": "{\n  \"formData\": {\n    \"iapUrl\": \"https://iap-dev:443\",\n    \"deviceOnboardingWebhookUrl\": \"webhookURL1\",\n    \"serviceNowUrl\": \"https://service-now-dev.com\",\n    \"deviceName\": \"ios_device\",\n    \"serviceNowAdapter\": \"ServiceNow\",\n    \"netBoxAdapter\": \"NetboxV3\",\n    \"msTeamsAdapter\": \"MS Teams\",\n    \"kentikAdapter\": \"Kentik v5\"\n  }\n}",
       "exampleOutput": "{}"
@@ -132,7 +132,7 @@
       "assetType": "Workflow",
       "overview": "Automation removes flow test Cisco IOS device configuration and deletes device from Kentik to reset data for Device Onboarding - Kentik - Example automation",
       "iapVersions": [
-        "2023.1"
+        "2023.2"
       ],
       "exampleInput": "{\n  \"formData\":  {\n    \"deviceName\": \"ios_device\",\n    \"kentikAdapter\": \"Kentik v5\"\n  }\n}",
       "exampleOutput": "{}"
@@ -141,16 +141,16 @@
   "relatedItems": {
     "adapters": [
       {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
+        "name": "adapter-kentik_v5",
+        "webName": "",
+        "overview": "Adapter that connects to Kentik",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
+        "docLink": "",
+        "webLink": "",
         "configurationNotes": "",
         "versions": [
-          "^0.13.0"
+          "^0.1.1"
         ]
       },
       {
@@ -180,16 +180,16 @@
         ]
       },
       {
-        "name": "adapter-kentik_v5",
-        "webName": "",
-        "overview": "Adapter that connects to Kentik",
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
-        "docLink": "",
-        "webLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
         "configurationNotes": "",
         "versions": [
-          "^0.1.1"
+          "^0.13.0"
         ]
       },
       {
@@ -223,18 +223,6 @@
     "ecosystemApplications": [],
     "workflowProjects": [
       {
-        "name": "Microsoft - Teams - REST",
-        "webName": "Microsoft Teams Notification",
-        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
-        "versions": [
-          "^1.0.0-2023.1.1"
-        ]
-      },
-      {
         "name": "Kentik - REST",
         "webName": "Kentik - Device Management",
         "overview": "The integration of Itential and Kentik enables network teams to build automations that can immediately respond to events and alarms generated by the Kentik observability platform. In addition, Itential also offers a package of Pre-Built Automations to implement multiple use cases with the integration. The Kentik - REST Pre-Built provides automations that help Network Engineers automate common tasks performed in the Kentik platform. This Pre-Built contains multiple automations including:\\n\\n- Create a Device in Kentik - With this automation, users can create a device for a specific site and provide the device record as output.\\n- Run Device Flow Test - With this automation, users can run a device flow test for a specific device, providing the results of the test as output.",
@@ -256,6 +244,18 @@
         "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
         "versions": [
           "^1.0.1-2023.1.2"
+        ]
+      },
+      {
+        "name": "Microsoft - Teams - REST",
+        "webName": "Microsoft Teams Notification",
+        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
+        "versions": [
+          "^1.0.0-2023.1.1"
         ]
       }
     ],

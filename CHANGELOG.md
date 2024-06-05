@@ -1,4 +1,14 @@
 
+## 1.1.10 [06-05-2024]
+
+Update IAP version in asset documentation
+
+See merge request itentialopensource/pre-built-automations/kentik-rest-example!36
+
+2024-06-05 16:05:07 +0000
+
+---
+
 ## 1.1.9 [04-25-2024]
 
 Updates IAP Cypress Testing Library version
@@ -176,4 +186,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n

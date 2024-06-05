@@ -38,7 +38,7 @@ Capabilities include:
 Itential Example Projects are built and tested on particular versions of IAP. In addition, Example Projects are often dependent on external systems and as such, these Example Projects will have dependencies on these other systems. This version of **AWS Blocked Traffic - Reset - Kentik - Example** has been tested with:
 
 
-- IAP **2023.1**
+- IAP **2023.2**
 
 
 
