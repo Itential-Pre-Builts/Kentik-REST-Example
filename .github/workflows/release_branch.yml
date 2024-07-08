@@ -16,4 +16,5 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-reusable-release-branch-workflow:
-    uses: Itential-Pre-Builts/common-utils/.github/workflows/release_branch.yml@main
+    uses: Itential-Pre-Builts/common-utils/.github/workflows/release_branch.yml@mainj
+    secrets: inherit
