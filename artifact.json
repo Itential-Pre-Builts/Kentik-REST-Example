@@ -1,7 +1,7 @@
 {
   "metadata": {
     "name": "@itentialopensource/kentik-rest-example",
-    "version": "1.1.11",
+    "version": "1.1.12",
     "description": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
     "license": "Apache-2.0",
     "repository": {
