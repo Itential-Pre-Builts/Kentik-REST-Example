@@ -1,4 +1,14 @@
 
+## 1.1.11 [07-10-2024]
+
+Bug fixes and performance improvements
+
+See commit 71d8e86
+
+2024-07-09 22:09:31 -0400
+
+---
+
 ## 1.1.10 [06-05-2024]
 
 Update IAP version in asset documentation
@@ -186,4 +196,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n

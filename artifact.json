@@ -1,7 +1,7 @@
 {
   "metadata": {
     "name": "@itentialopensource/kentik-rest-example",
-    "version": "1.1.10",
+    "version": "1.1.11",
     "description": "Project for example workflows involving Kentik, NetBox, ServiceNow, AWS, MS Teams, and IAG.",
     "license": "Apache-2.0",
     "repository": {
@@ -21,8 +21,7 @@
       "@itentialopensource/adapter-netbox_v33": "",
       "@itentialopensource/adapter-servicenow": "",
       "@itentialopensource/adapter-msteams": ""
-    },
-    "gitlabId": 51770895
+    }
   },
   "manifest": {
     "bundleName": "Kentik - REST - Example",
