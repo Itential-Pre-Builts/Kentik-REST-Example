@@ -61,8 +61,8 @@
     "productLink": "https://www.kentik.com/product/kentik-platform/",
     "apiLinks": [
       {
-        "title": "Kentik API Reference",
-        "link": "https://kb.kentik.com/v0/Ab09.htm",
+        "title": "Kentik Custom Webhook Templating Reference",
+        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
         "public": true
       },
       {
@@ -76,8 +76,8 @@
         "public": true
       },
       {
-        "title": "Kentik Custom Webhook Templating Reference",
-        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
+        "title": "Kentik API Reference",
+        "link": "https://kb.kentik.com/v0/Ab09.htm",
         "public": true
       },
       {
@@ -141,6 +141,19 @@
   "relatedItems": {
     "adapters": [
       {
+        "name": "adapter-ms_teams",
+        "webName": "Microsoft Teams",
+        "overview": "Adapter that connects to Microsoft Teams",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
+        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
+        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
+        "configurationNotes": "",
+        "versions": [
+          "^0.13.0"
+        ]
+      },
+      {
         "name": "adapter-kentik_v5",
         "webName": "",
         "overview": "Adapter that connects to Kentik",
@@ -154,29 +167,16 @@
         ]
       },
       {
-        "name": "adapter-service_now",
-        "webName": "ServiceNow",
-        "overview": "Adapter that connects to ServiceNow",
+        "name": "adapter-automation_gateway",
+        "webName": "Itential Automation Gateway",
+        "overview": "Adapter that connects to Itential Automation Gateway",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
-        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
-        "webLink": "https://www.itential.com/adapters/servicenow/",
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automation-gateway/",
         "configurationNotes": "",
         "versions": [
-          "^2.6.3"
-        ]
-      },
-      {
-        "name": "adapter-ms_teams",
-        "webName": "Microsoft Teams",
-        "overview": "Adapter that connects to Microsoft Teams",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/notification-messaging/adapter-msteams",
-        "docLink": "https://docs.itential.com/opensource/docs/microsoft-teams",
-        "webLink": "https://www.itential.com/adapters/microsoft-teams/",
-        "configurationNotes": "",
-        "versions": [
-          "^0.13.0"
+          "^4.29.0-2023.1.12"
         ]
       },
       {
@@ -193,6 +193,19 @@
         ]
       },
       {
+        "name": "adapter-service_now",
+        "webName": "ServiceNow",
+        "overview": "Adapter that connects to ServiceNow",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
+        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
+        "webLink": "https://www.itential.com/adapters/servicenow/",
+        "configurationNotes": "",
+        "versions": [
+          "^2.6.3"
+        ]
+      },
+      {
         "name": "adapter-aws_ec2",
         "webName": "Amazon EC2",
         "overview": "Adapter that connects to AWS.",
@@ -204,36 +217,11 @@
         "versions": [
           "^0.6.9"
         ]
-      },
-      {
-        "name": "adapter-automation_gateway",
-        "webName": "Itential Automation Gateway",
-        "overview": "Adapter that connects to Itential Automation Gateway",
-        "isDependency": true,
-        "repoLink": "",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automation-gateway/",
-        "configurationNotes": "",
-        "versions": [
-          "^4.29.0-2023.1.12"
-        ]
       }
     ],
     "integrations": [],
     "ecosystemApplications": [],
     "workflowProjects": [
-      {
-        "name": "ServiceNow - Now Platform - REST",
-        "webName": "ServiceNow Platform Modular Automations",
-        "overview": "Project with workflows for the Now Platform from ServiceNow",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
-        "docLink": "",
-        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
-        "versions": [
-          "^1.0.1-2023.1.2"
-        ]
-      },
       {
         "name": "Microsoft - Teams - REST",
         "webName": "Microsoft Teams Notification",
@@ -256,6 +244,18 @@
         "webLink": "https://www.itential.com/automations/kentik-device-management/",
         "versions": [
           "^1.0.3-2023.1.2"
+        ]
+      },
+      {
+        "name": "ServiceNow - Now Platform - REST",
+        "webName": "ServiceNow Platform Modular Automations",
+        "overview": "Project with workflows for the Now Platform from ServiceNow",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
+        "versions": [
+          "^1.0.1-2023.1.2"
         ]
       }
     ],
