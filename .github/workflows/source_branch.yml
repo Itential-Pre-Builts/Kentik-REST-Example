@@ -16,4 +16,5 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-reusable-source-branch-workflow:
-    uses: Itential-Pre-Builts/common-utils/.github/workflows/source_branch.yml@main
+    uses: Itential-Pre-Builts/common-utils/.github/workflows/source_branch_secondary.yml@main
+    secrets: inherit
