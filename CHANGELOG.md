@@ -1,4 +1,14 @@
 
+## 1.1.13 [07-10-2024]
+
+Bug fixes and performance improvements
+
+See commit 8121496
+
+2024-07-10 02:47:09 +0000
+
+---
+
 ## 1.1.12 [07-10-2024]
 
 Bug fixes and performance improvements
@@ -206,4 +216,4 @@ See merge request itentialopensource/pre-built-automations/pre-built-template-20
 See merge request itentialopensource/pre-built-automations/pre-built-template-2023-1!1
 
 ---
-\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
+\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
