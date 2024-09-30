@@ -1,15 +1,23 @@
 {
+  "name": "Kentik - REST - Example",
+  "webName": "Kentik - Example Use Case Bundle",
+  "supportLevel": "community",
+  "overview": "This contains several example use cases that are applicable when the Itential Automation Platform is integrated with the Kentik Platform. Because every environment is different, these use cases are fully functioning examples that can be modified to operate in your IT ecosystem. These workflows have been written with modularity in mind to make them easy to understand and simple to modify to suit your needs.",
+  "vendor": "Kentik",
+  "product": "Kentik Network Observability Platform",
+  "techAlliance": false,
+  "method": "REST",
+  "type": "Example Project",
   "domains": [
     "Observability"
   ],
   "tags": [
-    "Observability",
-    "Notifications",
-    "Alerts",
-    "Monitoring",
-    "Telemetry",
-    "Analytics",
-    "Diagnostics"
+    "Configuration & Compliance",
+    "Network Infrastructure Changes",
+    "Cloud Infrastructure Changes",
+    "Software Upgrades & Device Maintenance",
+    "Notifications & Ticket Management",
+    "Monitoring & Troubleshooting"
   ],
   "useCases": [
     "Create Alert on item when issues arise during Automation",
@@ -25,20 +33,13 @@
   "deprecated": {
     "isDeprecated": false
   },
-  "name": "Kentik - REST - Example",
-  "vendor": "Kentik",
-  "product": "Kentik Network Observability Platform",
-  "method": "REST",
-  "overview": "This contains several example use cases that are applicable when the Itential Automation Platform is integrated with the Kentik Platform. Because every environment is different, these use cases are fully functioning examples that can be modified to operate in your IT ecosystem. These workflows have been written with modularity in mind to make them easy to understand and simple to modify to suit your needs.",
   "productLink": "https://www.kentik.com/product/kentik-platform/",
   "storeLink": "",
   "docLink": "",
   "issueLink": "",
-  "type": "Example Project",
   "vendorLink": "https://www.kentik.com/",
   "faqLink": "",
   "contributeLink": "",
-  "webName": "Kentik - Example Use Case Bundle",
   "webLink": "https://www.itential.com/automations/kentik-example-use-case-bundle/",
   "trainingLinks": [],
   "demoLinks": [
@@ -46,5 +47,7 @@
       "title": "Itential Kentik Partnership Overview",
       "link": "https://www.itential.com/tech-partners/kentik/"
     }
-  ]
+  ],
+  "workshopHomePage": "https://www.itential.com/get-started/",
+  "workshopLinks": []
 }
