@@ -18,13 +18,12 @@
     "Observability"
   ],
   "tags": [
-    "Observability",
-    "Notifications",
-    "Alerts",
-    "Monitoring",
-    "Telemetry",
-    "Analytics",
-    "Diagnostics"
+    "Configuration & Compliance",
+    "Network Infrastructure Changes",
+    "Cloud Infrastructure Changes",
+    "Software Upgrades & Device Maintenance",
+    "Notifications & Ticket Management",
+    "Monitoring & Troubleshooting"
   ],
   "useCases": [
     "Create Alert on item when issues arise during Automation",
@@ -41,6 +40,8 @@
     "isDeprecated": false
   },
   "brokerSince": "",
+  "supportLevel": "community",
+  "techAlliance": false,
   "documentation": {
     "storeLink": "",
     "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/kentik-rest-example",
@@ -61,8 +62,8 @@
     "productLink": "https://www.kentik.com/product/kentik-platform/",
     "apiLinks": [
       {
-        "title": "Kentik Custom Webhook Templating Reference",
-        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
+        "title": "Kentik API Reference",
+        "link": "https://kb.kentik.com/v0/Ab09.htm",
         "public": true
       },
       {
@@ -71,8 +72,8 @@
         "public": true
       },
       {
-        "title": "Kentik API Reference",
-        "link": "https://kb.kentik.com/v0/Ab09.htm",
+        "title": "Kentik Alert Policies Management Overview",
+        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
         "public": true
       },
       {
@@ -81,16 +82,18 @@
         "public": true
       },
       {
-        "title": "Kentik Alert Policies Management Overview",
-        "link": "https://kb.kentik.com/v4/Ga08.htm#Ga08-Manage_Alert_Policies",
-        "public": true
-      },
-      {
         "title": "Kentik General Dimentions Overview",
         "link": "https://kb.kentik.com/v0/Ia04.htm",
         "public": true
+      },
+      {
+        "title": "Kentik Custom Webhook Templating Reference",
+        "link": "https://github.com/kentik/custom-notification-templates/blob/main/docs/TEMPLATING_REFERENCE.md",
+        "public": true
       }
-    ]
+    ],
+    "workshopHomePage": "https://www.itential.com/get-started/",
+    "workshopLinks": []
   },
   "assets": [
     {
@@ -141,32 +144,6 @@
   "relatedItems": {
     "adapters": [
       {
-        "name": "adapter-netbox_v33",
-        "webName": "",
-        "overview": "Adapter that connects to NetBox",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
-        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
-        "webLink": "",
-        "configurationNotes": "",
-        "versions": [
-          "^2.0.0"
-        ]
-      },
-      {
-        "name": "adapter-service_now",
-        "webName": "ServiceNow",
-        "overview": "Adapter that connects to ServiceNow",
-        "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
-        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
-        "webLink": "https://www.itential.com/adapters/servicenow/",
-        "configurationNotes": "",
-        "versions": [
-          "^2.6.3"
-        ]
-      },
-      {
         "name": "adapter-ms_teams",
         "webName": "Microsoft Teams",
         "overview": "Adapter that connects to Microsoft Teams",
@@ -180,16 +157,29 @@
         ]
       },
       {
-        "name": "adapter-automation_gateway",
-        "webName": "Itential Automation Gateway",
-        "overview": "Adapter that connects to Itential Automation Gateway",
+        "name": "adapter-kentik_v5",
+        "webName": "",
+        "overview": "Adapter that connects to Kentik",
         "isDependency": true,
-        "repoLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
         "docLink": "",
-        "webLink": "https://www.itential.com/automation-gateway/",
+        "webLink": "",
         "configurationNotes": "",
         "versions": [
-          "^4.29.0-2023.1.12"
+          "^0.1.1"
+        ]
+      },
+      {
+        "name": "adapter-netbox_v33",
+        "webName": "",
+        "overview": "Adapter that connects to NetBox",
+        "isDependency": true,
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/inventory/adapter-netbox_v33",
+        "docLink": "https://docs.itential.com/opensource/docs/en/netbox-v33",
+        "webLink": "",
+        "configurationNotes": "",
+        "versions": [
+          "^2.0.0"
         ]
       },
       {
@@ -206,16 +196,29 @@
         ]
       },
       {
-        "name": "adapter-kentik_v5",
-        "webName": "",
-        "overview": "Adapter that connects to Kentik",
+        "name": "adapter-service_now",
+        "webName": "ServiceNow",
+        "overview": "Adapter that connects to ServiceNow",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/adapters/observability/adapter-kentik_v5",
-        "docLink": "",
-        "webLink": "",
+        "repoLink": "https://gitlab.com/itentialopensource/adapters/itsm-testing/adapter-servicenow",
+        "docLink": "https://docs.itential.com/opensource/docs/en/servicenow",
+        "webLink": "https://www.itential.com/adapters/servicenow/",
         "configurationNotes": "",
         "versions": [
-          "^0.1.1"
+          "^2.6.3"
+        ]
+      },
+      {
+        "name": "adapter-automation_gateway",
+        "webName": "Itential Automation Gateway",
+        "overview": "Adapter that connects to Itential Automation Gateway",
+        "isDependency": true,
+        "repoLink": "",
+        "docLink": "",
+        "webLink": "https://www.itential.com/automation-gateway/",
+        "configurationNotes": "",
+        "versions": [
+          "^4.29.0-2023.1.12"
         ]
       }
     ],
@@ -223,15 +226,15 @@
     "ecosystemApplications": [],
     "workflowProjects": [
       {
-        "name": "ServiceNow - Now Platform - REST",
-        "webName": "ServiceNow Platform Modular Automations",
-        "overview": "Project with workflows for the Now Platform from ServiceNow",
+        "name": "Microsoft - Teams - REST",
+        "webName": "Microsoft Teams Notification",
+        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
         "docLink": "",
-        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
+        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
         "versions": [
-          "^1.0.1-2023.1.2"
+          "^1.0.0-2023.1.1"
         ]
       },
       {
@@ -247,15 +250,15 @@
         ]
       },
       {
-        "name": "Microsoft - Teams - REST",
-        "webName": "Microsoft Teams Notification",
-        "overview": "This Pre-Built integrates with the Microsoft Teams Open Source Adapter to send a notification within a Microsoft Teams channel.",
+        "name": "ServiceNow - Now Platform - REST",
+        "webName": "ServiceNow Platform Modular Automations",
+        "overview": "Project with workflows for the Now Platform from ServiceNow",
         "isDependency": true,
-        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/microsoft-teams-notification",
+        "repoLink": "https://gitlab.com/itentialopensource/pre-built-automations/servicenow-now-platform-rest",
         "docLink": "",
-        "webLink": "https://www.itential.com/automations/microsoft-teams-notification/",
+        "webLink": "https://www.itential.com/automations/servicenow-platform-modular-automations/",
         "versions": [
-          "^1.0.0-2023.1.1"
+          "^1.0.1-2023.1.2"
         ]
       }
     ],
